@@ -38,6 +38,20 @@ namespace SROB_NC
             set => ConnectToPLC(value);
         }
 
+        private T_P_4D _startPos;
+        public T_P_4D StartPos
+        {
+            get => _startPos;
+            set 
+            { 
+                if (value != _startPos)
+                { 
+                    _startPos = value;
+                    _viewport.AddStartPosition(value);
+                }
+            }
+        }
+
 
         #region CurrentPos
         private T_P_4D _currentPos = new T_P_4D();
@@ -187,14 +201,24 @@ namespace SROB_NC
 
         #endregion
 
-        #region ToggleSwitch Click
-        private void ToggleSwitch_Click(object sender, RoutedEventArgs e)
+        #region Refresh Click
+        private void Refresh_Click(object sender, RoutedEventArgs e)
         {
+            Config.Initialize(Environment.CurrentDirectory + "/../../../");
+
+            _viewport.Initialize();
 
         }
         #endregion
 
+        #region CalcStart Click
+        private void CalcStart_Click(object sender, RoutedEventArgs e)
+        {
+            StartPos = CurrentPos;
+            btnCalcStart.Content = "Start Calc";
+        }
         #endregion
 
+        #endregion  
     }
 }

@@ -3,6 +3,7 @@ using System.Windows.Media;
 using System.Windows.Media.Media3D;
 using HelixToolkit.Wpf;
 using Configuration;
+using Geometries;
 
 namespace SROB_NC
 {
@@ -59,7 +60,7 @@ namespace SROB_NC
             //Gripper
             Gripper = new BoxVisual3D
             {
-                Center = new Point3D(0, 0, 0),
+                Center = new Point3D(0, 0, 150),
                 Length = Config.Params.Values["GRIPPER_DIM[0]"],
                 Width = Config.Params.Values["GRIPPER_DIM[1]"],
                 Height = 300,
@@ -73,6 +74,26 @@ namespace SROB_NC
             {
                 Children.Add(FilledBox(area.Start, area.End, new SolidColorBrush(Colors.Red.ChangeAlpha(150))));
             }
+        }
+
+        public void AddStartPosition(T_P_4D value)
+        {
+            var StartPosition = new BoxVisual3D
+            {
+                Center = new Point3D(0, 0, 150),
+                Length = Config.Params.Values["GRIPPER_DIM[0]"],
+                Width = Config.Params.Values["GRIPPER_DIM[1]"],
+                Height = 300,
+                Fill = new SolidColorBrush(Colors.Green.ChangeAlpha(150))
+            };
+
+            Matrix3D matrix = new Matrix3D();
+            matrix.Translate(new Vector3D(value.X, value.Y, value.Z));
+            matrix.RotateAt(new Quaternion(new Vector3D(0, 0, 1), value.C), new Point3D(value.X, value.Y, value.Z));
+
+            StartPosition.Transform = new MatrixTransform3D(matrix);
+
+            Children.Add(StartPosition);
         }
         #endregion
 

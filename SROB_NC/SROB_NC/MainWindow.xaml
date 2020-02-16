@@ -22,6 +22,7 @@
             <Setter Property="Background" Value="LightGray"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="5"/>
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="MinWidth" Value="80"/>
         </Style>
@@ -33,8 +34,9 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
 
-            <Button x:Name="btnRefresh" Content="Refresh"/>
-            <cc:ToggleSwitch CheckedText="Online" UncheckedText="Offline" Click="ToggleSwitch_Click"/>
+            <Button x:Name="btnRefresh" Content="Refresh" Click="Refresh_Click"/>
+            <Button x:Name="btnCalcStart" Content="Set Startpoint" Click="CalcStart_Click"/>
+            <cc:ToggleSwitch CheckedText="Online" UncheckedText="Offline"/>
 
             <Label x:Name="PoseX" Content="{Binding PosX, Mode = OneWay}" MouseWheel="target_OnMouseWheel"/>
             <Label x:Name="PoseY" Content="{Binding PosY, Mode = OneWay}" MouseWheel="target_OnMouseWheel"/>
