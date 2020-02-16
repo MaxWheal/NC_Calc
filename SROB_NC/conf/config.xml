@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ConfigCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Restricted_Areas>
+    <Area>
+      <Name>Plag</Name>
+      <Start X="-500" Y="3500" Z="-500" />
+      <End X="11700" Y="6000" Z="1500" />
+    </Area>
+    <Area>
+      <Name>Alag</Name>
+      <Start X="11700" Y="-500" Z="-500" />
+      <End X="15000" Y="6000" Z="1000" />
+    </Area>
+  </Restricted_Areas>
+  <Parameters>
+    <Parameter>
+      <Name>PalWidth</Name>
+      <Value>3200</Value>
+      <Unit>mm</Unit>
+    </Parameter>
+    <Parameter>
+      <Name>PalLength</Name>
+      <Value>11500</Value>
+      <Unit>mm</Unit>
+    </Parameter>
+    <Parameter>
+      <Name>MinX</Name>
+      <Value>-500</Value>
+      <Unit>mm</Unit>
+    </Parameter>
+    <Parameter>
+      <Name>MinY</Name>
+      <Value>-500</Value>
+      <Unit>mm</Unit>
+    </Parameter>
+    <Parameter>
+      <Name>MinZ</Name>
+      <Value>-500</Value>
+      <Unit>mm</Unit>
+    </Parameter>
+    <Parameter>
+      <Name>MaxX</Name>
+      <Value>15000</Value>
+      <Unit>mm</Unit>
+    </Parameter>
+    <Parameter>
+      <Name>MaxY</Name>
+      <Value>6000</Value>
+      <Unit>mm</Unit>
+    </Parameter>
+    <Parameter>
+      <Name>MaxZ</Name>
+      <Value>2000</Value>
+      <Unit>mm</Unit>
+    </Parameter>
+  </Parameters>
+</ConfigCollection>
