@@ -5,7 +5,7 @@ using System.Xml.Serialization;
 using System.IO;
 using System.Linq;
 
-namespace Configuration
+namespace Configuration.Ini
 {
     /// <summary>
     /// Collection of configuration Strings

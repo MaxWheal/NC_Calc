@@ -5,7 +5,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
 
-namespace Configuration
+namespace Configuration.RestrictiveAreas
 {
     /// <summary>
     /// Collection of restricitve areas

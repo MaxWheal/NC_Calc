@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace Configuration
+namespace Configuration.Parameters
 {
     /// <summary>
     /// Collection of restricitve areas
