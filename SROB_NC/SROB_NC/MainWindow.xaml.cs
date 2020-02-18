@@ -26,15 +26,10 @@ namespace SROB_NC
 
             this.DataContext = this;
 
-            #region Initialize Config
-
-            #endregion
-
             // Get the Min- / Max-Position
             SoftwareMin = ParameterCollecion.GetPoint4D("PAR_SW_ES_MIN");
             SoftwareMax = ParameterCollecion.GetPoint4D("PAR_SW_ES_MAX");
         }
-
         #endregion
 
         #region Properties
@@ -45,9 +40,11 @@ namespace SROB_NC
             set => _ADSonline = ConnectToPLC(value);
         }
 
-        #region CurrentPos
+        private Track _track = new Track();
 
+        #region CurrentPos
         private T_P_4D _currentPos = new T_P_4D();
+
         /// <summary>
         /// The current Position of the Gripper.
         /// </summary>
@@ -68,10 +65,10 @@ namespace SROB_NC
             }
         }
 
-        public string PosX { get => $"X {CurrentPos.X:0.0}"; }
-        public string PosY { get => $"Y {CurrentPos.Y:0.0}"; }
-        public string PosZ { get => $"Z {CurrentPos.Z:0.0}"; }
-        public string PosC { get => $"C {CurrentPos.C:0.0}"; }
+        public string PosX { get => $"X {_currentPos.X:0.0}"; }
+        public string PosY { get => $"Y {_currentPos.Y:0.0}"; }
+        public string PosZ { get => $"Z {_currentPos.Z:0.0}"; }
+        public string PosC { get => $"C {_currentPos.C:0.0}"; }
 
         #endregion
 
@@ -131,99 +128,12 @@ namespace SROB_NC
 
         #region INotifyPropertyChanged Members
 
-        #region Fields
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        /// <summary>
-        /// The backing Directory for the Properties.
-        /// </summary>
-        private readonly Dictionary<string, object> _propertyBackingDictionary = new Dictionary<string, object>();
-
-        #endregion
-
-        #region Methods
-
-        /// <summary>
-        /// Notifies listeners that a property value has changed.
-        /// </summary>
-        /// <param name="propertyName">Name of the property used to notify listeners.  This
-        /// value is optional and can be provided automatically when invoked from compilers
-        /// that support <see cref="CallerMemberNameAttribute"/>.</param>
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-
-        /// <summary>
-        /// Gets the Property value from the Dictionary.
-        /// </summary>
-        /// <typeparam name="T">The type of the Property.</typeparam>
-        /// <param name="propertyName">The Property name (optional).</param>
-        /// <returns>The Property value.</returns>
-        protected T GetPropertyValue<T>([CallerMemberName] string propertyName = null)
-        {
-            try
-            {
-                if (propertyName == null) throw new ArgumentNullException("propertyName");
-
-                object value;
-                if (_propertyBackingDictionary.TryGetValue(propertyName, out value))
-                {
-                    return (T)value;
-                }
-
-                return default(T);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(string.Format("Error at GetPropertyValue: {0}", ex.Message));
-                return default(T);
-            }
-        }
-
-        /// <summary>
-        /// Sets the Property value.
-        /// </summary>
-        /// <typeparam name="T">The type of the Property.</typeparam>
-        /// <param name="newValue">The new value to set.</param>
-        /// <param name="propertyName">The Property name (optional).</param>
-        /// <returns>True if it was set successfully, otherwise false.</returns>
-        protected bool SetPropertyValue<T>(T newValue, [CallerMemberName] string propertyName = null)
-        {
-            try
-            {
-                if (propertyName == null) throw new ArgumentNullException("propertyName");
-
-                if (EqualityComparer<T>.Default.Equals(newValue, GetPropertyValue<T>(propertyName))) return false;
-
-                _propertyBackingDictionary[propertyName] = newValue;
-                OnPropertyChanged(propertyName);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(string.Format("Error at SetPropertyValue: {0}", ex.Message));
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Checks if it's possible to execute the GlobalObjects.BefehleModelBefehl.
-        /// </summary>
-        /// <returns></returns>
-        public bool CanExecute()
-        {
-            return true;
-        }
-
-        #endregion
-
-        #region Events
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        #endregion
-
         #endregion
 
         #region MoveObject
@@ -297,16 +207,36 @@ namespace SROB_NC
 
         #endregion
 
-        #region ToggleSwitch Click
-
-        private void ToggleSwitch_Click(object sender, RoutedEventArgs e)
+        #region Refresh Click
+        private void Refresh_Click(object sender, RoutedEventArgs e)
         {
+            Config.Initialize(Environment.CurrentDirectory + "/../../../");
 
+            _viewport.Initialize();
+            _track.Points.Clear();
+            btnCalcStart.Content = "Set Start";
         }
-
         #endregion
 
+        #region CalcStart Click
+        private void CalcStart_Click(object sender, RoutedEventArgs e)
+        {
+            if(_track?.Points.Count < 1)
+            {
+                _track.Points.Add(new T_P_4D(CurrentPos));
+                _viewport.AddStartPosition(CurrentPos);
+                btnCalcStart.Content = "Create Track";
+            }
+
+            else
+            {
+                _track.Points.Add(new T_P_4D(CurrentPos));
+                _viewport.AddTrack(_track.Points);
+                _viewport.AddFlatProjection(new T_P_2D(CurrentPos.X, CurrentPos.Y), 500);
+            }
+        }
         #endregion
 
+        #endregion  
     }
 }

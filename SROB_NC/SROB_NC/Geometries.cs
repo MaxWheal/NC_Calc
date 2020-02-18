@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -174,6 +175,81 @@ namespace Geometries
         public override string ToString()
         {
             return $"X: {X} Y: {Y}";
+        }
+        #endregion
+
+        #endregion
+    }
+
+    class Segement_4D
+    {
+        #region Constructors
+        public Segement_4D()
+        {
+
+        }
+
+        public Segement_4D(T_P_4D start, T_P_4D end)
+        {
+            Start = start;
+            End = end;
+        }
+        #endregion
+
+        #region Properties
+
+        public T_P_4D Start { get; set; }
+        public T_P_4D End { get; set; }
+
+        #endregion
+
+        #region Methods
+
+        #region ToString
+        /// <summary>
+        /// Returns a string to represent the current object.
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return $"From {Start} to {End}";
+        }
+        #endregion
+
+        #endregion
+    }
+    class Segement_2D
+    {
+        #region Constructors
+        public Segement_2D()
+        {
+
+        }
+
+        public Segement_2D(T_P_2D start, T_P_2D end)
+        {
+            Start = start;
+            End = end;
+        }
+        #endregion
+
+        #region Properties
+
+        public T_P_2D Start { get; set; }
+        public T_P_2D End { get; set; }
+
+        #endregion
+
+        #region Methods
+
+        #region ToString
+        /// <summary>
+        /// Returns a string to represent the current object.
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return $"From {Start} to {End}";
         }
         #endregion
 

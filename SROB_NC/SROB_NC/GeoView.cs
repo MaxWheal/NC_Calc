@@ -3,6 +3,9 @@ using HelixToolkit.Wpf;
 using System;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
+using Geometries;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SROB_NC
 {
@@ -26,7 +29,6 @@ namespace SROB_NC
 
         public BoxVisual3D Gripper { get; set; }
         //public DragableBox Gripper { get; set; }
-
         #endregion
 
         #region Methods
@@ -59,7 +61,7 @@ namespace SROB_NC
             //Gripper
             Gripper = new BoxVisual3D
             {
-                Center = new Point3D(0, 0, 0),
+                Center = new Point3D(0, 0, 150),
                 Length = Config.Params.Values["GRIPPER_DIM[0]"],
                 Width = Config.Params.Values["GRIPPER_DIM[1]"],
                 Height = 300,
@@ -73,6 +75,32 @@ namespace SROB_NC
             {
                 Children.Add(FilledBox(area.Start, area.End, new SolidColorBrush(Colors.Red.ChangeAlpha(150))));
             }
+        }
+        #endregion
+
+        #region AddStartPosition
+        /// <summary>
+        /// Adds transparent box to viewport to show StartPosition
+        /// </summary>
+        /// <param name="value">4D position of StartPosition</param>
+        public void AddStartPosition(T_P_4D value)
+        {
+            var StartPosition = new BoxVisual3D
+            {
+                Center = new Point3D(0, 0, 150),
+                Length = Config.Params.Values["GRIPPER_DIM[0]"],
+                Width = Config.Params.Values["GRIPPER_DIM[1]"],
+                Height = 300,
+                Fill = new SolidColorBrush(Colors.Green.ChangeAlpha(150))
+            };
+
+            Matrix3D matrix = new Matrix3D();
+            matrix.Translate(new Vector3D(value.X, value.Y, value.Z));
+            matrix.RotateAt(new Quaternion(new Vector3D(0, 0, 1), value.C), new Point3D(value.X, value.Y, value.Z));
+
+            StartPosition.Transform = new MatrixTransform3D(matrix);
+
+            Children.Add(StartPosition);
         }
         #endregion
 
@@ -97,6 +125,36 @@ namespace SROB_NC
                 };
 
                 return box;
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString()); ;
+            }
+
+            return null;
+        }
+        #endregion
+
+        #region FilledCylinder
+        private TubeVisual3D FilledCylinder(Point3D start, Point3D end, double diameter, SolidColorBrush brush)
+        {
+            try
+            {
+
+                var path = new Point3DCollection();
+                path.Add(start);
+                path.Add(end);
+
+                var cylinder = new TubeVisual3D
+                {
+                    Path = path,
+                    Diameter = diameter,
+                    AddCaps = true,
+                    Fill = brush,
+                };
+
+                return cylinder;
             }
 
             catch (Exception ex)
@@ -145,6 +203,70 @@ namespace SROB_NC
 
             return null;
         }
+        #endregion
+
+        #region AddFlatProjection
+        /// <summary>
+        /// Adds a flat Projection to the viewport
+        /// </summary>
+        /// <param name="center">Midpoint of projection</param>
+        /// <param name="size">Length or Diameter of projection</param>
+        /// <param name="width">Optional: If assigned drawn as rectangle</param>
+        /// <param name="projectionHeight">Optional height where projeciton is shown, if not assigned shown at max Height</param>
+        public void AddFlatProjection(T_P_2D center, double size, double width = 0,  double projectionHeight = 0)
+
+        {
+            Visual3D projection;
+
+            if (width > 0)
+            {
+                projection = new BoxVisual3D
+                {
+                    Center = new Point3D(0, 0, projectionHeight),
+                    Length = size,
+                    Width = width,
+                    Height = 1,
+                    Fill = new SolidColorBrush(Colors.MediumVioletRed.ChangeAlpha(150)),
+                };
+            }
+            else
+            {
+                projection = FilledCylinder(new Point3D(0, 0, projectionHeight- 0.5), new Point3D(0, 0, projectionHeight + 0.5), size,
+                    new SolidColorBrush(Colors.MediumVioletRed.ChangeAlpha(150)));
+            }
+
+            Matrix3D matrix = new Matrix3D();
+            matrix.Translate(new Vector3D(center.X, center.Y, Config.Params.Values["MAX_H"]));
+
+            projection.Transform = new MatrixTransform3D(matrix);
+
+            Children.Add(projection);
+        }
+
+        #endregion
+
+        #region AddTrack
+        /// <summary>
+        /// Adds list of points and plots as track
+        /// </summary>
+        /// <param name="points"></param>
+        internal void AddTrack(List<T_P_4D> points)
+        {
+            if (points.Count < 2)
+                return;
+
+            for (int i = 1; i < points.Count; i++)
+            {
+                var trace = new LinesVisual3D();
+                trace.Color = Brushes.Orange.Color;
+                trace.Thickness = 1;
+                Children.Add(trace);
+
+                trace.Points.Add(points[i - 1]);
+                trace.Points.Add(points[i]);
+            }
+        }
+
         #endregion
 
         #endregion
