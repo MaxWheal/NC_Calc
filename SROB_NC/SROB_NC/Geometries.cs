@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System;
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace Geometries
@@ -47,6 +48,46 @@ namespace Geometries
         }
         #endregion
 
+        #region Check for lower value
+
+        /// <summary>
+        /// Checks for the minimum value.
+        /// </summary>
+        /// <returns>The lower value.</returns>
+        public static T_P_4D Min(T_P_4D point_1, T_P_4D point_2)
+        {
+            T_P_4D pointMin = new T_P_4D();
+
+            pointMin.X = Math.Min(point_1.X, point_2.X);
+            pointMin.Y = Math.Min(point_1.Y, point_2.Y);
+            pointMin.Z = Math.Min(point_1.Z, point_2.Z);
+            pointMin.C = Math.Min(point_1.C, point_2.C);
+
+            return pointMin;
+        }
+
+        #endregion
+
+        #region Check for higher value
+
+        /// <summary>
+        /// Checks for the maximum value.
+        /// </summary>
+        /// <returns>The higher value.</returns>
+        public static T_P_4D Max(T_P_4D point_1, T_P_4D point_2)
+        {
+            T_P_4D pointMax = new T_P_4D();
+
+            pointMax.X = Math.Max(point_1.X, point_2.X);
+            pointMax.Y = Math.Max(point_1.Y, point_2.Y);
+            pointMax.Z = Math.Max(point_1.Z, point_2.Z);
+            pointMax.C = Math.Max(point_1.C, point_2.C);
+
+            return pointMax;
+        }
+
+        #endregion
+       
         #endregion
 
         #region Conversions

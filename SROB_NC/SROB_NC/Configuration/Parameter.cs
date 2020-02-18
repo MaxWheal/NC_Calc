@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
+using Geometries;
 
 namespace Configuration
 {
@@ -121,6 +122,27 @@ namespace Configuration
         public override string ToString()
         {
             return $"{Values.Count} Parameters";
+        }
+
+        #endregion
+
+        #region Get a 4D Point from the Parameters
+
+        /// <summary>
+        /// Gets the 4D from the Parameter Values.
+        /// </summary>
+        /// <param name="key">The key of the Parameter.</param>
+        /// <returns>The 4D Point.</returns>
+        public static T_P_4D GetPoint4D(string key)
+        {
+            T_P_4D point4D = new T_P_4D();
+            
+            point4D.X = Config.Params.Values[$"{key}[0]"];
+            point4D.Y = Config.Params.Values[$"{key}[1]"];
+            point4D.Z = Config.Params.Values[$"{key}[2]"];
+            point4D.C = Config.Params.Values[$"{key}[3]"];
+
+            return point4D;
         }
 
         #endregion

@@ -26,12 +26,13 @@ namespace SROB_NC
 
             this.DataContext = this;
 
-            CurrentPos = new T_P_4D(0, 0, 0, 0);
-
             #region Initialize Config
 
             #endregion
 
+            // Get the Min- / Max-Position
+            SoftwareMin = ParameterCollecion.GetPoint4D("PAR_SW_ES_MIN");
+            SoftwareMax = ParameterCollecion.GetPoint4D("PAR_SW_ES_MAX");
         }
 
         #endregion
@@ -44,15 +45,20 @@ namespace SROB_NC
             set => _ADSonline = ConnectToPLC(value);
         }
 
-
         #region CurrentPos
 
+        private T_P_4D _currentPos = new T_P_4D();
+        /// <summary>
+        /// The current Position of the Gripper.
+        /// </summary>
         public T_P_4D CurrentPos
         {
-            get => GetPropertyValue<T_P_4D>();
+            get => _currentPos;
             set
             {
-                SetPropertyValue(value);
+                _currentPos = T_P_4D.Max(SoftwareMin, value);
+                _currentPos = T_P_4D.Min(SoftwareMax, _currentPos);
+                
                 OnPropertyChanged("PosX");
                 OnPropertyChanged("PosY");
                 OnPropertyChanged("PosZ");
@@ -68,6 +74,16 @@ namespace SROB_NC
         public string PosC { get => $"C {CurrentPos.C:0.0}"; }
 
         #endregion
+
+        /// <summary>
+        /// Maximum Position (from Parameters)
+        /// </summary>
+        public T_P_4D SoftwareMax { get; set; }
+
+        /// <summary>
+        /// Minimum Position (from Parameters)
+        /// </summary>
+        public T_P_4D SoftwareMin { get; set; }
 
         #endregion
 
@@ -285,7 +301,7 @@ namespace SROB_NC
 
         private void ToggleSwitch_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         #endregion
