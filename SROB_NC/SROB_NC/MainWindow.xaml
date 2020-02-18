@@ -36,12 +36,12 @@
 
             <Button x:Name="btnRefresh" Content="Refresh" Click="Refresh_Click"/>
             <Button x:Name="btnCalcStart" Content="Set Startpoint" Click="CalcStart_Click"/>
-            <cc:ToggleSwitch CheckedText="Online" UncheckedText="Offline"/>
+            <cc:ToggleSwitch CheckedText="Online" UncheckedText="Offline" IsChecked="{Binding ADS_Online}"/>
 
-            <Label x:Name="PoseX" Content="{Binding PosX, Mode = OneWay}" MouseWheel="target_OnMouseWheel"/>
-            <Label x:Name="PoseY" Content="{Binding PosY, Mode = OneWay}" MouseWheel="target_OnMouseWheel"/>
-            <Label x:Name="PoseZ" Content="{Binding PosZ, Mode = OneWay}" MouseWheel="target_OnMouseWheel"/>
-            <Label x:Name="PoseC" Content="{Binding PosC, Mode = OneWay}" MouseWheel="target_OnMouseWheel"/>
+            <Label x:Name="PoseX" Content="{Binding PosX}" MouseWheel="target_OnMouseWheel"/>
+            <Label x:Name="PoseY" Content="{Binding PosY}" MouseWheel="target_OnMouseWheel"/>
+            <Label x:Name="PoseZ" Content="{Binding PosZ}" MouseWheel="target_OnMouseWheel"/>
+            <Label x:Name="PoseC" Content="{Binding PosC}" MouseWheel="target_OnMouseWheel"/>
         </StackPanel>
         <local:GeoView x:Name="_viewport" Grid.Row="1"/>
     </Grid>

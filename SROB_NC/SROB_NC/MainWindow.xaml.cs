@@ -7,6 +7,8 @@ using Configuration;
 using Komm;
 using Geometries;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Collections.Generic;
 
 namespace SROB_NC
 {
@@ -24,37 +26,23 @@ namespace SROB_NC
 
             this.DataContext = this;
 
-            #region Initialize Config
-            #endregion
 
-            #endregion
         }
+        #endregion
 
         #region Properties
         private bool _ADSonline;
         public bool ADS_Online
         {
             get => _ADSonline;
-            set => ConnectToPLC(value);
+            set => _ADSonline = ConnectToPLC(value);
         }
 
-        private T_P_4D _startPos;
-        public T_P_4D StartPos
-        {
-            get => _startPos;
-            set 
-            { 
-                if (value != _startPos)
-                { 
-                    _startPos = value;
-                    _viewport.AddStartPosition(value);
-                }
-            }
-        }
-
+        private Track _track = new Track();
 
         #region CurrentPos
         private T_P_4D _currentPos = new T_P_4D();
+
         public T_P_4D CurrentPos
         {
             get => _currentPos;
@@ -70,10 +58,10 @@ namespace SROB_NC
             }
         }
 
-        public string PosX { get => $"X {_currentPos.X:0.#}"; }
-        public string PosY { get => $"Y {_currentPos.Y:0.#}"; }
-        public string PosZ { get => $"Z {_currentPos.Z:0.#}"; }
-        public string PosC { get => $"C {_currentPos.C:0.#}"; }
+        public string PosX { get => $"X {_currentPos.X:0.0}"; }
+        public string PosY { get => $"Y {_currentPos.Y:0.0}"; }
+        public string PosZ { get => $"Z {_currentPos.Z:0.0}"; }
+        public string PosC { get => $"C {_currentPos.C:0.0}"; }
 
         #endregion
 
@@ -111,7 +99,7 @@ namespace SROB_NC
                     PLC.DISCOnnect();
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 Console.WriteLine("PLC-Connection not possible");
             }
@@ -122,6 +110,7 @@ namespace SROB_NC
         #endregion
 
         #region INotifyPropertyChanged Members
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged(string propertyName)
@@ -207,15 +196,27 @@ namespace SROB_NC
             Config.Initialize(Environment.CurrentDirectory + "/../../../");
 
             _viewport.Initialize();
-
+            _track.Points.Clear();
+            btnCalcStart.Content = "Set Start";
         }
         #endregion
 
         #region CalcStart Click
         private void CalcStart_Click(object sender, RoutedEventArgs e)
         {
-            StartPos = CurrentPos;
-            btnCalcStart.Content = "Start Calc";
+            if(_track?.Points.Count < 1)
+            {
+                _track.Points.Add(new T_P_4D(CurrentPos));
+                _viewport.AddStartPosition(CurrentPos);
+                btnCalcStart.Content = "Create Track";
+            }
+
+            else
+            {
+                _track.Points.Add(new T_P_4D(CurrentPos));
+                _viewport.AddTrack(_track.Points);
+                _viewport.AddFlatProjection(new T_P_2D(CurrentPos.X, CurrentPos.Y), 500);
+            }
         }
         #endregion
 

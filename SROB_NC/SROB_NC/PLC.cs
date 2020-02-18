@@ -50,7 +50,8 @@ namespace Komm
             int handle = _adsClient.AddDeviceNotification(varName, new AdsStream(_adsClient.ReadSymbolInfo(varName).Size),
                 AdsTransMode.OnChange, 100, 100, null);
 
-            _streamActions.Add(handle, action as Action<AdsStream>);
+            if (!_streamActions.ContainsKey(handle))
+                _streamActions.Add(handle, action as Action<AdsStream>);
 
             return handle;
         }
