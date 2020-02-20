@@ -147,11 +147,10 @@ namespace Configuration
         #endregion
 
         #endregion
-
     }
 
     /// <summary>
-    /// Definition of restricitve area to inhibit defined motion
+    /// Definition of restricitve area to inhibit motion
     /// </summary>
     public class RestrictiveArea
     {
@@ -183,6 +182,34 @@ namespace Configuration
         #endregion
 
         #region Methods
+
+        #region To2DPolygon
+        /// <summary>
+        /// Creates a 2D Polygon from the Restrictive Area
+        /// </summary>
+        /// <returns></returns>
+        public Polygon_2D To2DPolygon()
+        {
+            try
+            {
+                var poly = new Polygon_2D();
+
+                poly.Points.Add(Start);
+                poly.Points.Add(new T_P_2D(End.X, Start.Y));
+                poly.Points.Add(End);
+                poly.Points.Add(new T_P_2D(Start.X, End.Y));
+
+                return poly;
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return null;
+            }
+        }
+
+        #endregion
 
         #region ToString
 

@@ -213,7 +213,7 @@ namespace SROB_NC
             Config.Initialize(Environment.CurrentDirectory + "/../../../");
 
             _viewport.Initialize();
-            _track.Points.Clear();
+            _track.Waypoints.Clear();
             btnCalcStart.Content = "Set Start";
         }
         #endregion
@@ -221,19 +221,27 @@ namespace SROB_NC
         #region CalcStart Click
         private void CalcStart_Click(object sender, RoutedEventArgs e)
         {
-            if(_track?.Points.Count < 1)
+            _track.MovingSize.Length = Config.Params.Values["GRIPPER_DIM[0]"];
+            _track.MovingSize.Width = Config.Params.Values["GRIPPER_DIM[1]"];
+            _track.MovingPolygon = new Polygon_2D(CurrentPos, _track.MovingSize);
+
+            _viewport.AddPolygon(_track.MovingPolygon.Points, Config.Params.Values["MAX_H"]);
+
+            /*
+            if(_track?.Waypoints.Count < 1)
             {
-                _track.Points.Add(new T_P_4D(CurrentPos));
+                _track.Waypoints.Add(new T_P_4D(CurrentPos));
                 _viewport.AddStartPosition(CurrentPos);
                 btnCalcStart.Content = "Create Track";
             }
 
             else
             {
-                _track.Points.Add(new T_P_4D(CurrentPos));
-                _viewport.AddTrack(_track.Points);
+                _track.Waypoints.Add(new T_P_4D(CurrentPos));
+                _viewport.AddTrack(_track.Waypoints);
                 _viewport.AddFlatProjection(new T_P_2D(CurrentPos.X, CurrentPos.Y), 500);
             }
+            */
         }
         #endregion
 

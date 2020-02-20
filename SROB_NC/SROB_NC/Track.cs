@@ -15,20 +15,15 @@ namespace SROB_NC
 
         }
 
-        public Track(T_P_4D start, T_P_4D end)
-        {
-            Start = start;
-            End = end;
-        }
         #endregion
 
         #region Properties
 
-        public T_P_4D Start { get; set; }
-        public T_P_4D End { get; set; }
+        public List<T_P_4D> Waypoints = new List<T_P_4D>();
 
-        public List<T_P_4D> Points = new List<T_P_4D>();
+        public Polygon_2D MovingPolygon { get; set; }
 
+        public Size MovingSize;
         #endregion
 
         #region Methods
@@ -40,9 +35,9 @@ namespace SROB_NC
         /// <returns></returns>
         public override string ToString()
         {
-            if (Points.Count < 2) { return "null"; }
+            if (Waypoints.Count < 2) { return "null"; }
 
-            return $"{Points.Count} Points from {Points[0]} to {Points[Points.Count - 1]}";
+            return $"{Waypoints.Count} Points from {Waypoints[0]} to {Waypoints[Waypoints.Count - 1]}";
         }
         #endregion
 

@@ -269,6 +269,26 @@ namespace SROB_NC
 
         #endregion
 
+        #region AddPolyon
+        internal void AddPolygon(List<T_P_2D> corners, double height)
+        {
+            if (corners.Count < 3)
+                return;
+
+            var points = new List<T_P_4D>();
+
+            foreach (var corner in corners)
+            {
+                points.Add(new T_P_4D(corner.X, corner.Y, height, 0));
+            }
+
+            //To close Polygon
+            points.Add(new T_P_4D(points[0]));
+
+            AddTrack(points);
+        }
+        #endregion
+
         #endregion
     }
 }
