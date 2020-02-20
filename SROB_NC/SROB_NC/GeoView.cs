@@ -83,7 +83,7 @@ namespace SROB_NC
         /// Adds transparent box to viewport to show StartPosition
         /// </summary>
         /// <param name="value">4D position of StartPosition</param>
-        public void AddStartPosition(T_P_4D value)
+        public void AddStartPosition(Point_4D value)
         {
             var StartPosition = new BoxVisual3D
             {
@@ -213,7 +213,7 @@ namespace SROB_NC
         /// <param name="size">Length or Diameter of projection</param>
         /// <param name="width">Optional: If assigned drawn as rectangle</param>
         /// <param name="projectionHeight">Optional height where projeciton is shown, if not assigned shown at max Height</param>
-        public void AddFlatProjection(T_P_2D center, double size, double width = 0,  double projectionHeight = 0)
+        public void AddFlatProjection(Point_2D center, double size, double width = 0,  double projectionHeight = 0)
 
         {
             Visual3D projection;
@@ -250,7 +250,7 @@ namespace SROB_NC
         /// Adds list of points and plots as track
         /// </summary>
         /// <param name="points"></param>
-        internal void AddTrack(List<T_P_4D> points)
+        internal void AddTrack(List<Point_4D> points)
         {
             if (points.Count < 2)
                 return;
@@ -270,20 +270,20 @@ namespace SROB_NC
         #endregion
 
         #region AddPolyon
-        internal void AddPolygon(List<T_P_2D> corners, double height)
+        internal void AddPolygon(List<Point_2D> corners, double height)
         {
             if (corners.Count < 3)
                 return;
 
-            var points = new List<T_P_4D>();
+            var points = new List<Point_4D>();
 
             foreach (var corner in corners)
             {
-                points.Add(new T_P_4D(corner.X, corner.Y, height, 0));
+                points.Add(new Point_4D(corner.X, corner.Y, height, 0));
             }
 
             //To close Polygon
-            points.Add(new T_P_4D(points[0]));
+            points.Add(new Point_4D(points[0]));
 
             AddTrack(points);
         }

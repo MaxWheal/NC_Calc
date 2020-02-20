@@ -133,9 +133,9 @@ namespace Configuration
         /// </summary>
         /// <param name="key">The key of the Parameter.</param>
         /// <returns>The 4D Point.</returns>
-        public static T_P_4D GetPoint4D(string key)
+        public static Point_4D GetPoint4D(string key)
         {
-            T_P_4D point4D = new T_P_4D();
+            Point_4D point4D = new Point_4D();
             
             point4D.X = Config.Params.Values[$"{key}[0]"];
             point4D.Y = Config.Params.Values[$"{key}[1]"];

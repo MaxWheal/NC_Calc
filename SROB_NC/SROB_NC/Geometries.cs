@@ -6,15 +6,15 @@ using System.Linq;
 
 namespace Geometries
 {
-    public class T_P_4D : T_P_3D
+    public class Point_4D : Point_3D
     {
         #region Contructors
-        public T_P_4D()
+        public Point_4D()
         {
 
         }
 
-        public T_P_4D(T_P_4D value)
+        public Point_4D(Point_4D value)
         {
             X = value.X;
             Y = value.Y;
@@ -22,7 +22,7 @@ namespace Geometries
             C = value.C;
         }
 
-        public T_P_4D(double x = 0, double y = 0, double z = 0, double c = 0)
+        public Point_4D(double x = 0, double y = 0, double z = 0, double c = 0)
         {
             X = x;
             Y = y;
@@ -55,7 +55,7 @@ namespace Geometries
         /// <returns></returns>
         public override string ToString()
         {
-            return $"{base.ToString()} | {C}";
+            return $"{base.ToString()} | {C:0.0}";
         }
         #endregion
 
@@ -65,9 +65,9 @@ namespace Geometries
         /// Checks for the minimum value.
         /// </summary>
         /// <returns>The lower value.</returns>
-        public static T_P_4D Min(T_P_4D point_1, T_P_4D point_2)
+        public static Point_4D Min(Point_4D point_1, Point_4D point_2)
         {
-            T_P_4D pointMin = new T_P_4D();
+            Point_4D pointMin = new Point_4D();
 
             pointMin.X = Math.Min(point_1.X, point_2.X);
             pointMin.Y = Math.Min(point_1.Y, point_2.Y);
@@ -85,9 +85,9 @@ namespace Geometries
         /// Checks for the maximum value.
         /// </summary>
         /// <returns>The higher value.</returns>
-        public static T_P_4D Max(T_P_4D point_1, T_P_4D point_2)
+        public static Point_4D Max(Point_4D point_1, Point_4D point_2)
         {
-            T_P_4D pointMax = new T_P_4D();
+            Point_4D pointMax = new Point_4D();
 
             pointMax.X = Math.Max(point_1.X, point_2.X);
             pointMax.Y = Math.Max(point_1.Y, point_2.Y);
@@ -106,15 +106,15 @@ namespace Geometries
         #endregion
     }
 
-    public class T_P_3D : T_P_2D
+    public class Point_3D : Point_2D
     {
         #region Contructors
-        public T_P_3D()
+        public Point_3D()
         {
 
         }
 
-        public T_P_3D(double x = 0, double y = 0, double z = 0)
+        public Point_3D(double x = 0, double y = 0, double z = 0)
         {
             X = x;
             Y = y;
@@ -137,7 +137,7 @@ namespace Geometries
         /// <returns></returns>
         public override string ToString()
         {
-            return $"{base.ToString()} | {Z}";
+            return $"{base.ToString()} | {Z:0.0}";
         }
         #endregion
 
@@ -145,22 +145,22 @@ namespace Geometries
 
         #region Conversions
 
-        public static implicit operator System.Windows.Media.Media3D.Point3D(T_P_3D p_3D)
+        public static implicit operator System.Windows.Media.Media3D.Point3D(Point_3D p_3D)
             => new System.Windows.Media.Media3D.Point3D(p_3D.X, p_3D.Y, p_3D.Z);
 
         #endregion
 
     }
 
-    public class T_P_2D
+    public class Point_2D
     {
         #region Contructors
-        public T_P_2D()
+        public Point_2D()
         {
 
         }
 
-        public T_P_2D(double x = 0, double y = 0)
+        public Point_2D(double x = 0, double y = 0)
         {
             X = x;
             Y = y;
@@ -184,7 +184,7 @@ namespace Geometries
         /// <returns></returns>
         public override string ToString()
         {
-            return $"{X} | {Y}";
+            return $"{X:0.0} | {Y:0.0}";
         }
         #endregion
 
@@ -199,7 +199,7 @@ namespace Geometries
 
         }
 
-        public Segement_4D(T_P_4D start, T_P_4D end)
+        public Segement_4D(Point_4D start, Point_4D end)
         {
             Start = start;
             End = end;
@@ -208,8 +208,8 @@ namespace Geometries
 
         #region Properties
 
-        public T_P_4D Start { get; set; }
-        public T_P_4D End { get; set; }
+        public Point_4D Start { get; set; }
+        public Point_4D End { get; set; }
 
         #endregion
 
@@ -237,7 +237,7 @@ namespace Geometries
 
         }
 
-        public Segement_2D(T_P_2D start, T_P_2D end)
+        public Segement_2D(Point_2D start, Point_2D end)
         {
             Start = start;
             End = end;
@@ -246,8 +246,8 @@ namespace Geometries
 
         #region Properties
 
-        public T_P_2D Start { get; set; }
-        public T_P_2D End { get; set; }
+        public Point_2D Start { get; set; }
+        public Point_2D End { get; set; }
 
         #endregion
 
@@ -303,7 +303,7 @@ namespace Geometries
         /// <param name="point2"></param>
         /// <param name="point3"></param>
         /// <returns></returns>
-        private static Orientation GetOrientation(T_P_2D point1, T_P_2D point2, T_P_2D point3)
+        private static Orientation GetOrientation(Point_2D point1, Point_2D point2, Point_2D point3)
         {
             var test = (point2.Y - point1.Y) * (point3.X - point2.X) -
       (point2.X - point1.X) * (point3.Y - point2.Y);
@@ -355,19 +355,19 @@ namespace Geometries
         /// Creates a 2D polygon from a 4D position
         /// </summary>
         /// <param name=""></param>
-        public Polygon_2D(T_P_4D position, Size size)
+        public Polygon_2D(Point_4D position, Size size)
         {
             var polygonRaw = new Polygon_2D();
 
             //Set Size at origin
-            polygonRaw.Points.Add(new T_P_2D(size.Length / 2, size.Width / 2));
-            polygonRaw.Points.Add(new T_P_2D(-size.Length / 2, size.Width / 2));
-            polygonRaw.Points.Add(new T_P_2D(-size.Length / 2, -size.Width / 2));
-            polygonRaw.Points.Add(new T_P_2D(size.Length / 2, -size.Width / 2));
+            polygonRaw.Points.Add(new Point_2D(size.Length / 2, size.Width / 2));
+            polygonRaw.Points.Add(new Point_2D(-size.Length / 2, size.Width / 2));
+            polygonRaw.Points.Add(new Point_2D(-size.Length / 2, -size.Width / 2));
+            polygonRaw.Points.Add(new Point_2D(size.Length / 2, -size.Width / 2));
 
             foreach (var corner in polygonRaw.Points)
             {
-                var point = new T_P_2D();
+                var point = new Point_2D();
 
                 //Rotation
                 point.X = corner.X * Math.Cos(position.C_rad) - corner.Y * Math.Sin(position.C_rad);
@@ -385,7 +385,7 @@ namespace Geometries
         #endregion
 
         #region Properties
-        public List<T_P_2D> Points = new List<T_P_2D>();
+        public List<Point_2D> Points = new List<Point_2D>();
         #endregion
 
         #region Methods
@@ -405,20 +405,27 @@ namespace Geometries
         /// <param name="point">Point to be checked</param>
         /// <param name="polygon">Polygon to be checked</param>
         /// <returns></returns>
-        public static PointInPoly IsPointInPoly(T_P_2D point, Polygon_2D polygon)
+        public static bool IsPointInPoly(Point_2D point, Polygon_2D polygon /*, out PointInPoly result*/)
         {
             try
             {
                 if (point == null || polygon == null)
-                    return PointInPoly.Error;
+                {
+                    //result = PointInPoly.Error;
+                    return false;
+                }
+                    
 
                 if (polygon.Points.Count < 3)
-                    return PointInPoly.Error;
+                {
+                    //result = PointInPoly.Error;
+                    return false;
+                }
 
                 double sumOfAngles = 0;
 
-                T_P_2D point1 = new T_P_2D(0, 0);
-                T_P_2D point2 = new T_P_2D(0, 0);
+                Point_2D point1 = new Point_2D(0, 0);
+                Point_2D point2 = new Point_2D(0, 0);
 
                 for (int i = 0; i < polygon.Points.Count; i++)
                 {
@@ -431,23 +438,31 @@ namespace Geometries
 
                     //Point is on line of polygon
                     if (Math.Round(Math.Abs(theta), 4) == Math.Round(Math.PI, 4))
-                        return PointInPoly.OnLine;
+                    {
+                        //result = PointInPoly.OnLine;
+                        return true;
+                    }
 
                     sumOfAngles += theta;
                 }
 
                 //Point is within polygon
-                if (Math.Abs(sumOfAngles) > 2 * Math.PI - 0.000)
-                    return PointInPoly.In;
+                if (Math.Abs(sumOfAngles) > 2 * Math.PI - 0.0001)
+                {
+                    //result = PointInPoly.In;
+                    return true;
+                }
 
                 //Point is not inside of polygon
-                return PointInPoly.Out;
+                //result = PointInPoly.Out;
+                return false;
             }
 
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
-                return PointInPoly.Error;
+                //result = PointInPoly.Error;
+                return false;
             }
         }
         #endregion
@@ -459,9 +474,9 @@ namespace Geometries
         /// <param name="point1"></param>
         /// <param name="point2"></param>
         /// <returns></returns>
-        private static double GetTheta(T_P_2D point1, T_P_2D point2)
+        private static double GetTheta(Point_2D point1, Point_2D point2)
         {
-            double theta = Math.Atan2(point2.Y, point2.X) - Math.Atan2(point2.Y, point2.X);
+            double theta = Math.Atan2(point2.Y, point2.X) - Math.Atan2(point1.Y, point1.X);
 
             if (theta > Math.PI)
                 theta -= Math.PI * 2;
@@ -473,11 +488,40 @@ namespace Geometries
         }
         #endregion
 
+        #region AreOverlapping
+        public static bool AreOverlapping(Polygon_2D polygon1, Polygon_2D polygon2)
+        {
+            //Check for Intersecting Lines
+            for (int i = 0; i < polygon1.Points.Count; i++)
+            {
+                var segment1 = new Segement_2D(polygon1.Points[i], polygon1.Points[i < polygon1.Points.Count - 1 ? i + 1 : 0]);
+
+                for (int j = 0; j < polygon2.Points.Count; j++)
+                {
+                    var segment2 = new Segement_2D(polygon2.Points[j], polygon2.Points[j < polygon2.Points.Count - 1 ? j + 1 : 0]);
+
+                    if (Segement_2D.AreIntersecting(segment1, segment2))
+                        return true;
+                }
+            }
+
+            //Check if Point is within
+            if (Polygon_2D.IsPointInPoly(polygon1.Points[0], polygon2))
+                return true;
+            
+            if (Polygon_2D.IsPointInPoly(polygon2.Points[0], polygon1))
+                return true;
+
+            return false;
+        }
+        #endregion
+        
         #region ToString
         public override string ToString()
         {
             return Points.ToString();
         }
+
         #endregion
 
         #endregion

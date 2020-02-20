@@ -43,19 +43,19 @@ namespace SROB_NC
         private Track _track = new Track();
 
         #region CurrentPos
-        private T_P_4D _currentPos = new T_P_4D();
+        private Point_4D _currentPos = new Point_4D();
 
         /// <summary>
         /// The current Position of the Gripper.
         /// </summary>
-        public T_P_4D CurrentPos
+        public Point_4D CurrentPos
         {
             get => _currentPos;
             set
             {
-                _currentPos = T_P_4D.Max(SoftwareMin, value);
-                _currentPos = T_P_4D.Min(SoftwareMax, _currentPos);
-                
+                _currentPos = Point_4D.Max(SoftwareMin, value);
+                _currentPos = Point_4D.Min(SoftwareMax, _currentPos);
+
                 OnPropertyChanged("PosX");
                 OnPropertyChanged("PosY");
                 OnPropertyChanged("PosZ");
@@ -75,12 +75,12 @@ namespace SROB_NC
         /// <summary>
         /// Maximum Position (from Parameters)
         /// </summary>
-        public T_P_4D SoftwareMax { get; set; }
+        public Point_4D SoftwareMax { get; set; }
 
         /// <summary>
         /// Minimum Position (from Parameters)
         /// </summary>
-        public T_P_4D SoftwareMin { get; set; }
+        public Point_4D SoftwareMin { get; set; }
 
         #endregion
 
@@ -142,7 +142,7 @@ namespace SROB_NC
         /// </summary>
         /// <param name="pose">4D-position to be moved to</param>
         /// <param name="obj">Object of type <see cref="ModelVisual3D"/> to be moved</param>
-        private void MoveObject(T_P_4D pose, ModelVisual3D obj)
+        private void MoveObject(Point_4D pose, ModelVisual3D obj)
         {
             Matrix3D matrix = new Matrix3D();
             matrix.Translate(new Vector3D(pose.X, pose.Y, pose.Z));
@@ -215,6 +215,8 @@ namespace SROB_NC
             _viewport.Initialize();
             _track.Waypoints.Clear();
             btnCalcStart.Content = "Set Start";
+
+            CurrentPos = CurrentPos;
         }
         #endregion
 
@@ -225,23 +227,13 @@ namespace SROB_NC
             _track.MovingSize.Width = Config.Params.Values["GRIPPER_DIM[1]"];
             _track.MovingPolygon = new Polygon_2D(CurrentPos, _track.MovingSize);
 
-            _viewport.AddPolygon(_track.MovingPolygon.Points, Config.Params.Values["MAX_H"]);
+            var movingPolygon = _track.MovingPolygon;
+            var fixedPolygon = Config.ResAreas.Areas[0].To2DPolygon();
 
-            /*
-            if(_track?.Waypoints.Count < 1)
-            {
-                _track.Waypoints.Add(new T_P_4D(CurrentPos));
-                _viewport.AddStartPosition(CurrentPos);
-                btnCalcStart.Content = "Create Track";
-            }
+            _viewport.AddPolygon(movingPolygon.Points, Config.Params.Values["MAX_H"]);
+            _viewport.AddPolygon(fixedPolygon.Points, Config.Params.Values["MAX_H"]);
 
-            else
-            {
-                _track.Waypoints.Add(new T_P_4D(CurrentPos));
-                _viewport.AddTrack(_track.Waypoints);
-                _viewport.AddFlatProjection(new T_P_2D(CurrentPos.X, CurrentPos.Y), 500);
-            }
-            */
+            Console.WriteLine(Polygon_2D.AreOverlapping(movingPolygon, fixedPolygon));
         }
         #endregion
 

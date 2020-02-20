@@ -19,7 +19,7 @@ namespace SROB_NC
 
         #region Properties
 
-        public List<T_P_4D> Waypoints = new List<T_P_4D>();
+        public List<Point_4D> Waypoints = new List<Point_4D>();
 
         public Polygon_2D MovingPolygon { get; set; }
 
@@ -43,4 +43,5 @@ namespace SROB_NC
 
         #endregion
     }
+
 }

@@ -21,7 +21,7 @@ namespace Configuration
 
         public ResAreaCollection(string path)
         {
-            if(path.Substring(path.Length - 3) == ".xml")
+            if (path.Substring(path.Length - 3) == ".xml")
                 ReadFromXML(path);
             else
                 ReadFromCFG(path);
@@ -82,15 +82,15 @@ namespace Configuration
                 {
                     var data = lines[i].Split('\t');
 
-                    if(data[14] == "1") continue;
-                    if(data[28] == "1") continue;
-                    if(double.Parse(data[23]) > 0) continue;
+                    if (data[14] == "1") continue;
+                    if (data[28] == "1") continue;
+                    if (double.Parse(data[23]) > 0) continue;
 
                     Areas.Add(new RestrictiveArea
                     {
                         Name = data[2],
-                        Start = new T_P_3D(float.Parse(data[4]), float.Parse(data[5]), float.Parse(data[6])),
-                        End = new T_P_3D(float.Parse(data[7]), float.Parse(data[8]), float.Parse(data[9])),
+                        Start = new Point_3D(float.Parse(data[4]), float.Parse(data[5]), float.Parse(data[6])),
+                        End = new Point_3D(float.Parse(data[7]), float.Parse(data[8]), float.Parse(data[9])),
                     });
                 }
 
@@ -159,7 +159,7 @@ namespace Configuration
         {
         }
 
-        public RestrictiveArea(string name, T_P_3D start, T_P_3D end)
+        public RestrictiveArea(string name, Point_3D start, Point_3D end)
         {
             Name = name;
             Start = start;
@@ -174,10 +174,14 @@ namespace Configuration
         public string Name { get; set; }
 
         [XmlElement]
-        public T_P_3D Start { get; set; }
+        public Point_3D Start { get; set; }
 
         [XmlElement]
-        public T_P_3D End { get; set; }
+        public Point_3D End { get; set; }
+
+        [XmlIgnore]
+        public double Zmin { get => Math.Min(Start.Z, End.Z); }
+        public double Zmax { get => Math.Max(Start.Z, End.Z); }
 
         #endregion
 
@@ -195,9 +199,9 @@ namespace Configuration
                 var poly = new Polygon_2D();
 
                 poly.Points.Add(Start);
-                poly.Points.Add(new T_P_2D(End.X, Start.Y));
+                poly.Points.Add(new Point_2D(End.X, Start.Y));
                 poly.Points.Add(End);
-                poly.Points.Add(new T_P_2D(Start.X, End.Y));
+                poly.Points.Add(new Point_2D(Start.X, End.Y));
 
                 return poly;
             }
