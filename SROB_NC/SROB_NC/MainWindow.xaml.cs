@@ -40,6 +40,24 @@ namespace SROB_NC
             set => _ADSonline = ConnectToPLC(value);
         }
 
+        private bool _collision;
+
+        public bool Collision
+        {
+            get { return _collision; }
+            set
+            {
+                _collision = value;
+                OnPropertyChanged("CollisionMark");
+            }
+        }
+
+        public string CollisionMark
+        {
+            get => _collision ? "Red" : "Black";
+        }
+
+
         private Track _track = new Track();
 
         #region CurrentPos
@@ -62,6 +80,9 @@ namespace SROB_NC
                 OnPropertyChanged("PosC");
 
                 MoveObject(value, _viewport.Gripper);
+
+                Collision = Polygon_2D.AreOverlapping(new Polygon_2D(CurrentPos, _track.MovingSize),
+                    Config.ResAreas.Areas[0].To2DPolygon());
             }
         }
 
@@ -233,7 +254,7 @@ namespace SROB_NC
             _viewport.AddPolygon(movingPolygon.Points, Config.Params.Values["MAX_H"]);
             _viewport.AddPolygon(fixedPolygon.Points, Config.Params.Values["MAX_H"]);
 
-            Console.WriteLine(Polygon_2D.AreOverlapping(movingPolygon, fixedPolygon));
+            //Console.WriteLine(Polygon_2D.AreOverlapping(movingPolygon, fixedPolygon));
         }
         #endregion
 

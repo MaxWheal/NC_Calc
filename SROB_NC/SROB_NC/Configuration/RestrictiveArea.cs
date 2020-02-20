@@ -181,7 +181,11 @@ namespace Configuration
 
         [XmlIgnore]
         public double Zmin { get => Math.Min(Start.Z, End.Z); }
+
+        [XmlIgnore]
         public double Zmax { get => Math.Max(Start.Z, End.Z); }
+
+
 
         #endregion
 

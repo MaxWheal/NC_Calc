@@ -39,6 +39,7 @@ namespace Geometries
         /// <summary>
         /// C in radiants
         /// </summary>
+        [XmlIgnore]
         public double  C_rad
         {
             get => Math.PI * C / 180;
