@@ -213,7 +213,7 @@ namespace SROB_NC
         /// <param name="size">Length or Diameter of projection</param>
         /// <param name="width">Optional: If assigned drawn as rectangle</param>
         /// <param name="projectionHeight">Optional height where projeciton is shown, if not assigned shown at max Height</param>
-        public void AddFlatProjection(Point_2D center, double size, double width = 0,  double projectionHeight = 0)
+        public void AddFlatProjection(Point_2D center, double size, double width = 0, double projectionHeight = 0)
 
         {
             Visual3D projection;
@@ -222,7 +222,7 @@ namespace SROB_NC
             {
                 projection = new BoxVisual3D
                 {
-                    Center = new Point3D(0, 0, projectionHeight),
+                    Center = new Point3D(0, 0, -1),
                     Length = size,
                     Width = width,
                     Height = 1,
@@ -231,7 +231,7 @@ namespace SROB_NC
             }
             else
             {
-                projection = FilledCylinder(new Point3D(0, 0, projectionHeight- 0.5), new Point3D(0, 0, projectionHeight + 0.5), size,
+                projection = FilledCylinder(new Point3D(0, 0, -1), new Point3D(0, 0, 0), size,
                     new SolidColorBrush(Colors.MediumVioletRed.ChangeAlpha(150)));
             }
 

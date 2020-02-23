@@ -19,11 +19,11 @@ namespace SROB_NC
         #endregion
 
         #region Properties
-        private Point_4D CurrentPosiotion { get; set; }
+        public Point_4D CurrentPosiotion { get; set; }
 
-        private Size MovingSize;
+        public Size MovingSize;
 
-        public Polygon_2D MovingPolygon { get => new Polygon_2D(CurrentPosiotion, MovingSize); }
+        public Polygon_2D MovingPolygon { get => new Polygon_2D(CurrentPosiotion, MovingSize);}
 
         public List<RestrictiveArea> RelevantAreas = new List<RestrictiveArea>();
 
@@ -96,11 +96,12 @@ namespace SROB_NC
 
                 #endregion
 
-                #region Startpoint inside of Restrictive Area
+                #region Solve XYC in 2D
+                //To be done, now assume that direct line is possible
+                #endregion
 
-                if (InResArea(CurrentPosiotion))
-                { }
-
+                #region Solve Z
+                
                 #endregion
 
                 return true;
@@ -132,7 +133,7 @@ namespace SROB_NC
                 if (position.Z > area.Zmax || position.Z < area.Zmin - MovingSize.Height)
                     continue;
 
-                if (Polygon_2D.AreOverlapping(MovingPolygon, area.To2DPolygon)
+                if (MovingPolygon.IsOverlapping(area.To2DPolygon()));
                     return true;
             }
 

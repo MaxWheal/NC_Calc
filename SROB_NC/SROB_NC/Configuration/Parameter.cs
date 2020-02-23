@@ -34,12 +34,12 @@ namespace Configuration
                 {
                     foreach (var dimension in parameter.Dimensions)
                     {
-                        Values.Add($"{parameter.Key}[{dimension.Index}]", double.Parse(dimension.Values.Value));
+                        Values.Add($"{parameter.Key}[{dimension.Index}]", double.Parse(dimension.Values.Value.Replace(".", ",")));
                     }
                 }
 
                 else
-                    Values.Add($"{parameter.Key}", double.Parse(parameter.Values.Value));
+                    Values.Add($"{parameter.Key}", double.Parse(parameter.Values.Value.Replace(".", ",")));
 
             }
         }

@@ -3,6 +3,7 @@ using System;
 using System.Xml;
 using System.Xml.Serialization;
 using System.Linq;
+using System.Windows;
 
 namespace Geometries
 {
@@ -40,7 +41,7 @@ namespace Geometries
         /// C in radiants
         /// </summary>
         [XmlIgnore]
-        public double  C_rad
+        public double C_rad
         {
             get => Math.PI * C / 180;
         }
@@ -68,12 +69,13 @@ namespace Geometries
         /// <returns>The lower value.</returns>
         public static Point_4D Min(Point_4D point_1, Point_4D point_2)
         {
-            Point_4D pointMin = new Point_4D();
-
-            pointMin.X = Math.Min(point_1.X, point_2.X);
-            pointMin.Y = Math.Min(point_1.Y, point_2.Y);
-            pointMin.Z = Math.Min(point_1.Z, point_2.Z);
-            pointMin.C = Math.Min(point_1.C, point_2.C);
+            Point_4D pointMin = new Point_4D
+            {
+                X = Math.Min(point_1.X, point_2.X),
+                Y = Math.Min(point_1.Y, point_2.Y),
+                Z = Math.Min(point_1.Z, point_2.Z),
+                C = Math.Min(point_1.C, point_2.C)
+            };
 
             return pointMin;
         }
@@ -88,12 +90,13 @@ namespace Geometries
         /// <returns>The higher value.</returns>
         public static Point_4D Max(Point_4D point_1, Point_4D point_2)
         {
-            Point_4D pointMax = new Point_4D();
-
-            pointMax.X = Math.Max(point_1.X, point_2.X);
-            pointMax.Y = Math.Max(point_1.Y, point_2.Y);
-            pointMax.Z = Math.Max(point_1.Z, point_2.Z);
-            pointMax.C = Math.Max(point_1.C, point_2.C);
+            Point_4D pointMax = new Point_4D
+            {
+                X = Math.Max(point_1.X, point_2.X),
+                Y = Math.Max(point_1.Y, point_2.Y),
+                Z = Math.Max(point_1.Z, point_2.Z),
+                C = Math.Max(point_1.C, point_2.C)
+            };
 
             return pointMax;
         }
@@ -254,21 +257,20 @@ namespace Geometries
 
         #region Methods
 
-        #region AreIntersecting
+        #region IsIntersecting Segment
         /// <summary>
-        /// Checks if two given segments intersect
+        /// Checks if given <see cref="Segement_2D"/> intersects with this.
         /// </summary>
-        /// <param name="segment1"></param>
-        /// <param name="segment2"></param>
-        /// <returns></returns>
-        public static bool AreIntersecting(Segement_2D segment1, Segement_2D segment2)
+        /// <param name="segment"></param>
+        /// <returns>Intersection detected</returns>
+        public bool IsIntersecting(Segement_2D segment)
         {
             try
             {
-                Orientation orien1 = GetOrientation(segment1.Start, segment1.End, segment2.Start);
-                Orientation orien2 = GetOrientation(segment1.Start, segment1.End, segment2.End);
-                Orientation orien3 = GetOrientation(segment2.Start, segment2.End, segment1.Start);
-                Orientation orien4 = GetOrientation(segment2.Start, segment2.End, segment1.End);
+                Orientation orien1 = GetOrientation(this.Start, this.End, segment.Start);
+                Orientation orien2 = GetOrientation(this.Start, this.End, segment.End);
+                Orientation orien3 = GetOrientation(segment.Start, segment.End, this.Start);
+                Orientation orien4 = GetOrientation(segment.Start, segment.End, this.End);
 
 
                 //(p1, q1, p2) and (p1, q1, q2) have different orientations and
@@ -322,6 +324,39 @@ namespace Geometries
 
         #endregion
 
+        #region IsIntersecting Circle
+        /// <summary>
+        /// Checks if circle intersects with this.
+        /// </summary>
+        /// <param name="center">center of circle</param>
+        /// <param name="diameter">diameter of circle</param>
+        /// <returns>Intersection detected</returns>
+        public bool IsIntersecting(Point_2D center, double diameter)
+        {
+
+            //calculating line's perpendicular distance to ball
+            Vector circle = new Vector(center.X - this.Start.X, center.Y - this.Start.Y);
+            double circle_onNormal = circle.ProjectOn(this.ToVector().Rotate(Math.PI /2));
+
+            //Collision if distance is less than diameter
+            if (Math.Abs(circle_onNormal) <= diameter/2)
+                return true;
+
+            return false;
+        }
+        #endregion
+
+        #region ToVector
+        /// <summary>
+        /// Creates <see cref="Vector"/> from <see cref="Segement_2D"/>
+        /// </summary>
+        /// <returns>Vector from Segment</returns>
+        public Vector ToVector()
+        {
+            return new Vector(End.X - Start.X, End.Y - Start.Y);
+        }
+        #endregion
+
         #region ToString
         /// <summary>
         /// Returns a string to represent the current object.
@@ -333,6 +368,30 @@ namespace Geometries
         }
         #endregion
 
+        #endregion
+    }
+
+    public static class Extensions
+    {
+        #region Vector.Rotate
+        public static Vector Rotate(this Vector source, double rad)
+        {
+            var rotated = new Vector
+            {
+                X = source.X * Math.Cos(rad) - source.Y * Math.Sin(rad),
+                Y = source.X * Math.Sin(rad) + source.Y * Math.Cos(rad)
+            };
+
+            return rotated;
+        }
+        #endregion
+
+        #region Vector.ProjectOn
+        public static double ProjectOn(this Vector source, Vector vector)
+        {
+            vector.Normalize();
+            return Vector.Multiply(source, vector);
+        }
         #endregion
     }
 
@@ -368,11 +427,13 @@ namespace Geometries
 
             foreach (var corner in polygonRaw.Points)
             {
-                var point = new Point_2D();
+                var point = new Point_2D
+                {
 
-                //Rotation
-                point.X = corner.X * Math.Cos(position.C_rad) - corner.Y * Math.Sin(position.C_rad);
-                point.Y = corner.X * Math.Sin(position.C_rad) + corner.Y * Math.Cos(position.C_rad);
+                    //Rotation
+                    X = corner.X * Math.Cos(position.C_rad) - corner.Y * Math.Sin(position.C_rad),
+                    Y = corner.X * Math.Sin(position.C_rad) + corner.Y * Math.Cos(position.C_rad)
+                };
 
                 //Translation
                 point.X += position.X;
@@ -382,7 +443,7 @@ namespace Geometries
             }
         }
         #endregion
-        
+
         #endregion
 
         #region Properties
@@ -415,7 +476,7 @@ namespace Geometries
                     //result = PointInPoly.Error;
                     return false;
                 }
-                    
+
 
                 if (polygon.Points.Count < 3)
                 {
@@ -489,34 +550,69 @@ namespace Geometries
         }
         #endregion
 
-        #region AreOverlapping
-        public static bool AreOverlapping(Polygon_2D polygon1, Polygon_2D polygon2)
+        #region IsOverlapping Polygon
+        /// <summary>
+        /// Checks if given <see cref="Polygon_2D"/> is overlapping.
+        /// </summary>
+        /// <param name="polygon"></param>
+        /// <param name="diameter">diameter of circle</param>
+        public bool IsOverlapping(Polygon_2D polygon)
         {
             //Check for Intersecting Lines
-            for (int i = 0; i < polygon1.Points.Count; i++)
+            for (int i = 0; i < this.Points.Count; i++)
             {
-                var segment1 = new Segement_2D(polygon1.Points[i], polygon1.Points[i < polygon1.Points.Count - 1 ? i + 1 : 0]);
+                var segment1 = new Segement_2D(this.Points[i], this.Points[i < this.Points.Count - 1 ? i + 1 : 0]);
 
-                for (int j = 0; j < polygon2.Points.Count; j++)
+                for (int j = 0; j < polygon.Points.Count; j++)
                 {
-                    var segment2 = new Segement_2D(polygon2.Points[j], polygon2.Points[j < polygon2.Points.Count - 1 ? j + 1 : 0]);
+                    var segment2 = new Segement_2D(polygon.Points[j], polygon.Points[j < polygon.Points.Count - 1 ? j + 1 : 0]);
 
-                    if (Segement_2D.AreIntersecting(segment1, segment2))
+                    if (segment1.IsIntersecting(segment2))
                         return true;
                 }
             }
 
             //Check if Point is within
-            if (Polygon_2D.IsPointInPoly(polygon1.Points[0], polygon2))
+            if (IsPointInPoly(this.Points[0], polygon))
                 return true;
-            
-            if (Polygon_2D.IsPointInPoly(polygon2.Points[0], polygon1))
+
+            if (IsPointInPoly(polygon.Points[0], this))
                 return true;
 
             return false;
         }
         #endregion
-        
+
+        #region IsOverlapping Circle
+        /// <summary>
+        /// Checks if given <see cref="Polygon_2D"/> is overlapping.
+        /// </summary>
+        /// <param name="center">center of circle</param>
+        /// <param name="diameter">diameter of circle</param>
+        /// <returns>Collision detected</returns>
+        public bool IsOverlapping(Point_2D center, double diameter)
+        {
+            //Check if center is within
+            if (IsPointInPoly(center, this))
+                return true;
+
+            //Check if polygon is within circle
+            if (Math.Abs(new Vector(this.Points[0].X - center.X, this.Points[0].Y - center.Y).Length) < diameter / 2)
+                return true;
+
+            //Check for Intersecting Lines
+            for (int i = 0; i < this.Points.Count; i++)
+            {
+                var segment = new Segement_2D(this.Points[i], this.Points[i < this.Points.Count - 1 ? i + 1 : 0]);
+
+                if (segment.IsIntersecting(center, diameter))
+                    return true;
+            }
+
+            return false;
+        }
+        #endregion
+
         #region ToString
         public override string ToString()
         {

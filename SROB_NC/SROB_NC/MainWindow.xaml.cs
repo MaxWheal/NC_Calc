@@ -40,24 +40,6 @@ namespace SROB_NC
             set => _ADSonline = ConnectToPLC(value);
         }
 
-        private bool _collision;
-
-        public bool Collision
-        {
-            get { return _collision; }
-            set
-            {
-                _collision = value;
-                OnPropertyChanged("CollisionMark");
-            }
-        }
-
-        public string CollisionMark
-        {
-            get => _collision ? "Red" : "Black";
-        }
-
-
         private Track _track = new Track();
 
         #region CurrentPos
@@ -80,9 +62,6 @@ namespace SROB_NC
                 OnPropertyChanged("PosC");
 
                 MoveObject(value, _viewport.Gripper);
-
-                Collision = Polygon_2D.AreOverlapping(new Polygon_2D(CurrentPos, _track.MovingSize),
-                    Config.ResAreas.Areas[0].To2DPolygon());
             }
         }
 
@@ -199,7 +178,7 @@ namespace SROB_NC
         #endregion
 
         #region Label OnMousWheel
-        private void target_OnMouseWheel(object sender, MouseWheelEventArgs e)
+        private void Target_OnMouseWheel(object sender, MouseWheelEventArgs e)
         {
 
             float distance = 50 * (e.Delta > 0 ? 1 : -1);
@@ -246,15 +225,12 @@ namespace SROB_NC
         {
             _track.MovingSize.Length = Config.Params.Values["GRIPPER_DIM[0]"];
             _track.MovingSize.Width = Config.Params.Values["GRIPPER_DIM[1]"];
-            _track.MovingPolygon = new Polygon_2D(CurrentPos, _track.MovingSize);
+            _track.CurrentPosiotion = CurrentPos;
 
-            var movingPolygon = _track.MovingPolygon;
             var fixedPolygon = Config.ResAreas.Areas[0].To2DPolygon();
 
-            _viewport.AddPolygon(movingPolygon.Points, Config.Params.Values["MAX_H"]);
+            _viewport.AddFlatProjection(CurrentPos, Config.Params.Values["GRIPPER_DIM[0]"], projectionHeight: Config.Params.Values["MAX_H"]);
             _viewport.AddPolygon(fixedPolygon.Points, Config.Params.Values["MAX_H"]);
-
-            //Console.WriteLine(Polygon_2D.AreOverlapping(movingPolygon, fixedPolygon));
         }
         #endregion
 
