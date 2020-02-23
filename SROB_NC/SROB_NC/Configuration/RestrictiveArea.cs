@@ -86,11 +86,32 @@ namespace Configuration
                     if (data[28] == "1") continue;
                     if (double.Parse(data[23]) > 0) continue;
 
+                    var allowedMotion = RestrictiveArea.Motion.None;
+
+                    if (ushort.TryParse(data[12].Substring(0,1), out ushort motion))
+                    {
+                        switch (motion)
+                        {
+                            case 1:
+                                allowedMotion = RestrictiveArea.Motion.X;
+                                break;
+
+                            case 2:
+                                allowedMotion = RestrictiveArea.Motion.Y;
+                                break;
+
+                            case 3:
+                                allowedMotion = RestrictiveArea.Motion.Z;
+                                break;
+                        }
+                    }
+
                     Areas.Add(new RestrictiveArea
                     {
                         Name = data[2],
                         Start = new Point_3D(float.Parse(data[4]), float.Parse(data[5]), float.Parse(data[6])),
                         End = new Point_3D(float.Parse(data[7]), float.Parse(data[8]), float.Parse(data[9])),
+                        AllowedMotion = allowedMotion
                     });
                 }
 
@@ -168,6 +189,17 @@ namespace Configuration
 
         #endregion
 
+        #region Enums
+        [Flags]
+        public enum Motion
+        {
+            None = 0,
+            X = 1,
+            Y = 2,
+            Z = 4
+        }
+        #endregion
+
         #region Properties
 
         [XmlElement]
@@ -178,6 +210,9 @@ namespace Configuration
 
         [XmlElement]
         public Point_3D End { get; set; }
+
+        [XmlElement]
+        public Motion AllowedMotion { get; set; }
 
         [XmlIgnore]
         public double Zmin { get => Math.Min(Start.Z, End.Z); }

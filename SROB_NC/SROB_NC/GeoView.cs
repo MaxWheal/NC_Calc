@@ -252,19 +252,29 @@ namespace SROB_NC
         /// <param name="points"></param>
         internal void AddTrack(List<Point_4D> points)
         {
-            if (points.Count < 2)
-                return;
-
-            for (int i = 1; i < points.Count; i++)
+            try
             {
-                var trace = new LinesVisual3D();
-                trace.Color = Brushes.Orange.Color;
-                trace.Thickness = 1;
-                Children.Add(trace);
+                if (points.Count < 2)
+                    return;
 
-                trace.Points.Add(points[i - 1]);
-                trace.Points.Add(points[i]);
+                for (int i = 1; i < points.Count; i++)
+                {
+                    var trace = new LinesVisual3D();
+                    trace.Color = Brushes.Orange.Color;
+                    trace.Thickness = 1;
+                    Children.Add(trace);
+
+                    trace.Points.Add(points[i - 1]);
+                    trace.Points.Add(points[i]);
+                }
+
             }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
         }
 
         #endregion

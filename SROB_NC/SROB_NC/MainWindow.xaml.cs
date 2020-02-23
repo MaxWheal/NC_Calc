@@ -223,14 +223,22 @@ namespace SROB_NC
         #region CalcStart Click
         private void CalcStart_Click(object sender, RoutedEventArgs e)
         {
-            _track.MovingSize.Length = Config.Params.Values["GRIPPER_DIM[0]"];
-            _track.MovingSize.Width = Config.Params.Values["GRIPPER_DIM[1]"];
-            _track.CurrentPosiotion = CurrentPos;
+            _track.Waypoints.Add(CurrentPos);
 
-            var fixedPolygon = Config.ResAreas.Areas[0].To2DPolygon();
+            if (_track.Waypoints.Count > 1)
+            {
+                Geometries.Size movingSize;
+                movingSize.Length = Config.Params.Values["GRIPPER_DIM[0]"];
+                movingSize.Width = Config.Params.Values["GRIPPER_DIM[1]"];
+                movingSize.Height = 1;
 
-            _viewport.AddFlatProjection(CurrentPos, Config.Params.Values["GRIPPER_DIM[0]"], projectionHeight: Config.Params.Values["MAX_H"]);
-            _viewport.AddPolygon(fixedPolygon.Points, Config.Params.Values["MAX_H"]);
+                _track.Solve(movingSize, out List<Point_4D> result, relevantAreas: Config.ResAreas.Areas);
+
+                _viewport.AddTrack(result);
+            }
+            else
+                _viewport.AddStartPosition(CurrentPos);
+
         }
         #endregion
 

@@ -38,10 +38,10 @@
             <Button x:Name="btnCalcStart" Content="Set Startpoint" Click="CalcStart_Click"/>
             <cc:ToggleSwitch CheckedText="Online" UncheckedText="Offline" IsChecked="{Binding ADS_Online}"/>
 
-            <Label x:Name="PoseX" Content="{Binding PosX}" MouseWheel="target_OnMouseWheel" Foreground="{Binding CollisionMark}"/>
-            <Label x:Name="PoseY" Content="{Binding PosY}" MouseWheel="target_OnMouseWheel"/>
-            <Label x:Name="PoseZ" Content="{Binding PosZ}" MouseWheel="target_OnMouseWheel"/>
-            <Label x:Name="PoseC" Content="{Binding PosC}" MouseWheel="target_OnMouseWheel"/>
+            <Label x:Name="PoseX" Content="{Binding PosX}" MouseWheel="Target_OnMouseWheel" Foreground="{Binding CollisionMark}"/>
+            <Label x:Name="PoseY" Content="{Binding PosY}" MouseWheel="Target_OnMouseWheel"/>
+            <Label x:Name="PoseZ" Content="{Binding PosZ}" MouseWheel="Target_OnMouseWheel"/>
+            <Label x:Name="PoseC" Content="{Binding PosC}" MouseWheel="Target_OnMouseWheel"/>
         </StackPanel>
         <local:GeoView x:Name="_viewport" Grid.Row="1"/>
     </Grid>

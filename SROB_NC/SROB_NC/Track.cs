@@ -19,15 +19,43 @@ namespace SROB_NC
         #endregion
 
         #region Properties
-        public Point_4D CurrentPosiotion { get; set; }
+        public Point_4D CurrentPosition { get; set; }
+
+        private Point_4D CurrentEndPosition { get; set; }
 
         public Size MovingSize;
 
-        public Polygon_2D MovingPolygon { get => new Polygon_2D(CurrentPosiotion, MovingSize);}
+        public Polygon_2D MovingPolygon { get => new Polygon_2D(CurrentPosition, MovingSize); }
 
         public List<RestrictiveArea> RelevantAreas = new List<RestrictiveArea>();
 
         public List<Point_4D> Waypoints = new List<Point_4D>();
+
+        private int _curMotionNr = -1;
+        public int CurMotionNr
+        {
+            get
+            {
+                _curMotionNr++;
+                return _curMotionNr;
+            }
+            set { _curMotionNr = value; }
+        }
+
+        private int _endMotionNr = 101;
+        public int EndMotionNr
+        {
+            get
+            {
+                _endMotionNr--;
+                return _endMotionNr;
+            }
+            set { _endMotionNr = value; }
+        }
+
+        #endregion
+
+        #region Structs and Enums
         #endregion
 
         #region Methods
@@ -41,6 +69,8 @@ namespace SROB_NC
             try
             {
                 #region Initialize calculation
+                CurMotionNr = -1;
+                EndMotionNr = 101;
 
                 //Override properties by parameter
                 if (wayPoints != null)
@@ -55,13 +85,13 @@ namespace SROB_NC
 
                 #endregion
 
-                #region Check if calculation is 
+                #region Check if calculation is possible
 
                 //Check inputs
                 if (movingSize.Length <= 0 || movingSize.Width <= 0 || movingSize.Height <= 0)
                     return false;
 
-                if (wayPoints.Count < 2)
+                if (Waypoints.Count < 2)
                     return false;
 
                 #endregion
@@ -69,9 +99,9 @@ namespace SROB_NC
                 #region Check if calculation is necassary
                 //Check if motion is necassary
                 bool allEqual = true;
-                foreach (var points in wayPoints)
+                foreach (var points in Waypoints)
                 {
-                    if (wayPoints[0] != points)
+                    if (Waypoints[0] != points)
                     {
                         allEqual = false;
                         break;
@@ -89,10 +119,50 @@ namespace SROB_NC
 
                 #region Start calculation
 
-                motionTable = new List<Point_4D>();
+                var motionPointList = new List<Motionpoint>();
 
-                CurrentPosiotion = Waypoints[0];
+                CurrentPosition = Waypoints[0];
+                CurrentEndPosition = Waypoints[Waypoints.Count - 1];
 
+
+                motionPointList.Add(new Motionpoint(CurrentPosition, CurMotionNr));
+                motionPointList.Add(new Motionpoint(CurrentEndPosition, EndMotionNr));
+
+                #endregion
+
+                #region Check start in collision area
+
+                List<RestrictiveArea> collidingAreas;
+
+                if (InResArea(out collidingAreas, CurrentPosition))
+                {
+                    if (collidingAreas.All(x => x.AllowedMotion == RestrictiveArea.Motion.Z))
+                    {
+                        //NextPosition above colliding Areas
+                        CurrentPosition.Z = collidingAreas.OrderBy(x => x.Zmax).Last().Zmax;
+
+                        motionPointList.Add(new Motionpoint(CurrentPosition, CurMotionNr));
+                    }
+                    else
+                        return false;
+                }
+
+                #endregion
+
+                #region Check end in collision area
+
+                if (InResArea(out collidingAreas, CurrentEndPosition))
+                {
+                    if (collidingAreas.All(x => x.AllowedMotion == RestrictiveArea.Motion.Z))
+                    {
+                        //NextPosition above colliding Areas
+                        CurrentEndPosition.Z = collidingAreas.OrderBy(x => x.Zmax).Last().Zmax;
+
+                        motionPointList.Add(new Motionpoint(CurrentEndPosition, EndMotionNr));
+                    }
+                    else
+                        return false;
+                }
 
                 #endregion
 
@@ -101,8 +171,15 @@ namespace SROB_NC
                 #endregion
 
                 #region Solve Z
-                
+
                 #endregion
+
+                motionTable = new List<Point_4D>();
+
+                foreach (var item in motionPointList.OrderBy(x => x.MotionNr))
+                {
+                    motionTable.Add(item.Position);
+                }
 
                 return true;
             }
@@ -121,11 +198,15 @@ namespace SROB_NC
         /// </summary>
         /// <param name="position">Optional: if null Current Position is used</param>
         /// <returns></returns>
-        private bool InResArea(Point_4D position = null)
+        private bool InResArea(out List<RestrictiveArea> collidingAreas, Point_4D position = null)
         {
-                //use current position if none is given by parameter
+            //use current position if none is given by parameter
             if (position == null)
-                position = CurrentPosiotion;
+                position = CurrentPosition;
+
+            collidingAreas = new List<RestrictiveArea>();
+
+            var movingPolygon = new Polygon_2D(position, MovingSize);
 
             foreach (var area in RelevantAreas)
             {
@@ -133,9 +214,12 @@ namespace SROB_NC
                 if (position.Z > area.Zmax || position.Z < area.Zmin - MovingSize.Height)
                     continue;
 
-                if (MovingPolygon.IsOverlapping(area.To2DPolygon()));
-                    return true;
+                if (movingPolygon.IsOverlapping(area.To2DPolygon()))
+                    collidingAreas.Add(area);
             }
+
+            if (collidingAreas.Count > 0)
+                return true;
 
             return false;
         }
@@ -155,6 +239,24 @@ namespace SROB_NC
         #endregion
 
         #endregion
+    }
+
+    class Motionpoint
+    {
+        #region Constructors
+        public Motionpoint(Point_4D position, int motionNr)
+        {
+            Position = new Point_4D(position);
+            MotionNr = motionNr;
+        }
+        #endregion
+
+        #region Properties
+        public Point_4D Position { get; set; }
+        public int MotionNr { get; set; }
+
+        #endregion
+
     }
 
 }
