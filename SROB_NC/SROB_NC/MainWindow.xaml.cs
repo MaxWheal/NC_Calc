@@ -40,7 +40,7 @@ namespace SROB_NC
             set => _ADSonline = ConnectToPLC(value);
         }
 
-        private Track _track = new Track();
+        private readonly Track _track = new Track();
 
         #region CurrentPos
         private Point_4D _currentPos = new Point_4D();
@@ -210,20 +210,35 @@ namespace SROB_NC
         #region Refresh Click
         private void Refresh_Click(object sender, RoutedEventArgs e)
         {
-            Config.Initialize(Environment.CurrentDirectory + "/../../../");
+            if (CurrentPos.Z == 0 && CurrentPos.Y == 0)
+            {
+                _track.Waypoints.Add(new Point_4D(5000, 3900, 500, 0));
+                CurrentPos = new Point_4D(5000, 1000, 500, 0);
+                _track.Waypoints.Clear();
+            }
 
-            _viewport.Initialize();
-            _track.Waypoints.Clear();
-            btnCalcStart.Content = "Set Start";
+            else
+            {
+                Config.Initialize(Environment.CurrentDirectory + "/../../../");
 
-            CurrentPos = CurrentPos;
+                _viewport.Initialize();
+                _track.Waypoints.Clear();
+                btnCalcStart.Content = "Set Start";
+
+                CurrentPos = CurrentPos;
+            }
         }
         #endregion
 
         #region CalcStart Click
         private void CalcStart_Click(object sender, RoutedEventArgs e)
         {
-            _track.Waypoints.Add(CurrentPos);
+            _track.Waypoints.Clear();
+
+            _track.Waypoints.Add(new Point_4D(5000, 4200, 500, 0));
+            CurrentPos = new Point_4D(1000, 1000, 100, 0);
+
+            _track.Waypoints.Add(new Point_4D(CurrentPos));
 
             if (_track.Waypoints.Count > 1)
             {

@@ -76,6 +76,7 @@
     <Compile Include="Geometries.cs" />
     <Compile Include="PLC.cs" />
     <Compile Include="Track.cs" />
+    <Compile Include="Utilities.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

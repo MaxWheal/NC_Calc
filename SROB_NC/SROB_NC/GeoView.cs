@@ -73,7 +73,8 @@ namespace SROB_NC
             //Restricted areas (render at last for transparency to work)
             foreach (var area in Config.ResAreas.Areas)
             {
-                Children.Add(FilledBox(area.Start, area.End, new SolidColorBrush(Colors.Red.ChangeAlpha(150))));
+                //Children.Add(FilledBox(area.Start, area.End, new SolidColorBrush(Colors.Red.ChangeAlpha(150))));
+                Children.Add(WireframeBox(area.Start, area.End, Brushes.Red));
             }
         }
         #endregion
@@ -142,9 +143,11 @@ namespace SROB_NC
             try
             {
 
-                var path = new Point3DCollection();
-                path.Add(start);
-                path.Add(end);
+                var path = new Point3DCollection
+                {
+                    start,
+                    end
+                };
 
                 var cylinder = new TubeVisual3D
                 {
@@ -236,7 +239,7 @@ namespace SROB_NC
             }
 
             Matrix3D matrix = new Matrix3D();
-            matrix.Translate(new Vector3D(center.X, center.Y, Config.Params.Values["MAX_H"]));
+            matrix.Translate(new Vector3D(center.X, center.Y, projectionHeight > 0 ? projectionHeight : Config.Params.Values["MAX_H"]));
 
             projection.Transform = new MatrixTransform3D(matrix);
 
@@ -259,9 +262,12 @@ namespace SROB_NC
 
                 for (int i = 1; i < points.Count; i++)
                 {
-                    var trace = new LinesVisual3D();
-                    trace.Color = Brushes.Orange.Color;
-                    trace.Thickness = 1;
+                    var trace = new LinesVisual3D
+                    {
+                        Color = Brushes.Orange.Color,
+                        Thickness = 1
+                    };
+
                     Children.Add(trace);
 
                     trace.Points.Add(points[i - 1]);

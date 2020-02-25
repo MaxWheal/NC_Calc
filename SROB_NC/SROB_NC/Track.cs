@@ -132,14 +132,12 @@ namespace SROB_NC
 
                 #region Check start in collision area
 
-                List<RestrictiveArea> collidingAreas;
-
-                if (InResArea(out collidingAreas, CurrentPosition))
+                if (InResArea(out List<RestrictiveArea> collidingAreas, CurrentPosition))
                 {
-                    if (collidingAreas.All(x => x.AllowedMotion == RestrictiveArea.Motion.Z))
+                    if (collidingAreas.All(x => x.AllowedMotion == Axis.Z))
                     {
                         //NextPosition above colliding Areas
-                        CurrentPosition.Z = collidingAreas.OrderBy(x => x.Zmax).Last().Zmax;
+                        CurrentPosition.Z = collidingAreas.Max(x => x.Zmax);
 
                         motionPointList.Add(new Motionpoint(CurrentPosition, CurMotionNr));
                     }
@@ -153,10 +151,10 @@ namespace SROB_NC
 
                 if (InResArea(out collidingAreas, CurrentEndPosition))
                 {
-                    if (collidingAreas.All(x => x.AllowedMotion == RestrictiveArea.Motion.Z))
+                    if (collidingAreas.All(x => x.AllowedMotion == Axis.Z))
                     {
                         //NextPosition above colliding Areas
-                        CurrentEndPosition.Z = collidingAreas.OrderBy(x => x.Zmax).Last().Zmax;
+                        CurrentEndPosition.Z = collidingAreas.Max(x => x.Zmax);
 
                         motionPointList.Add(new Motionpoint(CurrentEndPosition, EndMotionNr));
                     }
@@ -171,8 +169,40 @@ namespace SROB_NC
                 #endregion
 
                 #region Solve Z
+                var motionSegment = new Segement_4D(CurrentPosition, CurrentEndPosition);
+                var intersectingSegments = new List<Segement_2D>();
+
+                foreach (var area in RelevantAreas)
+                {
+                    //get left and entered areas areas by segment intersection
+
+                    foreach (var segment in area.ToPolygon_2D().ToSegments_2D())
+                    {
+                        if (segment.IsIntersecting(motionSegment))
+                        {
+                            //Intersectiong points saved with relevant coordinate
+                            if (segment.Slope == 0)
+                            {
+                                var midPoint = motionSegment.GetPositionAt(Axis.Y, segment.Start.Y);
+
+                                midPoint.Z = Math.Max(midPoint.Z, area.Zmax);
+
+                                if (!motionPointList.Contains(new Motionpoint(midPoint, CurMotionNr)))
+                                    motionPointList.Add(new Motionpoint(midPoint, CurMotionNr));
+
+                            }
+
+                            else
+                            {
+                            }
+                        }
+                    }
+
+                }
 
                 #endregion
+
+                #region Copy Points to result
 
                 motionTable = new List<Point_4D>();
 
@@ -182,6 +212,8 @@ namespace SROB_NC
                 }
 
                 return true;
+
+                #endregion
             }
             catch (Exception ex)
             {
@@ -214,7 +246,7 @@ namespace SROB_NC
                 if (position.Z > area.Zmax || position.Z < area.Zmin - MovingSize.Height)
                     continue;
 
-                if (movingPolygon.IsOverlapping(area.To2DPolygon()))
+                if (movingPolygon.IsOverlapping(area.ToPolygon_2D()))
                     collidingAreas.Add(area);
             }
 
@@ -254,6 +286,20 @@ namespace SROB_NC
         #region Properties
         public Point_4D Position { get; set; }
         public int MotionNr { get; set; }
+
+        #endregion
+
+        #region Methods
+
+        #region Equals
+        public override bool Equals(object obj)
+        {
+            Motionpoint motionPoint = (Motionpoint) obj;
+
+            return Position.Equals(motionPoint.Position);
+        }
+
+        #endregion
 
         #endregion
 

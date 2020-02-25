@@ -4,6 +4,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using System.Linq;
 using System.Windows;
+using SROB_NC;
 
 namespace Geometries
 {
@@ -15,12 +16,12 @@ namespace Geometries
 
         }
 
-        public Point_4D(Point_4D value)
+        public Point_4D(Point_4D point_4D)
         {
-            X = value.X;
-            Y = value.Y;
-            Z = value.Z;
-            C = value.C;
+            X = point_4D.X;
+            Y = point_4D.Y;
+            Z = point_4D.Z;
+            C = point_4D.C;
         }
 
         public Point_4D(double x = 0, double y = 0, double z = 0, double c = 0)
@@ -58,6 +59,19 @@ namespace Geometries
         public override string ToString()
         {
             return $"{base.ToString()} | {C:0.0}";
+        }
+        #endregion
+
+        #region Equals
+        /// <summary>
+        /// Determines whether the specified <see cref="Point_4D"/> is equal to the current instance.
+        /// </summary>
+        /// <param name="obj">he object to compare with the current object.</param>
+        /// <returns>true if the specified object is equal to the current object; otherwise, false.</returns>
+        public override bool Equals(object obj)
+        {
+            Point_4D point = (Point_4D)obj;
+            return base.Equals(obj) && this.C == point.C;
         }
         #endregion
 
@@ -108,6 +122,7 @@ namespace Geometries
         #region Conversions
 
         #endregion
+
     }
 
     public class Point_3D : Point_2D
@@ -145,6 +160,19 @@ namespace Geometries
         }
         #endregion
 
+        #region Equals
+        /// <summary>
+        /// Determines whether the specified <see cref="Point_3D"/> is equal to the current instance.
+        /// </summary>
+        /// <param name="obj">he object to compare with the current object.</param>
+        /// <returns>true if the specified object is equal to the current object; otherwise, false.</returns>
+        public override bool Equals(object obj)
+        {
+            Point_3D point = (Point_3D)obj;
+            return base.Equals(obj) && this.Z == point.Z;
+        }
+        #endregion
+
         #endregion
 
         #region Conversions
@@ -169,6 +197,12 @@ namespace Geometries
             X = x;
             Y = y;
         }
+
+        public Point_2D(Point_2D point_2D)
+        {
+            X = point_2D.X;
+            Y = point_2D.Y;
+        }
         #endregion
 
         #region Properties
@@ -189,6 +223,19 @@ namespace Geometries
         public override string ToString()
         {
             return $"{X:0.0} | {Y:0.0}";
+        }
+        #endregion
+
+        #region Equals
+        /// <summary>
+        /// Determines whether the specified <see cref="Point_2D"/> is equal to the current instance.
+        /// </summary>
+        /// <param name="obj">he object to compare with the current object.</param>
+        /// <returns>true if the specified object is equal to the current object; otherwise, false.</returns>
+        public override bool Equals(object obj)
+        {
+            Point_2D point = (Point_2D)obj;
+            return this.X == point.X && this.Y == point.Y;
         }
         #endregion
 
@@ -214,10 +261,43 @@ namespace Geometries
 
         public Point_4D Start { get; set; }
         public Point_4D End { get; set; }
+        public double Length { get => Math.Abs(Math.Sqrt(Math.Pow((End.X - Start.X), 2) + Math.Pow((End.Y - Start.Y), 2) + Math.Pow((End.Z - Start.Z), 2))); }
 
         #endregion
 
         #region Methods
+
+        #region GetPositionAt
+        public Point_4D GetPositionAt(Axis axis, double position)
+        {
+            double relDist = 0;
+            switch (axis)
+            {
+                case Axis.X:
+                    if (Start.X == End.X)
+                        return Start;
+
+                    relDist = (position - Start.X) / (End.X - Start.X);
+                    break;
+
+                case Axis.Y:
+                    if (Start.Y == End.Y)
+                        return Start;
+
+                    relDist = (position - Start.Y) / (End.Y - Start.Y);
+                    break;
+
+            }
+
+            return new Point_4D
+            {
+                X = Start.X + (End.X - Start.X) * relDist,
+                Y = Start.Y + (End.Y - Start.Y) * relDist,
+                Z = Start.Z + (End.Z - Start.Z) * relDist,
+                C = Start.C + (End.C - Start.C) * relDist,
+            };
+        }
+        #endregion
 
         #region ToString
         /// <summary>
@@ -231,6 +311,14 @@ namespace Geometries
         #endregion
 
         #endregion
+
+        #region Conversions
+
+        public static implicit operator Segement_2D(Segement_4D seg_4D)
+            => new Segement_2D(new Point_2D(seg_4D.Start), new Point_2D(seg_4D.End));
+
+        #endregion
+
     }
 
     public partial class Segement_2D
@@ -252,6 +340,11 @@ namespace Geometries
 
         public Point_2D Start { get; set; }
         public Point_2D End { get; set; }
+
+        public double Slope { get => (Start.Y - End.Y) / (Start.X - End.X); }
+        public double AxSection { get => Start.Y - Start.X * Slope; }
+
+        public double Length { get => Math.Abs(Math.Sqrt(Math.Pow((End.X - Start.X), 2) + Math.Pow((End.Y - Start.Y), 2))); }
 
         #endregion
 
@@ -336,10 +429,10 @@ namespace Geometries
 
             //calculating line's perpendicular distance to ball
             Vector circle = new Vector(center.X - this.Start.X, center.Y - this.Start.Y);
-            double circle_onNormal = circle.ProjectOn(this.ToVector().Rotate(Math.PI /2));
+            double circle_onNormal = circle.ProjectOn(this.ToVector().Rotate(Math.PI / 2));
 
             //Collision if distance is less than diameter
-            if (Math.Abs(circle_onNormal) <= diameter/2)
+            if (Math.Abs(circle_onNormal) <= diameter / 2)
                 return true;
 
             return false;
@@ -559,16 +652,13 @@ namespace Geometries
         public bool IsOverlapping(Polygon_2D polygon)
         {
             //Check for Intersecting Lines
-            for (int i = 0; i < this.Points.Count; i++)
+            foreach (var segment1 in this.ToSegments_2D())
             {
-                var segment1 = new Segement_2D(this.Points[i], this.Points[i < this.Points.Count - 1 ? i + 1 : 0]);
-
-                for (int j = 0; j < polygon.Points.Count; j++)
+                foreach (var segment2 in polygon.ToSegments_2D())
                 {
-                    var segment2 = new Segement_2D(polygon.Points[j], polygon.Points[j < polygon.Points.Count - 1 ? j + 1 : 0]);
-
                     if (segment1.IsIntersecting(segment2))
                         return true;
+
                 }
             }
 
@@ -610,6 +700,20 @@ namespace Geometries
             }
 
             return false;
+        }
+        #endregion
+
+        #region ToSegments
+        public List<Segement_2D> ToSegments_2D()
+        {
+            var segments = new List<Segement_2D>();
+
+            for (int i = 0; i < this.Points.Count; i++)
+            {
+                segments.Add(new Segement_2D(this.Points[i], this.Points[i < this.Points.Count - 1 ? i + 1 : 0]));
+            }
+
+            return segments;
         }
         #endregion
 
