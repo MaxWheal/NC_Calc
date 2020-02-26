@@ -236,23 +236,25 @@ namespace SROB_NC
             _track.Waypoints.Clear();
 
             _track.Waypoints.Add(new Point_4D(5000, 4200, 500, 0));
-            CurrentPos = new Point_4D(1000, 1000, 100, 0);
+            //CurrentPos = new Point_4D(1000, 1000, 100, 90);
 
             _track.Waypoints.Add(new Point_4D(CurrentPos));
 
-            if (_track.Waypoints.Count > 1)
+            Geometries.Size movingSize;
+            //movingSize.Length = Config.Params.Values["GRIPPER_DIM[0]"];
+            //movingSize.Width = Config.Params.Values["GRIPPER_DIM[1]"];
+            movingSize.Length = 1000;
+            movingSize.Width = 100;
+            movingSize.Height = 100;
+
+            _track.Solve(movingSize, out List<Point_4D> result, relevantAreas: Config.ResAreas.Areas);
+
+            _viewport.AddTrack(result);
+
+            foreach (var point in result)
             {
-                Geometries.Size movingSize;
-                movingSize.Length = Config.Params.Values["GRIPPER_DIM[0]"];
-                movingSize.Width = Config.Params.Values["GRIPPER_DIM[1]"];
-                movingSize.Height = 1;
-
-                _track.Solve(movingSize, out List<Point_4D> result, relevantAreas: Config.ResAreas.Areas);
-
-                _viewport.AddTrack(result);
+                _viewport.AddMidPosition(point, movingSize);
             }
-            else
-                _viewport.AddStartPosition(CurrentPos);
 
         }
         #endregion

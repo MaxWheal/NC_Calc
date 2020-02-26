@@ -8,6 +8,7 @@ namespace SROB_NC
         None = 0,
         X = 1,
         Y = 2,
-        Z = 4
+        Z = 4,
+        C = 8
     }
 }

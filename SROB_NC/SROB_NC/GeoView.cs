@@ -84,14 +84,14 @@ namespace SROB_NC
         /// Adds transparent box to viewport to show StartPosition
         /// </summary>
         /// <param name="value">4D position of StartPosition</param>
-        public void AddStartPosition(Point_4D value)
+        public void AddMidPosition(Point_4D value, Size size)
         {
             var StartPosition = new BoxVisual3D
             {
-                Center = new Point3D(0, 0, 150),
-                Length = Config.Params.Values["GRIPPER_DIM[0]"],
-                Width = Config.Params.Values["GRIPPER_DIM[1]"],
-                Height = 300,
+                Center = new Point3D(0, 0, size.Height/2),
+                Length = size.Length,
+                Width = size.Width,
+                Height = size.Height,
                 Fill = new SolidColorBrush(Colors.Green.ChangeAlpha(150))
             };
 

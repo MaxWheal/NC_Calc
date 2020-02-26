@@ -226,6 +226,9 @@ namespace Geometries
         }
         #endregion
 
+        #region GetPointMin
+        #endregion
+
         #region Equals
         /// <summary>
         /// Determines whether the specified <see cref="Point_2D"/> is equal to the current instance.
@@ -296,6 +299,43 @@ namespace Geometries
                 Z = Start.Z + (End.Z - Start.Z) * relDist,
                 C = Start.C + (End.C - Start.C) * relDist,
             };
+        }
+        #endregion
+
+        #region GetDirectionOf
+        /// <summary>
+        /// Gets Direction of given axis as value
+        /// </summary>
+        /// <param name="axis">axis of motion to be checked</param>
+        /// <returns>Returns 0 if not motion, -1 if direction is negativ, 1 if direction is positive</returns>
+        public int GetDirectionOf(Axis axis)
+        {
+            switch (axis)
+            {
+                case Axis.X:
+                    if (Start.X == End.X) return 0;
+
+                    return Start.X < End.X ? 1 : -1;
+
+                case Axis.Y:
+                    if (Start.Y == End.Y) return 0;
+
+                    return Start.Y < End.Y ? 1 : -1;
+
+                case Axis.Z:
+                    if (Start.Z == End.Z) return 0;
+
+                    return Start.Z < End.Z ? 1 : -1;
+
+                case Axis.C:
+                    if (Start.C == End.C) return 0;
+
+                    return Start.C < End.C ? 1 : -1;
+
+                case Axis.None:
+                default:
+                    return 0;
+            }
         }
         #endregion
 
@@ -541,6 +581,10 @@ namespace Geometries
 
         #region Properties
         public List<Point_2D> Points = new List<Point_2D>();
+
+        public Point_2D PointMin { get => new Point_2D(Points.Min(pt => pt.X), Points.Min(pt => pt.Y)); }
+        public Point_2D PointMax { get => new Point_2D(Points.Max(pt => pt.X), Points.Max(pt => pt.Y)); }
+
         #endregion
 
         #region Methods

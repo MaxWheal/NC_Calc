@@ -25,8 +25,6 @@ namespace SROB_NC
 
         public Size MovingSize;
 
-        public Polygon_2D MovingPolygon { get => new Polygon_2D(CurrentPosition, MovingSize); }
-
         public List<RestrictiveArea> RelevantAreas = new List<RestrictiveArea>();
 
         public List<Point_4D> Waypoints = new List<Point_4D>();
@@ -90,6 +88,8 @@ namespace SROB_NC
                 //Check inputs
                 if (movingSize.Length <= 0 || movingSize.Width <= 0 || movingSize.Height <= 0)
                     return false;
+
+                MovingSize = movingSize;
 
                 if (Waypoints.Count < 2)
                     return false;
@@ -180,10 +180,11 @@ namespace SROB_NC
                     {
                         if (segment.IsIntersecting(motionSegment))
                         {
-                            //Intersectiong points saved with relevant coordinate
+                            //Intersecting points saved with relevant coordinate
                             if (segment.Slope == 0)
                             {
-                                var midPoint = motionSegment.GetPositionAt(Axis.Y, segment.Start.Y);
+                                //var midPoint = motionSegment.GetPositionAt(Axis.Y, segment.Start.Y);
+                                var midPoint = findFreeMovementPoint(Axis.Y, segment.Start.Y, motionSegment);
 
                                 midPoint.Z = Math.Max(midPoint.Z, area.Zmax);
 
@@ -220,6 +221,31 @@ namespace SROB_NC
                 Console.WriteLine(ex);
                 return false;
             }
+        }
+        #endregion
+
+        #region findFreeMovementPoint
+
+        private Point_4D findFreeMovementPoint(Axis testAxis, double startPos, Segement_4D testSegment)
+        {
+            Point_4D testPoint = testSegment.GetPositionAt(testAxis, startPos);
+            Polygon_2D testPolygon = new Polygon_2D(testPoint, MovingSize);
+
+            try
+            {
+                while(testPolygon.PointMax.Y > startPos)
+                {
+                    testPoint.Y += 10 * testSegment.GetDirectionOf(testAxis);
+                    testPolygon = new Polygon_2D(testPoint, MovingSize);
+                }
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            return testPoint;
         }
 
         #endregion
