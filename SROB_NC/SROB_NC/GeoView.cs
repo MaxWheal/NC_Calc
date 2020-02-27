@@ -27,8 +27,10 @@ namespace SROB_NC
 
         #region Properties
 
-        public BoxVisual3D Gripper { get; set; }
+        public BoxVisual3D MovingBody;
         //public DragableBox Gripper { get; set; }
+        public ModelVisual3D RestrictedAreas = new ModelVisual3D();
+        public ModelVisual3D MidPositions = new ModelVisual3D();
         #endregion
 
         #region Methods
@@ -37,6 +39,9 @@ namespace SROB_NC
         public void Initialize()
         {
             Children.Clear();
+            MidPositions.Children.Clear();
+            RestrictedAreas.Children.Clear();
+
             Children.Add(new DefaultLights());
 
             //ZeroPoint
@@ -58,26 +63,35 @@ namespace SROB_NC
                 new Point3D(Config.Params.Values["PAL_L"], Config.Params.Values["PAL_B"], 0),
                 Brushes.LightGray));
 
-            //Gripper
-            Gripper = new BoxVisual3D
+            //MovingBody
+            MovingBody = new BoxVisual3D
             {
-                Center = new Point3D(0, 0, 150),
-                Length = Config.Params.Values["GRIPPER_DIM[0]"],
-                Width = Config.Params.Values["GRIPPER_DIM[1]"],
-                Height = 300,
+                Center = new Point3D(0, 0, 50),
+                //Length = Config.Params.Values["GRIPPER_DIM[0]"],
+                //Width = Config.Params.Values["GRIPPER_DIM[1]"],
+                //Height = 300,
+                Length = 1000,
+                Width = 100,
+                Height = 100,
                 Fill = Brushes.DarkGray,
             };
 
-            Children.Add(Gripper);
+            Children.Add(MovingBody);
+
+            Children.Add(MidPositions);
 
             //Restricted areas (render at last for transparency to work)
             foreach (var area in Config.ResAreas.Areas)
             {
-                //Children.Add(FilledBox(area.Start, area.End, new SolidColorBrush(Colors.Red.ChangeAlpha(150))));
-                Children.Add(WireframeBox(area.Start, area.End, Brushes.Red));
+                RestrictedAreas.Children.Add(FilledBox(area.Start, area.End, new SolidColorBrush(Colors.Red.ChangeAlpha(150))));
+                //Children.Add(WireframeBox(area.Start, area.End, Brushes.Red));
             }
+
+            RedrawTransparants();
         }
+
         #endregion
+
 
         #region AddStartPosition
         /// <summary>
@@ -88,7 +102,7 @@ namespace SROB_NC
         {
             var StartPosition = new BoxVisual3D
             {
-                Center = new Point3D(0, 0, size.Height/2),
+                Center = new Point3D(0, 0, size.Height / 2),
                 Length = size.Length,
                 Width = size.Width,
                 Height = size.Height,
@@ -101,7 +115,7 @@ namespace SROB_NC
 
             StartPosition.Transform = new MatrixTransform3D(matrix);
 
-            Children.Add(StartPosition);
+            MidPositions.Children.Add(StartPosition);
         }
         #endregion
 
@@ -303,6 +317,19 @@ namespace SROB_NC
 
             AddTrack(points);
         }
+        #endregion
+
+        #region RedrawTranspObjects
+        /// <summary>
+        /// For tranparancy to work transparant objects must be drawn at last.
+        /// </summary>
+        public void RedrawTransparants()
+        {
+            Children.Remove(RestrictedAreas);
+
+            Children.Add(RestrictedAreas);
+        }
+
         #endregion
 
         #endregion

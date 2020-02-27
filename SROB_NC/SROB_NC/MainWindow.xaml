@@ -10,12 +10,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="1300" FontFamily="Segoe UI">
     <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisConverter"/>
         <Style TargetType="Label">
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="MinWidth" Value="50"/>
+            <Setter Property="Width" Value="100"/>
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
         <Style TargetType="Button">
@@ -35,13 +37,14 @@
         <StackPanel Orientation="Horizontal">
 
             <Button x:Name="btnRefresh" Content="Refresh" Click="Refresh_Click"/>
-            <Button x:Name="btnCalcStart" Content="Set Startpoint" Click="CalcStart_Click"/>
+            <Button x:Name="btnCalcStart" Content="Solve Track" Click="CalcStart_Click"/>
             <cc:ToggleSwitch CheckedText="Online" UncheckedText="Offline" IsChecked="{Binding ADS_Online}"/>
 
             <Label x:Name="PoseX" Content="{Binding PosX}" MouseWheel="Target_OnMouseWheel" Foreground="{Binding CollisionMark}"/>
             <Label x:Name="PoseY" Content="{Binding PosY}" MouseWheel="Target_OnMouseWheel"/>
             <Label x:Name="PoseZ" Content="{Binding PosZ}" MouseWheel="Target_OnMouseWheel"/>
             <Label x:Name="PoseC" Content="{Binding PosC}" MouseWheel="Target_OnMouseWheel"/>
+            <Slider x:Name="SliderResult" Width="300" VerticalAlignment="Center" Value="{Binding ResultSweep}" Maximum="100" Margin="10" Visibility="{Binding TrackValid, Converter={StaticResource BoolToVisConverter}}"/>
         </StackPanel>
         <local:GeoView x:Name="_viewport" Grid.Row="1"/>
     </Grid>

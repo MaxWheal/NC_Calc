@@ -42,6 +42,60 @@ namespace SROB_NC
 
         private readonly Track _track = new Track();
 
+        #region Sweep along path
+        private int _resultSweep = -1;
+        public int ResultSweep
+        {
+            get { return _resultSweep; }
+            set
+            {
+                if (_resultSweep == -1)
+                    _viewport.Children.Remove(_viewport.MidPositions);
+
+                _resultSweep = value;
+
+                if (_resultSweep < 0)
+                    return;
+
+                //Get Segment Current on
+                var currentTravel = _track.Length / 100 * value;
+
+                double segmentSum = 0;
+                Segment_4D currentSegment = null;
+
+                foreach (var segment in _track.ResultSegments)
+                {
+                    segmentSum += segment.Length;
+
+                    if (segmentSum > currentTravel)
+                    {
+                        currentSegment = segment;
+
+                        //now calculate from last MidPoint
+                        currentTravel -= (segmentSum - segment.Length);
+                        break;
+                    }
+                }
+
+                if (currentSegment != null)
+                    CurrentPos = currentSegment.GetPositionAt(Axis.None, currentTravel);
+
+            }
+        }
+
+        private bool _trackValid;
+
+        public bool TrackValid
+        {
+            get { return _trackValid; }
+            set
+            {
+                _trackValid = value;
+                OnPropertyChanged("TrackValid");
+            }
+        }
+        #endregion
+
         #region CurrentPos
         private Point_4D _currentPos = new Point_4D();
 
@@ -61,7 +115,7 @@ namespace SROB_NC
                 OnPropertyChanged("PosZ");
                 OnPropertyChanged("PosC");
 
-                MoveObject(value, _viewport.Gripper);
+                MoveObject(value, _viewport.MovingBody);
             }
         }
 
@@ -210,30 +264,22 @@ namespace SROB_NC
         #region Refresh Click
         private void Refresh_Click(object sender, RoutedEventArgs e)
         {
-            if (CurrentPos.Z == 0 && CurrentPos.Y == 0)
-            {
-                _track.Waypoints.Add(new Point_4D(5000, 3900, 500, 0));
-                CurrentPos = new Point_4D(5000, 1000, 500, 0);
-                _track.Waypoints.Clear();
-            }
+            Config.Initialize(Environment.CurrentDirectory + "/../../../");
 
-            else
-            {
-                Config.Initialize(Environment.CurrentDirectory + "/../../../");
+            TrackValid = false;
+            ResultSweep = -1;
 
-                _viewport.Initialize();
-                _track.Waypoints.Clear();
-                btnCalcStart.Content = "Set Start";
+            _viewport.Initialize();
+            _track.Waypoints.Clear();
 
-                CurrentPos = CurrentPos;
-            }
+            CurrentPos = CurrentPos;
         }
         #endregion
 
         #region CalcStart Click
         private void CalcStart_Click(object sender, RoutedEventArgs e)
         {
-            _track.Waypoints.Clear();
+            Refresh_Click(sender, e);
 
             _track.Waypoints.Add(new Point_4D(5000, 4200, 500, 0));
             //CurrentPos = new Point_4D(1000, 1000, 100, 90);
@@ -247,13 +293,18 @@ namespace SROB_NC
             movingSize.Width = 100;
             movingSize.Height = 100;
 
-            _track.Solve(movingSize, out List<Point_4D> result, relevantAreas: Config.ResAreas.Areas);
+            TrackValid = _track.Solve(movingSize, out List<Point_4D> result, relevantAreas: Config.ResAreas.Areas);
 
-            _viewport.AddTrack(result);
-
-            foreach (var point in result)
+            if (TrackValid)
             {
-                _viewport.AddMidPosition(point, movingSize);
+                _viewport.AddTrack(result);
+
+                foreach (var point in result)
+                {
+                    _viewport.AddMidPosition(point, movingSize);
+                }
+
+                _viewport.RedrawTransparants();
             }
 
         }

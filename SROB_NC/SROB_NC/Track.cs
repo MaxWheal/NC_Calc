@@ -29,6 +29,12 @@ namespace SROB_NC
 
         public List<Point_4D> Waypoints = new List<Point_4D>();
 
+        public List<Segment_4D> ResultSegments = new List<Segment_4D>();
+
+        public List<Point_4D> ResultPoints = new List<Point_4D>();
+
+        public double Length => ResultSegments.Sum(x => x.Length);
+
         private int _curMotionNr = -1;
         public int CurMotionNr
         {
@@ -63,6 +69,8 @@ namespace SROB_NC
         public bool Solve(Size movingSize, out List<Point_4D> motionTable, List<Point_4D> wayPoints = null, List<RestrictiveArea> relevantAreas = null)
         {
             motionTable = null;
+            ResultSegments.Clear();
+            ResultPoints.Clear();
 
             try
             {
@@ -169,8 +177,8 @@ namespace SROB_NC
                 #endregion
 
                 #region Solve Z
-                var motionSegment = new Segement_4D(CurrentPosition, CurrentEndPosition);
-                var intersectingSegments = new List<Segement_2D>();
+                var motionSegment = new Segment_4D(CurrentPosition, CurrentEndPosition);
+                var intersectingSegments = new List<Segment_2D>();
 
                 foreach (var area in RelevantAreas)
                 {
@@ -184,7 +192,7 @@ namespace SROB_NC
                             if (segment.Slope == 0)
                             {
                                 //var midPoint = motionSegment.GetPositionAt(Axis.Y, segment.Start.Y);
-                                var midPoint = findFreeMovementPoint(Axis.Y, segment.Start.Y, motionSegment);
+                                var midPoint = FindFreeMovementPoint(Axis.Y, segment.Start.Y, motionSegment);
 
                                 midPoint.Z = Math.Max(midPoint.Z, area.Zmax);
 
@@ -207,9 +215,17 @@ namespace SROB_NC
 
                 motionTable = new List<Point_4D>();
 
-                foreach (var item in motionPointList.OrderBy(x => x.MotionNr))
+                foreach (var point in motionPointList.OrderBy(x => x.MotionNr))
                 {
-                    motionTable.Add(item.Position);
+                    motionTable.Add(point.Position);
+
+                    ResultPoints.Add(point.Position);
+
+                    //add Segments
+                    if (motionTable.Count < 2)
+                        continue;
+
+                    ResultSegments.Add(new Segment_4D(motionTable[motionTable.Count - 2], motionTable[motionTable.Count - 1]));
                 }
 
                 return true;
@@ -226,14 +242,14 @@ namespace SROB_NC
 
         #region findFreeMovementPoint
 
-        private Point_4D findFreeMovementPoint(Axis testAxis, double startPos, Segement_4D testSegment)
+        private Point_4D FindFreeMovementPoint(Axis testAxis, double startPos, Segment_4D testSegment)
         {
             Point_4D testPoint = testSegment.GetPositionAt(testAxis, startPos);
             Polygon_2D testPolygon = new Polygon_2D(testPoint, MovingSize);
 
             try
             {
-                while(testPolygon.PointMax.Y > startPos)
+                while (testPolygon.PointMax.Y > startPos)
                 {
                     testPoint.Y += 10 * testSegment.GetDirectionOf(testAxis);
                     testPolygon = new Polygon_2D(testPoint, MovingSize);
@@ -320,7 +336,7 @@ namespace SROB_NC
         #region Equals
         public override bool Equals(object obj)
         {
-            Motionpoint motionPoint = (Motionpoint) obj;
+            Motionpoint motionPoint = (Motionpoint)obj;
 
             return Position.Equals(motionPoint.Position);
         }

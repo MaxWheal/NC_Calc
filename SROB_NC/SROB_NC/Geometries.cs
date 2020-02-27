@@ -245,15 +245,15 @@ namespace Geometries
         #endregion
     }
 
-    public class Segement_4D
+    public class Segment_4D
     {
         #region Constructors
-        public Segement_4D()
+        public Segment_4D()
         {
 
         }
 
-        public Segement_4D(Point_4D start, Point_4D end)
+        public Segment_4D(Point_4D start, Point_4D end)
         {
             Start = start;
             End = end;
@@ -271,6 +271,12 @@ namespace Geometries
         #region Methods
 
         #region GetPositionAt
+        /// <summary>
+        /// Gets Point on 4D Segment by position
+        /// </summary>
+        /// <param name="axis"> segment following position will be given if <see cref="Axis.None"/> lenght of segment is given</param>
+        /// <param name="position">position on segment</param>
+        /// <returns>Point at given position</returns>
         public Point_4D GetPositionAt(Axis axis, double position)
         {
             double relDist = 0;
@@ -288,6 +294,10 @@ namespace Geometries
                         return Start;
 
                     relDist = (position - Start.Y) / (End.Y - Start.Y);
+                    break;
+
+                case Axis.None:
+                    relDist = position / Length;
                     break;
 
             }
@@ -354,22 +364,22 @@ namespace Geometries
 
         #region Conversions
 
-        public static implicit operator Segement_2D(Segement_4D seg_4D)
-            => new Segement_2D(new Point_2D(seg_4D.Start), new Point_2D(seg_4D.End));
+        public static implicit operator Segment_2D(Segment_4D seg_4D)
+            => new Segment_2D(new Point_2D(seg_4D.Start), new Point_2D(seg_4D.End));
 
         #endregion
 
     }
 
-    public partial class Segement_2D
+    public partial class Segment_2D
     {
         #region Constructors
-        public Segement_2D()
+        public Segment_2D()
         {
 
         }
 
-        public Segement_2D(Point_2D start, Point_2D end)
+        public Segment_2D(Point_2D start, Point_2D end)
         {
             Start = start;
             End = end;
@@ -392,11 +402,11 @@ namespace Geometries
 
         #region IsIntersecting Segment
         /// <summary>
-        /// Checks if given <see cref="Segement_2D"/> intersects with this.
+        /// Checks if given <see cref="Segment_2D"/> intersects with this.
         /// </summary>
         /// <param name="segment"></param>
         /// <returns>Intersection detected</returns>
-        public bool IsIntersecting(Segement_2D segment)
+        public bool IsIntersecting(Segment_2D segment)
         {
             try
             {
@@ -481,7 +491,7 @@ namespace Geometries
 
         #region ToVector
         /// <summary>
-        /// Creates <see cref="Vector"/> from <see cref="Segement_2D"/>
+        /// Creates <see cref="Vector"/> from <see cref="Segment_2D"/>
         /// </summary>
         /// <returns>Vector from Segment</returns>
         public Vector ToVector()
@@ -737,7 +747,7 @@ namespace Geometries
             //Check for Intersecting Lines
             for (int i = 0; i < this.Points.Count; i++)
             {
-                var segment = new Segement_2D(this.Points[i], this.Points[i < this.Points.Count - 1 ? i + 1 : 0]);
+                var segment = new Segment_2D(this.Points[i], this.Points[i < this.Points.Count - 1 ? i + 1 : 0]);
 
                 if (segment.IsIntersecting(center, diameter))
                     return true;
@@ -748,13 +758,13 @@ namespace Geometries
         #endregion
 
         #region ToSegments
-        public List<Segement_2D> ToSegments_2D()
+        public List<Segment_2D> ToSegments_2D()
         {
-            var segments = new List<Segement_2D>();
+            var segments = new List<Segment_2D>();
 
             for (int i = 0; i < this.Points.Count; i++)
             {
-                segments.Add(new Segement_2D(this.Points[i], this.Points[i < this.Points.Count - 1 ? i + 1 : 0]));
+                segments.Add(new Segment_2D(this.Points[i], this.Points[i < this.Points.Count - 1 ? i + 1 : 0]));
             }
 
             return segments;
