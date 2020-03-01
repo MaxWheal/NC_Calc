@@ -46,7 +46,7 @@
             <Button x:Name="btnCalcStart" Content="Solve Track" Click="CalcStart_Click"/>
             <cc:ToggleSwitch CheckedText="Online" UncheckedText="Offline" IsChecked="{Binding ADS_Online}"/>
 
-            <ComboBox x:Name="ShutterSelection"/>
+            <ComboBox ItemsSource="{Binding SelectionShutters}" DisplayMemberPath="Name" SelectedValuePath="Key" SelectedItem="{Binding SelectedShutter}"/>
             
             <Label x:Name="PoseX" Content="{Binding PosX}" MouseWheel="Target_OnMouseWheel" Foreground="{Binding CollisionMark}"/>
             <Label x:Name="PoseY" Content="{Binding PosY}" MouseWheel="Target_OnMouseWheel"/>

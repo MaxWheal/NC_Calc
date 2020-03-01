@@ -9,6 +9,7 @@ using Geometries;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace SROB_NC
 {
@@ -30,12 +31,11 @@ namespace SROB_NC
             SoftwareMin = ParameterCollecion.GetPoint4D("PAR_SW_ES_MIN");
             SoftwareMax = ParameterCollecion.GetPoint4D("PAR_SW_ES_MAX");
 
-            SelectionShutters.AddRange(Config.Shutters.ShutterList);
-
-            //Load Shutters to Binding Property
-            ShutterSelection.ItemsSource = SelectionShutters;
-            ShutterSelection.DisplayMemberPath = "Name";
-            ShutterSelection.SelectedValuePath = "Key";
+            SelectionShutters = new ObservableCollection<Shutter>();
+            foreach (var item in Config.Shutters.ShutterList)
+            {
+                SelectionShutters.Add(item);
+            }
         }
         #endregion
 
@@ -49,7 +49,28 @@ namespace SROB_NC
 
         private readonly Track _track = new Track();
 
-        public List<Shutter> SelectionShutters = new List<Shutter>();
+        #region Shutters - Collection
+
+        public ObservableCollection<Shutter> SelectionShutters { get; set; }
+
+        #endregion
+
+        #region Selected Shutter
+
+        private Shutter _selectedShutter;
+        public Shutter SelectedShutter
+        {
+            get => _selectedShutter;
+            set 
+            { 
+                _selectedShutter = value;
+                OnPropertyChanged("SelectedShutter");
+
+                UpdateMovingBody(value);
+            }
+        }
+
+        #endregion
 
         #region Sweep along path
         private int _resultSweep = -1;
@@ -213,6 +234,20 @@ namespace SROB_NC
 
             _viewport.Dispatcher.Invoke(new Action(() => obj.Transform = new MatrixTransform3D(matrix)));
         }
+        #endregion
+
+        #region Update the MovingBody
+
+        private void UpdateMovingBody(Shutter value)
+        {
+            if (value == null)
+                return;
+
+            _viewport.MovingBody.Length = value.Length;
+            _viewport.MovingBody.Height = value.Height;
+            _viewport.MovingBody.Width = value.Width;
+        }
+
         #endregion
 
         #endregion
