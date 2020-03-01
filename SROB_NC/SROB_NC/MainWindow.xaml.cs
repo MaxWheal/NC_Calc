@@ -314,6 +314,7 @@ namespace SROB_NC
             ResultSweep = -1;
 
             _viewport.Initialize();
+            UpdateMovingBody(SelectedShutter);
             _track.Waypoints.Clear();
 
             CurrentPos = CurrentPos;
