@@ -28,6 +28,12 @@
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="MinWidth" Value="80"/>
         </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Background" Value="White"/>
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -40,6 +46,8 @@
             <Button x:Name="btnCalcStart" Content="Solve Track" Click="CalcStart_Click"/>
             <cc:ToggleSwitch CheckedText="Online" UncheckedText="Offline" IsChecked="{Binding ADS_Online}"/>
 
+            <ComboBox x:Name="ShutterSelection"/>
+            
             <Label x:Name="PoseX" Content="{Binding PosX}" MouseWheel="Target_OnMouseWheel" Foreground="{Binding CollisionMark}"/>
             <Label x:Name="PoseY" Content="{Binding PosY}" MouseWheel="Target_OnMouseWheel"/>
             <Label x:Name="PoseZ" Content="{Binding PosZ}" MouseWheel="Target_OnMouseWheel"/>

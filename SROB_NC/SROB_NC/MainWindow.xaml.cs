@@ -29,6 +29,13 @@ namespace SROB_NC
             // Get the Min- / Max-Position
             SoftwareMin = ParameterCollecion.GetPoint4D("PAR_SW_ES_MIN");
             SoftwareMax = ParameterCollecion.GetPoint4D("PAR_SW_ES_MAX");
+
+            SelectionShutters.AddRange(Config.Shutters.ShutterList);
+
+            //Load Shutters to Binding Property
+            ShutterSelection.ItemsSource = SelectionShutters;
+            ShutterSelection.DisplayMemberPath = "Name";
+            ShutterSelection.SelectedValuePath = "Key";
         }
         #endregion
 
@@ -41,6 +48,8 @@ namespace SROB_NC
         }
 
         private readonly Track _track = new Track();
+
+        public List<Shutter> SelectionShutters = new List<Shutter>();
 
         #region Sweep along path
         private int _resultSweep = -1;

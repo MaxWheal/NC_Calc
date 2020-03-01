@@ -19,6 +19,7 @@ namespace Configuration
 
         public static ParameterCollecion Params { get; set; }
 
+        public static ShutterCollecion Shutters { get; set; }
 
 
         #endregion
@@ -37,6 +38,8 @@ namespace Configuration
             ResAreas = new ResAreaCollection(iniPath + Ini.Values["GeoDat"]);
 
             Params = new ParameterCollecion(iniPath + Ini.Values["Parameter"]);
+
+            Shutters = new ShutterCollecion(iniPath + Ini.Values["Shutters"]);
         }
         #endregion
 

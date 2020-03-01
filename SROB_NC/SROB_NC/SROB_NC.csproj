@@ -69,6 +69,7 @@
     </ApplicationDefinition>
     <Compile Include="Configuration\Config.cs" />
     <Compile Include="Configuration\Ini.cs" />
+    <Compile Include="Configuration\Shutter.cs" />
     <Compile Include="DragableBox.cs" />
     <Compile Include="GeoView.cs" />
     <Compile Include="Configuration\Parameter.cs" />

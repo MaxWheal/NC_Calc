@@ -543,6 +543,13 @@ namespace Geometries
         public double Length;
         public double Width;
         public double Height;
+
+        public Size(double length, double width, double height)
+        {
+            Length = length;
+            Width = width;
+            Height = height;
+        }
     }
 
     public class Polygon_2D

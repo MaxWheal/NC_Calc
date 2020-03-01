@@ -190,9 +190,6 @@ namespace Configuration
 
         #endregion
 
-        #region Enums
-        #endregion
-
         #region Properties
 
         [XmlElement]
