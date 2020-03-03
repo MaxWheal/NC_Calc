@@ -274,7 +274,7 @@ namespace Geometries
         /// <summary>
         /// Gets Point on 4D Segment by position
         /// </summary>
-        /// <param name="axis"> segment following position will be given if <see cref="Axis.None"/> lenght of segment is given</param>
+        /// <param name="axis"> segment following position will be given if <see cref="Axis.None"/> lenght of segment must be given</param>
         /// <param name="position">position on segment</param>
         /// <returns>Point at given position</returns>
         public Point_4D GetPositionAt(Axis axis, double position)

@@ -21,7 +21,7 @@ namespace SROB_NC
         #region Constructors
         public MainWindow()
         {
-            Config.Initialize(Environment.CurrentDirectory + "/../../../");
+            Config.Initialize(Environment.CurrentDirectory + "/../");
 
             InitializeComponent();
 
@@ -36,6 +36,15 @@ namespace SROB_NC
             {
                 SelectionShutters.Add(item);
             }
+
+            SelectedShutter = new Shutter
+            {
+                Key = 0,
+                Length = Config.Params.Values["GRIPPER_DIM[0]"],
+                Width = Config.Params.Values["GRIPPER_DIM[1]"],
+                Height = 300,
+            };
+
         }
         #endregion
 
@@ -237,7 +246,6 @@ namespace SROB_NC
         #endregion
 
         #region Update the MovingBody
-
         private void UpdateMovingBody(Shutter value)
         {
             if (value == null)
@@ -246,6 +254,7 @@ namespace SROB_NC
             _viewport.MovingBody.Length = value.Length;
             _viewport.MovingBody.Height = value.Height;
             _viewport.MovingBody.Width = value.Width;
+            _viewport.MovingBody.Center = new Point3D(0,0,value.Height/2);
         }
 
         #endregion
@@ -313,6 +322,8 @@ namespace SROB_NC
             TrackValid = false;
             ResultSweep = -1;
 
+            btnCalcStart.Content = "Set Start";
+
             _viewport.Initialize();
             UpdateMovingBody(SelectedShutter);
             _track.Waypoints.Clear();
@@ -324,34 +335,39 @@ namespace SROB_NC
         #region CalcStart Click
         private void CalcStart_Click(object sender, RoutedEventArgs e)
         {
-            Refresh_Click(sender, e);
-
-            _track.Waypoints.Add(new Point_4D(5000, 4200, 500, 0));
-            //CurrentPos = new Point_4D(1000, 1000, 100, 90);
-
-            _track.Waypoints.Add(new Point_4D(CurrentPos));
-
-            Geometries.Size movingSize;
-            //movingSize.Length = Config.Params.Values["GRIPPER_DIM[0]"];
-            //movingSize.Width = Config.Params.Values["GRIPPER_DIM[1]"];
-            movingSize.Length = 1000;
-            movingSize.Width = 100;
-            movingSize.Height = 100;
-
-            TrackValid = _track.Solve(movingSize, out List<Point_4D> result, relevantAreas: Config.ResAreas.Areas);
-
-            if (TrackValid)
+             _track.Waypoints.Add(new Point_4D(CurrentPos));
+            if (_track.Waypoints.Count < 2)
             {
-                _viewport.AddTrack(result);
-
-                foreach (var point in result)
-                {
-                    _viewport.AddMidPosition(point, movingSize);
-                }
-
+                btnCalcStart.Content = "Solve Track";
+                _viewport.AddMidPosition(CurrentPos, SelectedShutter.Size);
                 _viewport.RedrawTransparants();
             }
+            else
+            {
+                if (_track.Waypoints.Count > 2)
+                {
+                    _track.Waypoints.RemoveAt(1);
+                    _viewport.Initialize();
+                    UpdateMovingBody(SelectedShutter);
+                    CurrentPos = CurrentPos;
 
+                    ResultSweep = -1;
+                }
+
+                TrackValid = _track.Solve(SelectedShutter.Size, out List<Point_4D> result, relevantAreas: Config.ResAreas.Areas);
+
+                if (TrackValid)
+                {
+                    _viewport.AddTrack(result);
+
+                    foreach (var point in result)
+                    {
+                        _viewport.AddMidPosition(point, SelectedShutter.Size);
+                    }
+
+                    _viewport.RedrawTransparants();
+                }
+            }
         }
         #endregion
 

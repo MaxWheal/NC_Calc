@@ -66,15 +66,14 @@ namespace SROB_NC
             //MovingBody
             MovingBody = new BoxVisual3D
             {
-                Center = new Point3D(0, 0, 50),
-                //Length = Config.Params.Values["GRIPPER_DIM[0]"],
-                //Width = Config.Params.Values["GRIPPER_DIM[1]"],
-                //Height = 300,
-                Length = 1000,
-                Width = 100,
-                Height = 100,
+                Length = Config.Params.Values["GRIPPER_DIM[0]"],
+                Width = Config.Params.Values["GRIPPER_DIM[1]"],
+                Height = 300,
                 Fill = Brushes.DarkGray,
+                Center = new Point3D(0, 0, 150),
             };
+
+            MovingBody.Center = new Point3D(0, 0, MovingBody.Height/2);
 
             Children.Add(MovingBody);
 

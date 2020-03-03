@@ -35,28 +35,6 @@ namespace SROB_NC
 
         public double Length => ResultSegments.Sum(x => x.Length);
 
-        private int _curMotionNr = -1;
-        public int CurMotionNr
-        {
-            get
-            {
-                _curMotionNr++;
-                return _curMotionNr;
-            }
-            set { _curMotionNr = value; }
-        }
-
-        private int _endMotionNr = 101;
-        public int EndMotionNr
-        {
-            get
-            {
-                _endMotionNr--;
-                return _endMotionNr;
-            }
-            set { _endMotionNr = value; }
-        }
-
         #endregion
 
         #region Structs and Enums
@@ -75,8 +53,6 @@ namespace SROB_NC
             try
             {
                 #region Initialize calculation
-                CurMotionNr = -1;
-                EndMotionNr = 101;
 
                 //Override properties by parameter
                 if (wayPoints != null)
@@ -127,14 +103,14 @@ namespace SROB_NC
 
                 #region Start calculation
 
-                var motionPointList = new List<Motionpoint>();
+                var motionPointList = new List<Point_4D>();
 
                 CurrentPosition = Waypoints[0];
                 CurrentEndPosition = Waypoints[Waypoints.Count - 1];
 
 
-                motionPointList.Add(new Motionpoint(CurrentPosition, CurMotionNr));
-                motionPointList.Add(new Motionpoint(CurrentEndPosition, EndMotionNr));
+                motionPointList.Add(new Point_4D(CurrentPosition));
+                motionPointList.Add(new Point_4D(CurrentEndPosition));
 
                 #endregion
 
@@ -147,7 +123,7 @@ namespace SROB_NC
                         //NextPosition above colliding Areas
                         CurrentPosition.Z = collidingAreas.Max(x => x.Zmax);
 
-                        motionPointList.Add(new Motionpoint(CurrentPosition, CurMotionNr));
+                        motionPointList.Insert(1,new Point_4D(CurrentPosition));
                     }
                     else
                         return false;
@@ -156,6 +132,7 @@ namespace SROB_NC
                 #endregion
 
                 #region Check end in collision area
+                int endManipulated = 0; // so new points are inserted in the middle
 
                 if (InResArea(out collidingAreas, CurrentEndPosition))
                 {
@@ -164,7 +141,8 @@ namespace SROB_NC
                         //NextPosition above colliding Areas
                         CurrentEndPosition.Z = collidingAreas.Max(x => x.Zmax);
 
-                        motionPointList.Add(new Motionpoint(CurrentEndPosition, EndMotionNr));
+                        motionPointList.Insert(motionPointList.Count - 1, new Point_4D(CurrentEndPosition));
+                        endManipulated = 1;
                     }
                     else
                         return false;
@@ -178,7 +156,8 @@ namespace SROB_NC
 
                 #region Solve Z
                 var motionSegment = new Segment_4D(CurrentPosition, CurrentEndPosition);
-                var intersectingSegments = new List<Segment_2D>();
+                //var collidingSegments = new List<CollidingSegment>();
+
 
                 foreach (var area in RelevantAreas)
                 {
@@ -188,22 +167,12 @@ namespace SROB_NC
                     {
                         if (segment.IsIntersecting(motionSegment))
                         {
-                            //Intersecting points saved with relevant coordinate
-                            if (segment.Slope == 0)
-                            {
-                                //var midPoint = motionSegment.GetPositionAt(Axis.Y, segment.Start.Y);
-                                var midPoint = FindFreeMovementPoint(Axis.Y, segment.Start.Y, motionSegment);
+                            var midPoint = FindFreeMovementPoint(segment, motionSegment);
 
-                                midPoint.Z = Math.Max(midPoint.Z, area.Zmax);
+                            midPoint.Z = Math.Max(midPoint.Z, area.Zmax);
 
-                                if (!motionPointList.Contains(new Motionpoint(midPoint, CurMotionNr)))
-                                    motionPointList.Add(new Motionpoint(midPoint, CurMotionNr));
-
-                            }
-
-                            else
-                            {
-                            }
+                            if (!motionPointList.Contains(midPoint))
+                                motionPointList.Insert(motionPointList.Count - 1 - endManipulated, midPoint);
                         }
                     }
 
@@ -215,11 +184,11 @@ namespace SROB_NC
 
                 motionTable = new List<Point_4D>();
 
-                foreach (var point in motionPointList.OrderBy(x => x.MotionNr))
+                foreach (var point in motionPointList)
                 {
-                    motionTable.Add(point.Position);
+                    motionTable.Add(point);
 
-                    ResultPoints.Add(point.Position);
+                    ResultPoints.Add(point);
 
                     //add Segments
                     if (motionTable.Count < 2)
@@ -242,18 +211,42 @@ namespace SROB_NC
 
         #region findFreeMovementPoint
 
-        private Point_4D FindFreeMovementPoint(Axis testAxis, double startPos, Segment_4D testSegment)
+        private Point_4D FindFreeMovementPoint(Segment_2D collidingSegment, Segment_4D testSegment)
         {
-            Point_4D testPoint = testSegment.GetPositionAt(testAxis, startPos);
-            Polygon_2D testPolygon = new Polygon_2D(testPoint, MovingSize);
-
+            Point_4D testPoint = null;
             try
             {
-                while (testPolygon.PointMax.Y > startPos)
+                Axis testAxis = collidingSegment.Slope == 0 ? Axis.Y : Axis.X;
+                int direction = testSegment.GetDirectionOf(testAxis);
+                double startPoint = collidingSegment.Slope == 0 ? collidingSegment.Start.Y : collidingSegment.Start.X;
+
+                testPoint = testSegment.GetPositionAt(testAxis, startPoint);
+                Polygon_2D testPolygon = new Polygon_2D(testPoint, MovingSize);
+
+                if (testAxis == Axis.Y)
                 {
-                    testPoint.Y += 10 * testSegment.GetDirectionOf(testAxis);
-                    testPolygon = new Polygon_2D(testPoint, MovingSize);
+                    //move on in direction of motionsegment and collision
+                    while ((testPolygon.PointMax.Y > startPoint && direction < 0) ||
+                        (testPolygon.PointMin.Y < startPoint && direction > 0))
+                    {
+                        testPoint = testSegment.GetPositionAt(testAxis, testPoint.Y + 10 * direction);
+                        testPolygon = new Polygon_2D(testPoint, MovingSize);
+
+                        //motion already left restricted area ToDo?
+
+                        //Avoid endless run
+                        if (testPoint.Y > ParameterCollecion.GetPoint4D("PAR_SW_ES_MAX").Y)
+                            return null;
+
+                        if (testPoint.Y < ParameterCollecion.GetPoint4D("PAR_SW_ES_MIN").Y)
+                            return null;
+                    }
                 }
+                else if (testAxis == Axis.X)
+                {
+
+                }
+
             }
 
             catch (Exception ex)
@@ -313,38 +306,6 @@ namespace SROB_NC
         #endregion
 
         #endregion
-    }
-
-    class Motionpoint
-    {
-        #region Constructors
-        public Motionpoint(Point_4D position, int motionNr)
-        {
-            Position = new Point_4D(position);
-            MotionNr = motionNr;
-        }
-        #endregion
-
-        #region Properties
-        public Point_4D Position { get; set; }
-        public int MotionNr { get; set; }
-
-        #endregion
-
-        #region Methods
-
-        #region Equals
-        public override bool Equals(object obj)
-        {
-            Motionpoint motionPoint = (Motionpoint)obj;
-
-            return Position.Equals(motionPoint.Position);
-        }
-
-        #endregion
-
-        #endregion
-
     }
 
 }

@@ -39,7 +39,7 @@ namespace Configuration
         public List<Shutter> ShutterList = new List<Shutter>();
 
         [XmlIgnore]
-        public Dictionary<string, Shutter> Shutters = new Dictionary<string, Shutter>();
+        public Dictionary<int, Shutter> Shutters = new Dictionary<int, Shutter>();
 
         #endregion
 
@@ -129,7 +129,7 @@ namespace Configuration
         #region Properties
 
         [XmlAttribute("Kennung")]
-        public string Key { get; set; }
+        public int Key { get; set; }
 
         [XmlAttribute("Name")]
         public string Name { get; set; }
