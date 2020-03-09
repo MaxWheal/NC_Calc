@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Configuration;
+using HelixToolkit.Wpf;
+using System;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
-using HelixToolkit.Wpf;
-using Configuration;
 using Geometries;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,8 +27,10 @@ namespace SROB_NC
 
         #region Properties
 
-        public BoxVisual3D Gripper { get; set; }
+        public BoxVisual3D MovingBody;
         //public DragableBox Gripper { get; set; }
+        public ModelVisual3D RestrictedAreas = new ModelVisual3D();
+        public ModelVisual3D MidPositions = new ModelVisual3D();
         #endregion
 
         #region Methods
@@ -37,6 +39,9 @@ namespace SROB_NC
         public void Initialize()
         {
             Children.Clear();
+            MidPositions.Children.Clear();
+            RestrictedAreas.Children.Clear();
+
             Children.Add(new DefaultLights());
 
             //ZeroPoint
@@ -58,39 +63,48 @@ namespace SROB_NC
                 new Point3D(Config.Params.Values["PAL_L"], Config.Params.Values["PAL_B"], 0),
                 Brushes.LightGray));
 
-            //Gripper
-            Gripper = new BoxVisual3D
+            //MovingBody
+            MovingBody = new BoxVisual3D
             {
-                Center = new Point3D(0, 0, 150),
                 Length = Config.Params.Values["GRIPPER_DIM[0]"],
                 Width = Config.Params.Values["GRIPPER_DIM[1]"],
                 Height = 300,
                 Fill = Brushes.DarkGray,
+                Center = new Point3D(0, 0, 150),
             };
 
-            Children.Add(Gripper);
+            MovingBody.Center = new Point3D(0, 0, MovingBody.Height/2);
+
+            Children.Add(MovingBody);
+
+            Children.Add(MidPositions);
 
             //Restricted areas (render at last for transparency to work)
             foreach (var area in Config.ResAreas.Areas)
             {
-                Children.Add(FilledBox(area.Start, area.End, new SolidColorBrush(Colors.Red.ChangeAlpha(150))));
+                RestrictedAreas.Children.Add(FilledBox(area.Start, area.End, new SolidColorBrush(Colors.Red.ChangeAlpha(150))));
+                //Children.Add(WireframeBox(area.Start, area.End, Brushes.Red));
             }
+
+            RedrawTransparants();
         }
+
         #endregion
+
 
         #region AddStartPosition
         /// <summary>
         /// Adds transparent box to viewport to show StartPosition
         /// </summary>
         /// <param name="value">4D position of StartPosition</param>
-        public void AddStartPosition(T_P_4D value)
+        public void AddMidPosition(Point_4D value, Size size)
         {
             var StartPosition = new BoxVisual3D
             {
-                Center = new Point3D(0, 0, 150),
-                Length = Config.Params.Values["GRIPPER_DIM[0]"],
-                Width = Config.Params.Values["GRIPPER_DIM[1]"],
-                Height = 300,
+                Center = new Point3D(0, 0, size.Height / 2),
+                Length = size.Length,
+                Width = size.Width,
+                Height = size.Height,
                 Fill = new SolidColorBrush(Colors.Green.ChangeAlpha(150))
             };
 
@@ -100,7 +114,7 @@ namespace SROB_NC
 
             StartPosition.Transform = new MatrixTransform3D(matrix);
 
-            Children.Add(StartPosition);
+            MidPositions.Children.Add(StartPosition);
         }
         #endregion
 
@@ -142,9 +156,11 @@ namespace SROB_NC
             try
             {
 
-                var path = new Point3DCollection();
-                path.Add(start);
-                path.Add(end);
+                var path = new Point3DCollection
+                {
+                    start,
+                    end
+                };
 
                 var cylinder = new TubeVisual3D
                 {
@@ -213,7 +229,7 @@ namespace SROB_NC
         /// <param name="size">Length or Diameter of projection</param>
         /// <param name="width">Optional: If assigned drawn as rectangle</param>
         /// <param name="projectionHeight">Optional height where projeciton is shown, if not assigned shown at max Height</param>
-        public void AddFlatProjection(T_P_2D center, double size, double width = 0,  double projectionHeight = 0)
+        public void AddFlatProjection(Point_2D center, double size, double width = 0, double projectionHeight = 0)
 
         {
             Visual3D projection;
@@ -222,7 +238,7 @@ namespace SROB_NC
             {
                 projection = new BoxVisual3D
                 {
-                    Center = new Point3D(0, 0, projectionHeight),
+                    Center = new Point3D(0, 0, -1),
                     Length = size,
                     Width = width,
                     Height = 1,
@@ -231,12 +247,12 @@ namespace SROB_NC
             }
             else
             {
-                projection = FilledCylinder(new Point3D(0, 0, projectionHeight- 0.5), new Point3D(0, 0, projectionHeight + 0.5), size,
+                projection = FilledCylinder(new Point3D(0, 0, -1), new Point3D(0, 0, 0), size,
                     new SolidColorBrush(Colors.MediumVioletRed.ChangeAlpha(150)));
             }
 
             Matrix3D matrix = new Matrix3D();
-            matrix.Translate(new Vector3D(center.X, center.Y, Config.Params.Values["MAX_H"]));
+            matrix.Translate(new Vector3D(center.X, center.Y, projectionHeight > 0 ? projectionHeight : Config.Params.Values["MAX_H"]));
 
             projection.Transform = new MatrixTransform3D(matrix);
 
@@ -250,21 +266,67 @@ namespace SROB_NC
         /// Adds list of points and plots as track
         /// </summary>
         /// <param name="points"></param>
-        internal void AddTrack(List<T_P_4D> points)
+        internal void AddTrack(List<Point_4D> points)
         {
-            if (points.Count < 2)
+            try
+            {
+                if (points.Count < 2)
+                    return;
+
+                for (int i = 1; i < points.Count; i++)
+                {
+                    var trace = new LinesVisual3D
+                    {
+                        Color = Brushes.Orange.Color,
+                        Thickness = 1
+                    };
+
+                    Children.Add(trace);
+
+                    trace.Points.Add(points[i - 1]);
+                    trace.Points.Add(points[i]);
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+        }
+
+        #endregion
+
+        #region AddPolyon
+        internal void AddPolygon(List<Point_2D> corners, double height)
+        {
+            if (corners.Count < 3)
                 return;
 
-            for (int i = 1; i < points.Count; i++)
-            {
-                var trace = new LinesVisual3D();
-                trace.Color = Brushes.Orange.Color;
-                trace.Thickness = 1;
-                Children.Add(trace);
+            var points = new List<Point_4D>();
 
-                trace.Points.Add(points[i - 1]);
-                trace.Points.Add(points[i]);
+            foreach (var corner in corners)
+            {
+                points.Add(new Point_4D(corner.X, corner.Y, height, 0));
             }
+
+            //To close Polygon
+            points.Add(new Point_4D(points[0]));
+
+            AddTrack(points);
+        }
+        #endregion
+
+        #region RedrawTranspObjects
+        /// <summary>
+        /// For tranparancy to work transparant objects must be drawn at last.
+        /// </summary>
+        public void RedrawTransparants()
+        {
+            Children.Remove(RestrictedAreas);
+
+            Children.Add(RestrictedAreas);
         }
 
         #endregion

@@ -9,22 +9,23 @@
         xmlns:local="clr-namespace:SROB_NC"
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="1300" FontFamily="Segoe UI">
+    
     <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisConverter"/>
         <Style TargetType="Label">
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Width" Value="100"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="MinWidth" Value="50"/>
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
         <Style TargetType="Button">
-            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="Background" Value="#dfe6e9"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Margin" Value="5"/>
             <Setter Property="Padding" Value="5"/>
             <Setter Property="FontSize" Value="20"/>
-            <Setter Property="MinWidth" Value="80"/>
         </Style>
     </Window.Resources>
     <Grid>
@@ -32,17 +33,21 @@
             <RowDefinition Height="50" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal">
+          <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Button x:Name="btnRefresh"  Content="Refresh" Click="Refresh_Click"/>
+            <Button x:Name="btnCalcStart" Content="Set Start" Click="CalcStart_Click"/>
+            <cc:ToggleSwitch CheckedText="Online"  Grid.Column="2" UncheckedText="Offline" IsChecked="{Binding ADS_Online}"/>
+            <ComboBox ItemsSource="{Binding SelectionShutters}"  DisplayMemberPath="Name" SelectedItem="{Binding SelectedShutter}" 
+                      Background="Transparent" Margin="5" FontSize="15" Width="150"/>
 
-            <Button x:Name="btnRefresh" Content="Refresh" Click="Refresh_Click"/>
-            <Button x:Name="btnCalcStart" Content="Set Startpoint" Click="CalcStart_Click"/>
-            <cc:ToggleSwitch CheckedText="Online" UncheckedText="Offline" IsChecked="{Binding ADS_Online}"/>
+                <Label x:Name="PoseX" Content="{Binding PosX}" MouseWheel="Target_OnMouseWheel" Foreground="{Binding CollisionMark}"/>
+                <Label x:Name="PoseY" Content="{Binding PosY}" MouseWheel="Target_OnMouseWheel"/>
+                <Label x:Name="PoseZ" Content="{Binding PosZ}" MouseWheel="Target_OnMouseWheel"/>
+                <Label x:Name="PoseC" Content="{Binding PosC}" MouseWheel="Target_OnMouseWheel"/>
 
-            <Label x:Name="PoseX" Content="{Binding PosX}" MouseWheel="target_OnMouseWheel"/>
-            <Label x:Name="PoseY" Content="{Binding PosY}" MouseWheel="target_OnMouseWheel"/>
-            <Label x:Name="PoseZ" Content="{Binding PosZ}" MouseWheel="target_OnMouseWheel"/>
-            <Label x:Name="PoseC" Content="{Binding PosC}" MouseWheel="target_OnMouseWheel"/>
+            <Slider x:Name="SliderResult" VerticalAlignment="Center" Value="{Binding ResultSweep}" Maximum="100" Margin="5" Width="250" Visibility="{Binding TrackValid, Converter={StaticResource BoolToVisConverter}}"/>
         </StackPanel>
+ 
         <local:GeoView x:Name="_viewport" Grid.Row="1"/>
     </Grid>
 </Window>

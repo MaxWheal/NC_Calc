@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <ParameterValues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Parameter Name="PAL_L">
-    <Values Value="13000" Unit="mm" Min="1" Max="100000" />
+    <Values Value="12500" Unit="mm" Min="1" Max="100000" />
     <Properties ZeroAllowed="0" Type="TypFloat" Level="1" SPS="1,ParPalL" />
   </Parameter>
   <Parameter Name="PAL_B">
-    <Values Value="3400" Unit="mm" Min="1" Max="13000" />
+    <Values Value="3000" Unit="mm" Min="1" Max="13000" />
     <Properties ZeroAllowed="0" Type="TypFloat" Level="1" SPS="0" />
   </Parameter>
   <Parameter Name="PAL_FASE">
@@ -14,7 +14,7 @@
   </Parameter>
   <Parameter Name="RANDSCHALUNGSHOEHE_1">
     <Dimension Index="0">
-      <Values Value="70" Unit="mm" Min="0" Max="600" />
+      <Values Value="60" Unit="mm" Min="0" Max="600" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="1">
@@ -22,7 +22,7 @@
       <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="70" Unit="mm" Min="0" Max="600" />
+      <Values Value="60" Unit="mm" Min="0" Max="600" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="3">
@@ -36,7 +36,7 @@
   </Parameter>
   <Parameter Name="RANDSCHALUNGSHOEHE_2">
     <Dimension Index="0">
-      <Values Value="70" Unit="mm" Min="0" Max="600" />
+      <Values Value="60" Unit="mm" Min="0" Max="600" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="1">
@@ -44,7 +44,7 @@
       <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="70" Unit="mm" Min="0" Max="600" />
+      <Values Value="60" Unit="mm" Min="0" Max="600" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="3">
@@ -335,7 +335,7 @@
     </Dimension>
   </Parameter>
   <Parameter Name="PAR_SET_MAXH_TO_DICKE">
-    <Values Value="0" Unit="bitcodiert" Min="0" Max="255" />
+    <Values Value="255" Unit="bitcodiert" Min="0" Max="255" />
     <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="ZYKLUSZEIT_AUTOMATIKABLAUF">
@@ -373,7 +373,7 @@
     </Dimension>
   </Parameter>
   <Parameter Name="FIX_PRODSTATNR">
-    <Values Value="1" Unit="-" Min="0" Max="2" />
+    <Values Value="0" Unit="-" Min="0" Max="2" />
     <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="DEFAULT_PRODSTATNR">
@@ -413,7 +413,7 @@
     <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="PALREINIGER">
-    <Values Value="1" Unit="-" Min="0" Max="1" />
+    <Values Value="0" Unit="-" Min="0" Max="1" />
     <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="0,ParPalReinigerVorhanden" />
   </Parameter>
   <Parameter Name="CALC_FREIFLAECHEN">
@@ -493,7 +493,7 @@
     <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="TUEREN">
-    <Values Value="1" Unit="Anzahl" Min="1" Max="5" />
+    <Values Value="3" Unit="Anzahl" Min="1" Max="5" />
     <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="0,ParAnzTueren" />
   </Parameter>
   <Parameter Name="PAR_HAMMER_SPS">
@@ -518,16 +518,16 @@
   </Parameter>
   <Parameter Name="ALAG_EINLAG_AB">
     <Dimension Index="0">
-      <Values Value="0" Unit="-" Min="0" Max="200" />
-      <Properties ZeroAllowed="1" Type="TypShort" Level="1" SPS="0" />
+      <Values Value="1" Unit="-" Min="0" Max="200" />
+      <Properties ZeroAllowed="0" Type="TypShort" Level="1" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="0" Unit="-" Min="0" Max="200" />
-      <Properties ZeroAllowed="1" Type="TypShort" Level="1" SPS="0" />
+      <Values Value="10" Unit="-" Min="0" Max="200" />
+      <Properties ZeroAllowed="0" Type="TypShort" Level="1" SPS="0" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="0" Unit="-" Min="0" Max="200" />
-      <Properties ZeroAllowed="1" Type="TypShort" Level="1" SPS="0" />
+      <Values Value="10" Unit="-" Min="0" Max="200" />
+      <Properties ZeroAllowed="0" Type="TypShort" Level="1" SPS="0" />
     </Dimension>
     <Dimension Index="3">
       <Values Value="10" Unit="-" Min="0" Max="200" />
@@ -554,25 +554,25 @@
       <Properties ZeroAllowed="0" Type="TypShort" Level="1" SPS="0" />
     </Dimension>
     <Dimension Index="9">
-      <Values Value="1" Unit="-" Min="0" Max="200" />
+      <Values Value="10" Unit="-" Min="0" Max="200" />
       <Properties ZeroAllowed="0" Type="TypShort" Level="1" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="FREE_ALAG_PLACES_BEFORE_DESHUTTERING">
     <Dimension Index="0">
-      <Values Value="0" Unit="Stk" Min="0" Max="10" />
+      <Values Value="1" Unit="Stk" Min="0" Max="10" />
       <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="0" Unit="Stk" Min="0" Max="10" />
+      <Values Value="1" Unit="Stk" Min="0" Max="10" />
       <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="0" Unit="Stk" Min="0" Max="10" />
+      <Values Value="1" Unit="Stk" Min="0" Max="10" />
       <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="3">
-      <Values Value="0" Unit="Stk" Min="0" Max="10" />
+      <Values Value="1" Unit="Stk" Min="0" Max="10" />
       <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="4">
@@ -601,7 +601,7 @@
     </Dimension>
   </Parameter>
   <Parameter Name="ZUTRITT_SYSTEM">
-    <Values Value="0" Unit="-" Min="0" Max="2" />
+    <Values Value="1" Unit="-" Min="0" Max="2" />
     <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="0,ParZutrittssystem" />
   </Parameter>
   <Parameter Name="RS_MOEGLICHE_PALTYPEN">
@@ -626,6 +626,10 @@
     <Values Value="0" Unit="-" Min="0" Max="1" />
     <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="0" />
   </Parameter>
+  <Parameter Name="PALREI_IM_BANDPROGRAMM">
+    <Values Value="1" Unit="-" Min="0" Max="1" />
+    <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,ParPalReinigerImBandprogramm" />
+  </Parameter>
   <Parameter Name="CAD_BER_NEU_STARTEN_BEI_PALWECHSEL">
     <Values Value="1" Unit="-" Min="0" Max="1" />
     <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="0" />
@@ -636,7 +640,7 @@
   </Parameter>
   <Parameter Name="ANZAHL_PULTE">
     <Values Value="1" Unit="-" Min="1" Max="2" />
-    <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="0,ParAnzahlPulte" />
+    <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="0,1,3,4,ParAnzahlPulte" />
   </Parameter>
   <Parameter Name="CADOEL_ANZDUESEN">
     <Values Value="6" Unit="Stk" Min="1" Max="10" />
@@ -644,81 +648,81 @@
   </Parameter>
   <Parameter Name="MIN_RAUM">
     <Dimension Index="0">
-      <Values Value="-500" Unit="mm" Min="-80000" Max="20000" />
+      <Values Value="-450" Unit="mm" Min="-80000" Max="20000" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="-100" Unit="mm" Min="-6000" Max="1000" />
+      <Values Value="-1030" Unit="mm" Min="-6000" Max="1000" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="MAX_RAUM">
     <Dimension Index="0">
-      <Values Value="14700" Unit="mm" Min="1000" Max="50000" />
+      <Values Value="13400" Unit="mm" Min="1000" Max="50000" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="4500" Unit="mm" Min="1000" Max="20000" />
+      <Values Value="3180" Unit="mm" Min="1000" Max="20000" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="MIN_RAUM_2">
     <Dimension Index="0">
-      <Values Value="-500" Unit="mm" Min="-80000" Max="3000" />
+      <Values Value="-450" Unit="mm" Min="-80000" Max="3000" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="-100" Unit="mm" Min="-6000" Max="1000" />
+      <Values Value="-1030" Unit="mm" Min="-6000" Max="1000" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="MAX_RAUM_2">
     <Dimension Index="0">
-      <Values Value="14700" Unit="mm" Min="1000" Max="50000" />
+      <Values Value="13400" Unit="mm" Min="1000" Max="50000" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="4500" Unit="mm" Min="1000" Max="20000" />
+      <Values Value="3180" Unit="mm" Min="1000" Max="20000" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="MIN_RAUM_KOLLISION">
     <Dimension Index="0">
-      <Values Value="-500" Unit="mm" Min="-80000" Max="8000" />
+      <Values Value="-450" Unit="mm" Min="-80000" Max="8000" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="-100" Unit="mm" Min="-6000" Max="1000" />
+      <Values Value="-1030" Unit="mm" Min="-6000" Max="1000" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="MAX_RAUM_KOLLISION">
     <Dimension Index="0">
-      <Values Value="14700" Unit="mm" Min="800" Max="50000" />
+      <Values Value="13400" Unit="mm" Min="800" Max="50000" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="4500" Unit="mm" Min="1000" Max="20000" />
+      <Values Value="3180" Unit="mm" Min="1000" Max="20000" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="MIN_POS_KOLLISION">
     <Dimension Index="0">
-      <Values Value="-500" Unit="mm" Min="-100000" Max="100000" />
+      <Values Value="-450" Unit="mm" Min="-100000" Max="100000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0,ParKollisionsgrenzeX_Min" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="-100" Unit="mm" Min="-10000" Max="10000" />
+      <Values Value="-1030" Unit="mm" Min="-10000" Max="10000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="MAX_POS_KOLLISION">
     <Dimension Index="0">
-      <Values Value="14700" Unit="mm" Min="-10000" Max="50000" />
+      <Values Value="13400" Unit="mm" Min="-10000" Max="50000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0,ParKollisionsgrenzeX_Max" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="4500" Unit="mm" Min="-10000" Max="20000" />
+      <Values Value="3180" Unit="mm" Min="-10000" Max="20000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
     </Dimension>
   </Parameter>
@@ -731,11 +735,11 @@
     <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="MAX_H">
-    <Values Value="1480" Unit="mm" Min="0" Max="2500" />
+    <Values Value="1160" Unit="mm" Min="0" Max="2500" />
     <Properties ZeroAllowed="0" Type="TypFloat" Level="1" SPS="0,ParMaxH" />
   </Parameter>
   <Parameter Name="MIN_H">
-    <Values Value="-50" Unit="mm" Min="-1000" Max="2000" />
+    <Values Value="-600" Unit="mm" Min="-1000" Max="2000" />
     <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
   </Parameter>
   <Parameter Name="KREUZSCH_AUS_AB">
@@ -876,15 +880,15 @@
   </Parameter>
   <Parameter Name="PAR_SW_ES_MIN">
     <Dimension Index="0">
-      <Values Value="40" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="-20" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0,ParSW_ES[1].Val[0]" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="0" Unit="mm" Min="-5000" Max="20000" />
+      <Values Value="-730" Unit="mm" Min="-5000" Max="20000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0,ParSW_ES[2].Val[0]" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="-55" Unit="mm" Min="-2000" Max="2000" />
+      <Values Value="0" Unit="mm" Min="-2000" Max="2000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0,ParSW_ES[3].Val[0]" />
     </Dimension>
     <Dimension Index="3">
@@ -894,15 +898,15 @@
   </Parameter>
   <Parameter Name="PAR_SW_ES_MAX">
     <Dimension Index="0">
-      <Values Value="13560" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="13060" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0,ParSW_ES[1].Val[1]" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="4235" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="2930" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0,ParSW_ES[2].Val[1]" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="1485" Unit="mm" Min="-2000" Max="2500" />
+      <Values Value="1170" Unit="mm" Min="-2000" Max="2500" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0,ParSW_ES[3].Val[1]" />
     </Dimension>
     <Dimension Index="3">
@@ -924,16 +928,16 @@
   </Parameter>
   <Parameter Name="ENTNAHMEPOS1">
     <Dimension Index="0">
-      <Values Value="1570" Unit="mm" Min="-30000" Max="30000" />
+      <Values Value="90" Unit="mm" Min="-30000" Max="30000" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="1" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="-370" Unit="mm" Min="-10000" Max="10000" />
-      <Properties ZeroAllowed="0" Type="TypFloat" Level="1" SPS="0" />
+      <Values Value="1,5" Unit="mm" Min="-10000" Max="10000" />
+      <Properties ZeroAllowed="1" Type="TypFloat" Level="1" SPS="0" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="500" Unit="mm" Min="-300" Max="12000" />
-      <Properties ZeroAllowed="0" Type="TypFloat" Level="1" SPS="0" />
+      <Values Value="-17" Unit="mm" Min="-300" Max="1200" />
+      <Properties ZeroAllowed="1" Type="TypFloat" Level="1" SPS="0" />
     </Dimension>
     <Dimension Index="3">
       <Values Value="0.00" Unit="deg" Min="-95" Max="280" />
@@ -944,11 +948,11 @@
       <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="5">
-      <Values Value="7" Unit="-" Min="0" Max="10" />
-      <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,ParEntnahmeTypen[1]" />
+      <Values Value="4" Unit="-" Min="0" Max="10" />
+      <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,3,ParEntnahmeTypen[1]" />
     </Dimension>
     <Dimension Index="6">
-      <Values Value="0" Unit="-" Min="0" Max="2" />
+      <Values Value="1" Unit="-" Min="0" Max="2" />
       <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="0,4,ParEntnahmenZuordnung[1]" />
     </Dimension>
     <Dimension Index="7">
@@ -956,25 +960,25 @@
       <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="0" />
     </Dimension>
     <Dimension Index="8">
-      <Values Value="0" Unit="-" Min="0" Max="2" />
-      <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="0" />
+      <Values Value="1" Unit="-" Min="0" Max="2" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="0" />
     </Dimension>
     <Dimension Index="9">
-      <Values Value="0" Unit="-" Min="0" Max="2" />
+      <Values Value="1" Unit="-" Min="-300" Max="12000" />
       <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="ENTNAHMEPOS2">
     <Dimension Index="0">
-      <Values Value="3030" Unit="mm" Min="0" Max="20000" />
+      <Values Value="3049" Unit="mm" Min="0" Max="20000" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="1" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="-720" Unit="mm" Min="-1500" Max="8000" />
-      <Properties ZeroAllowed="0" Type="TypFloat" Level="1" SPS="0" />
+      <Values Value="-699" Unit="mm" Min="-1000" Max="1000" />
+      <Properties ZeroAllowed="1" Type="TypFloat" Level="1" SPS="0" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="200" Unit="mm" Min="-200" Max="12000" />
+      <Values Value="828" Unit="mm" Min="-1000" Max="1000" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="1" SPS="0" />
     </Dimension>
     <Dimension Index="3">
@@ -986,8 +990,8 @@
       <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="5">
-      <Values Value="0" Unit="-" Min="0" Max="10" />
-      <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,ParEntnahmeTypen[2]" />
+      <Values Value="10" Unit="-" Min="0" Max="11" />
+      <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,3,ParEntnahmeTypen[2]" />
     </Dimension>
     <Dimension Index="6">
       <Values Value="0" Unit="-" Min="0" Max="2" />
@@ -1002,8 +1006,8 @@
       <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="0" />
     </Dimension>
     <Dimension Index="9">
-      <Values Value="4" Unit="-" Min="0" Max="6" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="0" />
+      <Values Value="2" Unit="mm" Min="0" Max="12" />
+      <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="ENTNAHMEPOS3">
@@ -1029,7 +1033,7 @@
     </Dimension>
     <Dimension Index="5">
       <Values Value="0" Unit="-" Min="0" Max="10" />
-      <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,ParEntnahmeTypen[3]" />
+      <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,3,ParEntnahmeTypen[3]" />
     </Dimension>
     <Dimension Index="6">
       <Values Value="1" Unit="-" Min="0" Max="2" />
@@ -1071,7 +1075,7 @@
     </Dimension>
     <Dimension Index="5">
       <Values Value="0" Unit="-" Min="0" Max="10" />
-      <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,ParEntnahmeTypen[4]" />
+      <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,3,ParEntnahmeTypen[4]" />
     </Dimension>
     <Dimension Index="6">
       <Values Value="1" Unit="-" Min="0" Max="2" />
@@ -1113,7 +1117,7 @@
     </Dimension>
     <Dimension Index="5">
       <Values Value="0" Unit="-" Min="0" Max="10" />
-      <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,ParEntnahmeTypen[5]" />
+      <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,3,ParEntnahmeTypen[5]" />
     </Dimension>
     <Dimension Index="6">
       <Values Value="0" Unit="-" Min="0" Max="2" />
@@ -1155,7 +1159,7 @@
     </Dimension>
     <Dimension Index="5">
       <Values Value="0" Unit="-" Min="0" Max="10" />
-      <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,ParEntnahmeTypen[6]" />
+      <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,3,ParEntnahmeTypen[6]" />
     </Dimension>
     <Dimension Index="6">
       <Values Value="0" Unit="-" Min="0" Max="2" />
@@ -1176,19 +1180,19 @@
   </Parameter>
   <Parameter Name="GRUNDSTELLUNG">
     <Dimension Index="0">
-      <Values Value="1500" Unit="mm" Min="-3150" Max="15500" />
+      <Values Value="1000" Unit="mm" Min="-3150" Max="15500" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="1" SPS="0,ParPosGrundstellung[1]" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="1625" Unit="mm" Min="-1000" Max="6000" />
+      <Values Value="1000" Unit="mm" Min="-1000" Max="6000" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="1" SPS="0,ParPosGrundstellung[2]" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="1400" Unit="mm" Min="0" Max="2200" />
+      <Values Value="1000" Unit="mm" Min="0" Max="2200" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="1" SPS="0,ParPosGrundstellung[3]" />
     </Dimension>
     <Dimension Index="3">
-      <Values Value="0" Unit="deg" Min="-95" Max="185" />
+      <Values Value="0.00" Unit="deg" Min="-95" Max="185" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0,ParPosGrundstellung[4]" />
     </Dimension>
   </Parameter>
@@ -1332,11 +1336,11 @@
   </Parameter>
   <Parameter Name="TESTPOSITION">
     <Dimension Index="0">
-      <Values Value="7000" Unit="mm" Min="-10000" Max="20000" />
+      <Values Value="12000" Unit="mm" Min="-10000" Max="20000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="4000" Unit="mm" Min="-10000" Max="10000" />
+      <Values Value="1700" Unit="mm" Min="-10000" Max="10000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="2">
@@ -1615,7 +1619,7 @@
     <Properties ZeroAllowed="1" Type="TypShort" Level="4" SPS="0" />
   </Parameter>
   <Parameter Name="ENTNAHME_ANZ">
-    <Values Value="0" Unit="-" Min="0" Max="100" />
+    <Values Value="2" Unit="-" Min="0" Max="100" />
     <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="LAGER_OFFS">
@@ -1714,11 +1718,11 @@
       <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="0" Unit="mm" Min="-100000" Max="100000" />
+      <Values Value="6" Unit="mm" Min="-100000" Max="100000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="0" Unit="mm" Min="-1000" Max="1000" />
+      <Values Value="1" Unit="mm" Min="-1000" Max="1000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="3">
@@ -1800,7 +1804,7 @@
   </Parameter>
   <Parameter Name="OFFS_MAGUNFIX">
     <Dimension Index="0">
-      <Values Value="-59" Unit="mm" Min="-500" Max="500" />
+      <Values Value="59" Unit="mm" Min="-500" Max="500" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
@@ -1812,7 +1816,7 @@
       <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="3">
-      <Values Value="90" Unit="deg" Min="-500" Max="500" />
+      <Values Value="0" Unit="deg" Min="-500" Max="500" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
@@ -1862,8 +1866,8 @@
   </Parameter>
   <Parameter Name="ALAG_ABST">
     <Dimension Index="0">
-      <Values Value="-200" Unit="mm" Min="-500" Max="500" />
-      <Properties ZeroAllowed="0" Type="TypFloat" Level="1" SPS="ParAlagFachweite" />
+      <Values Value="-160" Unit="mm" Min="-500" Max="500" />
+      <Properties ZeroAllowed="0" Type="TypFloat" Level="1" SPS="4,ParAlagFachweite" />
     </Dimension>
     <Dimension Index="1">
       <Values Value="-100" Unit="mm" Min="-500" Max="300.0" />
@@ -1904,15 +1908,15 @@
   </Parameter>
   <Parameter Name="ALAG1_POS">
     <Dimension Index="0">
-      <Values Value="3680" Unit="mm" Min="-15000" Max="20110" />
+      <Values Value="3673" Unit="mm" Min="-15000" Max="20110" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="1" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="3515" Unit="mm" Min="-4000" Max="15000" />
+      <Values Value="3631" Unit="mm" Min="-4000" Max="15000" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="1" SPS="4,ParAlagErstesErreichbaresFachPosY" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="840" Unit="mm" Min="0" Max="2000" />
+      <Values Value="100" Unit="mm" Min="0" Max="2000" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="1" SPS="0" />
     </Dimension>
     <Dimension Index="3">
@@ -2411,56 +2415,56 @@
   <Parameter Name="ALAG_LAGERTYP">
     <Dimension Index="0">
       <Values Value="1" Unit="-" Min="0" Max="1" />
-      <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="1,ParALagLagerTyp[1]" />
+      <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="1,3,ParALagLagerTyp[1]" />
     </Dimension>
     <Dimension Index="1">
       <Values Value="1" Unit="-" Min="0" Max="1" />
-      <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="1,ParALagLagerTyp[2]" />
+      <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="1,3,ParALagLagerTyp[2]" />
     </Dimension>
     <Dimension Index="2">
       <Values Value="1" Unit="-" Min="0" Max="1" />
-      <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="1,ParALagLagerTyp[3]" />
+      <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="1,3,ParALagLagerTyp[3]" />
     </Dimension>
     <Dimension Index="3">
       <Values Value="1" Unit="-" Min="0" Max="1" />
-      <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="1,ParALagLagerTyp[4]" />
+      <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="1,3,ParALagLagerTyp[4]" />
     </Dimension>
     <Dimension Index="4">
       <Values Value="1" Unit="-" Min="0" Max="1" />
-      <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="1,ParALagLagerTyp[5]" />
+      <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="1,3,ParALagLagerTyp[5]" />
     </Dimension>
     <Dimension Index="5">
       <Values Value="0" Unit="-" Min="0" Max="1" />
-      <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="1,ParALagLagerTyp[6]" />
+      <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="1,3,ParALagLagerTyp[6]" />
     </Dimension>
     <Dimension Index="6">
       <Values Value="0" Unit="-" Min="0" Max="1" />
-      <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="1,ParALagLagerTyp[7]" />
+      <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="1,3,ParALagLagerTyp[7]" />
     </Dimension>
     <Dimension Index="7">
       <Values Value="0" Unit="-" Min="0" Max="1" />
-      <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="1,ParALagLagerTyp[8]" />
+      <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="1,3,ParALagLagerTyp[8]" />
     </Dimension>
     <Dimension Index="8">
       <Values Value="0" Unit="-" Min="0" Max="1" />
-      <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="1,ParALagLagerTyp[9]" />
+      <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="1,3,ParALagLagerTyp[9]" />
     </Dimension>
     <Dimension Index="9">
       <Values Value="0" Unit="-" Min="0" Max="1" />
-      <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="1,ParALagLagerTyp[10]" />
+      <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="1,3,ParALagLagerTyp[10]" />
     </Dimension>
   </Parameter>
   <Parameter Name="ALAG_USE_MIN">
     <Dimension Index="0">
-      <Values Value="1" Unit="-" Min="0" Max="200" />
+      <Values Value="8" Unit="-" Min="0" Max="200" />
       <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="4,ParAlagErstesErreichbaresFachNr" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="1" Unit="-" Min="0" Max="200" />
+      <Values Value="9" Unit="-" Min="0" Max="200" />
       <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="1" Unit="-" Min="0" Max="200" />
+      <Values Value="9" Unit="-" Min="0" Max="200" />
       <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="3">
@@ -2494,15 +2498,15 @@
   </Parameter>
   <Parameter Name="ALAG_USE_MAX">
     <Dimension Index="0">
-      <Values Value="15" Unit="-" Min="0" Max="200" />
+      <Values Value="11" Unit="-" Min="0" Max="200" />
       <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="15" Unit="-" Min="0" Max="200" />
+      <Values Value="11" Unit="-" Min="0" Max="200" />
       <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="14" Unit="-" Min="0" Max="200" />
+      <Values Value="11" Unit="-" Min="0" Max="200" />
       <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="3">
@@ -2536,115 +2540,115 @@
   </Parameter>
   <Parameter Name="ALAG_WAIT_FOR_MOVE_TO">
     <Values Value="15000" Unit="ms" Min="1" Max="60000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,ParTOALagRdyToMove" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,3,ParTOALagRdyToMove" />
   </Parameter>
   <Parameter Name="ALAG_SCHWENKAUFAB">
     <Values Value="5000" Unit="ms" Min="1" Max="60000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,ParTOSchwenkHebenSenken" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,3,ParTOSchwenkHebenSenken" />
   </Parameter>
   <Parameter Name="ALAG_SCHIEBER_VOR_ZURUECK">
     <Values Value="20000" Unit="ms" Min="1" Max="60000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,ParTOSchieberVorZurueck" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,3,ParTOSchieberVorZurueck" />
   </Parameter>
   <Parameter Name="ALAG_TO_TAKTEN_ERLAUBT">
     <Values Value="30000" Unit="ms" Min="1" Max="180000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,ParTOALagWaitForTakten" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,3,ParTOALagWaitForTakten" />
   </Parameter>
   <Parameter Name="ALAG_TO_TAKTEN_ONEPLACE">
     <Values Value="10000" Unit="ms" Min="1" Max="60000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,ParTOALagTaktenOnePlace" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,3,ParTOALagTaktenOnePlace" />
   </Parameter>
   <Parameter Name="ALAG_TO_HEBENSENKEN">
     <Values Value="10000" Unit="ms" Min="1" Max="60000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParTOALagerHebenSenken" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParTOALagerHebenSenken" />
   </Parameter>
   <Parameter Name="ALAG_IMPULSE_MIN">
     <Dimension Index="0">
       <Values Value="14" Unit="1" Min="0" Max="30" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagImpulseMinRob[1]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagImpulseMinRob[1]" />
     </Dimension>
     <Dimension Index="1">
       <Values Value="0" Unit="1" Min="0" Max="20" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagImpulseMinRob[2]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagImpulseMinRob[2]" />
     </Dimension>
     <Dimension Index="2">
       <Values Value="7" Unit="1" Min="1" Max="20" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagImpulseMinRob[3]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagImpulseMinRob[3]" />
     </Dimension>
     <Dimension Index="3">
       <Values Value="7" Unit="1" Min="1" Max="20" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagImpulseMinRob[4]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagImpulseMinRob[4]" />
     </Dimension>
     <Dimension Index="4">
       <Values Value="7" Unit="1" Min="1" Max="20" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagImpulseMinRob[5]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagImpulseMinRob[5]" />
     </Dimension>
     <Dimension Index="5">
       <Values Value="7" Unit="1" Min="1" Max="20" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagImpulseMinRob[6]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagImpulseMinRob[6]" />
     </Dimension>
     <Dimension Index="6">
       <Values Value="7" Unit="1" Min="1" Max="20" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagImpulseMinRob[7]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagImpulseMinRob[7]" />
     </Dimension>
     <Dimension Index="7">
       <Values Value="7" Unit="1" Min="1" Max="20" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagImpulseMinRob[8]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagImpulseMinRob[8]" />
     </Dimension>
     <Dimension Index="8">
       <Values Value="7" Unit="1" Min="1" Max="20" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagImpulseMinRob[9]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagImpulseMinRob[9]" />
     </Dimension>
     <Dimension Index="9">
       <Values Value="7" Unit="1" Min="1" Max="20" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagImpulseMinRob[10]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagImpulseMinRob[10]" />
     </Dimension>
   </Parameter>
   <Parameter Name="ALAG_IMPULSE_MAX">
     <Dimension Index="0">
       <Values Value="17" Unit="1" Min="1" Max="30" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagImpulseMaxRob[1]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagImpulseMaxRob[1]" />
     </Dimension>
     <Dimension Index="1">
       <Values Value="9" Unit="1" Min="1" Max="20" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagImpulseMaxRob[2]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagImpulseMaxRob[2]" />
     </Dimension>
     <Dimension Index="2">
       <Values Value="9" Unit="1" Min="1" Max="20" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagImpulseMaxRob[3]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagImpulseMaxRob[3]" />
     </Dimension>
     <Dimension Index="3">
       <Values Value="9" Unit="1" Min="1" Max="20" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagImpulseMaxRob[4]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagImpulseMaxRob[4]" />
     </Dimension>
     <Dimension Index="4">
       <Values Value="9" Unit="1" Min="1" Max="20" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagImpulseMaxRob[5]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagImpulseMaxRob[5]" />
     </Dimension>
     <Dimension Index="5">
       <Values Value="9" Unit="1" Min="1" Max="20" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagImpulseMaxRob[6]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagImpulseMaxRob[6]" />
     </Dimension>
     <Dimension Index="6">
       <Values Value="9" Unit="1" Min="1" Max="20" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagImpulseMaxRob[7]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagImpulseMaxRob[7]" />
     </Dimension>
     <Dimension Index="7">
       <Values Value="9" Unit="1" Min="1" Max="20" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagImpulseMaxRob[8]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagImpulseMaxRob[8]" />
     </Dimension>
     <Dimension Index="8">
       <Values Value="9" Unit="1" Min="1" Max="20" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagImpulseMaxRob[9]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagImpulseMaxRob[9]" />
     </Dimension>
     <Dimension Index="9">
       <Values Value="9" Unit="1" Min="1" Max="20" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagImpulseMaxRob[10]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagImpulseMaxRob[10]" />
     </Dimension>
   </Parameter>
   <Parameter Name="ALAG_ANZ">
-    <Values Value="3" Unit="Stk" Min="0" Max="10" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,ParALagAnzALags" />
+    <Values Value="1" Unit="Stk" Min="0" Max="10" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,3,ParALagAnzALags" />
   </Parameter>
   <Parameter Name="ALAG_TO_IDENTIFIZIERUNG">
     <Values Value="2000" Unit="ms" Min="0" Max="100000" />
@@ -2653,98 +2657,98 @@
   <Parameter Name="ALAG_APIS_EINLAGERPOS">
     <Dimension Index="0">
       <Values Value="1" Unit="-" Min="1" Max="150" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagAPISEinlagerpos[1]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagAPISEinlagerpos[1]" />
     </Dimension>
     <Dimension Index="1">
       <Values Value="1" Unit="-" Min="1" Max="150" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagAPISEinlagerpos[2]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagAPISEinlagerpos[2]" />
     </Dimension>
     <Dimension Index="2">
       <Values Value="1" Unit="-" Min="1" Max="150" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagAPISEinlagerpos[3]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagAPISEinlagerpos[3]" />
     </Dimension>
     <Dimension Index="3">
       <Values Value="1" Unit="-" Min="1" Max="150" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagAPISEinlagerpos[4]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagAPISEinlagerpos[4]" />
     </Dimension>
     <Dimension Index="4">
       <Values Value="1" Unit="-" Min="1" Max="150" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagAPISEinlagerpos[5]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagAPISEinlagerpos[5]" />
     </Dimension>
     <Dimension Index="5">
       <Values Value="1" Unit="-" Min="1" Max="150" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagAPISEinlagerpos[6]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagAPISEinlagerpos[6]" />
     </Dimension>
     <Dimension Index="6">
       <Values Value="1" Unit="-" Min="1" Max="150" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagAPISEinlagerpos[7]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagAPISEinlagerpos[7]" />
     </Dimension>
     <Dimension Index="7">
       <Values Value="1" Unit="-" Min="1" Max="150" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagAPISEinlagerpos[8]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagAPISEinlagerpos[8]" />
     </Dimension>
     <Dimension Index="8">
       <Values Value="1" Unit="-" Min="1" Max="150" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagAPISEinlagerpos[9]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagAPISEinlagerpos[9]" />
     </Dimension>
     <Dimension Index="9">
       <Values Value="1" Unit="-" Min="1" Max="150" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagAPISEinlagerpos[10]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagAPISEinlagerpos[10]" />
     </Dimension>
   </Parameter>
   <Parameter Name="ALAG_MWIS_EINLAGERPOS">
     <Dimension Index="0">
       <Values Value="1" Unit="Pos" Min="1" Max="200" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagMWISEinlagerpos[1]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagMWISEinlagerpos[1]" />
     </Dimension>
     <Dimension Index="1">
       <Values Value="2" Unit="Pos" Min="1" Max="200" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagMWISEinlagerpos[2]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagMWISEinlagerpos[2]" />
     </Dimension>
     <Dimension Index="2">
       <Values Value="2" Unit="Pos" Min="1" Max="200" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagMWISEinlagerpos[3]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagMWISEinlagerpos[3]" />
     </Dimension>
     <Dimension Index="3">
       <Values Value="2" Unit="Pos" Min="1" Max="200" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagMWISEinlagerpos[4]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagMWISEinlagerpos[4]" />
     </Dimension>
     <Dimension Index="4">
       <Values Value="2" Unit="Pos" Min="1" Max="200" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagMWISEinlagerpos[5]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagMWISEinlagerpos[5]" />
     </Dimension>
     <Dimension Index="5">
       <Values Value="2" Unit="Pos" Min="1" Max="200" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagMWISEinlagerpos[6]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagMWISEinlagerpos[6]" />
     </Dimension>
     <Dimension Index="6">
       <Values Value="2" Unit="Pos" Min="1" Max="200" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagMWISEinlagerpos[7]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagMWISEinlagerpos[7]" />
     </Dimension>
     <Dimension Index="7">
       <Values Value="2" Unit="Pos" Min="1" Max="200" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagMWISEinlagerpos[8]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagMWISEinlagerpos[8]" />
     </Dimension>
     <Dimension Index="8">
       <Values Value="2" Unit="Pos" Min="1" Max="200" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagMWISEinlagerpos[9]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagMWISEinlagerpos[9]" />
     </Dimension>
     <Dimension Index="9">
       <Values Value="2" Unit="Pos" Min="1" Max="200" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagMWISEinlagerpos[10]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagMWISEinlagerpos[10]" />
     </Dimension>
   </Parameter>
   <Parameter Name="ALAG_WAIT_AFTER_LIFTING">
     <Values Value="200" Unit="ms" Min="1" Max="100000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,ParALagWaitAfterLifting" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,3,ParALagWaitAfterLifting" />
   </Parameter>
   <Parameter Name="ALAG_WAITAFTERMOVEAHEAD">
     <Values Value="500" Unit="ms" Min="1" Max="100000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,ParALagWaitAfterMoveAHead" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,3,ParALagWaitAfterMoveAHead" />
   </Parameter>
   <Parameter Name="ALAG_WAITAFTERMOVING_BACK">
     <Values Value="500" Unit="ms" Min="1" Max="100000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,ParALagWaitAfterMoveBack" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,3,ParALagWaitAfterMoveBack" />
   </Parameter>
   <Parameter Name="ALAG_ANZ_FAECHER_PRO_TAKT_ROB">
     <Values Value="1" Unit="-" Min="1" Max="2" />
@@ -2752,19 +2756,19 @@
   </Parameter>
   <Parameter Name="TO_HEBER">
     <Values Value="20000" Unit="ms" Min="0" Max="20000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,ParTOHeber" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,3,ParTOHeber" />
   </Parameter>
   <Parameter Name="TO_WARTEN_ANSCHLAG_ZBA_VORN">
     <Values Value="2000" Unit="ms" Min="0" Max="10000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="2" SPS="1,ParTOWartenAnschlagZBA" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="2" SPS="1,3,ParTOWartenAnschlagZBA" />
   </Parameter>
   <Parameter Name="ALAGQUER_IMPULSE_MIN">
     <Values Value="5" Unit="-" Min="1" Max="20" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,ParALagImpulseMinQuer" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,3,ParALagImpulseMinQuer" />
   </Parameter>
   <Parameter Name="ALAG_QUER_IMPULSE_MAX">
     <Values Value="10" Unit="-" Min="1" Max="20" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,ParALagImpulseMaxQuer" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,3,ParALagImpulseMaxQuer" />
   </Parameter>
   <Parameter Name="ALAG_ANZ_FAECHER_PRO_TAKT_QUER">
     <Values Value="1" Unit="-" Min="1" Max="2" />
@@ -2777,52 +2781,52 @@
   <Parameter Name="ALAG_FUELLNR_ENTNBAND">
     <Dimension Index="0">
       <Values Value="1" Unit="-" Min="1" Max="100" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagNr_ZurBandEntn[1]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagNr_ZurBandEntn[1]" />
     </Dimension>
     <Dimension Index="1">
       <Values Value="1" Unit="-" Min="1" Max="100" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagNr_ZurBandEntn[2]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagNr_ZurBandEntn[2]" />
     </Dimension>
     <Dimension Index="2">
       <Values Value="1" Unit="-" Min="1" Max="100" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagNr_ZurBandEntn[3]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagNr_ZurBandEntn[3]" />
     </Dimension>
     <Dimension Index="3">
       <Values Value="1" Unit="-" Min="1" Max="100" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagNr_ZurBandEntn[4]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagNr_ZurBandEntn[4]" />
     </Dimension>
     <Dimension Index="4">
       <Values Value="1" Unit="-" Min="1" Max="100" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagNr_ZurBandEntn[5]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagNr_ZurBandEntn[5]" />
     </Dimension>
     <Dimension Index="5">
       <Values Value="1" Unit="-" Min="1" Max="100" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagNr_ZurBandEntn[6]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagNr_ZurBandEntn[6]" />
     </Dimension>
     <Dimension Index="6">
       <Values Value="1" Unit="-" Min="1" Max="100" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagNr_ZurBandEntn[7]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagNr_ZurBandEntn[7]" />
     </Dimension>
     <Dimension Index="7">
       <Values Value="1" Unit="-" Min="1" Max="100" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagNr_ZurBandEntn[8]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagNr_ZurBandEntn[8]" />
     </Dimension>
     <Dimension Index="8">
       <Values Value="1" Unit="-" Min="1" Max="100" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagNr_ZurBandEntn[9]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagNr_ZurBandEntn[9]" />
     </Dimension>
     <Dimension Index="9">
       <Values Value="1" Unit="-" Min="1" Max="100" />
-      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParALagNr_ZurBandEntn[10]" />
+      <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParALagNr_ZurBandEntn[10]" />
     </Dimension>
   </Parameter>
   <Parameter Name="TO_HEBEN_ZUFUHR2ENTNBND">
     <Values Value="10000" Unit="ms" Min="1" Max="20000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,ParTO_Heben_ALag2SchBnd" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,3,ParTO_Heben_ALag2SchBnd" />
   </Parameter>
   <Parameter Name="TO_FAHREN_ZUFUHR2ENTNBND">
     <Values Value="10000" Unit="ms" Min="1" Max="20000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,ParTO_Fahren2EntnBnd1" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,3,ParTO_Fahren2EntnBnd1" />
   </Parameter>
   <Parameter Name="TO_SENKEN_ZUFUHR2ENTNBND">
     <Values Value="10000" Unit="ms" Min="1" Max="20000" />
@@ -2835,43 +2839,43 @@
   <Parameter Name="ALAG_IMPULSE_MIN_ANFAHREN">
     <Dimension Index="0">
       <Values Value="-1" Unit="-" Min="-1" Max="20" />
-      <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,ParALagImpulseMinAnfahren[1]" />
+      <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,3,ParALagImpulseMinAnfahren[1]" />
     </Dimension>
     <Dimension Index="1">
       <Values Value="-1" Unit="-" Min="-1" Max="20" />
-      <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,ParALagImpulseMinAnfahren[2]" />
+      <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,3,ParALagImpulseMinAnfahren[2]" />
     </Dimension>
     <Dimension Index="2">
       <Values Value="-1" Unit="-" Min="-1" Max="20" />
-      <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,ParALagImpulseMinAnfahren[3]" />
+      <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,3,ParALagImpulseMinAnfahren[3]" />
     </Dimension>
     <Dimension Index="3">
       <Values Value="2" Unit="-" Min="0" Max="20" />
-      <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,ParALagImpulseMinAnfahren[4]" />
+      <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,3,ParALagImpulseMinAnfahren[4]" />
     </Dimension>
     <Dimension Index="4">
       <Values Value="2" Unit="-" Min="0" Max="20" />
-      <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,ParALagImpulseMinAnfahren[5]" />
+      <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,3,ParALagImpulseMinAnfahren[5]" />
     </Dimension>
     <Dimension Index="5">
       <Values Value="2" Unit="-" Min="0" Max="20" />
-      <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,ParALagImpulseMinAnfahren[6]" />
+      <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,3,ParALagImpulseMinAnfahren[6]" />
     </Dimension>
     <Dimension Index="6">
       <Values Value="2" Unit="-" Min="0" Max="20" />
-      <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,ParALagImpulseMinAnfahren[7]" />
+      <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,3,ParALagImpulseMinAnfahren[7]" />
     </Dimension>
     <Dimension Index="7">
       <Values Value="2" Unit="-" Min="0" Max="20" />
-      <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,ParALagImpulseMinAnfahren[8]" />
+      <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,3,ParALagImpulseMinAnfahren[8]" />
     </Dimension>
     <Dimension Index="8">
       <Values Value="2" Unit="-" Min="0" Max="20" />
-      <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,ParALagImpulseMinAnfahren[9]" />
+      <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,3,ParALagImpulseMinAnfahren[9]" />
     </Dimension>
     <Dimension Index="9">
       <Values Value="2" Unit="-" Min="0" Max="20" />
-      <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,ParALagImpulseMinAnfahren[10]" />
+      <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,3,ParALagImpulseMinAnfahren[10]" />
     </Dimension>
   </Parameter>
   <Parameter Name="VERWABANZPAL">
@@ -2879,54 +2883,54 @@
     <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="USE_ALAG">
-    <Values Value="0" Unit="-" Min="0" Max="1" />
+    <Values Value="1" Unit="-" Min="0" Max="1" />
     <Properties ZeroAllowed="1" Type="TypShort" Level="1" SPS="0" />
   </Parameter>
   <Parameter Name="ALAG_ANZAHL_FACH">
     <Dimension Index="0">
-      <Values Value="15" Unit="-" Min="0" Max="1000" />
-      <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,4,ParALagAnzFaecherRob[1]" />
+      <Values Value="11" Unit="-" Min="0" Max="1000" />
+      <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,3,4,ParALagAnzFaecherRob[1]" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="15" Unit="-" Min="0" Max="1000" />
-      <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,ParALagAnzFaecherRob[2]" />
+      <Values Value="11" Unit="-" Min="0" Max="1000" />
+      <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,3,ParALagAnzFaecherRob[2]" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="14" Unit="-" Min="0" Max="1000" />
-      <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,ParALagAnzFaecherRob[3]" />
+      <Values Value="11" Unit="-" Min="0" Max="1000" />
+      <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,3,ParALagAnzFaecherRob[3]" />
     </Dimension>
     <Dimension Index="3">
       <Values Value="11" Unit="-" Min="0" Max="1000" />
-      <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,ParALagAnzFaecherRob[4]" />
+      <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,3,ParALagAnzFaecherRob[4]" />
     </Dimension>
     <Dimension Index="4">
       <Values Value="11" Unit="-" Min="0" Max="1000" />
-      <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,ParALagAnzFaecherRob[5]" />
+      <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,3,ParALagAnzFaecherRob[5]" />
     </Dimension>
     <Dimension Index="5">
       <Values Value="46" Unit="-" Min="0" Max="1000" />
-      <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,ParALagAnzFaecherRob[6]" />
+      <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,3,ParALagAnzFaecherRob[6]" />
     </Dimension>
     <Dimension Index="6">
       <Values Value="47" Unit="-" Min="0" Max="1000" />
-      <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,ParALagAnzFaecherRob[7]" />
+      <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,3,ParALagAnzFaecherRob[7]" />
     </Dimension>
     <Dimension Index="7">
       <Values Value="48" Unit="-" Min="0" Max="1000" />
-      <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,ParALagAnzFaecherRob[8]" />
+      <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,3,ParALagAnzFaecherRob[8]" />
     </Dimension>
     <Dimension Index="8">
       <Values Value="49" Unit="-" Min="0" Max="1000" />
-      <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,ParALagAnzFaecherRob[9]" />
+      <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,3,ParALagAnzFaecherRob[9]" />
     </Dimension>
     <Dimension Index="9">
       <Values Value="50" Unit="-" Min="0" Max="1000" />
-      <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,ParALagAnzFaecherRob[10]" />
+      <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,3,ParALagAnzFaecherRob[10]" />
     </Dimension>
   </Parameter>
   <Parameter Name="ALAG_ANZAHL_FACH_QUERF">
     <Values Value="0" Unit="-" Min="0" Max="1000" />
-    <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,ParALagAnzFaecherQuer" />
+    <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,3,ParALagAnzFaecherQuer" />
   </Parameter>
   <Parameter Name="ANZ_ZUGRIFFVERSUCHE_ALAG">
     <Values Value="3" Unit="-" Min="2" Max="10" />
@@ -3018,11 +3022,11 @@
   </Parameter>
   <Parameter Name="ALAG_ZUORDNUNG">
     <Dimension Index="0">
-      <Values Value="0" Unit="-" Min="0" Max="2" />
+      <Values Value="1" Unit="-" Min="0" Max="2" />
       <Properties ZeroAllowed="1" Type="TypShort" Level="9" SPS="0,4,ParAlagZuordnung[1]" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="0" Unit="-" Min="0" Max="2" />
+      <Values Value="1" Unit="-" Min="0" Max="2" />
       <Properties ZeroAllowed="1" Type="TypShort" Level="9" SPS="0,4,ParAlagZuordnung[2]" />
     </Dimension>
     <Dimension Index="2">
@@ -3060,7 +3064,7 @@
   </Parameter>
   <Parameter Name="GR1_OFFS">
     <Dimension Index="0">
-      <Values Value="-160" Unit="mm" Min="-600" Max="600" />
+      <Values Value="-130" Unit="mm" Min="-600" Max="600" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="1" SPS="0" />
     </Dimension>
     <Dimension Index="1">
@@ -3070,7 +3074,7 @@
   </Parameter>
   <Parameter Name="GR2_OFFS">
     <Dimension Index="0">
-      <Values Value="160" Unit="mm" Min="-600" Max="600" />
+      <Values Value="130" Unit="mm" Min="-600" Max="600" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="1" SPS="0" />
     </Dimension>
     <Dimension Index="1">
@@ -3099,19 +3103,19 @@
     </Dimension>
   </Parameter>
   <Parameter Name="GREIFER_LAENGE_EINZELN">
-    <Values Value="125" Unit="mm" Min="1" Max="400" />
+    <Values Value="100" Unit="mm" Min="1" Max="400" />
     <Properties ZeroAllowed="0" Type="TypFloat" Level="1" SPS="0" />
   </Parameter>
   <Parameter Name="GREIFER_BREITE_EINZELN">
-    <Values Value="250" Unit="mm" Min="1" Max="400" />
+    <Values Value="200" Unit="mm" Min="1" Max="400" />
     <Properties ZeroAllowed="0" Type="TypFloat" Level="1" SPS="0" />
   </Parameter>
   <Parameter Name="GREIFER_KOPF_L_GES">
-    <Values Value="520" Unit="mm" Min="1" Max="2000" />
+    <Values Value="500" Unit="mm" Min="1" Max="2000" />
     <Properties ZeroAllowed="0" Type="TypFloat" Level="1" SPS="0,ParGreiferDim.Length" />
   </Parameter>
   <Parameter Name="GREIFER_KOPF_B_GES">
-    <Values Value="250" Unit="mm" Min="1" Max="1000" />
+    <Values Value="300" Unit="mm" Min="1" Max="1000" />
     <Properties ZeroAllowed="0" Type="TypFloat" Level="1" SPS="0,ParGreiferDim.Width" />
   </Parameter>
   <Parameter Name="GR_TAUCHWEG">
@@ -3123,11 +3127,11 @@
     <Properties ZeroAllowed="0" Type="TypFloat" Level="3" SPS="ParHALaenge" />
   </Parameter>
   <Parameter Name="VERRIEGELUNGSABST_GR1">
-    <Values Value="-160" Unit="mm" Min="-1000" Max="1000" />
+    <Values Value="-210" Unit="mm" Min="-1000" Max="1000" />
     <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="VERRIEGELUNGSABST_GR2">
-    <Values Value="160" Unit="mm" Min="-1000" Max="1000" />
+    <Values Value="210" Unit="mm" Min="-1000" Max="1000" />
     <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="VERRIEGELUNGSABST_GR3">
@@ -3211,7 +3215,7 @@
     <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="GREIFER_LAENGE_OHNE_HILFSGREIFER">
-    <Values Value="125" Unit="mm" Min="0" Max="150" />
+    <Values Value="100" Unit="mm" Min="0" Max="100" />
     <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="KLINKER_TEILUNGSMASZ">
@@ -3245,15 +3249,15 @@
     </Dimension>
   </Parameter>
   <Parameter Name="GREIFERFINGER_LAENGE">
-    <Values Value="130" Unit="mm" Min="0" Max="1000" />
+    <Values Value="90" Unit="mm" Min="0" Max="1000" />
     <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="GREIFERFINGER_BREITE">
-    <Values Value="27" Unit="mm" Min="0" Max="1000" />
+    <Values Value="20" Unit="mm" Min="0" Max="1000" />
     <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="GREIFERFINGER_OEFFNUNG">
-    <Values Value="130" Unit="mm" Min="0" Max="1000" />
+    <Values Value="200" Unit="mm" Min="0" Max="1000" />
     <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="HOEHE_UNTERKANTE_GREIFERKOPF">
@@ -3270,15 +3274,15 @@
   </Parameter>
   <Parameter Name="PAR_SCHALER_SENSOR_SCHALTPUNKT">
     <Dimension Index="0">
-      <Values Value="71,5" Unit="mm" Min="0" Max="500" />
+      <Values Value="100" Unit="mm" Min="0" Max="500" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="3" SPS="0,ParSchalerSchaltpunkt[1]" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="74,6" Unit="mm" Min="0" Max="500" />
+      <Values Value="100" Unit="mm" Min="0" Max="500" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="3" SPS="0,ParSchalerSchaltpunkt[2]" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="46080" Unit="mm" Min="0" Max="500" />
+      <Values Value="265" Unit="mm" Min="0" Max="500" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="3" SPS="0,ParSchalerSchaltpunkt[3]" />
     </Dimension>
     <Dimension Index="3">
@@ -3414,7 +3418,7 @@
       <Properties ZeroAllowed="0" Type="TypFloat" Level="3" SPS="0,ParFasenSchaltpunkt[2]" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="124" Unit="mm" Min="0" Max="500" />
+      <Values Value="256" Unit="mm" Min="0" Max="500" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="3" SPS="0,ParFasenSchaltpunkt[3]" />
     </Dimension>
     <Dimension Index="3">
@@ -3537,7 +3541,7 @@
     <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="0,ParAnzahlHA" />
   </Parameter>
   <Parameter Name="ANZ_VERREINH">
-    <Values Value="0" Unit="Stk" Min="0" Max="2" />
+    <Values Value="2" Unit="Stk" Min="0" Max="2" />
     <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="0,ParVerreigelungenAnzahl" />
   </Parameter>
   <Parameter Name="GR_GESCHLOSSEN_MELDUNG">
@@ -3565,7 +3569,7 @@
     <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="0,ParMagnetGreiferHatWegverkuerzung" />
   </Parameter>
   <Parameter Name="MAGNETFIXIER_WERKZEUG">
-    <Values Value="0" Unit="-" Min="0" Max="1" />
+    <Values Value="1" Unit="-" Min="0" Max="1" />
     <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="0,ParMagnetFixierwerkzeug" />
   </Parameter>
   <Parameter Name="GREIFERKOPF_EIGENSCHAFTEN">
@@ -3590,15 +3594,15 @@
   </Parameter>
   <Parameter Name="PAR_SENSORTYP_TEIL_IM_GREIFER_ERKENNUNG">
     <Dimension Index="0">
-      <Values Value="3" Unit="-" Min="0" Max="3" />
+      <Values Value="1" Unit="-" Min="0" Max="2" />
       <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="0,ParSensortypTeilImGreifer[1]" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="3" Unit="-" Min="0" Max="3" />
+      <Values Value="1" Unit="-" Min="0" Max="2" />
       <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="0,ParSensortypTeilImGreifer[2]" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="2" Unit="-" Min="0" Max="3" />
+      <Values Value="2" Unit="-" Min="0" Max="2" />
       <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="0,ParSensortypTeilImGreifer[3]" />
     </Dimension>
     <Dimension Index="3">
@@ -3618,7 +3622,7 @@
       <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="0,ParSensortypTeilImGreifer[7]" />
     </Dimension>
     <Dimension Index="7">
-      <Values Value="1" Unit="-" Min="0" Max="3" />
+      <Values Value="1" Unit="-" Min="0" Max="2" />
       <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="0,ParSensortypTeilImGreifer[8]" />
     </Dimension>
   </Parameter>
@@ -3917,7 +3921,7 @@
     <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="MIT_2TER_DRUCKSTUFE">
-    <Values Value="110" Unit="-" Min="0" Max="255" />
+    <Values Value="111" Unit="-" Min="0" Max="255" />
     <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="SCHALERBEWEGUNG_MIT_HA_AUSGEFAHREN">
@@ -3937,7 +3941,7 @@
     <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="HA_SENKEN_BEI_FAHRT_ZU_ENTNAHME">
-    <Values Value="0" Unit="-" Min="0" Max="1" />
+    <Values Value="1" Unit="-" Min="0" Max="1" />
     <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="MAMMUT_ENTNAHMEHEBUNG">
@@ -3945,11 +3949,11 @@
     <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="HA_UNTEN_LASSEN_MAGNET_AUSLOESEN_ED">
-    <Values Value="0" Unit="-" Min="0" Max="1" />
+    <Values Value="1" Unit="-" Min="0" Max="1" />
     <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="HA_UNTEN_LASSEN_MAGNET_AUSLOESEN_MW">
-    <Values Value="0" Unit="-" Min="0" Max="1" />
+    <Values Value="1" Unit="-" Min="0" Max="1" />
     <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="VERZ_START_OEL_NUR_1X">
@@ -3969,7 +3973,7 @@
     <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="SET_MODE_SCHALER">
-    <Values Value="0" Unit="-" Min="0" Max="6" />
+    <Values Value="7" Unit="-" Min="0" Max="7" />
     <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="SETMODE_MAG">
@@ -4041,7 +4045,7 @@
     <Properties ZeroAllowed="1" Type="TypShort" Level="1" SPS="0" />
   </Parameter>
   <Parameter Name="PROD_ORDER_EINLAGER">
-    <Values Value="3" Unit="-" Min="-1" Max="7" />
+    <Values Value="-1" Unit="-" Min="-1" Max="7" />
     <Properties ZeroAllowed="1" Type="TypShort" Level="1" SPS="0" />
   </Parameter>
   <Parameter Name="PROD_ORDER_REIN_WASSER">
@@ -4093,7 +4097,7 @@
     <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="PROD_ORDER_SCHALER_BAND">
-    <Values Value="-1" Unit="-" Min="-1" Max="10" />
+    <Values Value="1" Unit="-" Min="-1" Max="10" />
     <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="PROD_ORDER_MAG_UMLAGERN">
@@ -4101,7 +4105,7 @@
     <Properties ZeroAllowed="1" Type="TypShort" Level="1" SPS="0" />
   </Parameter>
   <Parameter Name="PROD_ORDER_ENTSCHALEN">
-    <Values Value="2" Unit="-" Min="-1" Max="7" />
+    <Values Value="-1" Unit="-" Min="-1" Max="7" />
     <Properties ZeroAllowed="1" Type="TypShort" Level="1" SPS="0" />
   </Parameter>
   <Parameter Name="RANDABSCHALER_OELEN">
@@ -4125,7 +4129,7 @@
     <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="PROD_ORDER_EBT_MAGNET">
-    <Values Value="-1" Unit="-" Min="-1" Max="9" />
+    <Values Value="2" Unit="-" Min="-1" Max="9" />
     <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="PROD_ORDER_SCHALER_UMBAUEN">
@@ -4133,7 +4137,7 @@
     <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="HEBE_MAG_LOESE_WERKZEUG">
-    <Values Value="1" Unit="-" Min="0" Max="1" />
+    <Values Value="0" Unit="-" Min="0" Max="1" />
     <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="0,ParMagloeseWerkzeugHeben" />
   </Parameter>
   <Parameter Name="PROD_ORDER_ALAG_LUECKEN_FUELLEN">
@@ -4154,10 +4158,10 @@
   </Parameter>
   <Parameter Name="SMS_MODUS_UMBAU">
     <Values Value="0" Unit="-" Min="0" Max="2" />
-    <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,ParSMSUmbauModus" />
+    <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,3,ParSMSUmbauModus" />
   </Parameter>
   <Parameter Name="NC_NAECHSTES_NC_FILE_SET_SCHALER">
-    <Values Value="0" Unit="-" Min="0" Max="1" />
+    <Values Value="1" Unit="-" Min="0" Max="1" />
     <Properties ZeroAllowed="1" Type="TypShort" Level="9" SPS="0" />
   </Parameter>
   <Parameter Name="SMS_NACH_ZERLEGEN_AUF_RUECKFUEHRBAND">
@@ -4408,7 +4412,7 @@
   </Parameter>
   <Parameter Name="PALREIN_ANLAUFVERZOEGERUNG">
     <Values Value="2000" Unit="ms" Min="0" Max="10000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,ParAnlaufverzoegerungPalRein" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,3,ParAnlaufverzoegerungPalRein" />
   </Parameter>
   <Parameter Name="Z_ACHSE_REGLERFREIGABE_VERZOEGERT_WEG">
     <Values Value="300" Unit="ms" Min="0" Max="5000" />
@@ -4568,19 +4572,19 @@
   </Parameter>
   <Parameter Name="V_MAX">
     <Dimension Index="0">
-      <Values Value="3900" Unit="mm/s" Min="0" Max="5500" />
+      <Values Value="3150" Unit="mm/s" Min="0" Max="5500" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="4" SPS="0,ParMaxGeschwindigkeit[1]" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="3200" Unit="mm/s" Min="0" Max="3450" />
+      <Values Value="2500" Unit="mm/s" Min="0" Max="3450" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="4" SPS="0,ParMaxGeschwindigkeit[2]" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="1900" Unit="mm/s" Min="0" Max="3500" />
+      <Values Value="1000" Unit="mm/s" Min="0" Max="3500" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="4" SPS="0,ParMaxGeschwindigkeit[3]" />
     </Dimension>
     <Dimension Index="3">
-      <Values Value="145" Unit="deg/s" Min="0" Max="2000" />
+      <Values Value="90" Unit="deg/s" Min="0" Max="2000" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="4" SPS="0,ParMaxGeschwindigkeit[4]" />
     </Dimension>
   </Parameter>
@@ -4615,7 +4619,7 @@
     <Properties ZeroAllowed="0" Type="TypFloat" Level="3" SPS="0,ParMaxBahngeschwindigkeitSLS" />
   </Parameter>
   <Parameter Name="HROB_LAGER_Z_OVERRIDE">
-    <Values Value="10" Unit="%" Min="0" Max="100" />
+    <Values Value="40" Unit="%" Min="0" Max="100" />
     <Properties ZeroAllowed="0" Type="TypFloat" Level="9" SPS="0" />
   </Parameter>
   <Parameter Name="V_ABLAGE_SMS_UMBAUSTATION">
@@ -4685,7 +4689,7 @@
     <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="0" />
   </Parameter>
   <Parameter Name="V_TAUCH">
-    <Values Value="1" Unit="%" Min="1" Max="100" />
+    <Values Value="3" Unit="%" Min="1" Max="100" />
     <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="0,ParTauchGeschw" />
   </Parameter>
   <Parameter Name="V_MAG_REST">
@@ -4752,13 +4756,13 @@
       <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="0,ParHandOverride[3]" />
     </Dimension>
     <Dimension Index="3">
-      <Values Value="10" Unit="%" Min="1" Max="100" />
+      <Values Value="20" Unit="%" Min="1" Max="100" />
       <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="0,ParHandOverride[4]" />
     </Dimension>
   </Parameter>
   <Parameter Name="ANLAGENOVERRIDE">
     <Dimension Index="0">
-      <Values Value="100" Unit="%" Min="1" Max="100" />
+      <Values Value="50" Unit="%" Min="1" Max="100" />
       <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="0,ParOverride" />
     </Dimension>
     <Dimension Index="1">
@@ -4792,18 +4796,18 @@
   </Parameter>
   <Parameter Name="SPALT_ZU_QA">
     <Values Value="1" Unit="mm" Min="0" Max="20" />
-    <Properties ZeroAllowed="0" Type="TypFloat" Level="1" SPS="0" />
+    <Properties ZeroAllowed="1" Type="TypFloat" Level="1" SPS="0" />
   </Parameter>
   <Parameter Name="SPALT_ANF">
-    <Values Value="2" Unit="mm" Min="0" Max="30" />
-    <Properties ZeroAllowed="0" Type="TypFloat" Level="1" SPS="0" />
+    <Values Value="1" Unit="mm" Min="0" Max="30" />
+    <Properties ZeroAllowed="1" Type="TypFloat" Level="1" SPS="0" />
   </Parameter>
   <Parameter Name="MIN_L_SCHAL_AUSSEN">
-    <Values Value="500" Unit="mm" Min="1" Max="20000" />
+    <Values Value="400" Unit="mm" Min="1" Max="20000" />
     <Properties ZeroAllowed="0" Type="TypFloat" Level="1" SPS="0" />
   </Parameter>
   <Parameter Name="MIN_L_SCHAL_INNEN">
-    <Values Value="2500" Unit="mm" Min="1" Max="20000" />
+    <Values Value="400" Unit="mm" Min="1" Max="20000" />
     <Properties ZeroAllowed="0" Type="TypFloat" Level="1" SPS="0" />
   </Parameter>
   <Parameter Name="MAG_EINRUECKEN">
@@ -4903,7 +4907,7 @@
     <Properties ZeroAllowed="0" Type="TypFloat" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="VORAB_POS_SETZWINKEL_ED">
-    <Values Value="85" Unit="deg" Min="45" Max="90" />
+    <Values Value="82" Unit="deg" Min="45" Max="90" />
     <Properties ZeroAllowed="0" Type="TypFloat" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="SI_ABST_SCHRAEG_SETZEN_ED">
@@ -5153,7 +5157,7 @@
     <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="SPALT_ENDE">
-    <Values Value="2" Unit="mm" Min="0" Max="100" />
+    <Values Value="1" Unit="mm" Min="0" Max="100" />
     <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="SPALT_GEERKENS">
@@ -5162,7 +5166,7 @@
   </Parameter>
   <Parameter Name="VERB_SPALT_BIS_MAX">
     <Dimension Index="0">
-      <Values Value="500" Unit="mm" Min="0" Max="5000" />
+      <Values Value="0" Unit="mm" Min="0" Max="5000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
@@ -5199,20 +5203,20 @@
     <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="ABST_MARK_MITTELPUNKT_SCHALER">
-    <Values Value="230" Unit="mm" Min="-500" Max="500" />
+    <Values Value="-230" Unit="mm" Min="-500" Max="500" />
     <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="SETZ_WEITE_LASER_KALIB">
-    <Values Value="1800" Unit="mm" Min="500" Max="2000" />
+    <Values Value="1500" Unit="mm" Min="500" Max="2000" />
     <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="LASER_KAL_POS">
     <Dimension Index="0">
-      <Values Value="2500" Unit="mm" Min="-1000" Max="20000" />
+      <Values Value="7500" Unit="mm" Min="-1000" Max="20000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="1625" Unit="mm" Min="-1000" Max="10000" />
+      <Values Value="1200" Unit="mm" Min="-1000" Max="10000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
@@ -5229,11 +5233,11 @@
     <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="MANIPULIERE_ELEMENTDICKE_BIS">
-    <Values Value="70" Unit="mm" Min="0" Max="100" />
+    <Values Value="300" Unit="mm" Min="0" Max="300" />
     <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="MANIPULIERE_ELEMENTDICKE_AUF">
-    <Values Value="60" Unit="mm" Min="0" Max="100" />
+    <Values Value="70" Unit="mm" Min="0" Max="300" />
     <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="QA_SETZPOS_Y">
@@ -5255,12 +5259,12 @@
     </Dimension>
   </Parameter>
   <Parameter Name="KOMBI_OPTISCHALLAENGE_RESTLAENGENVORTEIL">
-    <Values Value="100" Unit="mm" Min="0" Max="500" />
+    <Values Value="0" Unit="mm" Min="0" Max="500" />
     <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="ULB_DATENOFFSET">
     <Dimension Index="0">
-      <Values Value="180" Unit="mm" Min="-2000" Max="2000" />
+      <Values Value="0" Unit="mm" Min="-2000" Max="2000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
@@ -5443,11 +5447,11 @@
     <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="KOMBI_OPTISCHALLAENGE_MAXMEHR">
-    <Values Value="1" Unit="-" Min="0" Max="10" />
+    <Values Value="5" Unit="-" Min="0" Max="10" />
     <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="MW_AKTIVES_SYSTEM">
-    <Values Value="0" Unit="-" Min="0" Max="13" />
+    <Values Value="14" Unit="-" Min="0" Max="14" />
     <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="PS_QA_ERSETZEN_MIT_LA">
@@ -5572,7 +5576,7 @@
   </Parameter>
   <Parameter Name="QA_AUF_FIXPOS_SETZEN">
     <Values Value="0" Unit="ja/nein" Min="0" Max="1" />
-    <Properties ZeroAllowed="0" Type="TypShort" Level="1" SPS="0" />
+    <Properties ZeroAllowed="1" Type="TypShort" Level="1" SPS="0" />
   </Parameter>
   <Parameter Name="CAD_CHKUMLAUFSINN">
     <Values Value="1" Unit="ja/nein" Min="0" Max="1" />
@@ -5603,15 +5607,15 @@
     <Properties ZeroAllowed="0" Type="TypShort" Level="1" SPS="0" />
   </Parameter>
   <Parameter Name="USE_ANSCHLUSS_QA">
-    <Values Value="0" Unit="1" Min="0" Max="1" />
+    <Values Value="1" Unit="1" Min="0" Max="1" />
     <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="FASE_MANIPULIEREN_LOESCHEN">
-    <Values Value="0" Unit="binaererCode" Min="0" Max="255" />
+    <Values Value="248" Unit="binaererCode" Min="0" Max="255" />
     <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="FASE_MANIPULIEREN_SETZEN">
-    <Values Value="0" Unit="binaererCode" Min="0" Max="255" />
+    <Values Value="1" Unit="binaererCode" Min="0" Max="255" />
     <Properties ZeroAllowed="1" Type="TypShort" Level="2" SPS="0" />
   </Parameter>
   <Parameter Name="PS_DO_KORREKTUR_X">
@@ -5685,7 +5689,7 @@
     <Properties ZeroAllowed="1" Type="TypShort" Level="1" SPS="0" />
   </Parameter>
   <Parameter Name="MANIPULIERE_ELEMENTDICKE_PALTYPEN">
-    <Values Value="4" Unit="bitcodiert" Min="0" Max="255" />
+    <Values Value="255" Unit="bitcodiert" Min="0" Max="255" />
     <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="KIPPKANTE_PALETTE">
@@ -5708,7 +5712,7 @@
   </Parameter>
   <Parameter Name="FASE_MANIPULIEREN_SETZEN_NACH_QA">
     <Values Value="0" Unit="binaererCode" Min="0" Max="255" />
-    <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="0" />
+    <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="FASE_MANIPULIEREN_VONNACH_VONFASE">
     <Dimension Index="0">
@@ -5755,7 +5759,7 @@
     </Dimension>
   </Parameter>
   <Parameter Name="SH_SCHALUNGS_BER_ART_YPARALLEL_ZUERST_NACH_QA">
-    <Values Value="0" Unit="bitcodiert" Min="0" Max="255" />
+    <Values Value="255" Unit="bitcodiert" Min="0" Max="255" />
     <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="CAD_NICHT_SETZBARE_KURZE_SCHALER_TAUSCHEN">
@@ -5764,59 +5768,59 @@
   </Parameter>
   <Parameter Name="BND_KOMM_EROB_SROB">
     <Values Value="0" Unit="-" Min="0" Max="2" />
-    <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="1,ParBandKommSRobERob" />
+    <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="1,3,ParBandKommSRobERob" />
   </Parameter>
   <Parameter Name="SMS_AUFLSCHLITTEN_REFPOS">
     <Values Value="815" Unit="mm" Min="-10000" Max="10000" />
-    <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="1,ParRefPosAuflageschlitten" />
+    <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="1,3,ParRefPosAuflageschlitten" />
   </Parameter>
   <Parameter Name="ALAG_TIME_MOVEFAST_FORWARD">
     <Values Value="4000" Unit="ms" Min="1" Max="120000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParTimeForRapidPositioningForward" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParTimeForRapidPositioningForward" />
   </Parameter>
   <Parameter Name="ALAG_TIME_MOVEFAST_BACK">
     <Values Value="4000" Unit="ms" Min="1" Max="120000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,ParTimeForRapidPositioningBack" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,3,ParTimeForRapidPositioningBack" />
   </Parameter>
   <Parameter Name="MAGBND_NLZ_ZUFUHR">
-    <Values Value="120000" Unit="ms" Min="10" Max="1000000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,ParMagZufBnd_NLZ" />
+    <Values Value="120000" Unit="ms" Min="10" Max="1" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,3,ParMagZufBnd_NLZ" />
   </Parameter>
   <Parameter Name="MAGBND_NLZ_ABFUHR">
     <Values Value="60000" Unit="ms" Min="1" Max="180000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,ParMagAbfBnd_NLZ" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,3,ParMagAbfBnd_NLZ" />
   </Parameter>
   <Parameter Name="MAGBND_TREIBER_VERZ">
     <Values Value="500" Unit="ms" Min="1" Max="60000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,ParMagTreiberVerz" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,3,ParMagTreiberVerz" />
   </Parameter>
   <Parameter Name="MAGBND_KLEMM_TO">
     <Values Value="10000" Unit="ms" Min="1" Max="10000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,ParTOMagKlemmenAufZu" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,3,ParTOMagKlemmenAufZu" />
   </Parameter>
   <Parameter Name="MAGBND_ANSCHLAG">
     <Values Value="2000" Unit="ms" Min="1" Max="60000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,ParTOAnschlAufZu" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,3,ParTOAnschlAufZu" />
   </Parameter>
   <Parameter Name="MAGBND_WARTENAUFMAG">
     <Values Value="7000" Unit="ms" Min="1" Max="60000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,ParTOWartenAufMagVorne" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,3,ParTOWartenAufMagVorne" />
   </Parameter>
   <Parameter Name="MAGBND_MIN_WARTENMAGVOR">
     <Values Value="6000" Unit="ms" Min="1" Max="60000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,ParTOMinWartezeitMagVorfahren" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,3,ParTOMinWartezeitMagVorfahren" />
   </Parameter>
   <Parameter Name="MAGBND_MINZEIT_ZW_LADEN">
     <Values Value="8000" Unit="ms" Min="1" Max="60000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,ParMinZeitZwNeuLadenMag" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,3,ParMinZeitZwNeuLadenMag" />
   </Parameter>
   <Parameter Name="SCHBND_NLZ_ZUFUHR">
     <Values Value="60000" Unit="ms" Min="1" Max="500000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,ParMWISZufBnd_NLZ" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,3,ParMWISZufBnd_NLZ" />
   </Parameter>
   <Parameter Name="SCHBND_NLZ_ABFUHR">
     <Values Value="60000" Unit="ms" Min="1" Max="120000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,ParMWISAbfBnd_NLZ" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,3,ParMWISAbfBnd_NLZ" />
   </Parameter>
   <Parameter Name="SCHBND_TREIBER_VERZ">
     <Values Value="500" Unit="ms" Min="1" Max="60000" />
@@ -5824,43 +5828,43 @@
   </Parameter>
   <Parameter Name="SCHBND_SCHSTOP_AUFZU">
     <Values Value="2000" Unit="ms" Min="1" Max="60000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,ParTOSchStopAuf" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,3,ParTOSchStopAuf" />
   </Parameter>
   <Parameter Name="SCHBND_WAIT_ON_ANSCHLAG">
     <Values Value="2000" Unit="ms" Min="1" Max="60000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,ParWaitOnAnschlag" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,3,ParWaitOnAnschlag" />
   </Parameter>
   <Parameter Name="SCHBND_TO_ZUM_ANSCHLAG">
     <Values Value="20000" Unit="ms" Min="1" Max="60000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,ParTOSchZumAnschlag" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,3,ParTOSchZumAnschlag" />
   </Parameter>
   <Parameter Name="SCHBND_ENTPRELLEN_SCHSTOP">
     <Values Value="3000" Unit="ms" Min="1" Max="60000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,ParEntprellenSchStop" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,3,ParEntprellenSchStop" />
   </Parameter>
   <Parameter Name="SCHBND_MELDEN_AN_ALAG">
     <Values Value="30000" Unit="ms" Min="1" Max="60000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,ParTOSchMeldenAnALag" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,3,ParTOSchMeldenAnALag" />
   </Parameter>
   <Parameter Name="MAGBND_WARTEN_AUFMAG_VOR_FUELLEN">
     <Values Value="4000" Unit="ms" Min="1" Max="60000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,ParWartezeitVorNachfuellen" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,3,ParWartezeitVorNachfuellen" />
   </Parameter>
   <Parameter Name="MAGBND_NLZ_REINIGER">
     <Values Value="1000" Unit="ms" Min="1" Max="60000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParMagRein_NLZ" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParMagRein_NLZ" />
   </Parameter>
   <Parameter Name="MAGBND_WARTEZEIT_ENTN">
     <Values Value="1000" Unit="ms" Min="1" Max="60000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParMagMinAnEntnFuerFreigabe" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParMagMinAnEntnFuerFreigabe" />
   </Parameter>
   <Parameter Name="SCHBND_NLZ_REINIGER">
     <Values Value="30000" Unit="ms" Min="1" Max="60000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParMWISRein_NLZ" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParMWISRein_NLZ" />
   </Parameter>
   <Parameter Name="SCH_WAIT_BEFORE_IDENT">
     <Values Value="2000" Unit="ms" Min="1" Max="60000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParSchWaitBeforeIdent" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParSchWaitBeforeIdent" />
   </Parameter>
   <Parameter Name="WAIT_FOR_CLOSE_STOPPER">
     <Values Value="200" Unit="ms" Min="0" Max="10000" />
@@ -5876,51 +5880,51 @@
   </Parameter>
   <Parameter Name="TREIBER_TO_FREIFOERDERN">
     <Values Value="10000" Unit="ms" Min="0" Max="20000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,ParTOFreifoerdern" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,3,ParTOFreifoerdern" />
   </Parameter>
   <Parameter Name="SCHALERSCHABER_HEBEN_TO">
     <Values Value="10000" Unit="ms" Min="0" Max="20000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,ParTOSchalerSchaberObenHeben" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,3,ParTOSchalerSchaberObenHeben" />
   </Parameter>
   <Parameter Name="TREIBER_TO_AUFZU">
     <Values Value="10000" Unit="ms" Min="0" Max="20000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,ParTOTreiberAufZu" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,3,ParTOTreiberAufZu" />
   </Parameter>
   <Parameter Name="TREIBER_TO_EINZIEHEN">
     <Values Value="10000" Unit="ms" Min="0" Max="20000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,ParTreiberEinziehenTO" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,3,ParTreiberEinziehenTO" />
   </Parameter>
   <Parameter Name="TO_SCHABER_APIS_WEG">
     <Values Value="10000" Unit="ms" Min="0" Max="20000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,ParTOSchaberApisWeg" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,3,ParTOSchaberApisWeg" />
   </Parameter>
   <Parameter Name="TO_BUERSTEN_APIS_WEG">
     <Values Value="10000" Unit="ms" Min="0" Max="20000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,ParTOBuersteApisWeg" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,3,ParTOBuersteApisWeg" />
   </Parameter>
   <Parameter Name="KONTURSCHABER_TO_WEG">
     <Values Value="10000" Unit="ms" Min="0" Max="20000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,ParTOKonturSchaberMWWeg" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,3,ParTOKonturSchaberMWWeg" />
   </Parameter>
   <Parameter Name="KONTURBUERSTEN_TO_WEG">
     <Values Value="10000" Unit="ms" Min="0" Max="20000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,ParTOKonturBuersteMWWeg" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,3,ParTOKonturBuersteMWWeg" />
   </Parameter>
   <Parameter Name="KONTURBUERSTEN_WEG_BEI_CHG">
     <Values Value="2000" Unit="ms" Min="0" Max="20000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,ParTimeKonturBuersteWegBeiChg" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,3,ParTimeKonturBuersteWegBeiChg" />
   </Parameter>
   <Parameter Name="BND_ENTPRELLEN_GEBER_ALLG">
     <Values Value="200" Unit="ms" Min="1" Max="10000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,ParEntprellAllg" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,3,ParEntprellAllg" />
   </Parameter>
   <Parameter Name="TKTBND_NLZ_WEG">
     <Values Value="0" Unit="ms" Min="0" Max="60000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,ParNLZTaktbahnAbtransport" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,3,ParNLZTaktbahnAbtransport" />
   </Parameter>
   <Parameter Name="SCHBND_VEREINZ_TREIBER">
     <Values Value="0" Unit="ms" Min="0" Max="60000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,ParNLZ_SchVereinzTreiber" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,3,ParNLZ_SchVereinzTreiber" />
   </Parameter>
   <Parameter Name="ANZEIGE_IDENTIFIZIERUNG">
     <Values Value="1" Unit="-" Min="0" Max="1" />
@@ -5936,11 +5940,11 @@
   </Parameter>
   <Parameter Name="CLEAN_SENSORS_BLASDAUER">
     <Values Value="0" Unit="ms" Min="0" Max="120000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,ParLSReinigen_Blasen_Zeit" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,3,ParLSReinigen_Blasen_Zeit" />
   </Parameter>
   <Parameter Name="CLEAN_SENSORS_PAUSEDAUER">
     <Values Value="0" Unit="ms" Min="0" Max="120000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,ParLSReinigen_Pause_Zeit" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,3,ParLSReinigen_Pause_Zeit" />
   </Parameter>
   <Parameter Name="ZEIGE_IDENT_APIS">
     <Values Value="0" Unit="-" Min="0" Max="1" />
@@ -5952,15 +5956,15 @@
   </Parameter>
   <Parameter Name="SCHBND_NLZ_ZUF_APIS">
     <Values Value="60000" Unit="ms" Min="1" Max="300000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,ParAPISZufBnd_NLZ" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,3,ParAPISZufBnd_NLZ" />
   </Parameter>
   <Parameter Name="SCHBND_APIS_NLZ_ABFUHR">
     <Values Value="120000" Unit="ms" Min="1" Max="300000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,ParAPISAbfBnd_NLZ" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,3,ParAPISAbfBnd_NLZ" />
   </Parameter>
   <Parameter Name="SCHBND_NLZ_REIN_APIS">
     <Values Value="400" Unit="ms" Min="1" Max="60000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,ParAPISRein_NLZ" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,3,ParAPISRein_NLZ" />
   </Parameter>
   <Parameter Name="SCHBAND_FUEHRUNG_AUFZU_TO">
     <Values Value="10" Unit="ms" Min="10" Max="100000" />
@@ -5972,11 +5976,11 @@
   </Parameter>
   <Parameter Name="PAR_TO_MAG_REINIGER">
     <Values Value="180000" Unit="ms" Min="0" Max="300000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,ParZeitMagnetReinigerTransport" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,3,ParZeitMagnetReinigerTransport" />
   </Parameter>
   <Parameter Name="PAR_TO_APIS_REINIGER">
     <Values Value="60000" Unit="ms" Min="0" Max="120000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,ParZeitSchalerReinigerTransport" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,3,ParZeitSchalerReinigerTransport" />
   </Parameter>
   <Parameter Name="SCHALER_ZU_NAECHSTER_BANDENTNAHME">
     <Values Value="0" Unit="-" Min="0" Max="1" />
@@ -5984,23 +5988,23 @@
   </Parameter>
   <Parameter Name="NLZ_BANDENTN_ANSCHLAG">
     <Values Value="1000" Unit="ms" Min="0" Max="30000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,ParNLZAnschlagBandentnahme" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,3,ParNLZAnschlagBandentnahme" />
   </Parameter>
   <Parameter Name="NLZ_SCHALER_FAEHRT_DURCH_BANDENTGEBER">
     <Values Value="200" Unit="ms" Min="0" Max="30000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,ParNLZSchalerBeginntDurchfahrt" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,3,ParNLZSchalerBeginntDurchfahrt" />
   </Parameter>
   <Parameter Name="TIME_SCHALER_DURCH_BANDENTNAHME">
     <Values Value="200" Unit="ms" Min="1" Max="40000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,ParTimerSchalerDurchgefahren" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,3,ParTimerSchalerDurchgefahren" />
   </Parameter>
   <Parameter Name="MIN_FREI_BANDENTNAHME_FERTIG">
     <Values Value="2000" Unit="ms" Min="1" Max="30000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,ParMinFreiAnschlagBandentnahme" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,3,ParMinFreiAnschlagBandentnahme" />
   </Parameter>
   <Parameter Name="TO_STOPPER_BANDENTN_AUF_ZU">
     <Values Value="10000" Unit="ms" Min="1" Max="40000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,ParEntnBndStopperAufZu" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,3,ParEntnBndStopperAufZu" />
   </Parameter>
   <Parameter Name="BAND_EIGENE_SPS_CX">
     <Values Value="0" Unit="0/1" Min="0" Max="1" />
@@ -6008,55 +6012,55 @@
   </Parameter>
   <Parameter Name="PAR_TO_DREHEN">
     <Values Value="30000" Unit="ms" Min="1" Max="30000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParTODrehenDreh" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParTODrehenDreh" />
   </Parameter>
   <Parameter Name="PAR_TO_ZUFUHR_DREH">
     <Values Value="20000" Unit="ms" Min="1" Max="30000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParTOZufuhrDreh" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParTOZufuhrDreh" />
   </Parameter>
   <Parameter Name="PAR_TO_HEBEN_SENKEN_DREH">
     <Values Value="10000" Unit="ms" Min="1" Max="10000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParTOHebenSenkenDreh" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParTOHebenSenkenDreh" />
   </Parameter>
   <Parameter Name="PAR_TO_ABFUHR_DREH">
     <Values Value="30000" Unit="ms" Min="1" Max="30000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParTOAbfuhrDreh" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParTOAbfuhrDreh" />
   </Parameter>
   <Parameter Name="PAR_TO_VEREINZELUNG_DREH">
     <Values Value="1000" Unit="ms" Min="1" Max="5000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParTOVereinzelungDreh" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParTOVereinzelungDreh" />
   </Parameter>
   <Parameter Name="NLZ_VEREINZELUNG_DREH">
     <Values Value="1" Unit="ms" Min="1" Max="2000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,ParNLZVereinzelungDreh" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="1,3,ParNLZVereinzelungDreh" />
   </Parameter>
   <Parameter Name="MWIS_SCHALER_ZU_ALAG2">
     <Values Value="10000" Unit="ms" Min="1" Max="30000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="0" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="3,ParNLZSchalerZuAlag2" />
   </Parameter>
   <Parameter Name="NLZ_MWIS_VEREINZELUNG">
     <Values Value="1000" Unit="ms" Min="1" Max="5000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="0" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="3,ParNLZNachVereinzelung" />
   </Parameter>
   <Parameter Name="ERROR_MAGNET_ENDBAND">
     <Values Value="1" Unit="ms" Min="1" Max="30000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="0" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="3,ParNLZMagToMFSR2" />
   </Parameter>
   <Parameter Name="PAR_TIME_FOR_ALAG">
     <Values Value="5" Unit="min" Min="1" Max="10" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="0" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="3,ParTOALag" />
   </Parameter>
   <Parameter Name="MWIS_SCHALER_ZU_MFSR2">
     <Values Value="35" Unit="s" Min="1" Max="100" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="0" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="3,ParTOZuMFSR2" />
   </Parameter>
   <Parameter Name="MWIS_SCHALER_BEI_MFSR2">
     <Values Value="20" Unit="s" Min="1" Max="100" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="0" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="3,ParTOBeiMFSR2" />
   </Parameter>
   <Parameter Name="BAND_PARNLZOELER">
     <Values Value="100" Unit="ms" Min="0" Max="100000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,ParNLZOeler" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,3,ParNLZOeler" />
   </Parameter>
   <Parameter Name="NLZOELNACHFUELLEN">
     <Values Value="10" Unit="s" Min="1" Max="120" />
@@ -6072,7 +6076,7 @@
   </Parameter>
   <Parameter Name="BAND_ANZAHL_AUFTAKTEN">
     <Values Value="6" Unit="-" Min="0" Max="10" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,ParAnzahlAuftaktenBand" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,3,ParAnzahlAuftaktenBand" />
   </Parameter>
   <Parameter Name="PARKLINKER_AUFTAKEN_FERTIG_MELDEN">
     <Values Value="0" Unit="ms" Min="0" Max="20000" />
@@ -6168,55 +6172,55 @@
   </Parameter>
   <Parameter Name="PAR_SMS_UMBAUSTATION_VERRIEGELUNGSEINHEIT">
     <Values Value="10000" Unit="ms" Min="5000" Max="30000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,ParSMSTOVerrEinheitSenken" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,3,ParSMSTOVerrEinheitSenken" />
   </Parameter>
   <Parameter Name="PAR_SMS_UMBAUSTATION_VERSCHIEBEZYLINDER">
     <Values Value="20000" Unit="ms" Min="5000" Max="30000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,ParSMSTOVerschZylPositionieren" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,3,ParSMSTOVerschZylPositionieren" />
   </Parameter>
   <Parameter Name="PAR_SMS_UMBAUSTATION_ZUSTANDSUEBERW">
     <Values Value="20000" Unit="ms" Min="5000" Max="240000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,ParSMSTOZustandsueberwachung" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,3,ParSMSTOZustandsueberwachung" />
   </Parameter>
   <Parameter Name="SCHBND_NLZ_ZUFUHR_VOR_REINIGER">
     <Values Value="20000" Unit="ms" Min="1" Max="500000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,ParNLZZufuhrVorReiniger" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,3,ParNLZZufuhrVorReiniger" />
   </Parameter>
   <Parameter Name="SCHBND_NLZ_ZUFUHR_RUECKFUEHRUNG">
     <Values Value="40000" Unit="ms" Min="1" Max="60000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,ParNLZZufurhRueckf" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,3,ParNLZZufurhRueckf" />
   </Parameter>
   <Parameter Name="SCHBND_EVZ_ZUFUHR_RUECKFUEHR_STOPP">
     <Values Value="1500" Unit="ms" Min="1" Max="5000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,ParEVZZufurhRueckfStopp" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,3,ParEVZZufurhRueckfStopp" />
   </Parameter>
   <Parameter Name="SCHBND_WARTEZEIT_RUECKFUEHR_WEITER">
     <Values Value="1" Unit="ms" Min="1" Max="60000" />
-    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,ParWartezeitRueckfWeitertakten" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="1" SPS="1,3,ParWartezeitRueckfWeitertakten" />
   </Parameter>
   <Parameter Name="PAR_SMS_MODUS_ANSCHLAG">
     <Values Value="0" Unit="-" Min="0" Max="3" />
-    <Properties ZeroAllowed="0" Type="TypShort" Level="9" SPS="1,ParSMSAnschlagModus" />
+    <Properties ZeroAllowed="0" Type="TypShort" Level="9" SPS="1,3,ParSMSAnschlagModus" />
   </Parameter>
   <Parameter Name="PAR_BAND_VORHANDEN">
     <Values Value="1" Unit="1" Min="0" Max="1" />
-    <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,ParBandVorhanden" />
+    <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,3,ParBandVorhanden" />
   </Parameter>
   <Parameter Name="PAR_SMS_UMBAUSTATION_ANZAHL_VERSUCHE">
     <Values Value="5" Unit="-" Min="0" Max="20" />
-    <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,ParSMSAnzahlVersuche" />
+    <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,3,ParSMSAnzahlVersuche" />
   </Parameter>
   <Parameter Name="SMS_AUFLSCHLITTEN_MODUS">
     <Values Value="0" Unit="-" Min="0" Max="1" />
-    <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,ParAuflageschlittenModus" />
+    <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,3,ParAuflageschlittenModus" />
   </Parameter>
   <Parameter Name="SMS_AUFLSCHLITTEN_VSLOW">
     <Values Value="100" Unit="%" Min="1" Max="100" />
-    <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,ParAuflageschlittenVLangsam" />
+    <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,3,ParAuflageschlittenVLangsam" />
   </Parameter>
   <Parameter Name="SMS_AUFLSCHLITTEN_VFAST">
     <Values Value="100" Unit="%" Min="1" Max="100" />
-    <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,ParAuflageschlittenVSchnell" />
+    <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,3,ParAuflageschlittenVSchnell" />
   </Parameter>
   <Parameter Name="BAND_RFID_SCHALERIDENTIFIZIERUNG">
     <Values Value="0" Unit="-" Min="0" Max="1" />
@@ -6232,19 +6236,19 @@
   </Parameter>
   <Parameter Name="SMS_RFID_SCHALER_PRUEFEN">
     <Values Value="0" Unit="-" Min="0" Max="1" />
-    <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,ParSMSRFIDSchalertypPruefen" />
+    <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,3,ParSMSRFIDSchalertypPruefen" />
   </Parameter>
   <Parameter Name="BAND_MAGNETBAND_VORHANDEN">
-    <Values Value="0" Unit="-" Min="0" Max="1" />
-    <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,ParMagBandVorhanden" />
+    <Values Value="1" Unit="-" Min="0" Max="1" />
+    <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,3,ParMagBandVorhanden" />
   </Parameter>
   <Parameter Name="BAND_DREHGESTELL_VORHANDEN">
     <Values Value="0" Unit="-" Min="0" Max="1" />
-    <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,ParDrehgestellVorhanden" />
+    <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,3,ParDrehgestellVorhanden" />
   </Parameter>
   <Parameter Name="BAND_SCH_RUECKF_VORHANDEN">
     <Values Value="0" Unit="-" Min="0" Max="1" />
-    <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,ParSchalerRueckfuehrungVorhanden" />
+    <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,3,ParSchalerRueckfuehrungVorhanden" />
   </Parameter>
   <Parameter Name="ENTNAHMEBAND_ANZ_ABSCHNTTE">
     <Values Value="3" Unit="-" Min="0" Max="10" />
@@ -6268,15 +6272,15 @@
   </Parameter>
   <Parameter Name="NLZ_PALREINIGER">
     <Values Value="1000" Unit="ms" Min="0" Max="60000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,Par_PalRein_NLZ" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,3,Par_PalRein_NLZ" />
   </Parameter>
   <Parameter Name="MAX_ZEIT_HEBEN_PALREINIGER">
     <Values Value="10000" Unit="ms#" Min="0" Max="60000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,Par_MaxZeitHebenPalRein" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,3,Par_MaxZeitHebenPalRein" />
   </Parameter>
   <Parameter Name="MAX_ZEIT_SENKEN_PALREINIGER">
     <Values Value="10000" Unit="ms" Min="0" Max="60000" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,Par_MaxZeitSenkenPalRein" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="1" SPS="1,3,Par_MaxZeitSenkenPalRein" />
   </Parameter>
   <Parameter Name="MRP_FASENVERSATZ">
     <Values Value="0" Unit="mm" Min="0" Max="1000" />
@@ -6299,11 +6303,11 @@
     <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="WECKENMANN_ZENTRFL_ABSTAND">
-    <Values Value="100" Unit="mm" Min="-500" Max="500" />
+    <Values Value="210" Unit="mm" Min="-500" Max="500" />
     <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="WECKENMANN_WEGVORANFAHRT_AP41">
-    <Values Value="110" Unit="mm" Min="-500" Max="500" />
+    <Values Value="150" Unit="mm" Min="-500" Max="500" />
     <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="WECKENMANN_GREIF_REF_WEG">
@@ -6319,7 +6323,7 @@
     <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="WECKENMANN_WEG_VOR_REF_AP41">
-    <Values Value="30" Unit="mm" Min="-500" Max="500" />
+    <Values Value="4" Unit="mm" Min="-500" Max="500" />
     <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="WEG_VORANFAHRT_AP_21">
@@ -6361,7 +6365,7 @@
     <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="TOL_GEMEINSAMAUSLOESEN">
-    <Values Value="2" Unit="mm" Min="0" Max="100" />
+    <Values Value="10" Unit="mm" Min="0" Max="100" />
     <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="WEG_AUSRICHT_21_MW">
@@ -6369,11 +6373,11 @@
     <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="MW_AKTIVES_AUSLOESESYSTEM">
-    <Values Value="6" Unit="-" Min="0" Max="6" />
+    <Values Value="9" Unit="-" Min="0" Max="10" />
     <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="ED_AKTIVES_AUSLOESESYSTEM">
-    <Values Value="5" Unit="-" Min="1" Max="10" />
+    <Values Value="9" Unit="-" Min="1" Max="10" />
     <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="WECKENMANN_WAIT_MAGFIX_AP41">
@@ -6764,37 +6768,37 @@
   </Parameter>
   <Parameter Name="SCHMIERINTERVALL_ACHSEN">
     <Dimension Index="0">
-      <Values Value="4" Unit="km" Min="0" Max="100000000" />
+      <Values Value="4" Unit="km" Min="0" Max="100" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="6" Unit="km" Min="0" Max="100000000" />
+      <Values Value="6" Unit="km" Min="0" Max="100" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="6" Unit="km" Min="0" Max="100000000" />
+      <Values Value="6" Unit="km" Min="0" Max="100" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="3">
-      <Values Value="0" Unit="km" Min="0" Max="100000000" />
+      <Values Value="0" Unit="km" Min="0" Max="100" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="WARTUNGSINTERVALL">
     <Dimension Index="0">
-      <Values Value="500000" Unit="m" Min="0" Max="100000000" />
+      <Values Value="500000" Unit="m" Min="0" Max="100" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="0" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="500000" Unit="m" Min="0" Max="100000000" />
+      <Values Value="500000" Unit="m" Min="0" Max="100" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="0" SPS="0" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="500000" Unit="m" Min="0" Max="100000000" />
+      <Values Value="500000" Unit="m" Min="0" Max="100" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="0" SPS="0" />
     </Dimension>
     <Dimension Index="3">
-      <Values Value="500000" Unit="m" Min="0" Max="100000000" />
+      <Values Value="500000" Unit="m" Min="0" Max="100" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="0" SPS="0" />
     </Dimension>
   </Parameter>
@@ -6812,19 +6816,19 @@
   </Parameter>
   <Parameter Name="SPERR_V_TOL">
     <Dimension Index="0">
-      <Values Value="0" Unit="mm/s" Min="0" Max="5" />
+      <Values Value="1" Unit="mm/s" Min="0" Max="5" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0,ParMaxVSperr[1]" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="0" Unit="mm/s" Min="0" Max="5" />
+      <Values Value="1" Unit="mm/s" Min="0" Max="5" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0,ParMaxVSperr[2]" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="0" Unit="mm/s" Min="0" Max="10" />
+      <Values Value="1" Unit="mm/s" Min="0" Max="10" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0,ParMaxVSperr[3]" />
     </Dimension>
     <Dimension Index="3">
-      <Values Value="0" Unit="deg/s" Min="0" Max="5" />
+      <Values Value="2" Unit="deg/s" Min="0" Max="5" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0,ParMaxVSperr[4]" />
     </Dimension>
   </Parameter>
@@ -6834,23 +6838,23 @@
   </Parameter>
   <Parameter Name="ACHS_NULLPKTVERSCHIEBUNGEN">
     <Dimension Index="0">
-      <Values Value="0" Unit="deg" Min="-20000" Max="20000" />
+      <Values Value="55916,6" Unit="deg" Min="-20000" Max="100000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0,ParNullPktVerschiebung[1]" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="0" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="2467,4" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0,ParNullPktVerschiebung[2]" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="0" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="-5030" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0,ParNullPktVerschiebung[3]" />
     </Dimension>
     <Dimension Index="3">
-      <Values Value="0" Unit="deg" Min="-20000" Max="20000" />
+      <Values Value="3848,17362304284" Unit="deg" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0,ParNullPktVerschiebung[4]" />
     </Dimension>
     <Dimension Index="4">
-      <Values Value="0" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="3846" Unit="deg" Min="-20000" Max="100000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0,ParNullPktVerschiebung[5]" />
     </Dimension>
   </Parameter>
@@ -6863,7 +6867,7 @@
     <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="ACHS_KONFIG">
-    <Values Value="4" Unit="bitcodiert" Min="0" Max="15" />
+    <Values Value="10" Unit="bitcodiert" Min="0" Max="15" />
     <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="0,ParAntriebsConfig" />
   </Parameter>
   <Parameter Name="Z_ACHSE_BREMSE_EXTERN_ANSTEUERN">
@@ -6941,7 +6945,7 @@
     </Dimension>
   </Parameter>
   <Parameter Name="X_ACHSE_MASTER_SLAVE">
-    <Values Value="1" Unit="-" Min="0" Max="1" />
+    <Values Value="0" Unit="-" Min="0" Max="1" />
     <Properties ZeroAllowed="1" Type="TypShort" Level="9" SPS="0,ParXMasterSlave" />
   </Parameter>
   <Parameter Name="X_MAX_ABST_SLAVE">
@@ -7030,7 +7034,7 @@
   </Parameter>
   <Parameter Name="ALAG_MANITOROB_ANZ_FAECHER">
     <Values Value="80" Unit="Stk" Min="0" Max="200" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,ParALag_ManiToSRob_AnzFaecher" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,3,ParALag_ManiToSRob_AnzFaecher" />
   </Parameter>
   <Parameter Name="ALAG_MANITOROB_ERSTES_FACH">
     <Values Value="1" Unit="-" Min="0" Max="200" />
@@ -7046,7 +7050,7 @@
   </Parameter>
   <Parameter Name="ES_GIBT_EINEN_MANI">
     <Values Value="0" Unit="-" Min="0" Max="1" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,ParRoboterHatManipulator" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,3,ParRoboterHatManipulator" />
   </Parameter>
   <Parameter Name="ALAG_MANITOROB_WEITERTAKTEN_BIS_FACH">
     <Values Value="24" Unit="-" Min="1" Max="200" />
@@ -7074,11 +7078,11 @@
   </Parameter>
   <Parameter Name="SIMULATIONSMODUS_SROB">
     <Values Value="1" Unit="AUS/EIN" Min="0" Max="1" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="9" SPS="0,ParSimulationsModus" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="9" SPS="0,2,ParSimulationsModus" />
   </Parameter>
   <Parameter Name="SIMULATIONSMODUS_BAND">
     <Values Value="1" Unit="AUS/EIN" Min="0" Max="1" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="9" SPS="1,ParSimulationsModus" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="9" SPS="1,3,ParSimulationsModus" />
   </Parameter>
   <Parameter Name="TST_HA_ZEIT_EINFAHREN">
     <Values Value="0" Unit="ms" Min="0" Max="100000" />
@@ -7097,7 +7101,7 @@
     <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="0,ParTst_RealeZeitenVerwenden" />
   </Parameter>
   <Parameter Name="SIMULATIONSMODUS_HROB">
-    <Values Value="0" Unit="-" Min="0" Max="1" />
+    <Values Value="1" Unit="-" Min="0" Max="1" />
     <Properties ZeroAllowed="1" Type="TypShort" Level="9" SPS="4,ParSimulationsModus" />
   </Parameter>
   <Parameter Name="CHECK_DIFF_RANDSCHALUNG_OFFS_OBEN">
@@ -7126,11 +7130,11 @@
   </Parameter>
   <Parameter Name="SCAN_OFFSET">
     <Dimension Index="0">
-      <Values Value="-162" Unit="mm" Min="-2000" Max="2000" />
+      <Values Value="300" Unit="mm" Min="-2000" Max="2000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="280" Unit="mm" Min="-2000" Max="2000" />
+      <Values Value="0" Unit="mm" Min="-2000" Max="2000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="2">
@@ -7187,7 +7191,7 @@
     <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
   </Parameter>
   <Parameter Name="EROB_HOEHE_ZUM_MAGOEFFNEN">
-    <Values Value="-43" Unit="mm" Min="-200" Max="1000" />
+    <Values Value="-27" Unit="mm" Min="-200" Max="1000" />
     <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
   </Parameter>
   <Parameter Name="EROB_V_FUER_MAGOEFFNEN">
@@ -7232,37 +7236,37 @@
   </Parameter>
   <Parameter Name="SCANFAHRTEN_1">
     <Dimension Index="0">
-      <Values Value="5" Unit="mm" Min="-10000" Max="30000" />
+      <Values Value="15" Unit="mm" Min="-10000" Max="30000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="950" Unit="mm" Min="-10000" Max="30000" />
+      <Values Value="597" Unit="mm" Min="-10000" Max="30000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="12988" Unit="mm" Min="-10000" Max="30000" />
+      <Values Value="12500" Unit="mm" Min="-10000" Max="30000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="3">
-      <Values Value="950" Unit="mm" Min="-10000" Max="30000" />
+      <Values Value="597" Unit="mm" Min="-10000" Max="30000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="SCANFAHRTEN_2">
     <Dimension Index="0">
-      <Values Value="12988" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="12500" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="2450" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="1757" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="5" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="15" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="3">
-      <Values Value="2450" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="1757" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
     </Dimension>
   </Parameter>
@@ -7341,7 +7345,7 @@
     <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
   </Parameter>
   <Parameter Name="SCAN_H">
-    <Values Value="1480" Unit="mm" Min="0" Max="2000" />
+    <Values Value="1200" Unit="mm" Min="0" Max="2000" />
     <Properties ZeroAllowed="0" Type="TypFloat" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="LASER_AKTIV_X_START">
@@ -7349,19 +7353,19 @@
     <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0,ParLaserVon_X" />
   </Parameter>
   <Parameter Name="LASER_AKTIV_X_ENDE">
-    <Values Value="14200" Unit="mm" Min="-20000" Max="20000" />
+    <Values Value="12200" Unit="mm" Min="-20000" Max="20000" />
     <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0,ParLaserBis_X" />
   </Parameter>
   <Parameter Name="LASER_AKTIV_Y_START">
-    <Values Value="550" Unit="mm" Min="-20000" Max="20000" />
+    <Values Value="597" Unit="mm" Min="-20000" Max="20000" />
     <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0,ParLaserVon_Y" />
   </Parameter>
   <Parameter Name="LASER_AKTIV_Y_END">
-    <Values Value="2500" Unit="mm" Min="-20000" Max="20000" />
+    <Values Value="1757" Unit="mm" Min="-20000" Max="20000" />
     <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0,ParLaserBis_Y" />
   </Parameter>
   <Parameter Name="EROB_HOEHE_ZUM_MAGOEFFNEN_MWIS">
-    <Values Value="-42" Unit="mm" Min="-200" Max="1000" />
+    <Values Value="-35" Unit="mm" Min="-200" Max="1000" />
     <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
   </Parameter>
   <Parameter Name="SCAN_KORREKTUR_SCHALER_POSITIONEN">
@@ -7387,7 +7391,7 @@
     <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="SCAN_GESCHW">
-    <Values Value="13" Unit="%" Min="1" Max="100" />
+    <Values Value="14" Unit="%" Min="1" Max="100" />
     <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="SCAN_VOM_NULLPUNKT_AUS">
@@ -7395,7 +7399,7 @@
     <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="ICH_BIN_AUCH_EIN_SROB">
-    <Values Value="0" Unit="-" Min="0" Max="1" />
+    <Values Value="1" Unit="-" Min="0" Max="1" />
     <Properties ZeroAllowed="1" Type="TypLong" Level="9" SPS="0,ParIchBinAuchEinSRob" />
   </Parameter>
   <Parameter Name="PALETTENREINIGER_STARTEN">
@@ -7411,7 +7415,7 @@
     <Properties ZeroAllowed="1" Type="TypShort" Level="9" SPS="0" />
   </Parameter>
   <Parameter Name="EROB">
-    <Values Value="1" Unit="Ja/Nein" Min="0" Max="1" />
+    <Values Value="0" Unit="Ja/Nein" Min="0" Max="1" />
     <Properties ZeroAllowed="1" Type="TypShort" Level="9" SPS="0,ParIchBinEinERob" />
   </Parameter>
   <Parameter Name="SCAN_CNT_SPUREN">
@@ -7455,20 +7459,20 @@
     <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
   </Parameter>
   <Parameter Name="ELAG_ABST">
-    <Values Value="-160" Unit="mm" Min="-200" Max="200" />
+    <Values Value="-100" Unit="mm" Min="-200" Max="200" />
     <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="ELAG_POS">
     <Dimension Index="0">
-      <Values Value="7646" Unit="mm" Min="-15000" Max="15000" />
+      <Values Value="2600" Unit="mm" Min="-15000" Max="15000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="4196" Unit="mm" Min="-5000" Max="7000" />
+      <Values Value="2660" Unit="mm" Min="-5000" Max="7000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="1000" Unit="mm" Min="-5000" Max="5000" />
+      <Values Value="500" Unit="mm" Min="-5000" Max="5000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="3">
@@ -7491,7 +7495,7 @@
     </Dimension>
   </Parameter>
   <Parameter Name="ELAG_HEBE_HOEHE">
-    <Values Value="160" Unit="mm" Min="0" Max="500" />
+    <Values Value="150" Unit="mm" Min="0" Max="500" />
     <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="ELAG_KETTENFOERDERER">
@@ -7507,7 +7511,7 @@
     <Properties ZeroAllowed="0" Type="TypFloat" Level="3" SPS="1,ParELagImpulseMax" />
   </Parameter>
   <Parameter Name="ABST_ELAG_SCHALER">
-    <Values Value="20" Unit="mm" Min="0" Max="500" />
+    <Values Value="10" Unit="mm" Min="0" Max="500" />
     <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="ELAG_USE_MIN">
@@ -7515,15 +7519,15 @@
     <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="ELAG_USE_MAX">
-    <Values Value="1" Unit="-" Min="0" Max="20" />
+    <Values Value="3" Unit="-" Min="0" Max="20" />
     <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="MAX_LAENGE_ELAG_FACH">
-    <Values Value="3300" Unit="mm" Min="0" Max="10000" />
+    <Values Value="2350" Unit="mm" Min="0" Max="10000" />
     <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,ParELagMaxEinlagerLaenge" />
   </Parameter>
   <Parameter Name="RESTLAENGE_ELAG">
-    <Values Value="4000" Unit="mm" Min="0" Max="10000" />
+    <Values Value="2000" Unit="mm" Min="0" Max="10000" />
     <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="1,ParELagRestlaenge" />
   </Parameter>
   <Parameter Name="TO_ELAG_HEBEN_SENKEN">
@@ -7551,11 +7555,11 @@
     <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="ELAG_ANZ">
-    <Values Value="1" Unit="Stk" Min="0" Max="1" />
+    <Values Value="0" Unit="Stk" Min="0" Max="1" />
     <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,ParELagAnzELags" />
   </Parameter>
   <Parameter Name="ELAG_ANZAHL_FACH">
-    <Values Value="7" Unit="-" Min="0" Max="20" />
+    <Values Value="19" Unit="-" Min="0" Max="20" />
     <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="1,ParELagAnzFaecherRob" />
   </Parameter>
   <Parameter Name="ELAG_LAGEINFO">
@@ -7563,7 +7567,7 @@
     <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="ELAG_ANSCHLAGSEITE_IM_FACH">
-    <Values Value="1" Unit="-" Min="0" Max="1" />
+    <Values Value="0" Unit="-" Min="0" Max="1" />
     <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="ELAG_ANZ_FAECHER_VERSUCHEN_FREIZUHALTEN">
@@ -7882,15 +7886,15 @@
   </Parameter>
   <Parameter Name="PAR_HROB_GRUNDSTELLUNG">
     <Dimension Index="0">
-      <Values Value="0" Unit="mm" Min="-3150" Max="15500" />
+      <Values Value="1000" Unit="mm" Min="-3150" Max="15500" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="1" SPS="4,ParPosGrundstellung[1]" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="0" Unit="mm" Min="-1000" Max="6000" />
+      <Values Value="1000" Unit="mm" Min="-1000" Max="6000" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="1" SPS="4,ParPosGrundstellung[2]" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="1000" Unit="mm" Min="0" Max="2200" />
+      <Values Value="135" Unit="mm" Min="0" Max="2200" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="1" SPS="4,ParPosGrundstellung[3]" />
     </Dimension>
     <Dimension Index="3">
@@ -7900,15 +7904,15 @@
   </Parameter>
   <Parameter Name="PAR_HROB_TESTPOSITION">
     <Dimension Index="0">
-      <Values Value="1000" Unit="mm" Min="-10000" Max="20000" />
+      <Values Value="1500" Unit="mm" Min="-10000" Max="20000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="4,ParPosTestposition[1]" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="1000" Unit="mm" Min="-10000" Max="10000" />
+      <Values Value="200" Unit="mm" Min="-10000" Max="10000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="4,ParPosTestposition[2]" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="500" Unit="mm" Min="-10000" Max="10000" />
+      <Values Value="135" Unit="mm" Min="-10000" Max="10000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="4,ParPosTestposition[3]" />
     </Dimension>
     <Dimension Index="3">
@@ -7917,20 +7921,20 @@
     </Dimension>
   </Parameter>
   <Parameter Name="PAR_HROB_MIN_H">
-    <Values Value="-500" Unit="mm" Min="-2500" Max="2500" />
+    <Values Value="-890" Unit="mm" Min="-2500" Max="2500" />
     <Properties ZeroAllowed="0" Type="TypFloat" Level="1" SPS="4,ParMinH" />
   </Parameter>
   <Parameter Name="PAR_HROB_MAX_H">
-    <Values Value="1500" Unit="mm" Min="0" Max="2500" />
+    <Values Value="385" Unit="mm" Min="0" Max="2500" />
     <Properties ZeroAllowed="0" Type="TypFloat" Level="1" SPS="4,ParMaxH" />
   </Parameter>
   <Parameter Name="PAR_HROB_NULLPKT">
     <Dimension Index="0">
-      <Values Value="13750" Unit="mm" Min="-100000" Max="100000" />
+      <Values Value="13720" Unit="mm" Min="-100000" Max="100000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="-380" Unit="mm" Min="-100000" Max="100000" />
+      <Values Value="-720" Unit="mm" Min="-100000" Max="100000" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="2">
@@ -7944,21 +7948,21 @@
   </Parameter>
   <Parameter Name="PAR_HROB_MIN_RAUM">
     <Dimension Index="0">
-      <Values Value="-390" Unit="mm" Min="-80000" Max="20000" />
+      <Values Value="-300" Unit="mm" Min="-80000" Max="20000" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="-680" Unit="mm" Min="-6000" Max="1000" />
+      <Values Value="-310" Unit="mm" Min="-6000" Max="1000" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="PAR_HROB_MAX_RAUM">
     <Dimension Index="0">
-      <Values Value="4170" Unit="mm" Min="1000" Max="50000" />
+      <Values Value="5000" Unit="mm" Min="1000" Max="50000" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="3720" Unit="mm" Min="1000" Max="20000" />
+      <Values Value="3915" Unit="mm" Min="1000" Max="20000" />
       <Properties ZeroAllowed="0" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
@@ -7968,7 +7972,7 @@
   </Parameter>
   <Parameter Name="PAR_HROB_LANSAM_WEG_TAUCH">
     <Dimension Index="0">
-      <Values Value="200" Unit="mm" Min="0" Max="500" />
+      <Values Value="70" Unit="mm" Min="0" Max="500" />
       <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
@@ -7978,7 +7982,7 @@
   </Parameter>
   <Parameter Name="PAR_HROB_V_TAUCH">
     <Dimension Index="0">
-      <Values Value="5" Unit="%" Min="1" Max="100" />
+      <Values Value="7" Unit="%" Min="1" Max="100" />
       <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
@@ -8008,23 +8012,23 @@
   </Parameter>
   <Parameter Name="PAR_HROB_ACHSTYPEN">
     <Dimension Index="0">
-      <Values Value="1" Unit="-" Min="0" Max="2" />
+      <Values Value="3" Unit="-" Min="0" Max="3" />
       <Properties ZeroAllowed="1" Type="TypShort" Level="9" SPS="4,ParAchsTypen[1]" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="1" Unit="-" Min="0" Max="2" />
+      <Values Value="3" Unit="-" Min="0" Max="3" />
       <Properties ZeroAllowed="1" Type="TypShort" Level="9" SPS="4,ParAchsTypen[2]" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="1" Unit="-" Min="0" Max="2" />
+      <Values Value="3" Unit="-" Min="0" Max="3" />
       <Properties ZeroAllowed="1" Type="TypShort" Level="9" SPS="4,ParAchsTypen[3]" />
     </Dimension>
     <Dimension Index="3">
-      <Values Value="0" Unit="-" Min="0" Max="2" />
+      <Values Value="0" Unit="-" Min="0" Max="3" />
       <Properties ZeroAllowed="1" Type="TypShort" Level="9" SPS="4,ParAchsTypen[4]" />
     </Dimension>
     <Dimension Index="4">
-      <Values Value="0" Unit="-" Min="0" Max="2" />
+      <Values Value="0" Unit="-" Min="0" Max="3" />
       <Properties ZeroAllowed="1" Type="TypShort" Level="9" SPS="4,ParAchsTypen[5]" />
     </Dimension>
   </Parameter>
@@ -8051,8 +8055,8 @@
     <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="4,ParGreiferAnzahl" />
   </Parameter>
   <Parameter Name="PAR_HROB_ANZAHL">
-    <Values Value="0" Unit="-" Min="0" Max="1" />
-    <Properties ZeroAllowed="1" Type="TypShort" Level="9" SPS="1,ParHRobAnzahl" />
+    <Values Value="1" Unit="-" Min="0" Max="1" />
+    <Properties ZeroAllowed="0" Type="TypShort" Level="9" SPS="1,ParHRobAnzahl" />
   </Parameter>
   <Parameter Name="PAR_HROB_ROBOTERNR">
     <Dimension Index="0">
@@ -8090,7 +8094,7 @@
   </Parameter>
   <Parameter Name="ENTNAHMEBAND_SCHALER_VERWART">
     <Dimension Index="0">
-      <Values Value="2" Unit="-" Min="0" Max="3" />
+      <Values Value="11" Unit="-" Min="0" Max="255" />
       <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
@@ -8126,196 +8130,284 @@
       <Properties ZeroAllowed="0" Type="TypFloat" Level="9" SPS="4,5,ParGreiferDim.Width" />
     </Dimension>
   </Parameter>
+  <Parameter Name="PRIMO_SPEED">
+    <Values Value="2" Unit="%" Min="1" Max="100" />
+    <Properties ZeroAllowed="0" Type="TypFloat" Level="9" SPS="0" />
+  </Parameter>
+  <Parameter Name="EBT_SYSTEM">
+    <Values Value="3" Unit="-" Min="0" Max="3" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="9" SPS="0" />
+  </Parameter>
+  <Parameter Name="PRIMO_DIST_SLOW">
+    <Values Value="50" Unit="mm" Min="0" Max="200" />
+    <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
+  </Parameter>
+  <Parameter Name="PRIMO_DIST_RETARD">
+    <Values Value="0" Unit="mm" Min="0" Max="200" />
+    <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
+  </Parameter>
+  <Parameter Name="PRIMO_DIST_SET">
+    <Values Value="90" Unit="mm" Min="0" Max="150" />
+    <Properties ZeroAllowed="0" Type="TypFloat" Level="9" SPS="0" />
+  </Parameter>
+  <Parameter Name="PRIMO_OVER_PAL">
+    <Values Value="200" Unit="mm" Min="100" Max="1000" />
+    <Properties ZeroAllowed="0" Type="TypFloat" Level="9" SPS="0" />
+  </Parameter>
   <Parameter Name="QF_SKALIERUNG">
-    <Values Value="0" Unit="-" Min="0" Max="10" />
-    <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="ParAlagSkalierung" />
+    <Values Value="0.001" Unit="-" Min="0" Max="10" />
+    <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="1,3,ParAlagSkalierung[1]" />
+  </Parameter>
+  <Parameter Name="QF_ABSTANDLAGER">
+    <Values Value="0" Unit="mm" Min="0" Max="1000" />
+    <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="QF_WEGLANGSAM">
-    <Values Value="0" Unit="-" Min="0" Max="100" />
-    <Properties ZeroAllowed="0" Type="TypFloat" Level="3" SPS="0" />
+    <Values Value="12000" Unit="inc" Min="0" Max="20000" />
+    <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="1,ParAlagWegLangsam[1]" />
   </Parameter>
   <Parameter Name="QF_BAUMER_ADRESSE">
     <Values Value="0" Unit="-" Min="0" Max="10" />
     <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="0" />
   </Parameter>
   <Parameter Name="BAND_GESCHWINDIGKEIT">
-    <Values Value="90" Unit="%" Min="-100" Max="100" />
-    <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="ParBandGeschwindigkeit" />
+    <Dimension Index="0">
+      <Values Value="-60" Unit="%" Min="-100" Max="100" />
+      <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,3,ParBandGeschwindigkeit[1]" />
+    </Dimension>
+    <Dimension Index="1">
+      <Values Value="-80" Unit="%" Min="-100" Max="100" />
+      <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,3,ParBandGeschwindigkeit[2]" />
+    </Dimension>
+    <Dimension Index="2">
+      <Values Value="60" Unit="%" Min="-100" Max="100" />
+      <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,3,ParBandGeschwindigkeit[3]" />
+    </Dimension>
+    <Dimension Index="3">
+      <Values Value="60" Unit="%" Min="-100" Max="100" />
+      <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,3,ParBandGeschwindigkeit[4]" />
+    </Dimension>
+    <Dimension Index="4">
+      <Values Value="55" Unit="%" Min="-100" Max="100" />
+      <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,3,ParBandGeschwindigkeit[5]" />
+    </Dimension>
+    <Dimension Index="5">
+      <Values Value="-60" Unit="%" Min="-100" Max="100" />
+      <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,3,ParBandGeschwindigkeit[6]" />
+    </Dimension>
+    <Dimension Index="6">
+      <Values Value="-60" Unit="%" Min="-100" Max="100" />
+      <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,3,ParBandGeschwindigkeit[7]" />
+    </Dimension>
+    <Dimension Index="7">
+      <Values Value="-60" Unit="%" Min="-100" Max="100" />
+      <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,3,ParBandGeschwindigkeit[8]" />
+    </Dimension>
+    <Dimension Index="8">
+      <Values Value="-60" Unit="%" Min="-100" Max="100" />
+      <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,3,ParBandGeschwindigkeit[9]" />
+    </Dimension>
+    <Dimension Index="9">
+      <Values Value="-60" Unit="%" Min="-100" Max="100" />
+      <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,3,ParBandGeschwindigkeit[10]" />
+    </Dimension>
   </Parameter>
   <Parameter Name="BAND_RAMPE">
-    <Values Value="1" Unit="%" Min="1" Max="100" />
-    <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="ParBandRampe" />
+    <Dimension Index="0">
+      <Values Value="2" Unit="%" Min="1" Max="2000" />
+      <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,3,ParBandRampe[1]" />
+    </Dimension>
+    <Dimension Index="1">
+      <Values Value="2" Unit="%" Min="1" Max="2000" />
+      <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,3,ParBandRampe[2]" />
+    </Dimension>
+    <Dimension Index="2">
+      <Values Value="1" Unit="%" Min="1" Max="2000" />
+      <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,3,ParBandRampe[3]" />
+    </Dimension>
+    <Dimension Index="3">
+      <Values Value="1" Unit="%" Min="1" Max="2000" />
+      <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,3,ParBandRampe[4]" />
+    </Dimension>
+    <Dimension Index="4">
+      <Values Value="10" Unit="%" Min="1" Max="2000" />
+      <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,3,ParBandRampe[5]" />
+    </Dimension>
+    <Dimension Index="5">
+      <Values Value="1" Unit="%" Min="1" Max="2000" />
+      <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,3,ParBandRampe[6]" />
+    </Dimension>
+    <Dimension Index="6">
+      <Values Value="1" Unit="%" Min="1" Max="2000" />
+      <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,3,ParBandRampe[8]" />
+    </Dimension>
+    <Dimension Index="7">
+      <Values Value="1" Unit="%" Min="1" Max="2000" />
+      <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,3,ParBandRampe[7]" />
+    </Dimension>
+    <Dimension Index="8">
+      <Values Value="1" Unit="%" Min="1" Max="2000" />
+      <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,3,ParBandRampe[9]" />
+    </Dimension>
+    <Dimension Index="9">
+      <Values Value="1" Unit="%" Min="1" Max="2000" />
+      <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,3,ParBandRampe[10]" />
+    </Dimension>
   </Parameter>
   <Parameter Name="BAND_GESCHW_LANGSAM">
-    <Values Value="10" Unit="%" Min="-100" Max="100" />
-    <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="ParBandGeschwLangsam" />
+    <Dimension Index="0">
+      <Values Value="50" Unit="%" Min="-100" Max="100" />
+      <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,ParBandGeschwLangsam[1]" />
+    </Dimension>
+    <Dimension Index="1">
+      <Values Value="20" Unit="%" Min="-100" Max="100" />
+      <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,ParBandGeschwLangsam[2]" />
+    </Dimension>
+    <Dimension Index="2">
+      <Values Value="50" Unit="%" Min="-100" Max="100" />
+      <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,ParBandGeschwLangsam[3]" />
+    </Dimension>
+    <Dimension Index="3">
+      <Values Value="50" Unit="%" Min="-100" Max="100" />
+      <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,ParBandGeschwLangsam[4]" />
+    </Dimension>
+    <Dimension Index="4">
+      <Values Value="50" Unit="%" Min="-100" Max="100" />
+      <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,ParBandGeschwLangsam[5]" />
+    </Dimension>
+    <Dimension Index="5">
+      <Values Value="25" Unit="%" Min="-100" Max="100" />
+      <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,ParBandGeschwLangsam[6]" />
+    </Dimension>
+    <Dimension Index="6">
+      <Values Value="50" Unit="%" Min="-100" Max="100" />
+      <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,ParBandGeschwLangsam[7]" />
+    </Dimension>
+    <Dimension Index="7">
+      <Values Value="25" Unit="%" Min="-100" Max="100" />
+      <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,ParBandGeschwLangsam[8]" />
+    </Dimension>
+    <Dimension Index="8">
+      <Values Value="50" Unit="%" Min="-100" Max="100" />
+      <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,ParBandGeschwLangsam[9]" />
+    </Dimension>
+    <Dimension Index="9">
+      <Values Value="50" Unit="%" Min="-100" Max="100" />
+      <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,ParBandGeschwLangsam[10]" />
+    </Dimension>
   </Parameter>
   <Parameter Name="QF_GESCHWINDIGKEIT">
-    <Values Value="90" Unit="%" Min="-100" Max="100" />
-    <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="0" />
+    <Values Value="100" Unit="%" Min="-100" Max="100" />
+    <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,3,ParQFGeschwindigkeit" />
   </Parameter>
   <Parameter Name="QF_GESCHW_LANGSAM">
     <Values Value="10" Unit="%" Min="-100" Max="100" />
-    <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="0" />
+    <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,ParQFGeschwLangsam" />
   </Parameter>
   <Parameter Name="QF_RAMPENZEIT">
     <Values Value="1" Unit="%" Min="1" Max="100" />
-    <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="0" />
+    <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,3,ParQFRampe" />
   </Parameter>
   <Parameter Name="ALAG_GESCHWINDIGKEIT">
-    <Values Value="90" Unit="%" Min="-100" Max="100" />
-    <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="ParAlagGeschwindigkeit" />
+    <Values Value="60" Unit="%" Min="-100" Max="100" />
+    <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,3,ParAlagGeschwindigkeit[1]" />
   </Parameter>
   <Parameter Name="ALAG_GESCHW_LANGSAM">
     <Values Value="10" Unit="%" Min="-100" Max="100" />
-    <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="" />
+    <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,ParAlagGeschwLangsam[1]" />
   </Parameter>
   <Parameter Name="ALAG_RAMPENZEIT">
-    <Values Value="1" Unit="%" Min="1" Max="100" />
-    <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="ParAlagRampe" />
+    <Values Value="5" Unit="%" Min="1" Max="100" />
+    <Properties ZeroAllowed="0" Type="TypShort" Level="3" SPS="1,3,ParAlagRampe[1]" />
   </Parameter>
   <Parameter Name="RUCK_DREHEN">
     <Values Value="1792.6" Unit="deg/s3" Min="500" Max="2000" />
-    <Properties ZeroAllowed="0" Type="TypFloat" Level="9" SPS="0,ParRuckDrehachse" />
+    <Properties ZeroAllowed="0" Type="TypFloat" Level="9" SPS="0" />
   </Parameter>
   <Parameter Name="V_DREH">
     <Values Value="145" Unit="deg/s" Min="1" Max="1000" />
     <Properties ZeroAllowed="0" Type="TypFloat" Level="1" SPS="0" />
   </Parameter>
-  <Parameter Name="SIMULATIONSMODUS_PALREI">
-    <Values Value="1" Unit="-" Min="0" Max="1" />
-    <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="3,ParSimulationsModus" />
+  <Parameter Name="WEIPERT_MW_ABRUECKWERT">
+    <Values Value="20" Unit="mm" Min="0" Max="100" />
+    <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
   </Parameter>
-  <Parameter Name="PALREI_POS">
-    <Dimension Index="0">
-      <Values Value="15400" Unit="mm" Min="-500" Max="16000" />
-      <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="3,ParPosBase" />
-    </Dimension>
-    <Dimension Index="1">
-      <Values Value="14870" Unit="mm" Min="0" Max="15000" />
-      <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="3,ParPosPrior" />
-    </Dimension>
-    <Dimension Index="2">
-      <Values Value="13160" Unit="mm" Min="0" Max="15000" />
-      <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="3,ParPosPreclean" />
-    </Dimension>
-    <Dimension Index="3">
-      <Values Value="550" Unit="mm" Min="0" Max="15000" />
-      <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="3,ParPosAfter" />
-    </Dimension>
-    <Dimension Index="4">
-      <Values Value="-200" Unit="mm" Min="-500" Max="16000" />
-      <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="3,ParPosWait" />
-    </Dimension>
+  <Parameter Name="WEIPERT_MW_L1">
+    <Values Value="550" Unit="mm" Min="0" Max="1000" />
+    <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
   </Parameter>
-  <Parameter Name="PALREI_SCALING">
-    <Dimension Index="0">
-      <Values Value="-0,2000688" Unit="mm" Min="-1000" Max="1000" />
-      <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="3,ParPosScaling" />
-    </Dimension>
-    <Dimension Index="1">
-      <Values Value="15568,42" Unit="mm" Min="-3E+08" Max="3E+08" />
-      <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="3,ParPosOffset" />
-    </Dimension>
+  <Parameter Name="WEIPERT_MW_L2">
+    <Values Value="800" Unit="mm" Min="0" Max="1000" />
+    <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
   </Parameter>
-  <Parameter Name="PALREI_COOPERATIV">
-    <Values Value="1" Unit="-" Min="0" Max="1" />
-    <Properties ZeroAllowed="1" Type="TypShort" Level="3" SPS="3,ParCooperativ" />
-  </Parameter>
-  <Parameter Name="PALREI_WIDTH">
-    <Values Value="2180" Unit="mm" Min="500" Max="3000" />
-    <Properties ZeroAllowed="0" Type="TypFloat" Level="3" SPS="3,ParWidth" />
-  </Parameter>
-  <Parameter Name="PAL_REI_KOLLABORATIV_SI_ABSTAND">
-    <Values Value="300" Unit="mm" Min="0" Max="500" />
+  <Parameter Name="WEIPERT_MW_MAXUEBERSTAND">
+    <Values Value="150" Unit="mm" Min="0" Max="1000" />
     <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
   </Parameter>
-  <Parameter Name="PALREI_SHUTTERS_LEFT_BEFORE_CLEAN">
-    <Values Value="4" Unit="-" Min="0" Max="10" />
-    <Properties ZeroAllowed="1" Type="TypLong" Level="9" SPS="0" />
-  </Parameter>
-  <Parameter Name="MAPPING_FERTIGUNGSPALTYP_RSFORM_NACH">
+  <Parameter Name="POS_KALIBRIERWERKZEUG_EINMESSEN">
     <Dimension Index="0">
-      <Values Value="3" Unit="bitcodiert" Min="0" Max="255" />
-      <Properties ZeroAllowed="0" Type="Short" Level="9" SPS="0" />
+      <Values Value="5244,19" Unit="mm" Min="0" Max="20000" />
+      <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="1" Unit="bitcodiert" Min="0" Max="255" />
-      <Properties ZeroAllowed="0" Type="Short" Level="9" SPS="0" />
+      <Values Value="-459,56" Unit="mm" Min="-1000" Max="10000" />
+      <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="0" Unit="bitcodiert" Min="0" Max="255" />
-      <Properties ZeroAllowed="0" Type="Short" Level="9" SPS="0" />
+      <Values Value="816,6" Unit="mm" Min="-1000" Max="2000" />
+      <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="3">
-      <Values Value="0" Unit="bitcodiert" Min="0" Max="255" />
-      <Properties ZeroAllowed="0" Type="Short" Level="9" SPS="0" />
-    </Dimension>
-    <Dimension Index="4">
-      <Values Value="0" Unit="bitcodiert" Min="0" Max="255" />
-      <Properties ZeroAllowed="0" Type="Short" Level="9" SPS="0" />
-    </Dimension>
-    <Dimension Index="5">
-      <Values Value="0" Unit="bitcodiert" Min="0" Max="255" />
-      <Properties ZeroAllowed="0" Type="Short" Level="9" SPS="0" />
-    </Dimension>
-    <Dimension Index="6">
-      <Values Value="0" Unit="bitcodiert" Min="0" Max="255" />
-      <Properties ZeroAllowed="0" Type="Short" Level="9" SPS="0" />
-    </Dimension>
-    <Dimension Index="7">
-      <Values Value="0" Unit="bitcodiert" Min="0" Max="255" />
-      <Properties ZeroAllowed="0" Type="Short" Level="9" SPS="0" />
-    </Dimension>
-    <Dimension Index="8">
-      <Values Value="0" Unit="bitcodiert" Min="0" Max="255" />
-      <Properties ZeroAllowed="0" Type="Short" Level="9" SPS="0" />
-    </Dimension>
-    <Dimension Index="9">
-      <Values Value="0" Unit="bitcodiert" Min="0" Max="255" />
-      <Properties ZeroAllowed="0" Type="Short" Level="9" SPS="0" />
+      <Values Value="0" Unit="deg" Min="-1000" Max="10000" />
+      <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
     </Dimension>
   </Parameter>
-  <Parameter Name="MAPPING_FERTIGUNGSPALTYP_RSFORM_RSHOEHE">
+  <Parameter Name="POS_EINMESSEN_POSITION">
     <Dimension Index="0">
-      <Values Value="70" Unit="mm" Min="0" Max="500" />
-      <Properties ZeroAllowed="0" Type="Short" Level="9" SPS="0" />
+      <Values Value="5000" Unit="mm" Min="0" Max="20000" />
+      <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="70" Unit="mm" Min="0" Max="500" />
-      <Properties ZeroAllowed="1" Type="Short" Level="9" SPS="0" />
+      <Values Value="1000" Unit="mm" Min="0" Max="10000" />
+      <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="0" Unit="mm" Min="0" Max="500" />
-      <Properties ZeroAllowed="0" Type="Short" Level="9" SPS="0" />
+      <Values Value="35" Unit="mm" Min="0" Max="2000" />
+      <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="3">
-      <Values Value="0" Unit="mm" Min="0" Max="500" />
-      <Properties ZeroAllowed="0" Type="Short" Level="9" SPS="0" />
+      <Values Value="0" Unit="deg" Min="0" Max="360" />
+      <Properties ZeroAllowed="1" Type="TypFloat" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="4">
-      <Values Value="0" Unit="mm" Min="0" Max="500" />
-      <Properties ZeroAllowed="0" Type="Short" Level="9" SPS="0" />
+      <Values Value="0" Unit="-" Min="0" Max="1" />
+      <Properties ZeroAllowed="1" Type="TypShort" Level="9" SPS="0" />
     </Dimension>
-    <Dimension Index="5">
-      <Values Value="0" Unit="mm" Min="0" Max="500" />
-      <Properties ZeroAllowed="0" Type="Short" Level="9" SPS="0" />
+  </Parameter>
+  <Parameter Name="HROB_AKTIV">
+    <Values Value="1" Unit="-" Min="0" Max="1" />
+    <Properties ZeroAllowed="1" Type="TypShort" Level="9" SPS="4,ParRoboterAktiv" />
+  </Parameter>
+  <Parameter Name="THREAD_INTO_STORE">
+    <Values Value="1" Unit="mm" Min="0" Max="200" />
+    <Properties ZeroAllowed="1" Type="TypFloat" Level="3" SPS="0" />
+  </Parameter>
+  <Parameter Name="THREAD_INTO_STORE_HROB">
+    <Dimension Index="0">
+      <Values Value="80" Unit="mm" Min="0" Max="200" />
+      <Properties ZeroAllowed="1" Type="Float" Level="3" SPS="0" />
     </Dimension>
-    <Dimension Index="6">
-      <Values Value="0" Unit="mm" Min="0" Max="500" />
-      <Properties ZeroAllowed="0" Type="Short" Level="9" SPS="0" />
+    <Dimension Index="1">
+      <Values Value="0" Unit="mm" Min="0" Max="200" />
+      <Properties ZeroAllowed="1" Type="Float" Level="3" SPS="0" />
     </Dimension>
-    <Dimension Index="7">
-      <Values Value="0" Unit="mm" Min="0" Max="500" />
-      <Properties ZeroAllowed="0" Type="Short" Level="9" SPS="0" />
-    </Dimension>
-    <Dimension Index="8">
-      <Values Value="0" Unit="mm" Min="0" Max="500" />
-      <Properties ZeroAllowed="0" Type="Short" Level="9" SPS="0" />
-    </Dimension>
-    <Dimension Index="9">
-      <Values Value="70" Unit="mm" Min="0" Max="500" />
-      <Properties ZeroAllowed="0" Type="Short" Level="9" SPS="0" />
-    </Dimension>
+  </Parameter>
+  <Parameter Name="START_CAD_FROM_IMAGECSV">
+    <Values Value="2" Unit="-" Min="0" Max="1000" />
+    <Properties ZeroAllowed="0" Type="TypLong" Level="3" SPS="0" />
+  </Parameter>
+  <Parameter Name="PRIMO_PAUSE">
+    <Values Value="250" Unit="ms" Min="0" Max="2000" />
+    <Properties ZeroAllowed="1" Type="TypLong" Level="3" SPS="0" />
   </Parameter>
 </ParameterValues>

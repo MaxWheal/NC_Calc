@@ -4,6 +4,7 @@ using Geometries;
 using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
+using SROB_NC;
 
 namespace Configuration.RestrictiveAreas
 {
@@ -21,7 +22,7 @@ namespace Configuration.RestrictiveAreas
 
         public ResAreaCollection(string path)
         {
-            if(path.Substring(path.Length - 3) == ".xml")
+            if (path.Substring(path.Length - 3) == ".xml")
                 ReadFromXML(path);
             else
                 ReadFromCFG(path);
@@ -82,15 +83,36 @@ namespace Configuration.RestrictiveAreas
                 {
                     var data = lines[i].Split('\t');
 
-                    if(data[14] == "1") continue;
-                    if(data[28] == "1") continue;
-                    if(double.Parse(data[23]) > 0) continue;
+                    if (data[14] == "1") continue;
+                    if (data[28] == "1") continue;
+                    if (double.Parse(data[23]) > 0) continue;
+
+                    var allowedMotion = Axis.None;
+
+                    if (ushort.TryParse(data[12].Substring(0,1), out ushort motion))
+                    {
+                        switch (motion)
+                        {
+                            case 1:
+                                allowedMotion = Axis.X;
+                                break;
+
+                            case 2:
+                                allowedMotion = Axis.Y;
+                                break;
+
+                            case 3:
+                                allowedMotion = Axis.Z;
+                                break;
+                        }
+                    }
 
                     Areas.Add(new RestrictiveArea
                     {
                         Name = data[2],
-                        Start = new T_P_3D(float.Parse(data[4]), float.Parse(data[5]), float.Parse(data[6])),
-                        End = new T_P_3D(float.Parse(data[7]), float.Parse(data[8]), float.Parse(data[9])),
+                        Start = new Point_3D(float.Parse(data[4]), float.Parse(data[5]), float.Parse(data[6])),
+                        End = new Point_3D(float.Parse(data[7]), float.Parse(data[8]), float.Parse(data[9])),
+                        AllowedMotion = allowedMotion
                     });
                 }
 
@@ -125,7 +147,7 @@ namespace Configuration.RestrictiveAreas
                 return true;
             }
 
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.WriteLine($"XML Room configuration at{path} could not be written.");
                 return false;
@@ -147,11 +169,10 @@ namespace Configuration.RestrictiveAreas
         #endregion
 
         #endregion
-
     }
 
     /// <summary>
-    /// Definition of restricitve area to inhibit defined motion
+    /// Definition of restricitve area to inhibit motion
     /// </summary>
     public class RestrictiveArea
     {
@@ -160,7 +181,7 @@ namespace Configuration.RestrictiveAreas
         {
         }
 
-        public RestrictiveArea(string name, T_P_3D start, T_P_3D end)
+        public RestrictiveArea(string name, Point_3D start, Point_3D end)
         {
             Name = name;
             Start = start;
@@ -175,14 +196,53 @@ namespace Configuration.RestrictiveAreas
         public string Name { get; set; }
 
         [XmlElement]
-        public T_P_3D Start { get; set; }
+        public Point_3D Start { get; set; }
 
         [XmlElement]
-        public T_P_3D End { get; set; }
+        public Point_3D End { get; set; }
+
+        [XmlElement]
+        public Axis AllowedMotion { get; set; }
+
+        [XmlIgnore]
+        public double Zmin { get => Math.Min(Start.Z, End.Z); }
+
+        [XmlIgnore]
+        public double Zmax { get => Math.Max(Start.Z, End.Z); }
+
+
 
         #endregion
 
         #region Methods
+
+        #region To2DPolygon
+        /// <summary>
+        /// Creates a 2D Polygon from the Restrictive Area
+        /// </summary>
+        /// <returns></returns>
+        public Polygon_2D ToPolygon_2D()
+        {
+            try
+            {
+                var poly = new Polygon_2D();
+
+                poly.Points.Add(Start);
+                poly.Points.Add(new Point_2D(End.X, Start.Y));
+                poly.Points.Add(End);
+                poly.Points.Add(new Point_2D(Start.X, End.Y));
+
+                return poly;
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return null;
+            }
+        }
+
+        #endregion
 
         #region ToString
 

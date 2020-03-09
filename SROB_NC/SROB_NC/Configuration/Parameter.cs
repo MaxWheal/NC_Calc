@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
+using Geometries;
 
 namespace Configuration.Parameters
 {
@@ -33,12 +34,12 @@ namespace Configuration.Parameters
                 {
                     foreach (var dimension in parameter.Dimensions)
                     {
-                        Values.Add($"{parameter.Key}[{dimension.Index}]", double.Parse(dimension.Values.Value));
+                        Values.Add($"{parameter.Key}[{dimension.Index}]", double.Parse(dimension.Values.Value.Replace(".", ",")));
                     }
                 }
 
                 else
-                    Values.Add($"{parameter.Key}", double.Parse(parameter.Values.Value));
+                    Values.Add($"{parameter.Key}", double.Parse(parameter.Values.Value.Replace(".", ",")));
 
             }
         }
@@ -121,6 +122,27 @@ namespace Configuration.Parameters
         public override string ToString()
         {
             return $"{Values.Count} Parameters";
+        }
+
+        #endregion
+
+        #region Get a 4D Point from the Parameters
+
+        /// <summary>
+        /// Gets the 4D from the Parameter Values.
+        /// </summary>
+        /// <param name="key">The key of the Parameter.</param>
+        /// <returns>The 4D Point.</returns>
+        public static Point_4D GetPoint4D(string key)
+        {
+            Point_4D point4D = new Point_4D();
+            
+            point4D.X = Config.Params.Values[$"{key}[0]"];
+            point4D.Y = Config.Params.Values[$"{key}[1]"];
+            point4D.Z = Config.Params.Values[$"{key}[2]"];
+            point4D.C = Config.Params.Values[$"{key}[3]"];
+
+            return point4D;
         }
 
         #endregion

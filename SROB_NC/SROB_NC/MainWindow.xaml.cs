@@ -9,6 +9,7 @@ using Geometries;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace SROB_NC
 {
@@ -20,12 +21,29 @@ namespace SROB_NC
         #region Constructors
         public MainWindow()
         {
-            Config.Initialize(Environment.CurrentDirectory + "/../../../");
+            Config.Initialize(Environment.CurrentDirectory + "/../");
 
             InitializeComponent();
 
             this.DataContext = this;
 
+            // Get the Min- / Max-Position
+            SoftwareMin = ParameterCollecion.GetPoint4D("PAR_SW_ES_MIN");
+            SoftwareMax = ParameterCollecion.GetPoint4D("PAR_SW_ES_MAX");
+
+            SelectionShutters = new ObservableCollection<Shutter>();
+            foreach (var item in Config.Shutters.ShutterList)
+            {
+                SelectionShutters.Add(item);
+            }
+
+            SelectedShutter = new Shutter
+            {
+                Key = 0,
+                Length = Config.Params.Values["GRIPPER_DIM[0]"],
+                Width = Config.Params.Values["GRIPPER_DIM[1]"],
+                Height = 300,
+            };
 
         }
         #endregion
@@ -38,23 +56,105 @@ namespace SROB_NC
             set => _ADSonline = ConnectToPLC(value);
         }
 
-        private Track _track = new Track();
+        private readonly Track _track = new Track();
+
+        #region Shutters - Collection
+
+        public ObservableCollection<Shutter> SelectionShutters { get; set; }
+
+        #endregion
+
+        #region Selected Shutter
+
+        private Shutter _selectedShutter;
+        public Shutter SelectedShutter
+        {
+            get => _selectedShutter;
+            set 
+            { 
+                _selectedShutter = value;
+                OnPropertyChanged("SelectedShutter");
+
+                UpdateMovingBody(value);
+            }
+        }
+
+        #endregion
+
+        #region Sweep along path
+        private int _resultSweep = -1;
+        public int ResultSweep
+        {
+            get { return _resultSweep; }
+            set
+            {
+                if (_resultSweep == -1)
+                    _viewport.Children.Remove(_viewport.MidPositions);
+
+                _resultSweep = value;
+
+                if (_resultSweep < 0)
+                    return;
+
+                //Get Segment Current on
+                var currentTravel = _track.Length / 100 * value;
+
+                double segmentSum = 0;
+                Segment_4D currentSegment = null;
+
+                foreach (var segment in _track.ResultSegments)
+                {
+                    segmentSum += segment.Length;
+
+                    if (segmentSum > currentTravel)
+                    {
+                        currentSegment = segment;
+
+                        //now calculate from last MidPoint
+                        currentTravel -= (segmentSum - segment.Length);
+                        break;
+                    }
+                }
+
+                if (currentSegment != null)
+                    CurrentPos = currentSegment.GetPositionAt(Axis.None, currentTravel);
+
+            }
+        }
+
+        private bool _trackValid;
+
+        public bool TrackValid
+        {
+            get { return _trackValid; }
+            set
+            {
+                _trackValid = value;
+                OnPropertyChanged("TrackValid");
+            }
+        }
+        #endregion
 
         #region CurrentPos
-        private T_P_4D _currentPos = new T_P_4D();
+        private Point_4D _currentPos = new Point_4D();
 
-        public T_P_4D CurrentPos
+        /// <summary>
+        /// The current Position of the Gripper.
+        /// </summary>
+        public Point_4D CurrentPos
         {
             get => _currentPos;
             set
             {
-                _currentPos = value;
+                _currentPos = Point_4D.Max(SoftwareMin, value);
+                _currentPos = Point_4D.Min(SoftwareMax, _currentPos);
+
                 OnPropertyChanged("PosX");
                 OnPropertyChanged("PosY");
                 OnPropertyChanged("PosZ");
                 OnPropertyChanged("PosC");
 
-                MoveObject(value, _viewport.Gripper);
+                MoveObject(value, _viewport.MovingBody);
             }
         }
 
@@ -64,6 +164,16 @@ namespace SROB_NC
         public string PosC { get => $"C {_currentPos.C:0.0}"; }
 
         #endregion
+
+        /// <summary>
+        /// Maximum Position (from Parameters)
+        /// </summary>
+        public Point_4D SoftwareMax { get; set; }
+
+        /// <summary>
+        /// Minimum Position (from Parameters)
+        /// </summary>
+        public Point_4D SoftwareMin { get; set; }
 
         #endregion
 
@@ -125,7 +235,7 @@ namespace SROB_NC
         /// </summary>
         /// <param name="pose">4D-position to be moved to</param>
         /// <param name="obj">Object of type <see cref="ModelVisual3D"/> to be moved</param>
-        private void MoveObject(T_P_4D pose, ModelVisual3D obj)
+        private void MoveObject(Point_4D pose, ModelVisual3D obj)
         {
             Matrix3D matrix = new Matrix3D();
             matrix.Translate(new Vector3D(pose.X, pose.Y, pose.Z));
@@ -133,6 +243,20 @@ namespace SROB_NC
 
             _viewport.Dispatcher.Invoke(new Action(() => obj.Transform = new MatrixTransform3D(matrix)));
         }
+        #endregion
+
+        #region Update the MovingBody
+        private void UpdateMovingBody(Shutter value)
+        {
+            if (value == null)
+                return;
+
+            _viewport.MovingBody.Length = value.Length;
+            _viewport.MovingBody.Height = value.Height;
+            _viewport.MovingBody.Width = value.Width;
+            _viewport.MovingBody.Center = new Point3D(0,0,value.Height/2);
+        }
+
         #endregion
 
         #endregion
@@ -161,7 +285,7 @@ namespace SROB_NC
         #endregion
 
         #region Label OnMousWheel
-        private void target_OnMouseWheel(object sender, MouseWheelEventArgs e)
+        private void Target_OnMouseWheel(object sender, MouseWheelEventArgs e)
         {
 
             float distance = 50 * (e.Delta > 0 ? 1 : -1);
@@ -195,27 +319,54 @@ namespace SROB_NC
         {
             Config.Initialize(Environment.CurrentDirectory + "/../../../");
 
-            _viewport.Initialize();
-            _track.Points.Clear();
+            TrackValid = false;
+            ResultSweep = -1;
+
             btnCalcStart.Content = "Set Start";
+
+            _viewport.Initialize();
+            UpdateMovingBody(SelectedShutter);
+            _track.Waypoints.Clear();
+
+            CurrentPos = CurrentPos;
         }
         #endregion
 
         #region CalcStart Click
         private void CalcStart_Click(object sender, RoutedEventArgs e)
         {
-            if(_track?.Points.Count < 1)
+             _track.Waypoints.Add(new Point_4D(CurrentPos));
+            if (_track.Waypoints.Count < 2)
             {
-                _track.Points.Add(new T_P_4D(CurrentPos));
-                _viewport.AddStartPosition(CurrentPos);
-                btnCalcStart.Content = "Create Track";
+                btnCalcStart.Content = "Solve Track";
+                _viewport.AddMidPosition(CurrentPos, SelectedShutter.Size);
+                _viewport.RedrawTransparants();
             }
-
             else
             {
-                _track.Points.Add(new T_P_4D(CurrentPos));
-                _viewport.AddTrack(_track.Points);
-                _viewport.AddFlatProjection(new T_P_2D(CurrentPos.X, CurrentPos.Y), 500);
+                if (_track.Waypoints.Count > 2)
+                {
+                    _track.Waypoints.RemoveAt(1);
+                    _viewport.Initialize();
+                    UpdateMovingBody(SelectedShutter);
+                    CurrentPos = CurrentPos;
+
+                    ResultSweep = -1;
+                }
+
+                TrackValid = _track.Solve(SelectedShutter.Size, out List<Point_4D> result, relevantAreas: Config.ResAreas.Areas);
+
+                if (TrackValid)
+                {
+                    _viewport.AddTrack(result);
+
+                    foreach (var point in result)
+                    {
+                        _viewport.AddMidPosition(point, SelectedShutter.Size);
+                    }
+
+                    _viewport.RedrawTransparants();
+                }
             }
         }
         #endregion

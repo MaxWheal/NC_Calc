@@ -119,9 +119,8 @@ namespace Komm
                 _adsClient.DeleteVariableHandle(h);
                 return s;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                var a = 1;
                 return null;
             }
         }
