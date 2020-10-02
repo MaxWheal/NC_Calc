@@ -58,7 +58,7 @@ namespace Geometries
         /// <returns></returns>
         public override string ToString()
         {
-            return $"{base.ToString()} | {C:0.0}";
+            return $"{base.ToString()}|{C:0.0}";
         }
         #endregion
 
@@ -156,7 +156,7 @@ namespace Geometries
         /// <returns></returns>
         public override string ToString()
         {
-            return $"{base.ToString()} | {Z:0.0}";
+            return $"{base.ToString()}|{Z:0.0}";
         }
         #endregion
 
@@ -222,7 +222,7 @@ namespace Geometries
         /// <returns></returns>
         public override string ToString()
         {
-            return $"{X:0.0} | {Y:0.0}";
+            return $"{X:0.0}|{Y:0.0}";
         }
         #endregion
 
@@ -621,7 +621,7 @@ namespace Geometries
         /// <param name="point">Point to be checked</param>
         /// <param name="polygon">Polygon to be checked</param>
         /// <returns></returns>
-        public static bool IsPointInPoly(Point_2D point, Polygon_2D polygon /*, out PointInPoly result*/)
+        public static bool IsPointInPoly(Point_2D point, Polygon_2D polygon)
         {
             try
             {
@@ -640,15 +640,17 @@ namespace Geometries
 
                 double sumOfAngles = 0;
 
-                Point_2D point1 = new Point_2D(0, 0);
-                Point_2D point2 = new Point_2D(0, 0);
+                List<Segment_2D> segments = polygon.ToSegments_2D();
 
-                for (int i = 0; i < polygon.Points.Count; i++)
+                Point_2D point1 = new Point_2D();
+                Point_2D point2 = new Point_2D();
+
+                foreach (var segment in segments)
                 {
-                    point1.X = polygon.Points[i].X - point.X;
-                    point1.Y = polygon.Points[i].Y - point.Y;
-                    point2.X = polygon.Points[i < polygon.Points.Count - 1 ? i + 1 : 0].X - point.X;
-                    point2.Y = polygon.Points[i < polygon.Points.Count - 1 ? i + 1 : 0].Y - point.Y;
+                    point1.X = segment.Start.X - point.X;
+                    point1.Y = segment.Start.Y - point.Y;
+                    point2.X = segment.End.X - point.X;
+                    point2.Y = segment.End.Y - point.Y;
 
                     double theta = GetTheta(point1, point2);
 
@@ -769,10 +771,13 @@ namespace Geometries
         {
             var segments = new List<Segment_2D>();
 
-            for (int i = 0; i < this.Points.Count; i++)
+            for (int i = 0; i < this.Points.Count - 1; i++)
             {
-                segments.Add(new Segment_2D(this.Points[i], this.Points[i < this.Points.Count - 1 ? i + 1 : 0]));
+                segments.Add(new Segment_2D(this.Points[i], this.Points[i + 1]));
             }
+
+            //add remaining last
+            segments.Add(new Segment_2D(this.Points[Points.Count - 1], this.Points[0]));
 
             return segments;
         }

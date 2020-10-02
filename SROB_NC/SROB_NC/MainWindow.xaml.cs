@@ -10,6 +10,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Configuration.Parameters;
 
 namespace SROB_NC
 {
@@ -21,7 +22,7 @@ namespace SROB_NC
         #region Constructors
         public MainWindow()
         {
-            Config.Initialize(Environment.CurrentDirectory + "/../");
+            Config.Initialize();
 
             InitializeComponent();
 
@@ -40,8 +41,8 @@ namespace SROB_NC
             SelectedShutter = new Shutter
             {
                 Key = 0,
-                Length = Config.Params.Values["GRIPPER_DIM[0]"],
-                Width = Config.Params.Values["GRIPPER_DIM[1]"],
+                Length = Config.Params.Values["GREIFER_KOPF_L_GES"],
+                Width = Config.Params.Values["GREIFER_KOPF_B_GES"],
                 Height = 300,
             };
 
@@ -317,7 +318,7 @@ namespace SROB_NC
         #region Refresh Click
         private void Refresh_Click(object sender, RoutedEventArgs e)
         {
-            Config.Initialize(Environment.CurrentDirectory + "/../../../");
+            Config.Initialize();
 
             TrackValid = false;
             ResultSweep = -1;
@@ -330,6 +331,17 @@ namespace SROB_NC
 
             CurrentPos = CurrentPos;
         }
+        #endregion
+
+        #region Reload Click
+
+        private void Reload_Click(object sender, RoutedEventArgs e)
+        {
+            Config.Reset();
+
+            Refresh_Click(sender, e);
+        }
+
         #endregion
 
         #region CalcStart Click
@@ -354,23 +366,21 @@ namespace SROB_NC
                     ResultSweep = -1;
                 }
 
-                TrackValid = _track.Solve(SelectedShutter.Size, out List<Point_4D> result, relevantAreas: Config.ResAreas.Areas);
-
-                if (TrackValid)
+                if (_track.Solve(SelectedShutter.Size, out List<Point_4D> result, relevantAreas: Config.ResAreas.Areas))
                 {
                     _viewport.AddTrack(result);
 
-                    foreach (var point in result)
-                    {
-                        _viewport.AddMidPosition(point, SelectedShutter.Size);
-                    }
+                    result.ForEach(point => _viewport.AddMidPosition(point, SelectedShutter.Size));
 
                     _viewport.RedrawTransparants();
+
+                    TrackValid = true;
                 }
             }
         }
         #endregion
 
-        #endregion  
+        #endregion
+
     }
 }

@@ -21,7 +21,7 @@
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
         <Style TargetType="Button">
-            <Setter Property="Background" Value="#dfe6e9"/>
+            <Setter Property="Background" Value="#FFD7D8D8"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Margin" Value="5"/>
             <Setter Property="Padding" Value="5"/>
@@ -35,6 +35,7 @@
         </Grid.RowDefinitions>
           <StackPanel Grid.Row="0" Orientation="Horizontal">
             <Button x:Name="btnRefresh"  Content="Refresh" Click="Refresh_Click"/>
+            <Button x:Name="btnReload"  Content="Reload" Click="Reload_Click"/>
             <Button x:Name="btnCalcStart" Content="Set Start" Click="CalcStart_Click"/>
             <cc:ToggleSwitch CheckedText="Online"  Grid.Column="2" UncheckedText="Offline" IsChecked="{Binding ADS_Online}"/>
             <ComboBox ItemsSource="{Binding SelectionShutters}"  DisplayMemberPath="Name" SelectedItem="{Binding SelectedShutter}" 

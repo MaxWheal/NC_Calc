@@ -30,7 +30,7 @@ namespace Configuration.Parameters
 
             foreach (var parameter in ParameterList)
             {
-                if(parameter.Values == null)
+                if (parameter.Dimensions.Count() > 1)
                 {
                     foreach (var dimension in parameter.Dimensions)
                     {
@@ -39,10 +39,10 @@ namespace Configuration.Parameters
                 }
 
                 else
-                    Values.Add($"{parameter.Key}", double.Parse(parameter.Values.Value.Replace(".", ",")));
+                    Values.Add($"{parameter.Key}", double.Parse(parameter.Dimensions[0].Values.Value.Replace(".", ",")));
 
             }
-        }
+       }
 
         #endregion
 
@@ -158,8 +158,8 @@ namespace Configuration.Parameters
         [XmlAttribute("Name")]
         public string Key { get; set; }
 
-        [XmlElement("Values")]
-        public Values Values { get; set; }
+        //[XmlElement("Values")]
+        //public Values Values { get; set; }
 
         [XmlElement("Dimension")]
         public List<Dimension> Dimensions { get; set; }
@@ -170,11 +170,11 @@ namespace Configuration.Parameters
 
         public override string ToString()
         {
-            if (Dimensions.Count > 0)
+            if (Dimensions.Count > 1)
                 return $"{Key}: {Dimensions.Count} Dimensions";
 
             else
-                return $"{Key}: {Values.Value} {Values.Unit}";
+                return $"{Key}: {Dimensions[0].Values.Value} {Dimensions[0].Values.Unit}";
         }
     }
 

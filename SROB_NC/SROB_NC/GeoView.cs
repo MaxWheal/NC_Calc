@@ -5,7 +5,6 @@ using System.Windows.Media;
 using System.Windows.Media.Media3D;
 using Geometries;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace SROB_NC
 {
@@ -38,6 +37,9 @@ namespace SROB_NC
         #region Initialize
         public void Initialize()
         {
+            try
+            {
+
             Children.Clear();
             MidPositions.Children.Clear();
             RestrictedAreas.Children.Clear();
@@ -66,8 +68,8 @@ namespace SROB_NC
             //MovingBody
             MovingBody = new BoxVisual3D
             {
-                Length = Config.Params.Values["GRIPPER_DIM[0]"],
-                Width = Config.Params.Values["GRIPPER_DIM[1]"],
+                Length = Config.Params.Values["GREIFER_KOPF_L_GES"],
+                Width = Config.Params.Values["GREIFER_KOPF_B_GES"],
                 Height = 300,
                 Fill = Brushes.DarkGray,
                 Center = new Point3D(0, 0, 150),
@@ -87,10 +89,15 @@ namespace SROB_NC
             }
 
             RedrawTransparants();
+            }
+
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show(ex.Message);
+            }
         }
 
         #endregion
-
 
         #region AddStartPosition
         /// <summary>

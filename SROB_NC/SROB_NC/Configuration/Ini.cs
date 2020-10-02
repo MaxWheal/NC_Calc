@@ -10,7 +10,6 @@ namespace Configuration.Ini
     /// <summary>
     /// Collection of configuration Strings
     /// </summary>
-    [XmlRoot("ConfigCollection")]
     public class IniCollection
     {
         #region Contructors
@@ -21,20 +20,16 @@ namespace Configuration.Ini
 
         public IniCollection(string path)
         {
+            _iniPath = path;
             ReadFromXML(path);
-
-            Values?.Clear();
-            Values = ValuesMem.ToDictionary(x => x.Key, x => x.Value);
         }
-
         #endregion
 
-        #region Properties
-        [XmlElement("Config_String")]
-        public List<Ini> ValuesMem = new List<Ini>();
+        #region Members
 
-        [XmlIgnore]
         public Dictionary<string, string> Values;
+        private string _iniPath = "";
+
         #endregion
 
         #region Methods
@@ -44,21 +39,21 @@ namespace Configuration.Ini
         /// Reads XML to instance
         /// </summary>
         /// <param name="path">Absolute path of file to be read</param>
-        private bool ReadFromXML(string path)
+        public bool ReadFromXML(string path)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(IniCollection));
+            XmlSerializer serializer = new XmlSerializer(typeof(List<ConfigStrings>));
             try
             {
                 using (Stream reader = new FileStream(path, FileMode.Open))
                 {
-                    IniCollection readConfig = (IniCollection)serializer.Deserialize(reader);
-                    ValuesMem = readConfig.ValuesMem;
+                    Values?.Clear();
+                    Values = ((List<ConfigStrings>)serializer.Deserialize(reader)).ToDictionary(x => x.Key, x => x.Value);
 
                     return true;
                 }
             }
 
-            catch (Exception)
+            catch (Exception ex)
             {
                 Console.WriteLine($"XML Configuraion Strings at{path} could not be read.");
                 return false;
@@ -75,13 +70,18 @@ namespace Configuration.Ini
         /// <returns></returns>
         public bool WriteToXML(string path)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(IniCollection));
+            XmlSerializer serializer = new XmlSerializer(typeof(List<ConfigStrings>));
 
             try
             {
                 using (TextWriter writer = new StreamWriter(path))
                 {
-                    serializer.Serialize(writer, this);
+                    List<ConfigStrings> toWriteConfig = new List<ConfigStrings>();
+
+                    foreach (var keyValuePair in Values)
+                        toWriteConfig.Add(new ConfigStrings(keyValuePair.Key, keyValuePair.Value));
+
+                    serializer.Serialize(writer, toWriteConfig);
                 }
                 return true;
             }
@@ -102,7 +102,7 @@ namespace Configuration.Ini
         /// <returns></returns>
         public override string ToString()
         {
-            return $"{ValuesMem.Count} KeyValue Pairs";
+            return $"{Values.Count} KeyValue Pairs";
         }
 
         #endregion
@@ -111,15 +111,15 @@ namespace Configuration.Ini
 
     }
 
-    public class Ini
+    public class ConfigStrings
     {
         #region Contructors
-        public Ini()
+        public ConfigStrings()
         {
 
         }
 
-        public Ini(string key, string value)
+        public ConfigStrings(string key, string value)
         {
             Key = key;
             Value = value;
@@ -130,7 +130,7 @@ namespace Configuration.Ini
         #region Properties
         [XmlAttribute]
         public string Key { get; set; }
-        
+
         [XmlAttribute]
         public string Value { get; set; }
         #endregion

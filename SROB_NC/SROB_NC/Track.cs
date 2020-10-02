@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Configuration;
+using Configuration.RestrictiveAreas;
+using Configuration.Parameters;
 
 namespace SROB_NC
 {
@@ -105,8 +106,8 @@ namespace SROB_NC
 
                 var motionPointList = new List<Point_4D>();
 
-                CurrentPosition = Waypoints[0];
-                CurrentEndPosition = Waypoints[Waypoints.Count - 1];
+                CurrentPosition = new Point_4D(Waypoints[0]);
+                CurrentEndPosition = new Point_4D(Waypoints[Waypoints.Count - 1]);
 
 
                 motionPointList.Add(new Point_4D(CurrentPosition));
@@ -156,8 +157,6 @@ namespace SROB_NC
 
                 #region Solve Z
                 var motionSegment = new Segment_4D(CurrentPosition, CurrentEndPosition);
-                //var collidingSegments = new List<CollidingSegment>();
-
 
                 foreach (var area in RelevantAreas)
                 {
