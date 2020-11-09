@@ -11,4 +11,12 @@ namespace SROB_NC
         Z = 4,
         C = 8
     }
+
+    public enum CoOpModes : short
+    {
+        NOTDEFINED = 0,
+        Seperated = 1,
+        Cooperativ = 2
+    }
+
 }

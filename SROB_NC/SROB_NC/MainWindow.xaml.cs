@@ -150,12 +150,12 @@ namespace SROB_NC
                 _currentPos = Point_4D.Max(SoftwareMin, value);
                 _currentPos = Point_4D.Min(SoftwareMax, _currentPos);
 
+                OnPropertyChanged("CurrentPos");
+
                 OnPropertyChanged("PosX");
                 OnPropertyChanged("PosY");
                 OnPropertyChanged("PosZ");
                 OnPropertyChanged("PosC");
-
-                MoveObject(value, _viewport.MovingBody);
             }
         }
 
@@ -252,10 +252,10 @@ namespace SROB_NC
             if (value == null)
                 return;
 
-            _viewport.MovingBody.Length = value.Length;
-            _viewport.MovingBody.Height = value.Height;
-            _viewport.MovingBody.Width = value.Width;
-            _viewport.MovingBody.Center = new Point3D(0,0,value.Height/2);
+            //_viewport.MovingBody.Length = value.Length;
+            //_viewport.MovingBody.Height = value.Height;
+            //_viewport.MovingBody.Width = value.Width;
+            //_viewport.MovingBody.Center = new Point3D(0,0,value.Height/2);
         }
 
         #endregion

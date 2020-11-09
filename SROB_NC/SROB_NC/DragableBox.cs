@@ -35,7 +35,6 @@ namespace SROB_NC
         }
         public Vector3D Direction { get; set; }
         private Point3D lastPointX;
-        private Point3D lastPointY;
 
         public Vector3D HitPlaneNormalY { get; set; }
 

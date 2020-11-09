@@ -5,6 +5,7 @@ using System.Windows.Media;
 using System.Windows.Media.Media3D;
 using Geometries;
 using System.Collections.Generic;
+using System.Windows;
 
 namespace SROB_NC
 {
@@ -26,10 +27,20 @@ namespace SROB_NC
 
         #region Properties
 
-        public BoxVisual3D MovingBody;
+        private BoxVisual3D MovingBody;
         //public DragableBox Gripper { get; set; }
-        public ModelVisual3D RestrictedAreas = new ModelVisual3D();
+        private ModelVisual3D RestrictedAreas = new ModelVisual3D();
         public ModelVisual3D MidPositions = new ModelVisual3D();
+
+        public static readonly DependencyProperty MovingPositionProperty =
+            DependencyProperty.Register("MovingPosition", typeof(Point_4D), typeof(GeoView),
+                                        new UIPropertyMetadata(null, MovingPositionChanged));
+        public Point_4D MovingPosition
+        {
+            get => (Point_4D)GetValue(MovingPositionProperty);
+            set => SetValue(MovingPositionProperty, value);
+        }
+
         #endregion
 
         #region Methods
@@ -40,55 +51,55 @@ namespace SROB_NC
             try
             {
 
-            Children.Clear();
-            MidPositions.Children.Clear();
-            RestrictedAreas.Children.Clear();
+                Children.Clear();
+                MidPositions.Children.Clear();
+                RestrictedAreas.Children.Clear();
 
-            Children.Add(new DefaultLights());
+                Children.Add(new DefaultLights());
 
-            //ZeroPoint
-            Children.Add(new SphereVisual3D
-            {
-                Center = new Point3D(0, 0, 0),
-                Radius = 70,
-                Fill = Brushes.Green
-            });
+                //ZeroPoint
+                Children.Add(new SphereVisual3D
+                {
+                    Center = new Point3D(0, 0, 0),
+                    Radius = 70,
+                    Fill = Brushes.Green
+                });
 
-            //Border
-            Children.Add(WireframeBox(
-                new Point3D(Config.Params.Values["MIN_RAUM[0]"], Config.Params.Values["MIN_RAUM[1]"], Config.Params.Values["MIN_H"]),
-                new Point3D(Config.Params.Values["MAX_RAUM[0]"], Config.Params.Values["MAX_RAUM[1]"], Config.Params.Values["MAX_H"]),
-                Brushes.Red));
+                //Border
+                Children.Add(WireframeBox(
+                    new Point3D(Config.Params.Values["MIN_RAUM[0]"], Config.Params.Values["MIN_RAUM[1]"], Config.Params.Values["MIN_H"]),
+                    new Point3D(Config.Params.Values["MAX_RAUM[0]"], Config.Params.Values["MAX_RAUM[1]"], Config.Params.Values["MAX_H"]),
+                    Brushes.Red));
 
-            //Palett
-            Children.Add(FilledBox(new Point3D(0, 0, -100),
-                new Point3D(Config.Params.Values["PAL_L"], Config.Params.Values["PAL_B"], 0),
-                Brushes.LightGray));
+                //Palett
+                Children.Add(FilledBox(new Point3D(0, 0, -100),
+                    new Point3D(Config.Params.Values["PAL_L"], Config.Params.Values["PAL_B"], 0),
+                    Brushes.LightGray));
 
-            //MovingBody
-            MovingBody = new BoxVisual3D
-            {
-                Length = Config.Params.Values["GREIFER_KOPF_L_GES"],
-                Width = Config.Params.Values["GREIFER_KOPF_B_GES"],
-                Height = 300,
-                Fill = Brushes.DarkGray,
-                Center = new Point3D(0, 0, 150),
-            };
+                //MovingBody
+                MovingBody = new BoxVisual3D
+                {
+                    Length = Config.Params.Values["GREIFER_KOPF_L_GES"],
+                    Width = Config.Params.Values["GREIFER_KOPF_B_GES"],
+                    Height = 300,
+                    Fill = Brushes.DarkGray,
+                    Center = new Point3D(0, 0, 150),
+                };
 
-            MovingBody.Center = new Point3D(0, 0, MovingBody.Height/2);
+                MovingBody.Center = new Point3D(0, 0, MovingBody.Height / 2);
 
-            Children.Add(MovingBody);
+                Children.Add(MovingBody);
 
-            Children.Add(MidPositions);
+                Children.Add(MidPositions);
 
-            //Restricted areas (render at last for transparency to work)
-            foreach (var area in Config.ResAreas.Areas)
-            {
-                RestrictedAreas.Children.Add(FilledBox(area.Start, area.End, new SolidColorBrush(Colors.Red.ChangeAlpha(150))));
-                //Children.Add(WireframeBox(area.Start, area.End, Brushes.Red));
-            }
+                //Restricted areas (render at last for transparency to work)
+                foreach (var area in Config.ResAreas.Areas)
+                {
+                    RestrictedAreas.Children.Add(FilledBox(area.Start, area.End, new SolidColorBrush(Colors.Red.ChangeAlpha(150))));
+                    //Children.Add(WireframeBox(area.Start, area.End, Brushes.Red));
+                }
 
-            RedrawTransparants();
+                RedrawTransparants();
             }
 
             catch (Exception ex)
@@ -104,7 +115,7 @@ namespace SROB_NC
         /// Adds transparent box to viewport to show StartPosition
         /// </summary>
         /// <param name="value">4D position of StartPosition</param>
-        public void AddMidPosition(Point_4D value, Size size)
+        public void AddMidPosition(Point_4D value, Geometries.Size size)
         {
             var StartPosition = new BoxVisual3D
             {
@@ -337,6 +348,21 @@ namespace SROB_NC
         }
 
         #endregion
+
+        #region MovingPositionChanged
+        private static void MovingPositionChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) => ((GeoView)d).UpdateMovingPosition();
+
+        private void UpdateMovingPosition()
+        {
+            Matrix3D matrix = new Matrix3D();
+            matrix.Translate(new Vector3D(MovingPosition.X, MovingPosition.Y, MovingPosition.Z));
+            matrix.RotateAt(new Quaternion(new Vector3D(0, 0, 1), MovingPosition.C), new Point3D(MovingPosition.X, MovingPosition.Y, MovingPosition.Z));
+
+            MovingBody.Transform = new MatrixTransform3D(matrix);
+        }
+        #endregion
+
+
 
         #endregion
     }

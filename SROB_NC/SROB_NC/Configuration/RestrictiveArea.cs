@@ -112,7 +112,8 @@ namespace Configuration.RestrictiveAreas
                         Name = data[2],
                         Start = new Point_3D(float.Parse(data[4]), float.Parse(data[5]), float.Parse(data[6])),
                         End = new Point_3D(float.Parse(data[7]), float.Parse(data[8]), float.Parse(data[9])),
-                        AllowedMotion = allowedMotion
+                        AllowedMotion = allowedMotion,
+                        CoOpArea = (CoOpModes)short.Parse(data[25])
                     });
                 }
 
@@ -210,7 +211,8 @@ namespace Configuration.RestrictiveAreas
         [XmlIgnore]
         public double Zmax { get => Math.Max(Start.Z, End.Z); }
 
-
+        [XmlIgnore]
+        public  CoOpModes CoOpArea { get; set; }
 
         #endregion
 

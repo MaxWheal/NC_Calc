@@ -48,7 +48,7 @@
 
             <Slider x:Name="SliderResult" VerticalAlignment="Center" Value="{Binding ResultSweep}" Maximum="100" Margin="5" Width="250" Visibility="{Binding TrackValid, Converter={StaticResource BoolToVisConverter}}"/>
         </StackPanel>
- 
-        <local:GeoView x:Name="_viewport" Grid.Row="1"/>
+
+        <local:GeoView x:Name="_viewport" Grid.Row="1" MovingPosition="{Binding CurrentPos}"/>
     </Grid>
 </Window>
