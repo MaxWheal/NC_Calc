@@ -35,10 +35,7 @@
         </Grid.RowDefinitions>
           <StackPanel Grid.Row="0" Orientation="Horizontal">
             <Button x:Name="btnRefresh"  Content="Refresh" Click="Refresh_Click"/>
-            <Button x:Name="btnReload"  Content="Reload" Click="Reload_Click"/>
             <cc:ToggleSwitch CheckedText="Online"  Grid.Column="2" UncheckedText="Offline" IsChecked="{Binding ADS_Online}"/>
-            <ComboBox ItemsSource="{Binding SelectionShutters}"  DisplayMemberPath="Name" SelectedItem="{Binding SelectedShutter}" 
-                      Background="Transparent" Margin="5" FontSize="15" Width="150"/>
 
                 <Label x:Name="PoseX" Content="{Binding PosX}" MouseWheel="Target_OnMouseWheel"/>
                 <Label x:Name="PoseY" Content="{Binding PosY}" MouseWheel="Target_OnMouseWheel"/>
@@ -47,6 +44,6 @@
 
         </StackPanel>
 
-        <local:GeoView x:Name="_viewport" Grid.Row="1" Position="{Binding CurrentPos}"/>
+        <local:GeoView x:Name="_viewport" Grid.Row="1" Position="{Binding CurrentPos}" Partsize="{Binding CurrentPartsize}"/>
     </Grid>
 </Window>

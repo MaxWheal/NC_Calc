@@ -56,16 +56,6 @@ namespace Komm
             return handle;
         }
 
-        private static void _adsClient_AdsNotification(object sender, AdsNotificationEventArgs e)
-        {
-            if (_streamActions.ContainsKey(e.NotificationHandle))
-                _streamActions[e.NotificationHandle](e.DataStream);
-
-            else
-                Console.WriteLine($"Unknown Notification handle: {e.NotificationHandle}");
-
-        }
-
         public static int CreateNewNoty<T>(string varName, Action<T> action) where T : struct
         {
             int handle = _adsClient.AddDeviceNotificationEx(varName, AdsTransMode.OnChange, 100, 100, null, typeof(T));
@@ -91,6 +81,16 @@ namespace Komm
             }
 
             return handle;
+        }
+
+        private static void _adsClient_AdsNotification(object sender, AdsNotificationEventArgs e)
+        {
+            if (_streamActions.ContainsKey(e.NotificationHandle))
+                _streamActions[e.NotificationHandle](e.DataStream);
+
+            else
+                Console.WriteLine($"Unknown Notification handle: {e.NotificationHandle}");
+
         }
 
         private static void _adsClient_AdsNotificationEx(object sender, AdsNotificationExEventArgs e)

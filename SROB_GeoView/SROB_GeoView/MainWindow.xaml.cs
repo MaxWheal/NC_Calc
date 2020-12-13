@@ -34,15 +34,6 @@ namespace SROB_3DViewer
             {
                 SelectionShutters.Add(item);
             }
-
-            SelectedShutter = new Shutter
-            {
-                Key = 0,
-                Length = Config.Params.Values["GREIFER_KOPF_L_GES"],
-                Width = Config.Params.Values["GREIFER_KOPF_B_GES"],
-                Height = 300,
-            };
-
         }
         #endregion
 
@@ -62,16 +53,14 @@ namespace SROB_3DViewer
 
         #region Selected Shutter
 
-        private Shutter _selectedShutter;
-        public Shutter SelectedShutter
+        private Geometries.Size _currentPartsize;
+        public Geometries.Size CurrentPartsize
         {
-            get => _selectedShutter;
+            get => _currentPartsize;
             set 
-            { 
-                _selectedShutter = value;
-                OnPropertyChanged("SelectedShutter");
-
-                UpdateMovingBody(value);
+            {
+                _currentPartsize = value;
+                OnPropertyChanged("CurrentPartsize");
             }
         }
 
@@ -123,15 +112,18 @@ namespace SROB_3DViewer
             {
                 if (state)
                 {
-                    //if (Config.Ini.Values["ADS_Port"].Length > 0)
-                    //{
-                    //    PLC.Connect("", int.Parse(Config.Ini.Values["ADS_Port"]));
+                    var port = Config.Ini.Read("Port", "SPS0");
 
-                    //    //Establish notifications
-                    //    PLC.CreateNewNoty(".Visu.Module[0].Position", SetPose_OnADSNotification);
+                    if (port.Length > 0)
+                    {
+                        PLC.Connect("", int.Parse(port));
 
-                    //    return true;
-                    //}
+                        //Establish notifications
+                        PLC.CreateNewNoty(".Visu.Module[0].Position", SetPose_OnADSNotification);
+                        PLC.CreateNewNoty(".Visu.GripperTo", UpdateGripper_OnADSNotification);
+
+                        return true;
+                    }
                 }
 
                 else
@@ -158,20 +150,6 @@ namespace SROB_3DViewer
         }
         #endregion
 
-        #region Update the MovingBody
-        private void UpdateMovingBody(Shutter value)
-        {
-            if (value == null)
-                return;
-
-            //_viewport.MovingBody.Length = value.Length;
-            //_viewport.MovingBody.Height = value.Height;
-            //_viewport.MovingBody.Width = value.Width;
-            //_viewport.MovingBody.Center = new Point3D(0,0,value.Height/2);
-        }
-
-        #endregion
-
         #endregion
 
         #region Events
@@ -194,6 +172,22 @@ namespace SROB_3DViewer
             binReader.ReadSingle();
 
             CurrentPos = CurrentPos;
+        }
+        #endregion
+
+        #region SetShutter_OnADSNotification
+        private void UpdateGripper_OnADSNotification(System.IO.Stream inGripper)
+        {
+            var binReader = new System.IO.BinaryReader(inGripper);
+
+            binReader.ReadBytes(6);
+
+            Geometries.Size partSize;
+            partSize.Length = binReader.ReadSingle();
+            partSize.Width = binReader.ReadSingle();
+            partSize.Height = binReader.ReadSingle();
+
+            CurrentPartsize = partSize;
         }
         #endregion
 

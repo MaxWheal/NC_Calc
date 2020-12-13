@@ -28,10 +28,9 @@ namespace SROB_3DViewer
         #endregion
 
         #region Properties
-        public ModelVisual3D Head = new ModelVisual3D();
 
-        #region Current position
-        private SphereVisual3D _currentPositionModel = new SphereVisual3D { Radius = 0 };
+        #region Headposition
+        private ModelVisual3D _head = new ModelVisual3D();
 
         public static new readonly DependencyProperty CurrentPositionProperty =
             DependencyProperty.Register("Position", typeof(Pnt4D), typeof(GeoView),
@@ -42,6 +41,22 @@ namespace SROB_3DViewer
         {
             get => (Pnt4D)GetValue(CurrentPositionProperty);
             set => SetValue(CurrentPositionProperty, value);
+
+        }
+        #endregion
+
+        #region PartInGripper
+        private BoxVisual3D _part = new BoxVisual3D();
+
+        public static readonly DependencyProperty PartsizeProperty =
+            DependencyProperty.Register("Partsize", typeof(Geometries.Size), typeof(GeoView),
+                new FrameworkPropertyMetadata(
+                                        new PropertyChangedCallback(PartChanged),
+                                        new CoerceValueCallback(PartChanged)));
+        public Geometries.Size Partsize
+        {
+            get => (Geometries.Size)GetValue(PartsizeProperty);
+            set => SetValue(PartsizeProperty, value);
 
         }
         #endregion
@@ -71,11 +86,12 @@ namespace SROB_3DViewer
             try
             {
                 Children.Clear();
-                Head.Children.Clear();
+                _head.Children.Clear();
+                _part.Children.Clear();
                 _resAreaModels.Children.Clear();
 
                 Children.Add(new DefaultLights());
-                Children.Add(_currentPositionModel);
+                Children.Add(_head);
 
                 //ZeroPoint
                 Children.Add(new SphereVisual3D
@@ -95,19 +111,17 @@ namespace SROB_3DViewer
                     new Point3D(Config.Params.Values["PAL_L"], Config.Params.Values["PAL_B"], 0),
                     Brushes.LightGray));
 
-                ////MovingBody
-                //MovingBody = new BoxVisual3D
-                //{
-                //    Length = Config.Params.Values["GREIFER_KOPF_L_GES"],
-                //    Width = Config.Params.Values["GREIFER_KOPF_B_GES"],
-                //    Height = 300,
-                //    Fill = Brushes.DarkGray,
-                //    Center = new Point3D(0, 0, 150),
-                //};
+                //MovingBody
+                _head.Children.Add( new BoxVisual3D
+                {
+                    Length = Config.Params.Values["GREIFER_KOPF_L_GES"],
+                    Width = Config.Params.Values["GREIFER_KOPF_B_GES"],
+                    Height = 300,
+                    Fill = Brushes.White,
+                    Center = new Point3D(0, 0, 150),
+                });
 
-                //MovingBody.Center = new Point3D(0, 0, MovingBody.Height / 2);
-
-                //Children.Add(Head);
+                _head.Children.Add(_part);
 
                 ResAreas = Config.ResAreas.Areas;
             }
@@ -321,7 +335,35 @@ namespace SROB_3DViewer
         /// </summary>
         private void CurrentGripperposition()
         {
-            //throw new NotImplementedException();
+            if (Position == null) return;
+
+            Matrix3D matrix = new Matrix3D();
+            matrix.Translate(new Vector3D(Position.X, Position.Y, Position.Z));
+            matrix.RotateAt(new Quaternion(new Vector3D(0, 0, 1), Position.C), new Point3D(Position.X, Position.Y, Position.Z));
+
+           _head.Transform = new MatrixTransform3D(matrix);
+        }
+        #endregion
+
+        #region PartChanged
+        private static void PartChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) => ((GeoView)d).UpdatePartInGripper();
+        private static object PartChanged(DependencyObject d, Object e)
+        {
+            ((GeoView)d).UpdatePartInGripper();
+            return e;
+        }
+
+        /// <summary>
+        /// Updates the viewed current position
+        /// </summary>
+        private void UpdatePartInGripper()
+        {
+            //MovingBody
+            _part.Length = Partsize.Length;
+            _part.Width = Partsize.Width;
+            _part.Height = Partsize.Height;
+            _part.Fill = Brushes.DarkGray;
+            _part.Center = new Point3D(0, 0, -Partsize.Height/2);
         }
         #endregion
 
