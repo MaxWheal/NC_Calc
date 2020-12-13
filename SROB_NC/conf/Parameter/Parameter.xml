@@ -2,13 +2,13 @@
 <ParameterValues xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Parameter Name="PAL_L">
     <Dimension Index="0">
-      <Values Value="13000" Unit="mm" Min="1" Max="100000" />
+      <Values Value="4400" Unit="mm" Min="1" Max="100000" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="1,ParPalL" />
     </Dimension>
   </Parameter>
   <Parameter Name="PAL_B">
     <Dimension Index="0">
-      <Values Value="3300" Unit="mm" Min="1" Max="13000" />
+      <Values Value="9800" Unit="mm" Min="1" Max="13000" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
     </Dimension>
   </Parameter>
@@ -366,7 +366,7 @@
   </Parameter>
   <Parameter Name="PAR_SET_MAXH_TO_DICKE">
     <Dimension Index="0">
-      <Values Value="255" Unit="bitcodiert" Min="0" Max="255" />
+      <Values Value="0" Unit="bitcodiert" Min="0" Max="255" />
       <Properties ZeroAllowed="1" Type="System.Int64" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
@@ -402,17 +402,17 @@
   </Parameter>
   <Parameter Name="ANZAHL_ARBEITSSTATIONEN">
     <Dimension Index="0">
-      <Values Value="1" Unit="Stk" Min="1" Max="2" />
+      <Values Value="2" Unit="Stk" Min="1" Max="2" />
       <Properties ZeroAllowed="0" Type="System.Int64" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="ARBEITSSTATION_BEZ">
     <Dimension Index="0">
-      <Values Value="4" Unit="-" Min="0" Max="999" />
+      <Values Value="17" Unit="-" Min="0" Max="999" />
       <Properties ZeroAllowed="1" Type="System.Int64" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="0" Unit="-" Min="0" Max="999" />
+      <Values Value="15" Unit="-" Min="0" Max="999" />
       <Properties ZeroAllowed="1" Type="System.Int64" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
@@ -455,12 +455,12 @@
   <Parameter Name="GESAMTE_PALETTE_FLAECHENOELEN">
     <Dimension Index="0">
       <Values Value="0" Unit="-" Min="0" Max="1" />
-      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="3,ParGesamtePaletteFlaechenoelen" />
     </Dimension>
   </Parameter>
   <Parameter Name="FLAECHENOELEN_ART">
     <Dimension Index="0">
-      <Values Value="0" Unit="-" Min="0" Max="2" />
+      <Values Value="2" Unit="-" Min="0" Max="2" />
       <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0" />
     </Dimension>
   </Parameter>
@@ -530,7 +530,7 @@
   </Parameter>
   <Parameter Name="ARBEITSSTATION_TYP">
     <Dimension Index="0">
-      <Values Value="3" Unit="bitcodiert" Min="1" Max="15" />
+      <Values Value="2" Unit="bitcodiert" Min="1" Max="15" />
       <Properties ZeroAllowed="0" Type="System.Int64" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
@@ -547,7 +547,7 @@
   <Parameter Name="PAR_VORH">
     <Dimension Index="0">
       <Values Value="1" Unit="-" Min="1" Max="1" />
-      <Properties ZeroAllowed="1" Type="System.Int16" Level="3" SPS="0,1,2,3,4,ParVorhanden" />
+      <Properties ZeroAllowed="1" Type="System.Int16" Level="3" SPS="0,1,2,3,4,5,ParVorhanden" />
     </Dimension>
   </Parameter>
   <Parameter Name="PS_AUTO_START">
@@ -712,7 +712,7 @@
       <Properties ZeroAllowed="1" Type="System.Int16" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="255" Unit="Bitcodiert" Min="0" Max="255" />
+      <Values Value="0" Unit="Bitcodiert" Min="0" Max="255" />
       <Properties ZeroAllowed="1" Type="System.Int16" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="2">
@@ -762,81 +762,81 @@
   </Parameter>
   <Parameter Name="MIN_RAUM">
     <Dimension Index="0">
-      <Values Value="-3000" Unit="mm" Min="-80000.000000" Max="20000" />
+      <Values Value="-500" Unit="mm" Min="-80000.000000" Max="20000" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="-500" Unit="mm" Min="-6000.000000" Max="1000.000000" />
+      <Values Value="-150" Unit="mm" Min="-6000.000000" Max="1000.000000" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="MAX_RAUM">
     <Dimension Index="0">
-      <Values Value="15500" Unit="mm" Min="1" Max="50000" />
+      <Values Value="17300" Unit="mm" Min="1" Max="50000" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="8000" Unit="mm" Min="1" Max="20000" />
+      <Values Value="10300" Unit="mm" Min="1" Max="20000" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="MIN_RAUM_2">
     <Dimension Index="0">
-      <Values Value="-3000" Unit="mm" Min="-80000.000000" Max="3000.000000" />
+      <Values Value="-500" Unit="mm" Min="-80000.000000" Max="3000.000000" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="-500" Unit="mm" Min="-6000.000000" Max="1000.000000" />
+      <Values Value="-150" Unit="mm" Min="-6000.000000" Max="1000.000000" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="MAX_RAUM_2">
     <Dimension Index="0">
-      <Values Value="15500" Unit="mm" Min="1000" Max="50000" />
+      <Values Value="17300" Unit="mm" Min="1000" Max="50000" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="8000" Unit="mm" Min="1000.000000" Max="20000.000000" />
+      <Values Value="10300" Unit="mm" Min="1000.000000" Max="20000.000000" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="MIN_RAUM_KOLLISION">
     <Dimension Index="0">
-      <Values Value="-3000" Unit="mm" Min="-80000.000000" Max="8000.000000" />
+      <Values Value="-500" Unit="mm" Min="-80000.000000" Max="8000.000000" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="-500" Unit="mm" Min="-6000.000000" Max="1000.000000" />
+      <Values Value="-150" Unit="mm" Min="-6000.000000" Max="1000.000000" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="MAX_RAUM_KOLLISION">
     <Dimension Index="0">
-      <Values Value="15500" Unit="mm" Min="800.000000" Max="50000.000000" />
+      <Values Value="17300" Unit="mm" Min="800.000000" Max="50000.000000" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="8000" Unit="mm" Min="1000.000000" Max="20000.000000" />
+      <Values Value="10300" Unit="mm" Min="1000.000000" Max="20000.000000" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="MIN_POS_KOLLISION">
     <Dimension Index="0">
-      <Values Value="-3000" Unit="mm" Min="-100000" Max="100000" />
-      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParKollisionsgrenzeX_Min" />
+      <Values Value="-1000" Unit="mm" Min="-100000" Max="100000" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="-500" Unit="mm" Min="-10000" Max="10000" />
+      <Values Value="-200" Unit="mm" Min="-10000" Max="10000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="MAX_POS_KOLLISION">
     <Dimension Index="0">
-      <Values Value="15500" Unit="mm" Min="-10000" Max="50000" />
-      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParKollisionsgrenzeX_Max" />
+      <Values Value="17000" Unit="mm" Min="-10000" Max="50000" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="8000" Unit="mm" Min="-10000" Max="20000" />
+      <Values Value="10050" Unit="mm" Min="-10000" Max="20000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0" />
     </Dimension>
   </Parameter>
@@ -854,13 +854,13 @@
   </Parameter>
   <Parameter Name="MAX_H">
     <Dimension Index="0">
-      <Values Value="945" Unit="mm" Min="0" Max="2500" />
+      <Values Value="1933" Unit="mm" Min="0" Max="2500" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0,ParMaxH" />
     </Dimension>
   </Parameter>
   <Parameter Name="MIN_H">
     <Dimension Index="0">
-      <Values Value="-600" Unit="mm" Min="-1000" Max="2000" />
+      <Values Value="-525" Unit="mm" Min="-1000" Max="2000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0" />
     </Dimension>
   </Parameter>
@@ -876,66 +876,6 @@
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
-  <Parameter Name="DYN_SWES_WORKONBOTHPALLETS_MIN_X">
-    <Dimension Index="0">
-      <Values Value="-3150" Unit="mm" Min="-30000" Max="30000" />
-      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSWESx_WorkOnBothPallets_Min" />
-    </Dimension>
-  </Parameter>
-  <Parameter Name="DYN_SWES_WORKONBOTHPALLETS_MAX_X">
-    <Dimension Index="0">
-      <Values Value="11306" Unit="mm" Min="-30000" Max="30000" />
-      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSWESx_WorkOnBothPallets_Max" />
-    </Dimension>
-  </Parameter>
-  <Parameter Name="DYN_SWES_MITTLERESLAGER_MIN_X">
-    <Dimension Index="0">
-      <Values Value="-3150" Unit="mm" Min="-30000" Max="30000" />
-      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSWESx_MitMittleremLager_Min" />
-    </Dimension>
-  </Parameter>
-  <Parameter Name="DYN_SWES_MITTLERESLAGER_MAX">
-    <Dimension Index="0">
-      <Values Value="4500" Unit="mm" Min="-30000" Max="30000" />
-      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSWESx_MitMittleremLager_Max" />
-    </Dimension>
-  </Parameter>
-  <Parameter Name="DYN_SWES_MAINTENANCEPOS_MIN_X">
-    <Dimension Index="0">
-      <Values Value="-4300" Unit="mm" Min="-30000" Max="30000" />
-      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSWESx_MaintenancePos_Min" />
-    </Dimension>
-  </Parameter>
-  <Parameter Name="DYN_SWES_MAINTENANCEPOS_MAX_X">
-    <Dimension Index="0">
-      <Values Value="2600" Unit="mm" Min="-30000" Max="30000" />
-      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSWESx_MaintenancePos_Max" />
-    </Dimension>
-  </Parameter>
-  <Parameter Name="DYN_SWES_OHNEKOLLBEREICH_MINX">
-    <Dimension Index="0">
-      <Values Value="-3150" Unit="mm" Min="-30000" Max="30000" />
-      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSWESx_OhneMittleresLagerOhneKollBereich_Min" />
-    </Dimension>
-  </Parameter>
-  <Parameter Name="DYN_SWES_OHNEKOLLBEREICH_MAX_X">
-    <Dimension Index="0">
-      <Values Value="2600" Unit="mm" Min="-10000" Max="30000" />
-      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSWESx_OhneMittleresLagerOhneKollBereich_Max" />
-    </Dimension>
-  </Parameter>
-  <Parameter Name="DYN_SWES_OHNEMIT_MITKOLLBER_MIN_X">
-    <Dimension Index="0">
-      <Values Value="-3150" Unit="mm" Min="-20000" Max="20000" />
-      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSWESx_OhneMittleresLagerMitKollBereich_Min" />
-    </Dimension>
-  </Parameter>
-  <Parameter Name="DYN_SWES_OHNEMIT_MITKOLLBER_MAX_X">
-    <Dimension Index="0">
-      <Values Value="3790" Unit="mm" Min="-20000" Max="20000" />
-      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSWESx_OhneMittleresLagerMitKollBereich_Max" />
-    </Dimension>
-  </Parameter>
   <Parameter Name="MIN_ABSTAND_ZW_ROBOTERN">
     <Dimension Index="0">
       <Values Value="200" Unit="mm" Min="0" Max="10000" />
@@ -946,42 +886,6 @@
     <Dimension Index="0">
       <Values Value="1063" Unit="mm" Min="0" Max="10000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParMinAbstandSWES_zw2Robotern" />
-    </Dimension>
-  </Parameter>
-  <Parameter Name="DYN_SW_ES_MITTLERERPUFFER_GESCHLOSSEN">
-    <Dimension Index="0">
-      <Values Value="4155" Unit="mm" Min="-10000" Max="20000" />
-      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSWESx_MittlererPufferThisRobotNichtOffen" />
-    </Dimension>
-  </Parameter>
-  <Parameter Name="DYNSW_ES_Y_MAINTENANCE">
-    <Dimension Index="0">
-      <Values Value="3500" Unit="mm" Min="0" Max="3500" />
-      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSWESy_MaintenancePos_Max" />
-    </Dimension>
-  </Parameter>
-  <Parameter Name="DYN_SW_ES_MITTLERERPUFFER_OTHERROBOT_NOTOPEN">
-    <Dimension Index="0">
-      <Values Value="3120" Unit="mm" Min="-10000" Max="10000" />
-      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSWESx_MittlererPufferOtherRobotNichtOffen" />
-    </Dimension>
-  </Parameter>
-  <Parameter Name="DYN_SW_ES_WARTUNGSSCHUTZPUFFER_THIS_ROBOT">
-    <Dimension Index="0">
-      <Values Value="-2490" Unit="mm" Min="-10000" Max="10000" />
-      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSWESx_WartungsSchutzPufferThisRobotNichtOffen" />
-    </Dimension>
-  </Parameter>
-  <Parameter Name="DYN_SW_ES_WARTUNGSSCHUTZPUFFER_OTHERROBOT">
-    <Dimension Index="0">
-      <Values Value="11306" Unit="mm" Min="-10000" Max="12000" />
-      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSWESx_WartungsSchutzPufferOtherRobotNichtOffen" />
-    </Dimension>
-  </Parameter>
-  <Parameter Name="DYNSW_ES_Y_MAINTENANCE_MIN">
-    <Dimension Index="0">
-      <Values Value="-1000" Unit="mm" Min="-1000" Max="12000" />
-      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSWESy_MaintenancePos_Min" />
     </Dimension>
   </Parameter>
   <Parameter Name="CLIP_LINES_MINX">
@@ -1074,11 +978,11 @@
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSW_ES[1].Val[0]" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="-250" Unit="mm" Min="-5000" Max="20000" />
+      <Values Value="10" Unit="mm" Min="-5000" Max="20000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSW_ES[2].Val[0]" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="-100" Unit="mm" Min="-2000" Max="2000" />
+      <Values Value="-530" Unit="mm" Min="-2000" Max="2000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSW_ES[3].Val[0]" />
     </Dimension>
     <Dimension Index="3">
@@ -1088,15 +992,15 @@
   </Parameter>
   <Parameter Name="PAR_SW_ES_MAX">
     <Dimension Index="0">
-      <Values Value="9250" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="17100" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSW_ES[1].Val[1]" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="10900" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="9750" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSW_ES[2].Val[1]" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="1300" Unit="mm" Min="-2000" Max="2500" />
+      <Values Value="1935" Unit="mm" Min="-2000" Max="2500" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSW_ES[3].Val[1]" />
     </Dimension>
     <Dimension Index="3">
@@ -1106,7 +1010,7 @@
   </Parameter>
   <Parameter Name="MAX_H_KALIB_PERSPEKTIVE">
     <Dimension Index="0">
-      <Values Value="1200" Unit="mm" Min="0" Max="2200" />
+      <Values Value="1400" Unit="mm" Min="0" Max="2200" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
@@ -1124,19 +1028,19 @@
   </Parameter>
   <Parameter Name="ENTNAHMEPOS1">
     <Dimension Index="0">
-      <Values Value="-1500" Unit="mm" Min="-30000" Max="30000" />
+      <Values Value="17013" Unit="mm" Min="-30000" Max="30000" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="3000" Unit="mm" Min="-10000" Max="10000" />
+      <Values Value="815" Unit="mm" Min="-10000" Max="10000" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="500" Unit="mm" Min="-300" Max="12000" />
+      <Values Value="-22" Unit="mm" Min="-300" Max="12000" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
     </Dimension>
     <Dimension Index="3">
-      <Values Value="0" Unit="deg" Min="-95" Max="280" />
+      <Values Value="90,44" Unit="deg" Min="-95" Max="280" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="1" SPS="0" />
     </Dimension>
     <Dimension Index="4">
@@ -1144,7 +1048,7 @@
       <Properties ZeroAllowed="0" Type="System.Int64" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="5">
-      <Values Value="0" Unit="-" Min="0" Max="10" />
+      <Values Value="8" Unit="-" Min="0" Max="10" />
       <Properties ZeroAllowed="1" Type="System.Int64" Level="3" SPS="1,ParEntnahmeTypen[1]" />
     </Dimension>
     <Dimension Index="6">
@@ -1166,19 +1070,19 @@
   </Parameter>
   <Parameter Name="ENTNAHMEPOS2">
     <Dimension Index="0">
-      <Values Value="3030" Unit="mm" Min="0.000000" Max="20000" />
-      <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
+      <Values Value="16060" Unit="mm" Min="0.000000" Max="20000" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="1" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="-720" Unit="mm" Min="-1500.000000" Max="8000.000000" />
-      <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
+      <Values Value="7255" Unit="mm" Min="-1500.000000" Max="8000.000000" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="1" SPS="0" />
     </Dimension>
     <Dimension Index="2">
       <Values Value="200" Unit="mm" Min="-200.000000" Max="12000.000000" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
     </Dimension>
     <Dimension Index="3">
-      <Values Value="0" Unit="deg" Min="-95" Max="185" />
+      <Values Value="90" Unit="deg" Min="-95" Max="185" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="4">
@@ -1186,7 +1090,7 @@
       <Properties ZeroAllowed="0" Type="System.Int64" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="5">
-      <Values Value="0" Unit="-" Min="0" Max="10" />
+      <Values Value="4" Unit="-" Min="0" Max="10" />
       <Properties ZeroAllowed="1" Type="System.Int64" Level="3" SPS="1,ParEntnahmeTypen[2]" />
     </Dimension>
     <Dimension Index="6">
@@ -1194,7 +1098,7 @@
       <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0,4,ParEntnahmenZuordnung[2]" />
     </Dimension>
     <Dimension Index="7">
-      <Values Value="0" Unit="-" Min="0" Max="999" />
+      <Values Value="1" Unit="-" Min="0" Max="999" />
       <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0" />
     </Dimension>
     <Dimension Index="8">
@@ -1208,19 +1112,19 @@
   </Parameter>
   <Parameter Name="ENTNAHMEPOS3">
     <Dimension Index="0">
-      <Values Value="-1500" Unit="mm" Min="-2000" Max="13350" />
+      <Values Value="12668,5" Unit="mm" Min="-2000" Max="13350" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="3000" Unit="mm" Min="-2000" Max="8000.000000" />
+      <Values Value="7811" Unit="mm" Min="-2000" Max="9000" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="500" Unit="mm" Min="-200" Max="12000" />
+      <Values Value="158" Unit="mm" Min="-200" Max="12000" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
     </Dimension>
     <Dimension Index="3">
-      <Values Value="90" Unit="deg" Min="-95" Max="280" />
+      <Values Value="269,9" Unit="deg" Min="-95" Max="280" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="4">
@@ -1228,7 +1132,7 @@
       <Properties ZeroAllowed="0" Type="System.Int64" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="5">
-      <Values Value="0" Unit="-" Min="0" Max="10" />
+      <Values Value="11" Unit="-" Min="0" Max="11" />
       <Properties ZeroAllowed="1" Type="System.Int64" Level="3" SPS="1,ParEntnahmeTypen[3]" />
     </Dimension>
     <Dimension Index="6">
@@ -1274,8 +1178,8 @@
       <Properties ZeroAllowed="1" Type="System.Int64" Level="3" SPS="1,ParEntnahmeTypen[4]" />
     </Dimension>
     <Dimension Index="6">
-      <Values Value="1" Unit="-" Min="0" Max="2" />
-      <Properties ZeroAllowed="0" Type="System.Int64" Level="1" SPS="0,4,ParEntnahmenZuordnung[4]" />
+      <Values Value="0" Unit="-" Min="0" Max="2" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0,4,ParEntnahmenZuordnung[4]" />
     </Dimension>
     <Dimension Index="7">
       <Values Value="0" Unit="-" Min="0" Max="999" />
@@ -1334,7 +1238,7 @@
   </Parameter>
   <Parameter Name="ENTNAHMEPOS6">
     <Dimension Index="0">
-      <Values Value="-6.49" Unit="mm" Min="0" Max="13350" />
+      <Values Value="2992,54" Unit="mm" Min="0" Max="13350" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
     </Dimension>
     <Dimension Index="1">
@@ -1374,9 +1278,429 @@
       <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0" />
     </Dimension>
   </Parameter>
+  <Parameter Name="ENTNAHMEPOS7">
+    <Dimension Index="0">
+      <Values Value="-6.49" Unit="mm" Min="0" Max="13350" />
+      <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="1">
+      <Values Value="18.09" Unit="mm" Min="-1500" Max="6000" />
+      <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="2">
+      <Values Value="3.80" Unit="mm" Min="0" Max="12000" />
+      <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="3">
+      <Values Value="8.57" Unit="deg" Min="-95" Max="185" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
+    </Dimension>
+    <Dimension Index="4">
+      <Values Value="7" Unit="NR" Min="1" Max="16" />
+      <Properties ZeroAllowed="0" Type="System.Int64" Level="3" SPS="0" />
+    </Dimension>
+    <Dimension Index="5">
+      <Values Value="0" Unit="-" Min="0" Max="10" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="3" SPS="1,ParEntnahmeTypen[7]" />
+    </Dimension>
+    <Dimension Index="6">
+      <Values Value="0" Unit="-" Min="0" Max="2" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0,4,ParEntnahmenZuordnung[7]" />
+    </Dimension>
+    <Dimension Index="7">
+      <Values Value="0" Unit="-" Min="0" Max="999" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="8">
+      <Values Value="0" Unit="-" Min="0" Max="2" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="9">
+      <Values Value="0" Unit="-" Min="0" Max="2" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0" />
+    </Dimension>
+  </Parameter>
+  <Parameter Name="ENTNAHMEPOS8">
+    <Dimension Index="0">
+      <Values Value="-6.49" Unit="mm" Min="0" Max="13350" />
+      <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="1">
+      <Values Value="18.09" Unit="mm" Min="-1500" Max="6000" />
+      <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="2">
+      <Values Value="3.80" Unit="mm" Min="0" Max="12000" />
+      <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="3">
+      <Values Value="8.57" Unit="deg" Min="-95" Max="185" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
+    </Dimension>
+    <Dimension Index="4">
+      <Values Value="8" Unit="NR" Min="1" Max="16" />
+      <Properties ZeroAllowed="0" Type="System.Int64" Level="3" SPS="0" />
+    </Dimension>
+    <Dimension Index="5">
+      <Values Value="0" Unit="-" Min="0" Max="10" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="3" SPS="1,ParEntnahmeTypen[8]" />
+    </Dimension>
+    <Dimension Index="6">
+      <Values Value="0" Unit="-" Min="0" Max="2" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0,4,ParEntnahmenZuordnung[8]" />
+    </Dimension>
+    <Dimension Index="7">
+      <Values Value="0" Unit="-" Min="0" Max="999" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="8">
+      <Values Value="0" Unit="-" Min="0" Max="2" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="9">
+      <Values Value="0" Unit="-" Min="0" Max="2" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0" />
+    </Dimension>
+  </Parameter>
+  <Parameter Name="ENTNAHMEPOS9">
+    <Dimension Index="0">
+      <Values Value="-6.49" Unit="mm" Min="0" Max="13350" />
+      <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="1">
+      <Values Value="18.09" Unit="mm" Min="-1500" Max="6000" />
+      <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="2">
+      <Values Value="3.80" Unit="mm" Min="0" Max="12000" />
+      <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="3">
+      <Values Value="8.57" Unit="deg" Min="-95" Max="185" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
+    </Dimension>
+    <Dimension Index="4">
+      <Values Value="9" Unit="NR" Min="1" Max="16" />
+      <Properties ZeroAllowed="0" Type="System.Int64" Level="3" SPS="0" />
+    </Dimension>
+    <Dimension Index="5">
+      <Values Value="0" Unit="-" Min="0" Max="10" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="3" SPS="1,ParEntnahmeTypen[9]" />
+    </Dimension>
+    <Dimension Index="6">
+      <Values Value="0" Unit="-" Min="0" Max="2" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0,4,ParEntnahmenZuordnung[9]" />
+    </Dimension>
+    <Dimension Index="7">
+      <Values Value="0" Unit="-" Min="0" Max="999" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="8">
+      <Values Value="1" Unit="-" Min="0" Max="4" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="9">
+      <Values Value="2" Unit="-" Min="0" Max="2" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0" />
+    </Dimension>
+  </Parameter>
+  <Parameter Name="ENTNAHMEPOS10">
+    <Dimension Index="0">
+      <Values Value="-6.49" Unit="mm" Min="0" Max="13350" />
+      <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="1">
+      <Values Value="18.09" Unit="mm" Min="-1500" Max="6000" />
+      <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="2">
+      <Values Value="3.80" Unit="mm" Min="0" Max="12000" />
+      <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="3">
+      <Values Value="8.57" Unit="deg" Min="-95" Max="185" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
+    </Dimension>
+    <Dimension Index="4">
+      <Values Value="10" Unit="NR" Min="1" Max="16" />
+      <Properties ZeroAllowed="0" Type="System.Int64" Level="3" SPS="0" />
+    </Dimension>
+    <Dimension Index="5">
+      <Values Value="0" Unit="-" Min="0" Max="10" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="3" SPS="1,ParEntnahmeTypen[10]" />
+    </Dimension>
+    <Dimension Index="6">
+      <Values Value="2" Unit="-" Min="0" Max="2" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0,4,ParEntnahmenZuordnung[10]" />
+    </Dimension>
+    <Dimension Index="7">
+      <Values Value="0" Unit="-" Min="0" Max="999" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="8">
+      <Values Value="1" Unit="-" Min="0" Max="4" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="9">
+      <Values Value="1" Unit="-" Min="0" Max="2" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0" />
+    </Dimension>
+  </Parameter>
+  <Parameter Name="ENTNAHMEPOS11">
+    <Dimension Index="0">
+      <Values Value="-6.49" Unit="mm" Min="0" Max="13350" />
+      <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="1">
+      <Values Value="18.09" Unit="mm" Min="-1500" Max="6000" />
+      <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="2">
+      <Values Value="3.80" Unit="mm" Min="0" Max="12000" />
+      <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="3">
+      <Values Value="8.57" Unit="deg" Min="-95" Max="185" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
+    </Dimension>
+    <Dimension Index="4">
+      <Values Value="11" Unit="NR" Min="1" Max="16" />
+      <Properties ZeroAllowed="0" Type="System.Int64" Level="3" SPS="0" />
+    </Dimension>
+    <Dimension Index="5">
+      <Values Value="0" Unit="-" Min="0" Max="10" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="3" SPS="1,ParEntnahmeTypen[11]" />
+    </Dimension>
+    <Dimension Index="6">
+      <Values Value="1" Unit="-" Min="0" Max="2" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0,4,ParEntnahmenZuordnung[11]" />
+    </Dimension>
+    <Dimension Index="7">
+      <Values Value="0" Unit="-" Min="0" Max="999" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="8">
+      <Values Value="2" Unit="-" Min="0" Max="4" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="9">
+      <Values Value="2" Unit="-" Min="0" Max="2" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0" />
+    </Dimension>
+  </Parameter>
+  <Parameter Name="ENTNAHMEPOS12">
+    <Dimension Index="0">
+      <Values Value="-6.49" Unit="mm" Min="0" Max="13350" />
+      <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="1">
+      <Values Value="18.09" Unit="mm" Min="-1500" Max="6000" />
+      <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="2">
+      <Values Value="3.80" Unit="mm" Min="0" Max="12000" />
+      <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="3">
+      <Values Value="8.57" Unit="deg" Min="-95" Max="185" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
+    </Dimension>
+    <Dimension Index="4">
+      <Values Value="12" Unit="NR" Min="1" Max="16" />
+      <Properties ZeroAllowed="0" Type="System.Int64" Level="3" SPS="0" />
+    </Dimension>
+    <Dimension Index="5">
+      <Values Value="0" Unit="-" Min="0" Max="10" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="3" SPS="1,ParEntnahmeTypen[12]" />
+    </Dimension>
+    <Dimension Index="6">
+      <Values Value="2" Unit="-" Min="0" Max="2" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0,4,ParEntnahmenZuordnung[12]" />
+    </Dimension>
+    <Dimension Index="7">
+      <Values Value="0" Unit="-" Min="0" Max="999" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="8">
+      <Values Value="2" Unit="-" Min="0" Max="4" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="9">
+      <Values Value="1" Unit="-" Min="0" Max="2" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0" />
+    </Dimension>
+  </Parameter>
+  <Parameter Name="ENTNAHMEPOS13">
+    <Dimension Index="0">
+      <Values Value="-6.49" Unit="mm" Min="0" Max="13350" />
+      <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="1">
+      <Values Value="18.09" Unit="mm" Min="-1500" Max="6000" />
+      <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="2">
+      <Values Value="3.80" Unit="mm" Min="0" Max="12000" />
+      <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="3">
+      <Values Value="8.57" Unit="deg" Min="-95" Max="185" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
+    </Dimension>
+    <Dimension Index="4">
+      <Values Value="13" Unit="NR" Min="1" Max="16" />
+      <Properties ZeroAllowed="0" Type="System.Int64" Level="3" SPS="0" />
+    </Dimension>
+    <Dimension Index="5">
+      <Values Value="0" Unit="-" Min="0" Max="10" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="3" SPS="1,ParEntnahmeTypen[13]" />
+    </Dimension>
+    <Dimension Index="6">
+      <Values Value="1" Unit="-" Min="0" Max="2" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0,4,ParEntnahmenZuordnung[13]" />
+    </Dimension>
+    <Dimension Index="7">
+      <Values Value="0" Unit="-" Min="0" Max="999" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="8">
+      <Values Value="3" Unit="-" Min="0" Max="4" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="9">
+      <Values Value="2" Unit="-" Min="0" Max="2" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0" />
+    </Dimension>
+  </Parameter>
+  <Parameter Name="ENTNAHMEPOS14">
+    <Dimension Index="0">
+      <Values Value="-6.49" Unit="mm" Min="0" Max="13350" />
+      <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="1">
+      <Values Value="18.09" Unit="mm" Min="-1500" Max="6000" />
+      <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="2">
+      <Values Value="3.80" Unit="mm" Min="0" Max="12000" />
+      <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="3">
+      <Values Value="8.57" Unit="deg" Min="-95" Max="185" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
+    </Dimension>
+    <Dimension Index="4">
+      <Values Value="14" Unit="NR" Min="1" Max="16" />
+      <Properties ZeroAllowed="0" Type="System.Int64" Level="3" SPS="0" />
+    </Dimension>
+    <Dimension Index="5">
+      <Values Value="0" Unit="-" Min="0" Max="10" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="3" SPS="1,ParEntnahmeTypen[14]" />
+    </Dimension>
+    <Dimension Index="6">
+      <Values Value="2" Unit="-" Min="0" Max="2" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0,4,ParEntnahmenZuordnung[14]" />
+    </Dimension>
+    <Dimension Index="7">
+      <Values Value="0" Unit="-" Min="0" Max="999" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="8">
+      <Values Value="3" Unit="-" Min="0" Max="4" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="9">
+      <Values Value="1" Unit="-" Min="0" Max="2" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0" />
+    </Dimension>
+  </Parameter>
+  <Parameter Name="ENTNAHMEPOS15">
+    <Dimension Index="0">
+      <Values Value="-6.49" Unit="mm" Min="0" Max="13350" />
+      <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="1">
+      <Values Value="18.09" Unit="mm" Min="-1500" Max="6000" />
+      <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="2">
+      <Values Value="3.80" Unit="mm" Min="0" Max="12000" />
+      <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="3">
+      <Values Value="8.57" Unit="deg" Min="-95" Max="185" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
+    </Dimension>
+    <Dimension Index="4">
+      <Values Value="15" Unit="NR" Min="1" Max="16" />
+      <Properties ZeroAllowed="0" Type="System.Int64" Level="3" SPS="0" />
+    </Dimension>
+    <Dimension Index="5">
+      <Values Value="0" Unit="-" Min="0" Max="10" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="3" SPS="1,ParEntnahmeTypen[15]" />
+    </Dimension>
+    <Dimension Index="6">
+      <Values Value="1" Unit="-" Min="0" Max="2" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0,4,ParEntnahmenZuordnung[15]" />
+    </Dimension>
+    <Dimension Index="7">
+      <Values Value="0" Unit="-" Min="0" Max="999" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="8">
+      <Values Value="4" Unit="-" Min="0" Max="4" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="9">
+      <Values Value="2" Unit="-" Min="0" Max="2" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0" />
+    </Dimension>
+  </Parameter>
+  <Parameter Name="ENTNAHMEPOS16">
+    <Dimension Index="0">
+      <Values Value="-6.49" Unit="mm" Min="0" Max="13350" />
+      <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="1">
+      <Values Value="18.09" Unit="mm" Min="-1500" Max="6000" />
+      <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="2">
+      <Values Value="3.80" Unit="mm" Min="0" Max="12000" />
+      <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="3">
+      <Values Value="8.57" Unit="deg" Min="-95" Max="185" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
+    </Dimension>
+    <Dimension Index="4">
+      <Values Value="16" Unit="NR" Min="1" Max="16" />
+      <Properties ZeroAllowed="0" Type="System.Int64" Level="3" SPS="0" />
+    </Dimension>
+    <Dimension Index="5">
+      <Values Value="0" Unit="-" Min="0" Max="10" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="3" SPS="1,ParEntnahmeTypen[16]" />
+    </Dimension>
+    <Dimension Index="6">
+      <Values Value="2" Unit="-" Min="0" Max="2" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0,4,ParEntnahmenZuordnung[16]" />
+    </Dimension>
+    <Dimension Index="7">
+      <Values Value="0" Unit="-" Min="0" Max="999" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="8">
+      <Values Value="4" Unit="-" Min="0" Max="4" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0" />
+    </Dimension>
+    <Dimension Index="9">
+      <Values Value="1" Unit="-" Min="0" Max="2" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="1" SPS="0" />
+    </Dimension>
+  </Parameter>
   <Parameter Name="GRUNDSTELLUNG">
     <Dimension Index="0">
-      <Values Value="2000" Unit="mm" Min="-3150" Max="15500" />
+      <Values Value="4000" Unit="mm" Min="-3150" Max="15500" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0,ParPosGrundstellung[1]" />
     </Dimension>
     <Dimension Index="1">
@@ -1384,7 +1708,7 @@
       <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0,ParPosGrundstellung[2]" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="900" Unit="mm" Min="0" Max="2200" />
+      <Values Value="100" Unit="mm" Min="0" Max="2200" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0,ParPosGrundstellung[3]" />
     </Dimension>
     <Dimension Index="3">
@@ -1480,7 +1804,7 @@
   </Parameter>
   <Parameter Name="ZEICH_H">
     <Dimension Index="0">
-      <Values Value="40" Unit="mm" Min="0" Max="9000" />
+      <Values Value="500" Unit="mm" Min="0" Max="9000" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
     </Dimension>
   </Parameter>
@@ -1544,15 +1868,15 @@
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="1330" Unit="mm" Min="-10000" Max="10000" />
+      <Values Value="7000" Unit="mm" Min="-10000" Max="10000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="200" Unit="mm" Min="-10000" Max="10000" />
+      <Values Value="1000" Unit="mm" Min="-10000" Max="10000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="3">
-      <Values Value="90" Unit="deg" Min="-95" Max="185" />
+      <Values Value="270" Unit="deg" Min="-95" Max="270" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
@@ -1716,81 +2040,81 @@
   </Parameter>
   <Parameter Name="VORPOS_SMS_UMBAU">
     <Dimension Index="0">
-      <Values Value="-1180.92" Unit="mm" Min="-10000" Max="20000" />
+      <Values Value="17013" Unit="mm" Min="-10000" Max="20000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="3200" Unit="mm" Min="-10000" Max="10000" />
+      <Values Value="855" Unit="mm" Min="-10000" Max="10000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="200" Unit="mm" Min="-10000" Max="10000" />
+      <Values Value="25" Unit="mm" Min="-10000" Max="10000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="3">
-      <Values Value="270.21" Unit="deg" Min="-90" Max="275" />
+      <Values Value="90" Unit="deg" Min="-90" Max="275" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="OFFSET_SMS_DEMONTAGE">
     <Dimension Index="0">
-      <Values Value="-30" Unit="mm" Min="-100" Max="100" />
+      <Values Value="30" Unit="mm" Min="-100" Max="100" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="OFFSET_SMS_MONTAGE">
     <Dimension Index="0">
-      <Values Value="30" Unit="mm" Min="-100" Max="100" />
+      <Values Value="-30" Unit="mm" Min="-100" Max="100" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="POS_KALIBRIERWERKZEUG_PERSPEKTIVE">
     <Dimension Index="0">
-      <Values Value="2282.28" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="8150" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="464.00" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="8500" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="431.49" Unit="mm" Min="-2000" Max="2000" />
+      <Values Value="-300" Unit="mm" Min="-2000" Max="2000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="3">
-      <Values Value="0.00" Unit="deg" Min="-360" Max="360" />
+      <Values Value="0" Unit="deg" Min="-360" Max="360" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="VORPOS_KALIBRIERWERKZEUG_PERSPEKTIVE">
     <Dimension Index="0">
-      <Values Value="2282.28" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="8150" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="464.00" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="8500" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="1919.38" Unit="mm" Min="-2000" Max="2000" />
+      <Values Value="500" Unit="mm" Min="-2000" Max="2000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="3">
-      <Values Value="0.00" Unit="deg" Min="-360" Max="360" />
+      <Values Value="0" Unit="deg" Min="-360" Max="360" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="POS_KALIBRIERVORGANG_PERSPEKTIVE">
     <Dimension Index="0">
-      <Values Value="2000.00" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="2000" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="2020.00" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="4000" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="1400.00" Unit="mm" Min="-2000" Max="2000" />
+      <Values Value="1000" Unit="mm" Min="-2000" Max="2000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="3">
@@ -1812,7 +2136,7 @@
   </Parameter>
   <Parameter Name="SMS_ABLAGE_ZPOS_NACH_ABLAGE_STATION_FREI">
     <Dimension Index="0">
-      <Values Value="1250" Unit="mm" Min="200" Max="2000" />
+      <Values Value="1930" Unit="mm" Min="200" Max="2000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
@@ -1848,7 +2172,7 @@
   </Parameter>
   <Parameter Name="ENTNAHME_ANZ">
     <Dimension Index="0">
-      <Values Value="0" Unit="-" Min="0" Max="100" />
+      <Values Value="3" Unit="-" Min="0" Max="100" />
       <Properties ZeroAllowed="1" Type="System.Int16" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
@@ -1982,7 +2306,7 @@
   </Parameter>
   <Parameter Name="PALPOS_2_STATION1">
     <Dimension Index="0">
-      <Values Value="14000" Unit="mm" Min="-100000" Max="100000" />
+      <Values Value="0" Unit="mm" Min="-100000" Max="100000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
@@ -2000,7 +2324,7 @@
   </Parameter>
   <Parameter Name="PALPOS_1_STATION2">
     <Dimension Index="0">
-      <Values Value="14000" Unit="mm" Min="-100000" Max="20000" />
+      <Values Value="5909" Unit="mm" Min="-100000" Max="20000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
@@ -2054,7 +2378,7 @@
   </Parameter>
   <Parameter Name="OFFS_MAGUNFIX">
     <Dimension Index="0">
-      <Values Value="59" Unit="mm" Min="-500" Max="500" />
+      <Values Value="60" Unit="mm" Min="-500" Max="500" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
@@ -2062,11 +2386,11 @@
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="0" Unit="mm" Min="-500" Max="500" />
+      <Values Value="20" Unit="mm" Min="-500" Max="500" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="3">
-      <Values Value="0" Unit="deg" Min="-500" Max="500" />
+      <Values Value="90" Unit="deg" Min="-500" Max="500" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
@@ -2120,7 +2444,7 @@
   </Parameter>
   <Parameter Name="ALAG_ABST">
     <Dimension Index="0">
-      <Values Value="-200" Unit="mm" Min="-500" Max="500" />
+      <Values Value="-280" Unit="mm" Min="-500" Max="500" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="4,ParAlagFachweite" />
     </Dimension>
     <Dimension Index="1">
@@ -2162,19 +2486,19 @@
   </Parameter>
   <Parameter Name="ALAG1_POS">
     <Dimension Index="0">
-      <Values Value="16500" Unit="mm" Min="-15000" Max="20110" />
+      <Values Value="16910" Unit="mm" Min="-15000" Max="20110" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="1" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="6700" Unit="mm" Min="-4000" Max="15000" />
+      <Values Value="4227" Unit="mm" Min="-4000" Max="15000" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="4,ParAlagErstesErreichbaresFachPosY" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="600" Unit="mm" Min="0.000000" Max="2000.000000" />
+      <Values Value="191" Unit="mm" Min="0.000000" Max="2000.000000" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
     </Dimension>
     <Dimension Index="3">
-      <Values Value="180" Unit="deg" Min="-95" Max="185" />
+      <Values Value="90" Unit="deg" Min="-95" Max="185" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="1" SPS="0" />
     </Dimension>
   </Parameter>
@@ -2256,11 +2580,11 @@
   </Parameter>
   <Parameter Name="ALAG2_POS">
     <Dimension Index="0">
-      <Values Value="-2600" Unit="mm" Min="-15000" Max="20110" />
+      <Values Value="16100" Unit="mm" Min="-15000" Max="20110" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="5000" Unit="mm" Min="-3000.000000" Max="15000" />
+      <Values Value="9000" Unit="mm" Min="-3000.000000" Max="15000" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
     </Dimension>
     <Dimension Index="2">
@@ -2716,7 +3040,7 @@
       <Properties ZeroAllowed="1" Type="System.Int64" Level="3" SPS="4,ParAlagErstesErreichbaresFachNr" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="3" Unit="-" Min="0" Max="200" />
+      <Values Value="1" Unit="-" Min="0" Max="200" />
       <Properties ZeroAllowed="1" Type="System.Int64" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="2">
@@ -2754,7 +3078,7 @@
   </Parameter>
   <Parameter Name="ALAG_USE_MAX">
     <Dimension Index="0">
-      <Values Value="40" Unit="-" Min="0" Max="200" />
+      <Values Value="7" Unit="-" Min="0" Max="200" />
       <Properties ZeroAllowed="1" Type="System.Int64" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
@@ -2832,11 +3156,11 @@
   </Parameter>
   <Parameter Name="ALAG_IMPULSE_MIN">
     <Dimension Index="0">
-      <Values Value="14" Unit="1" Min="0" Max="30" />
+      <Values Value="10" Unit="1" Min="0" Max="30" />
       <Properties ZeroAllowed="0" Type="System.Int64" Level="3" SPS="1,ParALagImpulseMinRob[1]" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="0" Unit="1" Min="0" Max="20" />
+      <Values Value="10" Unit="1" Min="0" Max="20" />
       <Properties ZeroAllowed="0" Type="System.Int64" Level="3" SPS="1,ParALagImpulseMinRob[2]" />
     </Dimension>
     <Dimension Index="2">
@@ -2874,11 +3198,11 @@
   </Parameter>
   <Parameter Name="ALAG_IMPULSE_MAX">
     <Dimension Index="0">
-      <Values Value="17" Unit="1" Min="1" Max="30" />
+      <Values Value="20" Unit="1" Min="1" Max="30" />
       <Properties ZeroAllowed="0" Type="System.Int64" Level="3" SPS="1,ParALagImpulseMaxRob[1]" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="9" Unit="1" Min="1" Max="20" />
+      <Values Value="20" Unit="1" Min="1" Max="20" />
       <Properties ZeroAllowed="0" Type="System.Int64" Level="3" SPS="1,ParALagImpulseMaxRob[2]" />
     </Dimension>
     <Dimension Index="2">
@@ -2916,7 +3240,7 @@
   </Parameter>
   <Parameter Name="ALAG_ANZ">
     <Dimension Index="0">
-      <Values Value="0" Unit="Stk" Min="0" Max="10" />
+      <Values Value="1" Unit="Stk" Min="0" Max="10" />
       <Properties ZeroAllowed="1" Type="System.Int64" Level="3" SPS="1,ParALagAnzALags" />
     </Dimension>
   </Parameter>
@@ -3192,7 +3516,7 @@
   </Parameter>
   <Parameter Name="ALAG_ANZAHL_FACH">
     <Dimension Index="0">
-      <Values Value="40" Unit="-" Min="0" Max="1000" />
+      <Values Value="7" Unit="-" Min="0" Max="1000" />
       <Properties ZeroAllowed="1" Type="System.Int16" Level="3" SPS="1,4,ParALagAnzFaecherRob[1]" />
     </Dimension>
     <Dimension Index="1">
@@ -3418,19 +3742,19 @@
   </Parameter>
   <Parameter Name="GREIFER_BREITE_EINZELN">
     <Dimension Index="0">
-      <Values Value="200" Unit="mm" Min="1" Max="400" />
+      <Values Value="240" Unit="mm" Min="1" Max="400" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="GREIFER_KOPF_L_GES">
     <Dimension Index="0">
-      <Values Value="500" Unit="mm" Min="1" Max="2000" />
+      <Values Value="530" Unit="mm" Min="1" Max="2000" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0,ParGreiferDim.Length" />
     </Dimension>
   </Parameter>
   <Parameter Name="GREIFER_KOPF_B_GES">
     <Dimension Index="0">
-      <Values Value="250" Unit="mm" Min="1" Max="1000" />
+      <Values Value="260" Unit="mm" Min="1" Max="1000" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0,ParGreiferDim.Width" />
     </Dimension>
   </Parameter>
@@ -3582,7 +3906,7 @@
   </Parameter>
   <Parameter Name="GREIFERFINGER_LAENGE">
     <Dimension Index="0">
-      <Values Value="90" Unit="mm" Min="0" Max="1000" />
+      <Values Value="25" Unit="mm" Min="0" Max="1000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
@@ -3594,19 +3918,19 @@
   </Parameter>
   <Parameter Name="GREIFERFINGER_OEFFNUNG">
     <Dimension Index="0">
-      <Values Value="125" Unit="mm" Min="0" Max="1000" />
+      <Values Value="100" Unit="mm" Min="0" Max="1000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="HOEHE_UNTERKANTE_GREIFERKOPF">
     <Dimension Index="0">
-      <Values Value="180" Unit="mm" Min="0" Max="200" />
+      <Values Value="100" Unit="mm" Min="0" Max="200" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="HOEHE_UNTERKANTE_GREIFER">
     <Dimension Index="0">
-      <Values Value="40" Unit="mm" Min="0" Max="200" />
+      <Values Value="30" Unit="mm" Min="0" Max="200" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
@@ -3618,11 +3942,11 @@
   </Parameter>
   <Parameter Name="PAR_SCHALER_SENSOR_SCHALTPUNKT">
     <Dimension Index="0">
-      <Values Value="100" Unit="mm" Min="0" Max="500" />
+      <Values Value="80,8" Unit="mm" Min="0" Max="500" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="3" SPS="0,ParSchalerSchaltpunkt[1]" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="100" Unit="mm" Min="0" Max="500" />
+      <Values Value="81" Unit="mm" Min="0" Max="500" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="3" SPS="0,ParSchalerSchaltpunkt[2]" />
     </Dimension>
     <Dimension Index="2">
@@ -3762,11 +4086,11 @@
       <Properties ZeroAllowed="0" Type="System.Single" Level="3" SPS="0,ParFasenSchaltpunkt[2]" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="256" Unit="mm" Min="0" Max="500" />
+      <Values Value="1640" Unit="mm" Min="0" Max="500" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="3" SPS="0,ParFasenSchaltpunkt[3]" />
     </Dimension>
     <Dimension Index="3">
-      <Values Value="266" Unit="mm" Min="0" Max="500" />
+      <Values Value="181" Unit="mm" Min="0" Max="500" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="3" SPS="0,ParFasenSchaltpunkt[4]" />
     </Dimension>
     <Dimension Index="4">
@@ -3930,7 +4254,7 @@
   </Parameter>
   <Parameter Name="ANZAHL_ZUSGREIFER">
     <Dimension Index="0">
-      <Values Value="2" Unit="-" Min="0" Max="4" />
+      <Values Value="0" Unit="-" Min="0" Max="4" />
       <Properties ZeroAllowed="1" Type="System.Int16" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
@@ -3960,7 +4284,7 @@
   </Parameter>
   <Parameter Name="MAGNETFIXIER_WERKZEUG">
     <Dimension Index="0">
-      <Values Value="1" Unit="-" Min="0" Max="1" />
+      <Values Value="0" Unit="-" Min="0" Max="1" />
       <Properties ZeroAllowed="1" Type="System.Int16" Level="3" SPS="0,ParMagnetFixierwerkzeug" />
     </Dimension>
   </Parameter>
@@ -3996,11 +4320,11 @@
   </Parameter>
   <Parameter Name="PAR_SENSORTYP_TEIL_IM_GREIFER_ERKENNUNG">
     <Dimension Index="0">
-      <Values Value="2" Unit="-" Min="0" Max="2" />
+      <Values Value="3" Unit="-" Min="0" Max="3" />
       <Properties ZeroAllowed="0" Type="System.Int16" Level="3" SPS="0,ParSensortypTeilImGreifer[1]" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="2" Unit="-" Min="0" Max="2" />
+      <Values Value="3" Unit="-" Min="0" Max="3" />
       <Properties ZeroAllowed="0" Type="System.Int16" Level="3" SPS="0,ParSensortypTeilImGreifer[2]" />
     </Dimension>
     <Dimension Index="2">
@@ -4012,11 +4336,11 @@
       <Properties ZeroAllowed="0" Type="System.Int16" Level="3" SPS="0,ParSensortypTeilImGreifer[4]" />
     </Dimension>
     <Dimension Index="4">
-      <Values Value="2" Unit="-" Min="0" Max="2" />
+      <Values Value="1" Unit="-" Min="0" Max="2" />
       <Properties ZeroAllowed="0" Type="System.Int16" Level="3" SPS="0,ParSensortypTeilImGreifer[5]" />
     </Dimension>
     <Dimension Index="5">
-      <Values Value="2" Unit="-" Min="0" Max="2" />
+      <Values Value="1" Unit="-" Min="0" Max="2" />
       <Properties ZeroAllowed="0" Type="System.Int16" Level="3" SPS="0,ParSensortypTeilImGreifer[6]" />
     </Dimension>
     <Dimension Index="6">
@@ -4042,7 +4366,7 @@
   </Parameter>
   <Parameter Name="SETH_MW">
     <Dimension Index="0">
-      <Values Value="550" Unit="mm" Min="0" Max="550" />
+      <Values Value="650" Unit="mm" Min="0" Max="700" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
     </Dimension>
   </Parameter>
@@ -4252,7 +4576,7 @@
   </Parameter>
   <Parameter Name="ANHEBHOEHE_AM_ANFANG_NCBER">
     <Dimension Index="0">
-      <Values Value="300" Unit="mm" Min="200" Max="900" />
+      <Values Value="650" Unit="mm" Min="200" Max="900" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
@@ -4312,43 +4636,43 @@
   </Parameter>
   <Parameter Name="ERLAUBTER_ABSTAND_ZUR_PALETTE_BEIM_SETZEN">
     <Dimension Index="0">
-      <Values Value="400" Unit="mm" Min="-100" Max="1000" />
+      <Values Value="100" Unit="mm" Min="-100" Max="1000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="400" Unit="mm" Min="-100" Max="1000" />
+      <Values Value="100" Unit="mm" Min="-100" Max="1000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="400" Unit="mm" Min="-100" Max="1000" />
+      <Values Value="250" Unit="mm" Min="-100" Max="1000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="3">
-      <Values Value="400" Unit="mm" Min="-100" Max="1000" />
+      <Values Value="200" Unit="mm" Min="-100" Max="1000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="ERLAUBTER_ABSTAND_ZUR_PALETTE_BEIM_MAGNETLOESEN">
     <Dimension Index="0">
-      <Values Value="200" Unit="mm" Min="-100" Max="1000" />
+      <Values Value="250" Unit="mm" Min="-100" Max="1000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="200" Unit="mm" Min="-100" Max="1000" />
+      <Values Value="45" Unit="mm" Min="-100" Max="1000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="0" Unit="mm" Min="-100" Max="1000" />
+      <Values Value="100" Unit="mm" Min="-100" Max="1000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="3">
-      <Values Value="0" Unit="mm" Min="-100" Max="1000" />
+      <Values Value="100" Unit="mm" Min="-100" Max="1000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="ANFAHRHOEHE_SCHRAEG_SETZEN_MW">
     <Dimension Index="0">
-      <Values Value="5" Unit="mm" Min="0" Max="100" />
+      <Values Value="10" Unit="mm" Min="0" Max="100" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
@@ -4588,19 +4912,19 @@
   </Parameter>
   <Parameter Name="PROD_ORDER_PLOT">
     <Dimension Index="0">
-      <Values Value="-1" Unit="-" Min="-1" Max="7" />
+      <Values Value="1" Unit="-" Min="-1" Max="7" />
       <Properties ZeroAllowed="1" Type="System.Int16" Level="1" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="PROD_ORDER_MAG">
     <Dimension Index="0">
-      <Values Value="2" Unit="-" Min="-1" Max="7" />
+      <Values Value="-1" Unit="-" Min="-1" Max="7" />
       <Properties ZeroAllowed="1" Type="System.Int16" Level="1" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="PROD_ORDER_QA">
     <Dimension Index="0">
-      <Values Value="3" Unit="-" Min="-1" Max="7" />
+      <Values Value="4" Unit="-" Min="-1" Max="7" />
       <Properties ZeroAllowed="1" Type="System.Int16" Level="1" SPS="0" />
     </Dimension>
   </Parameter>
@@ -4648,7 +4972,7 @@
   </Parameter>
   <Parameter Name="ZUGRIFF_PLAG">
     <Dimension Index="0">
-      <Values Value="0" Unit="-" Min="0" Max="5" />
+      <Values Value="5" Unit="-" Min="0" Max="5" />
       <Properties ZeroAllowed="1" Type="System.Int16" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
@@ -4660,7 +4984,7 @@
   </Parameter>
   <Parameter Name="PROD_ORDER_FLAECHENOELEN">
     <Dimension Index="0">
-      <Values Value="-1" Unit="-" Min="-1" Max="20" />
+      <Values Value="2" Unit="-" Min="-1" Max="20" />
       <Properties ZeroAllowed="1" Type="System.Int16" Level="1" SPS="0" />
     </Dimension>
   </Parameter>
@@ -4702,7 +5026,7 @@
   </Parameter>
   <Parameter Name="PROD_ORDER_ENTSCHALEN">
     <Dimension Index="0">
-      <Values Value="1" Unit="-" Min="-1" Max="7" />
+      <Values Value="0" Unit="-" Min="-1" Max="7" />
       <Properties ZeroAllowed="1" Type="System.Int16" Level="1" SPS="0" />
     </Dimension>
   </Parameter>
@@ -4738,19 +5062,19 @@
   </Parameter>
   <Parameter Name="PROD_ORDER_EBT_MAGNET">
     <Dimension Index="0">
-      <Values Value="2" Unit="-" Min="-1" Max="9" />
+      <Values Value="-1" Unit="-" Min="-1" Max="9" />
       <Properties ZeroAllowed="1" Type="System.Int16" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="PROD_ORDER_SCHALER_UMBAUEN">
     <Dimension Index="0">
-      <Values Value="-1" Unit="-" Min="-1" Max="9" />
+      <Values Value="1" Unit="-" Min="-1" Max="9" />
       <Properties ZeroAllowed="1" Type="System.Int16" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="HEBE_MAG_LOESE_WERKZEUG">
     <Dimension Index="0">
-      <Values Value="0" Unit="-" Min="0" Max="1" />
+      <Values Value="1" Unit="-" Min="0" Max="1" />
       <Properties ZeroAllowed="1" Type="System.Int16" Level="3" SPS="0,ParMagloeseWerkzeugHeben" />
     </Dimension>
   </Parameter>
@@ -4780,7 +5104,7 @@
   </Parameter>
   <Parameter Name="SMS_MODUS_UMBAU">
     <Dimension Index="0">
-      <Values Value="0" Unit="-" Min="0" Max="2" />
+      <Values Value="1" Unit="-" Min="0" Max="2" />
       <Properties ZeroAllowed="1" Type="System.Int16" Level="3" SPS="1,ParSMSUmbauModus" />
     </Dimension>
   </Parameter>
@@ -4810,7 +5134,7 @@
   </Parameter>
   <Parameter Name="ENTNAHME_ZUGRIFFS_ART_NCBER">
     <Dimension Index="0">
-      <Values Value="1" Unit="-" Min="0" Max="1" />
+      <Values Value="0" Unit="-" Min="0" Max="1" />
       <Properties ZeroAllowed="1" Type="System.Int16" Level="9" SPS="0" />
     </Dimension>
   </Parameter>
@@ -5086,25 +5410,25 @@
   </Parameter>
   <Parameter Name="BAND_OEL_EIN">
     <Dimension Index="0">
-      <Values Value="200" Unit="ms" Min="1" Max="10000" />
+      <Values Value="15" Unit="ms" Min="1" Max="10000" />
       <Properties ZeroAllowed="0" Type="System.Int64" Level="3" SPS="1,ParNLZOelenEin" />
     </Dimension>
   </Parameter>
   <Parameter Name="BAND_OEL_AUS">
     <Dimension Index="0">
-      <Values Value="50" Unit="ms" Min="1" Max="30000" />
+      <Values Value="15" Unit="ms" Min="1" Max="30000" />
       <Properties ZeroAllowed="0" Type="System.Int64" Level="3" SPS="1,ParNLZOelenAus" />
     </Dimension>
   </Parameter>
   <Parameter Name="SROB_OEL_EIN">
     <Dimension Index="0">
-      <Values Value="20" Unit="ms" Min="1" Max="30000" />
+      <Values Value="10" Unit="ms" Min="1" Max="30000" />
       <Properties ZeroAllowed="0" Type="System.Int64" Level="3" SPS="0,ParNLZOelenFlaecheEin" />
     </Dimension>
   </Parameter>
   <Parameter Name="SROB_OEL_AUS">
     <Dimension Index="0">
-      <Values Value="500" Unit="ms" Min="1" Max="30000" />
+      <Values Value="10" Unit="ms" Min="1" Max="30000" />
       <Properties ZeroAllowed="0" Type="System.Int64" Level="3" SPS="0,ParNLZOelenFlaecheAus" />
     </Dimension>
   </Parameter>
@@ -5256,7 +5580,7 @@
   </Parameter>
   <Parameter Name="FLAECHENOELER_DUESENTYP">
     <Dimension Index="0">
-      <Values Value="1" Unit="[1]" Min="0" Max="10" />
+      <Values Value="1" Unit="-" Min="0" Max="10" />
       <Properties ZeroAllowed="1" Type="System.Int64" Level="3" SPS="0,ParFlaechenoelerDuesenart" />
     </Dimension>
   </Parameter>
@@ -5286,13 +5610,13 @@
   </Parameter>
   <Parameter Name="V_MAX_BAHN">
     <Dimension Index="0">
-      <Values Value="5760" Unit="mm/s" Min="500.0" Max="6000" />
+      <Values Value="4920" Unit="mm/s" Min="500" Max="6000" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="3" SPS="0,ParMaxBahngeschwindigkeit" />
     </Dimension>
   </Parameter>
   <Parameter Name="V_MAX">
     <Dimension Index="0">
-      <Values Value="3900" Unit="mm/s" Min="0" Max="5500" />
+      <Values Value="3350" Unit="mm/s" Min="0" Max="5500" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="4" SPS="0,ParMaxGeschwindigkeit[1]" />
     </Dimension>
     <Dimension Index="1">
@@ -5300,7 +5624,7 @@
       <Properties ZeroAllowed="0" Type="System.Single" Level="4" SPS="0,ParMaxGeschwindigkeit[2]" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="1900" Unit="mm/s" Min="0" Max="3500" />
+      <Values Value="1662" Unit="mm/s" Min="0" Max="3500" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="4" SPS="0,ParMaxGeschwindigkeit[3]" />
     </Dimension>
     <Dimension Index="3">
@@ -5322,15 +5646,15 @@
   </Parameter>
   <Parameter Name="MAX_SPEED_SLS_TSM">
     <Dimension Index="0">
-      <Values Value="36" Unit="mm/s" Min="36" Max="5000" />
+      <Values Value="70" Unit="mm/s" Min="36" Max="5000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSLSSpeed[1]" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="38" Unit="mm/s" Min="38" Max="5000" />
+      <Values Value="70" Unit="mm/s" Min="38" Max="5000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSLSSpeed[2]" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="46" Unit="mm/s" Min="46" Max="5000" />
+      <Values Value="50" Unit="mm/s" Min="46" Max="5000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSLSSpeed[3]" />
     </Dimension>
     <Dimension Index="3">
@@ -5345,6 +5669,12 @@
     </Dimension>
   </Parameter>
   <Parameter Name="HROB_LAGER_Z_OVERRIDE">
+    <Dimension Index="0">
+      <Values Value="10" Unit="%" Min="0" Max="100" />
+      <Properties ZeroAllowed="0" Type="System.Single" Level="9" SPS="0" />
+    </Dimension>
+  </Parameter>
+  <Parameter Name="HROB2_LAGER_Z_OVERRIDE">
     <Dimension Index="0">
       <Values Value="10" Unit="%" Min="0" Max="100" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="9" SPS="0" />
@@ -5444,7 +5774,7 @@
   </Parameter>
   <Parameter Name="V_TAUCH">
     <Dimension Index="0">
-      <Values Value="3" Unit="%" Min="1" Max="100" />
+      <Values Value="1" Unit="%" Min="1" Max="100" />
       <Properties ZeroAllowed="0" Type="System.Int64" Level="1" SPS="0,ParTauchGeschw" />
     </Dimension>
   </Parameter>
@@ -5541,6 +5871,10 @@
       <Values Value="0" Unit="%" Min="1" Max="100" />
       <Properties ZeroAllowed="0" Type="System.Int16" Level="3" SPS="4,ParOverride" />
     </Dimension>
+    <Dimension Index="2">
+      <Values Value="40" Unit="%" Min="1" Max="100" />
+      <Properties ZeroAllowed="0" Type="System.Int16" Level="3" SPS="5,ParOverride" />
+    </Dimension>
   </Parameter>
   <Parameter Name="PAR_MAINTAINANCE_OVERRIDE">
     <Dimension Index="0">
@@ -5598,7 +5932,7 @@
   </Parameter>
   <Parameter Name="MIN_L_SCHAL_INNEN">
     <Dimension Index="0">
-      <Values Value="2500" Unit="mm" Min="1" Max="20000" />
+      <Values Value="5000" Unit="mm" Min="1" Max="20000" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="1" SPS="0" />
     </Dimension>
   </Parameter>
@@ -5676,7 +6010,7 @@
   </Parameter>
   <Parameter Name="DBL_FUELLSTUECKLAENGE_MW1">
     <Dimension Index="0">
-      <Values Value="70" Unit="mm" Min="0" Max="500" />
+      <Values Value="40" Unit="mm" Min="0" Max="500" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="1" SPS="0" />
     </Dimension>
   </Parameter>
@@ -6082,7 +6416,7 @@
   </Parameter>
   <Parameter Name="VERB_SPALT_BIS_MAX">
     <Dimension Index="0">
-      <Values Value="500" Unit="mm" Min="0" Max="5000" />
+      <Values Value="1000" Unit="mm" Min="0" Max="5000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
@@ -6128,17 +6462,17 @@
   </Parameter>
   <Parameter Name="SETZ_WEITE_LASER_KALIB">
     <Dimension Index="0">
-      <Values Value="1500" Unit="mm" Min="500" Max="2000" />
+      <Values Value="1800" Unit="mm" Min="500" Max="2000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="LASER_KAL_POS">
     <Dimension Index="0">
-      <Values Value="7500" Unit="mm" Min="-1000" Max="20000" />
+      <Values Value="7000" Unit="mm" Min="-1000" Max="20000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="1200" Unit="mm" Min="-1000" Max="10000" />
+      <Values Value="2200" Unit="mm" Min="-1000" Max="10000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
@@ -6162,13 +6496,13 @@
   </Parameter>
   <Parameter Name="MANIPULIERE_ELEMENTDICKE_BIS">
     <Dimension Index="0">
-      <Values Value="70" Unit="mm" Min="0" Max="100" />
+      <Values Value="0" Unit="mm" Min="0" Max="500" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="MANIPULIERE_ELEMENTDICKE_AUF">
     <Dimension Index="0">
-      <Values Value="70" Unit="mm" Min="0" Max="100" />
+      <Values Value="0" Unit="mm" Min="0" Max="500" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
@@ -6250,7 +6584,7 @@
   </Parameter>
   <Parameter Name="QA_AB_HOEHE_NICHT_OPT">
     <Dimension Index="0">
-      <Values Value="4000" Unit="mm" Min="0" Max="10000" />
+      <Values Value="10000" Unit="mm" Min="0" Max="10000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
@@ -6416,19 +6750,19 @@
   </Parameter>
   <Parameter Name="SCHALER_KOMBI_TYPE">
     <Dimension Index="0">
-      <Values Value="0" Unit="-" Min="0" Max="1" />
+      <Values Value="1" Unit="-" Min="0" Max="1" />
       <Properties ZeroAllowed="1" Type="System.Int64" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="KOMBI_OPTISCHALLAENGE_MAXMEHR">
     <Dimension Index="0">
-      <Values Value="1" Unit="-" Min="0" Max="10" />
+      <Values Value="2" Unit="-" Min="0" Max="10" />
       <Properties ZeroAllowed="1" Type="System.Int64" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="MW_AKTIVES_SYSTEM">
     <Dimension Index="0">
-      <Values Value="0" Unit="-" Min="0" Max="13" />
+      <Values Value="13" Unit="-" Min="0" Max="14" />
       <Properties ZeroAllowed="1" Type="System.Int64" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
@@ -6440,7 +6774,7 @@
   </Parameter>
   <Parameter Name="CADBER_DREHEN_90_NEG">
     <Dimension Index="0">
-      <Values Value="0" Unit="-" Min="0" Max="1" />
+      <Values Value="1" Unit="-" Min="0" Max="1" />
       <Properties ZeroAllowed="1" Type="System.Int64" Level="9" SPS="0" />
     </Dimension>
   </Parameter>
@@ -6646,7 +6980,7 @@
   </Parameter>
   <Parameter Name="FASE_MANIPULIEREN_LOESCHEN">
     <Dimension Index="0">
-      <Values Value="255" Unit="binaererCode" Min="0" Max="255" />
+      <Values Value="0" Unit="binaererCode" Min="0" Max="255" />
       <Properties ZeroAllowed="1" Type="System.Int16" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
@@ -6736,7 +7070,7 @@
   </Parameter>
   <Parameter Name="SH_SCHALUNGS_BER_ART_YPARALLEL_ZUERST">
     <Dimension Index="0">
-      <Values Value="255" Unit="bitcodiert" Min="0" Max="255" />
+      <Values Value="0" Unit="bitcodiert" Min="0" Max="255" />
       <Properties ZeroAllowed="1" Type="System.Int16" Level="1" SPS="0" />
     </Dimension>
   </Parameter>
@@ -6758,7 +7092,7 @@
   </Parameter>
   <Parameter Name="MANIPULIERE_ELEMENTDICKE_PALTYPEN">
     <Dimension Index="0">
-      <Values Value="4" Unit="bitcodiert" Min="0" Max="255" />
+      <Values Value="0" Unit="bitcodiert" Min="0" Max="255" />
       <Properties ZeroAllowed="1" Type="System.Int16" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
@@ -7308,7 +7642,7 @@
   </Parameter>
   <Parameter Name="BAND_ANZAHL_AUFTAKTEN">
     <Dimension Index="0">
-      <Values Value="6" Unit="-" Min="0" Max="10" />
+      <Values Value="4" Unit="-" Min="0" Max="10" />
       <Properties ZeroAllowed="1" Type="System.Int64" Level="3" SPS="1,ParAnzahlAuftaktenBand" />
     </Dimension>
   </Parameter>
@@ -7494,7 +7828,7 @@
   </Parameter>
   <Parameter Name="PAR_SMS_MODUS_ANSCHLAG">
     <Dimension Index="0">
-      <Values Value="0" Unit="-" Min="0" Max="3" />
+      <Values Value="2" Unit="-" Min="0" Max="3" />
       <Properties ZeroAllowed="0" Type="System.Int16" Level="9" SPS="1,ParSMSAnschlagModus" />
     </Dimension>
   </Parameter>
@@ -7530,20 +7864,8 @@
   </Parameter>
   <Parameter Name="BAND_RFID_SCHALERIDENTIFIZIERUNG">
     <Dimension Index="0">
-      <Values Value="0" Unit="-" Min="0" Max="1" />
+      <Values Value="1" Unit="-" Min="0" Max="1" />
       <Properties ZeroAllowed="0" Type="System.Int16" Level="9" SPS="1,ParRFIDSchalerIdent" />
-    </Dimension>
-  </Parameter>
-  <Parameter Name="BAND_RFID_SEITE_IDENTIFIZIERUNG">
-    <Dimension Index="0">
-      <Values Value="-1" Unit="-" Min="-1" Max="1" />
-      <Properties ZeroAllowed="1" Type="System.Int16" Level="9" SPS="0" />
-    </Dimension>
-  </Parameter>
-  <Parameter Name="SMS_RFID_SEITE_IDENTIFIZIERUNG">
-    <Dimension Index="0">
-      <Values Value="-1" Unit="-" Min="-1" Max="1" />
-      <Properties ZeroAllowed="0" Type="System.Int16" Level="9" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="SMS_RFID_SCHALER_PRUEFEN">
@@ -8140,7 +8462,7 @@
   </Parameter>
   <Parameter Name="POLINT_MAXGRAD">
     <Dimension Index="0">
-      <Values Value="50" Unit="[1]" Min="3" Max="50" />
+      <Values Value="50" Unit="" Min="3" Max="50" />
       <Properties ZeroAllowed="0" Type="System.Int64" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
@@ -8184,7 +8506,7 @@
   </Parameter>
   <Parameter Name="MAX_DIFF_MASTER_SLAVE_VOR_KOPPELN">
     <Dimension Index="0">
-      <Values Value="70" Unit="1/100mm" Min="0" Max="1000" />
+      <Values Value="130" Unit="1/100mm" Min="0" Max="1000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0,ParXMaxPosDiffSlaveHandKoppeln" />
     </Dimension>
   </Parameter>
@@ -8304,7 +8626,7 @@
   </Parameter>
   <Parameter Name="ACHS_NULLPKTVERSCHIEBUNGEN">
     <Dimension Index="0">
-      <Values Value="0" Unit="deg" Min="-20000" Max="20000" />
+      <Values Value="0" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParNullPktVerschiebung[1]" />
     </Dimension>
     <Dimension Index="1">
@@ -8332,7 +8654,7 @@
   </Parameter>
   <Parameter Name="BRUECKENLAENGE_Y">
     <Dimension Index="0">
-      <Values Value="6000" Unit="mm" Min="0" Max="25000" />
+      <Values Value="10800" Unit="mm" Min="0" Max="25000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
@@ -8404,7 +8726,7 @@
   </Parameter>
   <Parameter Name="MASTER_XACHSE">
     <Dimension Index="0">
-      <Values Value="1" Unit="1" Min="0" Max="1" />
+      <Values Value="0" Unit="1" Min="0" Max="1" />
       <Properties ZeroAllowed="1" Type="System.Int16" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
@@ -8464,7 +8786,7 @@
   </Parameter>
   <Parameter Name="ACHSOELER_EIN_AUS">
     <Dimension Index="0">
-      <Values Value="5" Unit="-" Min="0" Max="6" />
+      <Values Value="5" Unit="-" Min="0" Max="7" />
       <Properties ZeroAllowed="1" Type="System.Int16" Level="1" SPS="0,ParAchsOelModus" />
     </Dimension>
   </Parameter>
@@ -8653,7 +8975,7 @@
   <Parameter Name="SIMULATIONSMODUS_HROB">
     <Dimension Index="0">
       <Values Value="1" Unit="-" Min="0" Max="1" />
-      <Properties ZeroAllowed="1" Type="System.Int16" Level="9" SPS="4,ParSimulationsModus" />
+      <Properties ZeroAllowed="1" Type="System.Int16" Level="9" SPS="4,5,ParSimulationsModus" />
     </Dimension>
   </Parameter>
   <Parameter Name="CHECK_DIFF_RANDSCHALUNG_OFFS_OBEN">
@@ -8694,7 +9016,7 @@
   </Parameter>
   <Parameter Name="SCAN_OFFSET">
     <Dimension Index="0">
-      <Values Value="300" Unit="mm" Min="-2000" Max="2000" />
+      <Values Value="-285" Unit="mm" Min="-2000" Max="2000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
@@ -8812,109 +9134,109 @@
   </Parameter>
   <Parameter Name="EROB_MINDESTTRANSPORTHOEHE">
     <Dimension Index="0">
-      <Values Value="300" Unit="mm" Min="100" Max="3000" />
+      <Values Value="600" Unit="mm" Min="100" Max="3000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="EROB_KALIBPOS_ABSTAND_VOM_RAND_X_MIN">
     <Dimension Index="0">
-      <Values Value="500" Unit="mm" Min="0" Max="5000" />
+      <Values Value="200" Unit="mm" Min="0" Max="5000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="EROB_KALIBPOS_ABSTAND_VOM_RAND_X_MAX">
     <Dimension Index="0">
-      <Values Value="500" Unit="mm" Min="0" Max="10000" />
+      <Values Value="200" Unit="mm" Min="0" Max="10000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="SCANFAHRTEN_1">
     <Dimension Index="0">
-      <Values Value="0" Unit="mm" Min="-10000" Max="30000" />
+      <Values Value="1150" Unit="mm" Min="-10000" Max="30000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="825" Unit="mm" Min="-10000" Max="30000" />
+      <Values Value="10" Unit="mm" Min="-10000" Max="30000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="13000" Unit="mm" Min="-10000" Max="30000" />
+      <Values Value="1150" Unit="mm" Min="-10000" Max="30000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="3">
-      <Values Value="825" Unit="mm" Min="-10000" Max="30000" />
+      <Values Value="4390" Unit="mm" Min="-10000" Max="30000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="SCANFAHRTEN_2">
     <Dimension Index="0">
-      <Values Value="13000" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="2940" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="2475" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="4390" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="0" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="2940" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="3">
-      <Values Value="2475" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="10" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="SCANFAHRTEN_3">
     <Dimension Index="0">
-      <Values Value="-20000" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="4900" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="-20000" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="10" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="-20000" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="4900" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="3">
-      <Values Value="-20000" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="4390" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="SCANFAHRTEN_4">
     <Dimension Index="0">
-      <Values Value="-20000" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="6860" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="-20000" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="4390" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="-20000" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="6860" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="3">
-      <Values Value="-20000" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="10" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="SCANFAHRTEN_5">
     <Dimension Index="0">
-      <Values Value="-20000" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="8650" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="-20000" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="10" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="-20000" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="8650" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0" />
     </Dimension>
     <Dimension Index="3">
-      <Values Value="-20000" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="4390" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0" />
     </Dimension>
   </Parameter>
@@ -8950,37 +9272,37 @@
   </Parameter>
   <Parameter Name="SCAN_H">
     <Dimension Index="0">
-      <Values Value="900" Unit="mm" Min="0" Max="2000" />
+      <Values Value="1933" Unit="mm" Min="0" Max="2000" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="LASER_AKTIV_X_START">
     <Dimension Index="0">
-      <Values Value="-300" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="0" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParLaserVon_X" />
     </Dimension>
   </Parameter>
   <Parameter Name="LASER_AKTIV_X_ENDE">
     <Dimension Index="0">
-      <Values Value="12200" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="5000" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParLaserBis_X" />
     </Dimension>
   </Parameter>
   <Parameter Name="LASER_AKTIV_Y_START">
     <Dimension Index="0">
-      <Values Value="597" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="500" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParLaserVon_Y" />
     </Dimension>
   </Parameter>
   <Parameter Name="LASER_AKTIV_Y_END">
     <Dimension Index="0">
-      <Values Value="1757" Unit="mm" Min="-20000" Max="20000" />
+      <Values Value="8800" Unit="mm" Min="-20000" Max="20000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParLaserBis_Y" />
     </Dimension>
   </Parameter>
   <Parameter Name="EROB_HOEHE_ZUM_MAGOEFFNEN_MWIS">
     <Dimension Index="0">
-      <Values Value="-35" Unit="mm" Min="-200" Max="1000" />
+      <Values Value="-20" Unit="mm" Min="-200" Max="1000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0" />
     </Dimension>
   </Parameter>
@@ -9040,7 +9362,7 @@
   </Parameter>
   <Parameter Name="SCAN_CNT_SPUREN">
     <Dimension Index="0">
-      <Values Value="2" Unit="Anzahl" Min="1" Max="9" />
+      <Values Value="5" Unit="Anzahl" Min="1" Max="9" />
       <Properties ZeroAllowed="0" Type="System.Int16" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
@@ -9052,7 +9374,7 @@
   </Parameter>
   <Parameter Name="SCAN_MAG_OEFFNEN">
     <Dimension Index="0">
-      <Values Value="0" Unit="-" Min="0" Max="1" />
+      <Values Value="1" Unit="-" Min="0" Max="1" />
       <Properties ZeroAllowed="1" Type="System.Int16" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
@@ -9100,25 +9422,25 @@
   </Parameter>
   <Parameter Name="ELAG_ABST">
     <Dimension Index="0">
-      <Values Value="-180" Unit="mm" Min="-200" Max="200" />
+      <Values Value="-220" Unit="mm" Min="-250" Max="200" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="ELAG_POS">
     <Dimension Index="0">
-      <Values Value="2670" Unit="mm" Min="-15000" Max="15000" />
+      <Values Value="10895" Unit="mm" Min="-15000" Max="15000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="5200" Unit="mm" Min="-5000" Max="10000" />
+      <Values Value="6580" Unit="mm" Min="-5000" Max="10000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="600" Unit="mm" Min="-5000" Max="5000" />
+      <Values Value="130" Unit="mm" Min="-5000" Max="5000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="3">
-      <Values Value="180" Unit="deg" Min="-180" Max="185" />
+      <Values Value="90" Unit="deg" Min="-180" Max="185" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
@@ -9174,7 +9496,7 @@
   </Parameter>
   <Parameter Name="ELAG_USE_MAX">
     <Dimension Index="0">
-      <Values Value="5" Unit="-" Min="0" Max="20" />
+      <Values Value="4" Unit="-" Min="0" Max="20" />
       <Properties ZeroAllowed="1" Type="System.Int64" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
@@ -9186,7 +9508,7 @@
   </Parameter>
   <Parameter Name="RESTLAENGE_ELAG">
     <Dimension Index="0">
-      <Values Value="200" Unit="mm" Min="0" Max="10000" />
+      <Values Value="500" Unit="mm" Min="0" Max="10000" />
       <Properties ZeroAllowed="1" Type="System.Int64" Level="3" SPS="1,ParELagRestlaenge" />
     </Dimension>
   </Parameter>
@@ -9222,19 +9544,19 @@
   </Parameter>
   <Parameter Name="ELAG_MAX_HOEHENDIFF_NACHBAR">
     <Dimension Index="0">
-      <Values Value="400" Unit="mm" Min="0" Max="500" />
+      <Values Value="500" Unit="mm" Min="0" Max="500" />
       <Properties ZeroAllowed="1" Type="System.Int64" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="ELAG_ANZ">
     <Dimension Index="0">
-      <Values Value="0" Unit="Stk" Min="0" Max="1" />
+      <Values Value="1" Unit="Stk" Min="0" Max="1" />
       <Properties ZeroAllowed="1" Type="System.Int16" Level="3" SPS="1,ParELagAnzELags" />
     </Dimension>
   </Parameter>
   <Parameter Name="ELAG_ANZAHL_FACH">
     <Dimension Index="0">
-      <Values Value="7" Unit="-" Min="0" Max="20" />
+      <Values Value="4" Unit="-" Min="0" Max="20" />
       <Properties ZeroAllowed="1" Type="System.Int16" Level="3" SPS="1,ParELagAnzFaecherRob" />
     </Dimension>
   </Parameter>
@@ -9730,11 +10052,11 @@
   </Parameter>
   <Parameter Name="PAR_HROB_NULLPKT">
     <Dimension Index="0">
-      <Values Value="13750" Unit="mm" Min="-100000" Max="100000" />
+      <Values Value="0" Unit="mm" Min="-100000" Max="100000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="-380" Unit="mm" Min="-100000" Max="100000" />
+      <Values Value="0" Unit="mm" Min="-100000" Max="100000" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="2">
@@ -9748,37 +10070,33 @@
   </Parameter>
   <Parameter Name="PAR_HROB_MIN_RAUM">
     <Dimension Index="0">
-      <Values Value="-390" Unit="mm" Min="-80000" Max="20000" />
-      <Properties ZeroAllowed="0" Type="System.Single" Level="3" SPS="0" />
+      <Values Value="-2000" Unit="mm" Min="-80000" Max="20000" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="-680" Unit="mm" Min="-6000" Max="1000" />
-      <Properties ZeroAllowed="0" Type="System.Single" Level="3" SPS="0" />
+      <Values Value="-500" Unit="mm" Min="-6000" Max="1000" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="PAR_HROB_MAX_RAUM">
     <Dimension Index="0">
-      <Values Value="4170" Unit="mm" Min="1000" Max="50000" />
+      <Values Value="2000" Unit="mm" Min="1000" Max="50000" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="3720" Unit="mm" Min="1000" Max="20000" />
+      <Values Value="5000" Unit="mm" Min="1000" Max="20000" />
       <Properties ZeroAllowed="0" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
   <Parameter Name="PAR_HROB_ZOFFSET_GREIFER_LEER_PRUEFEN">
     <Dimension Index="0">
       <Values Value="50" Unit="mm" Min="0" Max="50" />
-      <Properties ZeroAllowed="0" Type="System.Single" Level="3" SPS="4,ParAbstandGreiferLeerPruefen" />
+      <Properties ZeroAllowed="0" Type="System.Single" Level="3" SPS="4,5,ParAbstandGreiferLeerPruefen" />
     </Dimension>
   </Parameter>
   <Parameter Name="PAR_HROB_LANSAM_WEG_TAUCH">
     <Dimension Index="0">
       <Values Value="200" Unit="mm" Min="0" Max="500" />
-      <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
-    </Dimension>
-    <Dimension Index="1">
-      <Values Value="0" Unit="mm" Min="0" Max="500" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
@@ -9795,7 +10113,7 @@
   <Parameter Name="PAR_HROB_V_GRUNDSTELLUNG">
     <Dimension Index="0">
       <Values Value="100" Unit="%" Min="1" Max="100" />
-      <Properties ZeroAllowed="0" Type="System.Int64" Level="3" SPS="4,5,ParOverrideGrundstellung" />
+      <Properties ZeroAllowed="0" Type="System.Int64" Level="3" SPS="4,ParOverrideGrundstellung" />
     </Dimension>
     <Dimension Index="1">
       <Values Value="1" Unit="%" Min="1" Max="100" />
@@ -9814,48 +10132,54 @@
   </Parameter>
   <Parameter Name="PAR_HROB_ACHSTYPEN">
     <Dimension Index="0">
-      <Values Value="3" Unit="-" Min="0" Max="3" />
+      <Values Value="2" Unit="-" Min="0" Max="3" />
       <Properties ZeroAllowed="1" Type="System.Int16" Level="9" SPS="4,ParAchsTypen[1]" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="3" Unit="-" Min="0" Max="3" />
+      <Values Value="2" Unit="-" Min="0" Max="3" />
       <Properties ZeroAllowed="1" Type="System.Int16" Level="9" SPS="4,ParAchsTypen[2]" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="3" Unit="-" Min="0" Max="3" />
+      <Values Value="2" Unit="-" Min="0" Max="3" />
       <Properties ZeroAllowed="1" Type="System.Int16" Level="9" SPS="4,ParAchsTypen[3]" />
     </Dimension>
     <Dimension Index="3">
-      <Values Value="0" Unit="-" Min="0" Max="2" />
+      <Values Value="2" Unit="-" Min="0" Max="2" />
       <Properties ZeroAllowed="1" Type="System.Int16" Level="9" SPS="4,ParAchsTypen[4]" />
     </Dimension>
     <Dimension Index="4">
-      <Values Value="0" Unit="-" Min="0" Max="3" />
+      <Values Value="2" Unit="-" Min="0" Max="3" />
       <Properties ZeroAllowed="1" Type="System.Int16" Level="9" SPS="4,ParAchsTypen[5]" />
     </Dimension>
   </Parameter>
   <Parameter Name="PAR_HROB_V_HAND_OVERRIDE">
     <Dimension Index="0">
-      <Values Value="10" Unit="%" Min="1" Max="100" />
+      <Values Value="100" Unit="%" Min="1" Max="100" />
       <Properties ZeroAllowed="0" Type="System.Int16" Level="9" SPS="4,ParGeschwHandbetrieb[1]" />
     </Dimension>
     <Dimension Index="1">
-      <Values Value="10" Unit="%" Min="1" Max="100" />
+      <Values Value="100" Unit="%" Min="1" Max="100" />
       <Properties ZeroAllowed="0" Type="System.Int16" Level="9" SPS="4,ParGeschwHandbetrieb[2]" />
     </Dimension>
     <Dimension Index="2">
-      <Values Value="10" Unit="%" Min="1" Max="100" />
+      <Values Value="100" Unit="%" Min="1" Max="100" />
       <Properties ZeroAllowed="0" Type="System.Int16" Level="9" SPS="4,ParGeschwHandbetrieb[3]" />
     </Dimension>
     <Dimension Index="3">
-      <Values Value="10" Unit="%" Min="1" Max="100" />
+      <Values Value="100" Unit="%" Min="1" Max="100" />
       <Properties ZeroAllowed="0" Type="System.Int16" Level="9" SPS="4,ParGeschwHandbetrieb[4]" />
     </Dimension>
   </Parameter>
   <Parameter Name="PAR_HROB_ANZAHL_GREIFER">
     <Dimension Index="0">
       <Values Value="2" Unit="-" Min="1" Max="4" />
-      <Properties ZeroAllowed="0" Type="System.Int16" Level="3" SPS="ParGreiferAnzahl" />
+      <Properties ZeroAllowed="0" Type="System.Int16" Level="3" SPS="4,ParSchalerGreiferAnzahl" />
+    </Dimension>
+  </Parameter>
+  <Parameter Name="PAR_HROB2_ANZAHL_GREIFER">
+    <Dimension Index="0">
+      <Values Value="4" Unit="-" Min="1" Max="4" />
+      <Properties ZeroAllowed="0" Type="System.Int16" Level="3" SPS="5,ParSchalerGreiferAnzahl" />
     </Dimension>
   </Parameter>
   <Parameter Name="PAR_HROB2_MAX_SPEED_SLS_TSM">
@@ -10044,12 +10368,6 @@
       <Properties ZeroAllowed="0" Type="System.Int16" Level="9" SPS="5,ParGeschwHandbetrieb[4]" />
     </Dimension>
   </Parameter>
-  <Parameter Name="PAR_HROB2_ANZAHL_GREIFER">
-    <Dimension Index="0">
-      <Values Value="2" Unit="-" Min="1" Max="4" />
-      <Properties ZeroAllowed="0" Type="System.Int16" Level="3" SPS="4,5,ParGreiferAnzahl" />
-    </Dimension>
-  </Parameter>
   <Parameter Name="PAR_HROB_SORTIER_RICHTUNG_SCHALER">
     <Dimension Index="0">
       <Values Value="1" Unit="-" Min="0" Max="1" />
@@ -10074,7 +10392,7 @@
   </Parameter>
   <Parameter Name="BAND_HANDBEFEHLE_AUS_VISU">
     <Dimension Index="0">
-      <Values Value="0" Unit="-" Min="0" Max="1" />
+      <Values Value="1" Unit="-" Min="0" Max="1" />
       <Properties ZeroAllowed="1" Type="System.Int16" Level="3" SPS="0" />
     </Dimension>
   </Parameter>
@@ -10084,6 +10402,14 @@
       <Properties ZeroAllowed="0" Type="System.Int16" Level="3" SPS="0" />
     </Dimension>
     <Dimension Index="1">
+      <Values Value="3" Unit="-" Min="0" Max="3" />
+      <Properties ZeroAllowed="0" Type="System.Int16" Level="3" SPS="0" />
+    </Dimension>
+    <Dimension Index="2">
+      <Values Value="3" Unit="-" Min="0" Max="3" />
+      <Properties ZeroAllowed="0" Type="System.Int16" Level="3" SPS="0" />
+    </Dimension>
+    <Dimension Index="3">
       <Values Value="3" Unit="-" Min="0" Max="3" />
       <Properties ZeroAllowed="0" Type="System.Int16" Level="3" SPS="0" />
     </Dimension>
@@ -10138,7 +10464,7 @@
   </Parameter>
   <Parameter Name="EBT_SYSTEM">
     <Dimension Index="0">
-      <Values Value="3" Unit="-" Min="0" Max="3" />
+      <Values Value="1" Unit="-" Min="0" Max="3" />
       <Properties ZeroAllowed="0" Type="System.Int64" Level="9" SPS="0" />
     </Dimension>
   </Parameter>
@@ -10662,6 +10988,204 @@
     <Dimension Index="0">
       <Values Value="150" Unit="mm" Min="0" Max="200" />
       <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="4,ParXMaxPosDiffMasterSlave" />
+    </Dimension>
+  </Parameter>
+  <Parameter Name="EROB_PLOTTEN">
+    <Dimension Index="0">
+      <Values Value="1" Unit="-" Min="0" Max="1" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
+    </Dimension>
+  </Parameter>
+  <Parameter Name="CAD_OELER_MODUS">
+    <Dimension Index="0">
+      <Values Value="1" Unit="-" Min="0" Max="1" />
+      <Properties ZeroAllowed="1" Type="System.Int64" Level="3" SPS="3,ParCadOelerModus" />
+    </Dimension>
+  </Parameter>
+  <Parameter Name="HROB_STUETZEN_VORHANDEN">
+    <Dimension Index="0">
+      <Values Value="2" Unit="-" Min="0" Max="5" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
+    </Dimension>
+  </Parameter>
+  <Parameter Name="STUETZE_Y_POS">
+    <Dimension Index="0">
+      <Values Value="800" Unit="mm" Min="0" Max="2000" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
+    </Dimension>
+  </Parameter>
+  <Parameter Name="HROB_SORT_ENTNR">
+    <Dimension Index="0">
+      <Values Value="1" Unit="-" Min="0" Max="1" />
+      <Properties ZeroAllowed="1" Type="System.Int16" Level="3" SPS="0" />
+    </Dimension>
+  </Parameter>
+  <Parameter Name="PAR_HROB_ANZAHL_MAGNETGREIFER">
+    <Dimension Index="0">
+      <Values Value="2" Unit="-" Min="0" Max="4" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="4,ParMagnetGreiferAnzahl" />
+    </Dimension>
+  </Parameter>
+  <Parameter Name="PAR_HROB2_ANZAHL_MAGNETGREIFER">
+    <Dimension Index="0">
+      <Values Value="1" Unit="-" Min="0" Max="4" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="5,ParMagnetGreiferAnzahl" />
+    </Dimension>
+  </Parameter>
+  <Parameter Name="GROOVE_WITH">
+    <Dimension Index="0">
+      <Values Value="1" Unit="-" Min="0" Max="1" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
+    </Dimension>
+    <Dimension Index="1">
+      <Values Value="1" Unit="-" Min="0" Max="1" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
+    </Dimension>
+    <Dimension Index="2">
+      <Values Value="1" Unit="-" Min="0" Max="1" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
+    </Dimension>
+    <Dimension Index="3">
+      <Values Value="1" Unit="-" Min="0" Max="1" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
+    </Dimension>
+    <Dimension Index="4">
+      <Values Value="1" Unit="-" Min="0" Max="1" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
+    </Dimension>
+    <Dimension Index="5">
+      <Values Value="1" Unit="-" Min="0" Max="1" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
+    </Dimension>
+    <Dimension Index="6">
+      <Values Value="1" Unit="-" Min="0" Max="1" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
+    </Dimension>
+    <Dimension Index="7">
+      <Values Value="1" Unit="-" Min="0" Max="1" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
+    </Dimension>
+    <Dimension Index="8">
+      <Values Value="1" Unit="-" Min="0" Max="1" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
+    </Dimension>
+    <Dimension Index="9">
+      <Values Value="1" Unit="-" Min="0" Max="1" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="3" SPS="0" />
+    </Dimension>
+  </Parameter>
+  <Parameter Name="PAR_SW_ES_COOPERATIV_MAX">
+    <Dimension Index="0">
+      <Values Value="15000" Unit="mm" Min="-5000" Max="20000" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSW_ES_Cooperativ[1].Val[1]" />
+    </Dimension>
+    <Dimension Index="1">
+      <Values Value="1" Unit="mm" Min="-5000" Max="20000" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSW_ES_Cooperativ[2].Val[1]" />
+    </Dimension>
+    <Dimension Index="2">
+      <Values Value="1" Unit="mm" Min="-5000" Max="20000" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSW_ES_Cooperativ[3].Val[1]" />
+    </Dimension>
+    <Dimension Index="3">
+      <Values Value="1" Unit="mm" Min="-5000" Max="20000" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSW_ES_Cooperativ[4].Val[1]" />
+    </Dimension>
+  </Parameter>
+  <Parameter Name="PAR_SW_ES_COOPERATIV_MIN">
+    <Dimension Index="0">
+      <Values Value="-800" Unit="mm" Min="-5000" Max="20000" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSW_ES_Cooperativ[1].Val[0]" />
+    </Dimension>
+    <Dimension Index="1">
+      <Values Value="1" Unit="mm" Min="-5000" Max="20000" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSW_ES_Cooperativ[2].Val[0]" />
+    </Dimension>
+    <Dimension Index="2">
+      <Values Value="1" Unit="mm" Min="-5000" Max="20000" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSW_ES_Cooperativ[3].Val[0]" />
+    </Dimension>
+    <Dimension Index="3">
+      <Values Value="1" Unit="mm" Min="-5000" Max="20000" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSW_ES_Cooperativ[4].Val[0]" />
+    </Dimension>
+  </Parameter>
+  <Parameter Name="PAR_SW_ES_SEPARATED_MAX">
+    <Dimension Index="0">
+      <Values Value="14000" Unit="mm" Min="-5000" Max="20000" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSW_ES_Separated[1].Val[1]" />
+    </Dimension>
+    <Dimension Index="1">
+      <Values Value="1" Unit="mm" Min="-5000" Max="20000" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSW_ES_Separated[2].Val[1]" />
+    </Dimension>
+    <Dimension Index="2">
+      <Values Value="1" Unit="mm" Min="-5000" Max="20000" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSW_ES_Separated[3].Val[1]" />
+    </Dimension>
+    <Dimension Index="3">
+      <Values Value="1" Unit="mm" Min="-5000" Max="20000" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSW_ES_Separated[4].Val[1]" />
+    </Dimension>
+  </Parameter>
+  <Parameter Name="PAR_SW_ES_SEPARATED_MIN">
+    <Dimension Index="0">
+      <Values Value="-2800" Unit="mm" Min="-5000" Max="20000" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSW_ES_Separated[1].Val[0]" />
+    </Dimension>
+    <Dimension Index="1">
+      <Values Value="1" Unit="mm" Min="-5000" Max="20000" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSW_ES_Separated[2].Val[0]" />
+    </Dimension>
+    <Dimension Index="2">
+      <Values Value="1" Unit="mm" Min="-5000" Max="20000" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSW_ES_Separated[3].Val[0]" />
+    </Dimension>
+    <Dimension Index="3">
+      <Values Value="1" Unit="mm" Min="-5000" Max="20000" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSW_ES_Separated[4].Val[0]" />
+    </Dimension>
+  </Parameter>
+  <Parameter Name="OFFSET_OTHER_ROBOT">
+    <Dimension Index="0">
+      <Values Value="-11000" Unit="mm" Min="-20000" Max="20000" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParOtherRobOffset[1]" />
+    </Dimension>
+    <Dimension Index="1">
+      <Values Value="15000" Unit="mm" Min="-5000" Max="20000" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSW_ES_Separated[2].Val[0]" />
+    </Dimension>
+    <Dimension Index="2">
+      <Values Value="1" Unit="mm" Min="-5000" Max="20000" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSW_ES_Separated[3].Val[0]" />
+    </Dimension>
+    <Dimension Index="3">
+      <Values Value="1" Unit="mm" Min="-5000" Max="20000" />
+      <Properties ZeroAllowed="1" Type="System.Single" Level="9" SPS="0,ParSW_ES_Separated[4].Val[0]" />
+    </Dimension>
+  </Parameter>
+  <Parameter Name="UMLAGERN_AUF_RUECKFUEHRBAND_PLAG_VOLL">
+    <Dimension Index="0">
+      <Values Value="1" Unit="-" Min="0" Max="1" />
+      <Properties ZeroAllowed="1" Type="System.Int16" Level="3" SPS="0" />
+    </Dimension>
+  </Parameter>
+  <Parameter Name="SMS_ZERLEGT_EINLAGERN_WENN_PLAG_VOLL">
+    <Dimension Index="0">
+      <Values Value="1" Unit="-" Min="0" Max="1" />
+      <Properties ZeroAllowed="1" Type="System.Int16" Level="3" SPS="0" />
+    </Dimension>
+  </Parameter>
+  <Parameter Name="START_ADRESSE_UMRICHTER_HROB1">
+    <Dimension Index="0">
+      <Values Value="1035" Unit="-" Min="1000" Max="1500" />
+      <Properties ZeroAllowed="1" Type="System.Int16" Level="3" SPS="4,ParStartadresseUmrichter" />
+    </Dimension>
+  </Parameter>
+  <Parameter Name="DOPPELROB_ABSTAND_REDUKTION">
+    <Dimension Index="0">
+      <Values Value="2000" Unit="mm" Min="1" Max="10000" />
+      <Properties ZeroAllowed="0" Type="System.Single" Level="3" SPS="0,ParRobAbstandReduktion" />
     </Dimension>
   </Parameter>
 </ParameterValues>
