@@ -8,7 +8,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using Geometries;
 
-namespace Configuration
+namespace Configuration.Shutters
 {
     /// <summary>
     /// Collection of restricitve areas

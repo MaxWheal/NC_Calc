@@ -4,7 +4,7 @@ using Geometries;
 using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
-using SROB_NC;
+using SROB_3DViewer;
 
 namespace Configuration.RestrictiveAreas
 {
@@ -110,8 +110,8 @@ namespace Configuration.RestrictiveAreas
                     Areas.Add(new RestrictiveArea
                     {
                         Name = data[2],
-                        Start = new Point_3D(float.Parse(data[4]), float.Parse(data[5]), float.Parse(data[6])),
-                        End = new Point_3D(float.Parse(data[7]), float.Parse(data[8]), float.Parse(data[9])),
+                        Start = new Pnt3D(float.Parse(data[4]), float.Parse(data[5]), float.Parse(data[6])),
+                        End = new Pnt3D(float.Parse(data[7]), float.Parse(data[8]), float.Parse(data[9])),
                         AllowedMotion = allowedMotion,
                         CoOpArea = (CoOpModes)short.Parse(data[25])
                     });
@@ -182,7 +182,7 @@ namespace Configuration.RestrictiveAreas
         {
         }
 
-        public RestrictiveArea(string name, Point_3D start, Point_3D end)
+        public RestrictiveArea(string name, Pnt3D start, Pnt3D end)
         {
             Name = name;
             Start = start;
@@ -197,10 +197,10 @@ namespace Configuration.RestrictiveAreas
         public string Name { get; set; }
 
         [XmlElement]
-        public Point_3D Start { get; set; }
+        public Pnt3D Start { get; set; }
 
         [XmlElement]
-        public Point_3D End { get; set; }
+        public Pnt3D End { get; set; }
 
         [XmlElement]
         public Axis AllowedMotion { get; set; }
@@ -230,9 +230,9 @@ namespace Configuration.RestrictiveAreas
                 var poly = new Polygon_2D();
 
                 poly.Points.Add(Start);
-                poly.Points.Add(new Point_2D(End.X, Start.Y));
+                poly.Points.Add(new Pnt2D(End.X, Start.Y));
                 poly.Points.Add(End);
-                poly.Points.Add(new Point_2D(Start.X, End.Y));
+                poly.Points.Add(new Pnt2D(Start.X, End.Y));
 
                 return poly;
             }

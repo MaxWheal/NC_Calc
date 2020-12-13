@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{83690F6F-6A19-4E20-9897-960C7C9E82E8}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>SROB_NC</RootNamespace>
-    <AssemblyName>SROB_NC</AssemblyName>
+    <RootNamespace>SROB_GeoView</RootNamespace>
+    <AssemblyName>SROB_GeoView</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -41,11 +41,11 @@
     <Reference Include="CSharpControls.Wpf">
       <HintPath>..\..\_tools\CSharpControls.Wpf.dll</HintPath>
     </Reference>
-    <Reference Include="HelixToolkit, Version=2.11.0.0, Culture=neutral, PublicKeyToken=52aa3500039caf0d, processorArchitecture=MSIL">
-      <HintPath>..\packages\HelixToolkit.2.11.0\lib\netstandard1.1\HelixToolkit.dll</HintPath>
+    <Reference Include="HelixToolkit, Version=2.13.1.0, Culture=neutral, PublicKeyToken=52aa3500039caf0d, processorArchitecture=MSIL">
+      <HintPath>..\packages\HelixToolkit.2.13.1\lib\netstandard1.1\HelixToolkit.dll</HintPath>
     </Reference>
-    <Reference Include="HelixToolkit.Wpf, Version=2.11.0.0, Culture=neutral, PublicKeyToken=52aa3500039caf0d, processorArchitecture=MSIL">
-      <HintPath>..\packages\HelixToolkit.Wpf.2.11.0\lib\net45\HelixToolkit.Wpf.dll</HintPath>
+    <Reference Include="HelixToolkit.Wpf, Version=2.13.1.0, Culture=neutral, PublicKeyToken=52aa3500039caf0d, processorArchitecture=MSIL">
+      <HintPath>..\packages\HelixToolkit.Wpf.2.13.1\lib\net45\HelixToolkit.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -59,7 +59,7 @@
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="TwinCAT.Ads, Version=4.4.0.0, Culture=neutral, PublicKeyToken=180016cd49e5e8c3, processorArchitecture=MSIL">
-      <HintPath>..\packages\Beckhoff.TwinCAT.Ads.4.4.0\lib\Net40-full\TwinCAT.Ads.dll</HintPath>
+      <HintPath>..\packages\Beckhoff.TwinCAT.Ads.4.4.10\lib\Net40-full\TwinCAT.Ads.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -73,13 +73,11 @@
     <Compile Include="Configuration\Config.cs" />
     <Compile Include="Configuration\Ini.cs" />
     <Compile Include="Configuration\Shutter.cs" />
-    <Compile Include="DragableBox.cs" />
     <Compile Include="GeoView.cs" />
     <Compile Include="Configuration\Parameter.cs" />
     <Compile Include="Configuration\RestrictiveArea.cs" />
     <Compile Include="Geometries.cs" />
     <Compile Include="PLC.cs" />
-    <Compile Include="Track.cs" />
     <Compile Include="Utilities.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

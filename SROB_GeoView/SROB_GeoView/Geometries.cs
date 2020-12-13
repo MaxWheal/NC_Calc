@@ -4,19 +4,19 @@ using System.Xml;
 using System.Xml.Serialization;
 using System.Linq;
 using System.Windows;
-using SROB_NC;
+using SROB_3DViewer;
 
 namespace Geometries
 {
-    public class Point_4D : Point_3D
+    public class Pnt4D : Pnt3D
     {
         #region Contructors
-        public Point_4D()
+        public Pnt4D()
         {
 
         }
 
-        public Point_4D(Point_4D point_4D)
+        public Pnt4D(Pnt4D point_4D)
         {
             X = point_4D.X;
             Y = point_4D.Y;
@@ -24,7 +24,7 @@ namespace Geometries
             C = point_4D.C;
         }
 
-        public Point_4D(double x = 0, double y = 0, double z = 0, double c = 0)
+        public Pnt4D(double x = 0, double y = 0, double z = 0, double c = 0)
         {
             X = x;
             Y = y;
@@ -64,13 +64,13 @@ namespace Geometries
 
         #region Equals
         /// <summary>
-        /// Determines whether the specified <see cref="Point_4D"/> is equal to the current instance.
+        /// Determines whether the specified <see cref="Pnt4D"/> is equal to the current instance.
         /// </summary>
         /// <param name="obj">he object to compare with the current object.</param>
         /// <returns>true if the specified object is equal to the current object; otherwise, false.</returns>
         public override bool Equals(object obj)
         {
-            Point_4D point = (Point_4D)obj;
+            Pnt4D point = (Pnt4D)obj;
             return base.Equals(obj) && this.C == point.C;
         }
         #endregion
@@ -81,9 +81,9 @@ namespace Geometries
         /// Checks for the minimum value.
         /// </summary>
         /// <returns>The lower value.</returns>
-        public static Point_4D Min(Point_4D point_1, Point_4D point_2)
+        public static Pnt4D Min(Pnt4D point_1, Pnt4D point_2)
         {
-            Point_4D pointMin = new Point_4D
+            Pnt4D pointMin = new Pnt4D
             {
                 X = Math.Min(point_1.X, point_2.X),
                 Y = Math.Min(point_1.Y, point_2.Y),
@@ -102,9 +102,9 @@ namespace Geometries
         /// Checks for the maximum value.
         /// </summary>
         /// <returns>The higher value.</returns>
-        public static Point_4D Max(Point_4D point_1, Point_4D point_2)
+        public static Pnt4D Max(Pnt4D point_1, Pnt4D point_2)
         {
-            Point_4D pointMax = new Point_4D
+            Pnt4D pointMax = new Pnt4D
             {
                 X = Math.Max(point_1.X, point_2.X),
                 Y = Math.Max(point_1.Y, point_2.Y),
@@ -125,15 +125,15 @@ namespace Geometries
 
     }
 
-    public class Point_3D : Point_2D
+    public class Pnt3D : Pnt2D
     {
         #region Contructors
-        public Point_3D()
+        public Pnt3D()
         {
 
         }
 
-        public Point_3D(double x = 0, double y = 0, double z = 0)
+        public Pnt3D(double x = 0, double y = 0, double z = 0)
         {
             X = x;
             Y = y;
@@ -162,13 +162,13 @@ namespace Geometries
 
         #region Equals
         /// <summary>
-        /// Determines whether the specified <see cref="Point_3D"/> is equal to the current instance.
+        /// Determines whether the specified <see cref="Pnt3D"/> is equal to the current instance.
         /// </summary>
         /// <param name="obj">he object to compare with the current object.</param>
         /// <returns>true if the specified object is equal to the current object; otherwise, false.</returns>
         public override bool Equals(object obj)
         {
-            Point_3D point = (Point_3D)obj;
+            Pnt3D point = (Pnt3D)obj;
             return base.Equals(obj) && this.Z == point.Z;
         }
         #endregion
@@ -177,28 +177,28 @@ namespace Geometries
 
         #region Conversions
 
-        public static implicit operator System.Windows.Media.Media3D.Point3D(Point_3D p_3D)
+        public static implicit operator System.Windows.Media.Media3D.Point3D(Pnt3D p_3D)
             => new System.Windows.Media.Media3D.Point3D(p_3D.X, p_3D.Y, p_3D.Z);
 
         #endregion
 
     }
 
-    public class Point_2D
+    public class Pnt2D
     {
         #region Contructors
-        public Point_2D()
+        public Pnt2D()
         {
 
         }
 
-        public Point_2D(double x = 0, double y = 0)
+        public Pnt2D(double x = 0, double y = 0)
         {
             X = x;
             Y = y;
         }
 
-        public Point_2D(Point_2D point_2D)
+        public Pnt2D(Pnt2D point_2D)
         {
             X = point_2D.X;
             Y = point_2D.Y;
@@ -231,13 +231,13 @@ namespace Geometries
 
         #region Equals
         /// <summary>
-        /// Determines whether the specified <see cref="Point_2D"/> is equal to the current instance.
+        /// Determines whether the specified <see cref="Pnt2D"/> is equal to the current instance.
         /// </summary>
         /// <param name="obj">he object to compare with the current object.</param>
         /// <returns>true if the specified object is equal to the current object; otherwise, false.</returns>
         public override bool Equals(object obj)
         {
-            Point_2D point = (Point_2D)obj;
+            Pnt2D point = (Pnt2D)obj;
             return this.X == point.X && this.Y == point.Y;
         }
         #endregion
@@ -253,7 +253,7 @@ namespace Geometries
 
         }
 
-        public Segment_4D(Point_4D start, Point_4D end)
+        public Segment_4D(Pnt4D start, Pnt4D end)
         {
             Start = start;
             End = end;
@@ -262,8 +262,8 @@ namespace Geometries
 
         #region Properties
 
-        public Point_4D Start { get; set; }
-        public Point_4D End { get; set; }
+        public Pnt4D Start { get; set; }
+        public Pnt4D End { get; set; }
         public double Length { get => Math.Abs(Math.Sqrt(Math.Pow((End.X - Start.X), 2) + Math.Pow((End.Y - Start.Y), 2) + Math.Pow((End.Z - Start.Z), 2))); }
 
         #endregion
@@ -277,7 +277,7 @@ namespace Geometries
         /// <param name="axis"> segment following position will be given if <see cref="Axis.None"/> lenght of segment must be given</param>
         /// <param name="position">position on segment</param>
         /// <returns>Point at given position</returns>
-        public Point_4D GetPositionAt(Axis axis, double position)
+        public Pnt4D GetPositionAt(Axis axis, double position)
         {
             double relDist = 0;
             switch (axis)
@@ -302,7 +302,7 @@ namespace Geometries
 
             }
 
-            return new Point_4D
+            return new Pnt4D
             {
                 X = Start.X + (End.X - Start.X) * relDist,
                 Y = Start.Y + (End.Y - Start.Y) * relDist,
@@ -365,10 +365,9 @@ namespace Geometries
         #region Conversions
 
         public static implicit operator Segment_2D(Segment_4D seg_4D)
-            => new Segment_2D(new Point_2D(seg_4D.Start), new Point_2D(seg_4D.End));
+            => new Segment_2D(new Pnt2D(seg_4D.Start), new Pnt2D(seg_4D.End));
 
         #endregion
-
     }
 
     public partial class Segment_2D
@@ -379,7 +378,7 @@ namespace Geometries
 
         }
 
-        public Segment_2D(Point_2D start, Point_2D end)
+        public Segment_2D(Pnt2D start, Pnt2D end)
         {
             Start = start;
             End = end;
@@ -388,8 +387,8 @@ namespace Geometries
 
         #region Properties
 
-        public Point_2D Start { get; set; }
-        public Point_2D End { get; set; }
+        public Pnt2D Start { get; set; }
+        public Pnt2D End { get; set; }
 
         public double Slope { get => (Start.Y - End.Y) / (Start.X - End.X); }
         public double AxSection { get => Start.Y - Start.X * Slope; }
@@ -449,7 +448,7 @@ namespace Geometries
         /// <param name="point2"></param>
         /// <param name="point3"></param>
         /// <returns></returns>
-        private static Orientation GetOrientation(Point_2D point1, Point_2D point2, Point_2D point3)
+        private static Orientation GetOrientation(Pnt2D point1, Pnt2D point2, Pnt2D point3)
         {
             var test = (point2.Y - point1.Y) * (point3.X - point2.X) -
       (point2.X - point1.X) * (point3.Y - point2.Y);
@@ -474,7 +473,7 @@ namespace Geometries
         /// <param name="center">center of circle</param>
         /// <param name="diameter">diameter of circle</param>
         /// <returns>Intersection detected</returns>
-        public bool IsIntersecting(Point_2D center, double diameter)
+        public bool IsIntersecting(Pnt2D center, double diameter)
         {
 
             //calculating line's perpendicular distance to ball
@@ -565,19 +564,19 @@ namespace Geometries
         /// Creates a 2D polygon from a 4D position
         /// </summary>
         /// <param name=""></param>
-        public Polygon_2D(Point_4D position, Size size)
+        public Polygon_2D(Pnt4D position, Size size)
         {
             var polygonRaw = new Polygon_2D();
 
             //Set Size at origin
-            polygonRaw.Points.Add(new Point_2D(size.Length / 2, size.Width / 2));
-            polygonRaw.Points.Add(new Point_2D(-size.Length / 2, size.Width / 2));
-            polygonRaw.Points.Add(new Point_2D(-size.Length / 2, -size.Width / 2));
-            polygonRaw.Points.Add(new Point_2D(size.Length / 2, -size.Width / 2));
+            polygonRaw.Points.Add(new Pnt2D(size.Length / 2, size.Width / 2));
+            polygonRaw.Points.Add(new Pnt2D(-size.Length / 2, size.Width / 2));
+            polygonRaw.Points.Add(new Pnt2D(-size.Length / 2, -size.Width / 2));
+            polygonRaw.Points.Add(new Pnt2D(size.Length / 2, -size.Width / 2));
 
             foreach (var corner in polygonRaw.Points)
             {
-                var point = new Point_2D
+                var point = new Pnt2D
                 {
 
                     //Rotation
@@ -597,10 +596,10 @@ namespace Geometries
         #endregion
 
         #region Properties
-        public List<Point_2D> Points = new List<Point_2D>();
+        public List<Pnt2D> Points = new List<Pnt2D>();
 
-        public Point_2D PointMin { get => new Point_2D(Points.Min(pt => pt.X), Points.Min(pt => pt.Y)); }
-        public Point_2D PointMax { get => new Point_2D(Points.Max(pt => pt.X), Points.Max(pt => pt.Y)); }
+        public Pnt2D PointMin { get => new Pnt2D(Points.Min(pt => pt.X), Points.Min(pt => pt.Y)); }
+        public Pnt2D PointMax { get => new Pnt2D(Points.Max(pt => pt.X), Points.Max(pt => pt.Y)); }
 
         #endregion
 
@@ -621,7 +620,7 @@ namespace Geometries
         /// <param name="point">Point to be checked</param>
         /// <param name="polygon">Polygon to be checked</param>
         /// <returns></returns>
-        public static bool IsPointInPoly(Point_2D point, Polygon_2D polygon)
+        public static bool IsPointInPoly(Pnt2D point, Polygon_2D polygon)
         {
             try
             {
@@ -642,8 +641,8 @@ namespace Geometries
 
                 List<Segment_2D> segments = polygon.ToSegments_2D();
 
-                Point_2D point1 = new Point_2D();
-                Point_2D point2 = new Point_2D();
+                Pnt2D point1 = new Pnt2D();
+                Pnt2D point2 = new Pnt2D();
 
                 foreach (var segment in segments)
                 {
@@ -692,7 +691,7 @@ namespace Geometries
         /// <param name="point1"></param>
         /// <param name="point2"></param>
         /// <returns></returns>
-        private static double GetTheta(Point_2D point1, Point_2D point2)
+        private static double GetTheta(Pnt2D point1, Pnt2D point2)
         {
             double theta = Math.Atan2(point2.Y, point2.X) - Math.Atan2(point1.Y, point1.X);
 
@@ -743,7 +742,7 @@ namespace Geometries
         /// <param name="center">center of circle</param>
         /// <param name="diameter">diameter of circle</param>
         /// <returns>Collision detected</returns>
-        public bool IsOverlapping(Point_2D center, double diameter)
+        public bool IsOverlapping(Pnt2D center, double diameter)
         {
             //Check if center is within
             if (IsPointInPoly(center, this))

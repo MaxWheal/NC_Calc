@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SROB_NC
+namespace SROB_3DViewer
 {
     [Flags]
     public enum Axis

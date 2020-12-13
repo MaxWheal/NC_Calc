@@ -1,6 +1,7 @@
-﻿using Configuration.Ini;
-using Configuration.Parameters;
+﻿using Configuration.Parameters;
 using Configuration.RestrictiveAreas;
+using Configuration.Ini;
+using Configuration.Shutters;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace Configuration
     public static class Config
     {
         #region Properties
-        public static IniCollection Ini { get; set; }
+        public static IniFile Ini = new IniFile(Environment.CurrentDirectory + "/../SAA.SROB.WPFVisu.ini");
 
         public static ResAreaCollection ResAreas { get; set; }
 
@@ -39,13 +40,9 @@ namespace Configuration
         {
             try
             {
-                Ini = new IniCollection(CheckPathValid(Environment.CurrentDirectory + "/../NC_Calc.ini"));
-
-                ResAreas = new ResAreaCollection(Ini.Values["GeoDat"] = CheckPathValid(Ini.Values["GeoDat"]));
-                Params = new ParameterCollecion(Ini.Values["Parameter"] = CheckPathValid(Ini.Values["Parameter"]));
-                Shutters = new ShutterCollecion(Ini.Values["Shutters"] = CheckPathValid(Ini.Values["Shutters"]));
-
-                Ini.WriteToXML(Environment.CurrentDirectory + "/../NC_Calc.ini");
+                ResAreas = new ResAreaCollection(Ini.Read("SrobGeoCfgFile", "FILENAMES"));
+                Params = new ParameterCollecion(Ini.Read("ParFileName", "FILENAMES"));
+                Shutters = new ShutterCollecion(Ini.Read("SchalerCfgFile", "FILENAMES"));
             }
             catch (Exception ex)
             {
@@ -88,11 +85,11 @@ namespace Configuration
 
         public static void Reset()
         {
-            Ini.Values["GeoDat"] = "GeoDat.cfg";
-            Ini.Values["Parameter"] = "Parameter.xml";
-            Ini.Values["Shutters"] = "Shutters.xml";
+            //Ini.Values["GeoDat"] = "GeoDat.cfg";
+            //Ini.Values["Parameter"] = "Parameter.xml";
+            //Ini.Values["Shutters"] = "Shutters.xml";
 
-            Ini.WriteToXML(Environment.CurrentDirectory + "/../NC_Calc.ini");
+            //Ini.WriteToXML(Environment.CurrentDirectory + "/../NC_Calc.ini");
         }
 
         #endregion

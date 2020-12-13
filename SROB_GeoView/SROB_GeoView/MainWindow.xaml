@@ -1,4 +1,4 @@
-﻿<Window x:Class="SROB_NC.MainWindow"
+﻿<Window x:Class="SROB_3DViewer.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -6,7 +6,7 @@
         xmlns:cc="clr-namespace:CSharpControls.Wpf;assembly=CSharpControls.Wpf"
 
         xmlns:ht="clr-namespace:HelixToolkit.Wpf;assembly=HelixToolkit.Wpf" 
-        xmlns:local="clr-namespace:SROB_NC"
+        xmlns:local="clr-namespace:SROB_3DViewer"
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="1300" FontFamily="Segoe UI">
     
@@ -36,19 +36,17 @@
           <StackPanel Grid.Row="0" Orientation="Horizontal">
             <Button x:Name="btnRefresh"  Content="Refresh" Click="Refresh_Click"/>
             <Button x:Name="btnReload"  Content="Reload" Click="Reload_Click"/>
-            <Button x:Name="btnCalcStart" Content="Set Start" Click="CalcStart_Click"/>
             <cc:ToggleSwitch CheckedText="Online"  Grid.Column="2" UncheckedText="Offline" IsChecked="{Binding ADS_Online}"/>
             <ComboBox ItemsSource="{Binding SelectionShutters}"  DisplayMemberPath="Name" SelectedItem="{Binding SelectedShutter}" 
                       Background="Transparent" Margin="5" FontSize="15" Width="150"/>
 
-                <Label x:Name="PoseX" Content="{Binding PosX}" MouseWheel="Target_OnMouseWheel" Foreground="{Binding CollisionMark}"/>
+                <Label x:Name="PoseX" Content="{Binding PosX}" MouseWheel="Target_OnMouseWheel"/>
                 <Label x:Name="PoseY" Content="{Binding PosY}" MouseWheel="Target_OnMouseWheel"/>
                 <Label x:Name="PoseZ" Content="{Binding PosZ}" MouseWheel="Target_OnMouseWheel"/>
                 <Label x:Name="PoseC" Content="{Binding PosC}" MouseWheel="Target_OnMouseWheel"/>
 
-            <Slider x:Name="SliderResult" VerticalAlignment="Center" Value="{Binding ResultSweep}" Maximum="100" Margin="5" Width="250" Visibility="{Binding TrackValid, Converter={StaticResource BoolToVisConverter}}"/>
         </StackPanel>
 
-        <local:GeoView x:Name="_viewport" Grid.Row="1" MovingPosition="{Binding CurrentPos}"/>
+        <local:GeoView x:Name="_viewport" Grid.Row="1" Position="{Binding CurrentPos}"/>
     </Grid>
 </Window>
