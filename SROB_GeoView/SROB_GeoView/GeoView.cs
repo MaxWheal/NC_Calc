@@ -7,7 +7,7 @@ using System.Windows;
 using Geometries;
 using Configuration.RestrictiveAreas;
 using Configuration;
-using System.ComponentModel;
+using System.Linq;
 
 namespace SROB_3DViewer
 {
@@ -45,14 +45,37 @@ namespace SROB_3DViewer
         }
         #endregion
 
+        #region GripperState
+        private List<BoxVisual3D> _gripper = new List<BoxVisual3D>();
+
+        public static readonly DependencyProperty GripperClosedProperty =
+            DependencyProperty.Register("GripperClosed", typeof(bool[]), typeof(GeoView),
+                new FrameworkPropertyMetadata(
+                                        new PropertyChangedCallback(GripperStateChanged)));
+        public bool[] GripperClosed
+        {
+            get => (bool[])GetValue(GripperClosedProperty);
+            set => SetValue(GripperClosedProperty, value);
+        }
+
+        public static readonly DependencyProperty GripperLiftedProperty =
+            DependencyProperty.Register("GripperLifted", typeof(bool[]), typeof(GeoView),
+                new FrameworkPropertyMetadata(
+                                        new PropertyChangedCallback(GripperStateChanged)));
+        public bool[] GripperLifted
+        {
+            get => (bool[])GetValue(GripperLiftedProperty);
+            set => SetValue(GripperLiftedProperty, value);
+        }
+        #endregion
+
         #region PartInGripper
         private BoxVisual3D _part = new BoxVisual3D();
 
         public static readonly DependencyProperty PartsizeProperty =
             DependencyProperty.Register("Partsize", typeof(Geometries.Size), typeof(GeoView),
                 new FrameworkPropertyMetadata(
-                                        new PropertyChangedCallback(PartChanged),
-                                        new CoerceValueCallback(PartChanged)));
+                                        new PropertyChangedCallback(PartChanged)));
         public Geometries.Size Partsize
         {
             get => (Geometries.Size)GetValue(PartsizeProperty);
@@ -87,6 +110,7 @@ namespace SROB_3DViewer
             {
                 Children.Clear();
                 _head.Children.Clear();
+                _gripper.Clear();
                 _part.Children.Clear();
                 _resAreaModels.Children.Clear();
 
@@ -101,26 +125,58 @@ namespace SROB_3DViewer
                     Fill = Brushes.Green
                 });
 
+                //Border
                 Children.Add(WireframeBox(
                     new Point3D(Config.Params.Values["MIN_RAUM[0]"], Config.Params.Values["MIN_RAUM[1]"], Config.Params.Values["MIN_H"]),
                     new Point3D(Config.Params.Values["MAX_RAUM[0]"], Config.Params.Values["MAX_RAUM[1]"], Config.Params.Values["MAX_H"]),
                     Brushes.Red));
 
                 //Palett
-                Children.Add(FilledBox(new Point3D(0, 0, -100),
-                    new Point3D(Config.Params.Values["PAL_L"], Config.Params.Values["PAL_B"], 0),
+                var start = new Point3D(Config.Params.Values["PALPOS_1_STATION1[0]"], Config.Params.Values["PALPOS_1_STATION1[1]"], -100);
+
+                Children.Add(FilledBox(start,
+                    new Point3D(Config.Params.Values["PAL_L"] + start.X, Config.Params.Values["PAL_B"] + start.Y, 0),
                     Brushes.LightGray));
 
+                //Palett 2
+
+                if (Config.Params.Values["ANZAHL_ARBEITSSTATIONEN"] == 2)
+                {
+                    start = new Point3D(Config.Params.Values["PALPOS_1_STATION2[0]"], Config.Params.Values["PALPOS_1_STATION2[1]"], -100);
+
+                    Children.Add(FilledBox(start,
+                        new Point3D(Config.Params.Values["PAL_L"] + start.X, Config.Params.Values["PAL_B"] + start.Y, 0),
+                        Brushes.LightGray));
+                }
+
                 //MovingBody
-                _head.Children.Add( new BoxVisual3D
+                _head.Children.Add(new BoxVisual3D
                 {
                     Length = Config.Params.Values["GREIFER_KOPF_L_GES"],
                     Width = Config.Params.Values["GREIFER_KOPF_B_GES"],
-                    Height = 300,
+                    Height = 250,
                     Fill = Brushes.White,
-                    Center = new Point3D(0, 0, 150),
+                    Center = new Point3D(0, 0, 225),
                 });
 
+                //Gripper
+                for (int i = -1; i < 2; i += 2)
+                {
+                    var gap = 60;
+                    var length = Config.Params.Values["GREIFER_KOPF_L_GES"] / 2 - gap;
+                    _gripper.Add(new BoxVisual3D
+                    {
+                        Length = length,
+                        Width = 180,
+                        Height = 100,
+                        Fill = Brushes.White,
+                        Center = new Point3D((length + gap) / 2 * i, 0, 50),
+                    });
+
+                    _head.Children.Add(_gripper.Last());
+                }
+
+                //Part
                 _head.Children.Add(_part);
 
                 ResAreas = Config.ResAreas.Areas;
@@ -341,17 +397,12 @@ namespace SROB_3DViewer
             matrix.Translate(new Vector3D(Position.X, Position.Y, Position.Z));
             matrix.RotateAt(new Quaternion(new Vector3D(0, 0, 1), Position.C), new Point3D(Position.X, Position.Y, Position.Z));
 
-           _head.Transform = new MatrixTransform3D(matrix);
+            _head.Transform = new MatrixTransform3D(matrix);
         }
         #endregion
 
         #region PartChanged
         private static void PartChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) => ((GeoView)d).UpdatePartInGripper();
-        private static object PartChanged(DependencyObject d, Object e)
-        {
-            ((GeoView)d).UpdatePartInGripper();
-            return e;
-        }
 
         /// <summary>
         /// Updates the viewed current position
@@ -363,7 +414,31 @@ namespace SROB_3DViewer
             _part.Width = Partsize.Width;
             _part.Height = Partsize.Height;
             _part.Fill = Brushes.DarkGray;
-            _part.Center = new Point3D(0, 0, -Partsize.Height/2);
+            _part.Center = new Point3D(0, 0, -Partsize.Height / 2);
+        }
+        #endregion
+
+        #region GripperStateChanged
+        private static void GripperStateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) => ((GeoView)d).UpdateGripperState();
+        /// <summary>
+        /// Updates the viewed current position
+        /// </summary>
+        private void UpdateGripperState()
+        {
+            if (GripperClosed == null) return;
+            if (GripperLifted == null) return;
+
+            for (int i = 0; i < GripperClosed.Count(); i++)
+            {
+                if (i > _gripper.Count() - 1) break;
+
+                _gripper[i].Fill = GripperClosed[i] ? Brushes.Orange : Brushes.White;
+
+                var position = _gripper[i].Center;
+                position.Z = GripperLifted[i] ? 130 : 50;
+                _gripper[i].Center = position;
+
+            }
         }
         #endregion
 

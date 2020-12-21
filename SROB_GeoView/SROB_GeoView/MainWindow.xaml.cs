@@ -51,7 +51,7 @@ namespace SROB_3DViewer
 
         #endregion
 
-        #region Selected Shutter
+        #region Current Shutter
 
         private Geometries.Size _currentPartsize;
         public Geometries.Size CurrentPartsize
@@ -63,6 +63,33 @@ namespace SROB_3DViewer
                 OnPropertyChanged("CurrentPartsize");
             }
         }
+        
+        #endregion
+
+        #region Gripperstates
+
+        private bool[] _gripperClosed;
+        public bool[] GripperClosed
+        {
+            get => _gripperClosed;
+            set
+            {
+                _gripperClosed = value;
+                OnPropertyChanged("GripperClosed");
+            }
+        }
+
+        private bool[] _gripperLifted;
+        public bool[] GripperLifted
+        {
+            get => _gripperLifted;
+            set
+            {
+                _gripperLifted = value;
+                OnPropertyChanged("GripperLifted");
+            }
+        }
+        #endregion
 
         #endregion
 
@@ -93,8 +120,6 @@ namespace SROB_3DViewer
 
         #endregion
 
-        #endregion
-
         #region Methods
 
         #region ConnectToPLC
@@ -120,7 +145,8 @@ namespace SROB_3DViewer
 
                         //Establish notifications
                         PLC.CreateNewNoty(".Visu.Module[0].Position", SetPose_OnADSNotification);
-                        PLC.CreateNewNoty(".Visu.GripperTo", UpdateGripper_OnADSNotification);
+                        PLC.CreateNewNoty(".Visu.GripperTo", UpdatePart_OnADSNotification);
+                        PLC.CreateNewNoty(".EA.I.Greifer", UpdateGripper_OnADSNotification);
 
                         return true;
                     }
@@ -172,11 +198,13 @@ namespace SROB_3DViewer
             binReader.ReadSingle();
 
             CurrentPos = CurrentPos;
+
+
         }
         #endregion
 
         #region SetShutter_OnADSNotification
-        private void UpdateGripper_OnADSNotification(System.IO.Stream inGripper)
+        private void UpdatePart_OnADSNotification(System.IO.Stream inGripper)
         {
             var binReader = new System.IO.BinaryReader(inGripper);
 
@@ -188,6 +216,31 @@ namespace SROB_3DViewer
             partSize.Height = binReader.ReadSingle();
 
             CurrentPartsize = partSize;
+        }
+        #endregion
+
+        #region SetGripper_OnADSNotification
+        private void UpdateGripper_OnADSNotification(System.IO.Stream gripperState)
+        {
+            var binReader = new System.IO.BinaryReader(gripperState);
+            var closed = new bool[4];
+            var lifted = new bool[4];
+
+            //Standard Gripper
+            for (int i = 0; i < 4; i++)
+            {
+                closed[i] = binReader.ReadByte() == 0;
+
+                binReader.ReadBytes(13);
+
+                lifted[i] = binReader.ReadByte() > 0;
+
+                binReader.ReadBytes(11);
+
+            }
+
+            GripperClosed = closed;
+            GripperLifted = lifted;
         }
         #endregion
 

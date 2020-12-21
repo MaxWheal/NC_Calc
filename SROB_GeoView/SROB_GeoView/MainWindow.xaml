@@ -44,6 +44,7 @@
 
         </StackPanel>
 
-        <local:GeoView x:Name="_viewport" Grid.Row="1" Position="{Binding CurrentPos}" Partsize="{Binding CurrentPartsize}"/>
+        <local:GeoView x:Name="_viewport" Grid.Row="1" Position="{Binding CurrentPos}" Partsize="{Binding CurrentPartsize}" 
+                       GripperClosed="{Binding GripperClosed}" GripperLifted="{Binding GripperLifted}"/>
     </Grid>
 </Window>
